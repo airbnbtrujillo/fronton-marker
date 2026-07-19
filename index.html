@@ -469,12 +469,51 @@
     function loadState() {
       const params = new URLSearchParams(location.search);
       const src = params.get('video') || params.get('v') || '';
+      const initial = window.FRONTON_INITIAL || {};
       const saved = JSON.parse(localStorage.getItem(storeKey) || '{}');
-      marks = Array.isArray(saved.marks) ? saved.marks : [];
-      manualScenes = Array.isArray(saved.manualScenes) ? saved.manualScenes : [];
-      videoUrl.value = src || saved.videoUrl || '';
+      marks = Array.isArray(initial.marks) ? initial.marks : (Array.isArray(saved.marks) ? saved.marks : []);
+      manualScenes = Array.isArray(initial.manualScenes) ? initial.manualScenes : (Array.isArray(initial.scenes) ? initial.scenes : (Array.isArray(saved.manualScenes) ? saved.manualScenes : []));
+      videoUrl.value = src || initial.videoUrl || initial.source || saved.videoUrl || '';
       if (videoUrl.value) setVideo(videoUrl.value);
       render();
+    }
+
+    async function loadRemoteAnalysis() {
+      const params = new URLSearchParams(location.search);
+      const analysisUrl = params.get('analysis') || params.get('json') || '';
+      if (!analysisUrl) return;
+      sceneHint.textContent = 'Cargando analisis...';
+      try {
+        const response = await fetch(driveToDirect(analysisUrl), { cache: 'no-store' });
+        if (!response.ok) throw new Error(`HTTP ${response.status}`);
+        const analysis = await response.json();
+        if (Array.isArray(analysis.marks)) {
+          marks = analysis.marks.map((mark, index) => ({
+            id: mark.id || `remote-mark-${index + 1}`,
+            type: mark.type,
+            time: Number(mark.time) || 0
+          }));
+        }
+        if (Array.isArray(analysis.scenes)) {
+          manualScenes = analysis.scenes.map((scene, index) => ({
+            id: scene.id || `remote-scene-${index + 1}`,
+            source: scene.source || 'remote-analysis',
+            start: Number(scene.start) || 0,
+            end: Number(scene.end) || 0,
+            tags: Array.isArray(scene.tags) ? scene.tags : []
+          }));
+        }
+        if (!videoUrl.value && analysis.video_source) {
+          videoUrl.value = analysis.video_source;
+          setVideo(videoUrl.value);
+        }
+        selectedScene = manualScenes.length ? 0 : -1;
+        saveState();
+        render();
+      } catch (error) {
+        sceneHint.textContent = 'No se pudo cargar el analisis.';
+        console.error(error);
+      }
     }
 
     function setVideo(url) {
@@ -764,6 +803,7 @@
     video.addEventListener('error', () => notice.classList.add('show'));
 
     loadState();
+    loadRemoteAnalysis();
     requestAnimationFrame(updateClock);
   </script>
 </body>
