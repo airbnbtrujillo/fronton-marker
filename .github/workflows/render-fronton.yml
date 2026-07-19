@@ -1,0 +1,52 @@
+name: Render Fronton Vertical
+
+on:
+  workflow_dispatch:
+    inputs:
+      video_url:
+        description: Direct MP4 URL
+        required: true
+        type: string
+      json_url:
+        description: Direct corrected JSON URL
+        required: true
+        type: string
+      max_mb:
+        description: Target max size in MB
+        required: true
+        default: "40"
+        type: string
+      mode:
+        description: fit keeps full horizontal court, crop fills vertical
+        required: true
+        default: fit
+        type: choice
+        options:
+          - fit
+          - crop
+
+jobs:
+  render:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y ffmpeg
+
+      - name: Render vertical video
+        run: |
+          python3 tools/render_fronton.py \
+            --video-url "${{ inputs.video_url }}" \
+            --json-url "${{ inputs.json_url }}" \
+            --max-mb "${{ inputs.max_mb }}" \
+            --mode "${{ inputs.mode }}" \
+            --output fronton_vertical.mp4
+
+      - name: Upload result
+        uses: actions/upload-artifact@v4
+        with:
+          name: fronton_vertical
+          path: fronton_vertical.mp4
