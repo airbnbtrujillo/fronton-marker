@@ -1368,28 +1368,42 @@
     let dragging = false;
     let timelinePointerStart = null;
     let timelinePointerMoved = false;
+    let timelineDragStartTime = 0;
+    let timelineDragView = null;
     timeline.addEventListener('pointerdown', event => {
       dragging = true;
       timelinePointerStart = { x: event.clientX, y: event.clientY };
       timelinePointerMoved = false;
+      timelineDragStartTime = video.currentTime || 0;
+      timelineDragView = timelineWindow();
       timeline.setPointerCapture(event.pointerId);
-      seekRatio(event.clientX);
     });
     timeline.addEventListener('pointermove', event => {
       if (!dragging) return;
       if (timelinePointerStart && Math.abs(event.clientX - timelinePointerStart.x) + Math.abs(event.clientY - timelinePointerStart.y) > 8) {
         timelinePointerMoved = true;
       }
-      seekRatio(event.clientX);
+      if (timelinePointerMoved && timelinePointerStart && timelineDragView) {
+        const rect = timeline.getBoundingClientRect();
+        const span = Math.max(1, timelineDragView.end - timelineDragView.start);
+        const sensitivity = timelineDragView.zoom <= 1 ? 0.22 : 0.34;
+        const delta = ((event.clientX - timelinePointerStart.x) / Math.max(1, rect.width)) * span * sensitivity;
+        seek(timelineDragStartTime + delta);
+        const mark = nearestMark(video.currentTime || 0);
+        if (mark) selectedMarkId = mark.id;
+        renderTimeline();
+      }
     });
     timeline.addEventListener('pointerup', event => {
       if (!timelinePointerMoved) snapTimelineToMark(event.clientX);
       dragging = false;
       timelinePointerStart = null;
+      timelineDragView = null;
     });
     timeline.addEventListener('pointercancel', () => {
       dragging = false;
       timelinePointerStart = null;
+      timelineDragView = null;
     });
     video.addEventListener('loadedmetadata', () => { notice.classList.remove('show'); render(); });
     video.addEventListener('durationchange', render);
