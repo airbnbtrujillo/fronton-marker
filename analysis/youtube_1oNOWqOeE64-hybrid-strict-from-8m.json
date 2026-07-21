@@ -1,0 +1,442 @@
+{
+  "version": 2,
+  "source": "videos/youtube_1oNOWqOeE64-proxy.mp4",
+  "direct_source": "https://subjective-cargo-subjects-burning.trycloudflare.com/videos/youtube_1oNOWqOeE64-proxy.mp4",
+  "duration": 960.96,
+  "training_note": "Usa solo las correcciones humanas hasta 08:00. Despues de 08:00 son candidatos estrictos; si hay duda, borrar u omitir antes que inventar saque/final.",
+  "cutoff_seconds": 480,
+  "marks": [
+    {
+      "id": "human-1",
+      "time": 147.747,
+      "type": "end",
+      "label": "Final",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-2",
+      "time": 156.352,
+      "type": "serve",
+      "label": "Saque",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-3",
+      "time": 161.09,
+      "type": "end",
+      "label": "Final",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-4",
+      "time": 166.888,
+      "type": "serve",
+      "label": "Saque",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-5",
+      "time": 180.833,
+      "type": "end",
+      "label": "Final",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-6",
+      "time": 190.697,
+      "type": "serve",
+      "label": "Saque",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-7",
+      "time": 195.755,
+      "type": "end",
+      "label": "Final",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-8",
+      "time": 200.031,
+      "type": "serve",
+      "label": "Saque",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-9",
+      "time": 204.436,
+      "type": "end",
+      "label": "Final",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-10",
+      "time": 258.0,
+      "type": "serve",
+      "label": "Saque",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-11",
+      "time": 261.0,
+      "type": "hit",
+      "label": "Hit",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-12",
+      "time": 263.0,
+      "type": "end",
+      "label": "Final",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-13",
+      "time": 285.565,
+      "type": "serve",
+      "label": "Saque",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-14",
+      "time": 314.131,
+      "type": "hit",
+      "label": "Hit",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-15",
+      "time": 328.516,
+      "type": "end",
+      "label": "Final",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-16",
+      "time": 345.452,
+      "type": "serve",
+      "label": "Saque",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-17",
+      "time": 364.806,
+      "type": "end",
+      "label": "Final",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-18",
+      "time": 400.897,
+      "type": "serve",
+      "label": "Saque",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-19",
+      "time": 414.823,
+      "type": "end",
+      "label": "Final",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-20",
+      "time": 429.41,
+      "type": "serve",
+      "label": "Saque",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-21",
+      "time": 436.248,
+      "type": "end",
+      "label": "Final",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-22",
+      "time": 449.156,
+      "type": "serve",
+      "label": "Saque",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-23",
+      "time": 470.0,
+      "type": "serve",
+      "label": "Saque",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-24",
+      "time": 473.0,
+      "type": "hit",
+      "label": "Hit",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "human-25",
+      "time": 476.0,
+      "type": "end",
+      "label": "Final",
+      "source": "human-confirmed-until-8m"
+    },
+    {
+      "id": "strict-after8-13",
+      "time": 550.0,
+      "type": "serve",
+      "label": "Saque",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    },
+    {
+      "id": "strict-after8-12",
+      "time": 559.0,
+      "type": "hit",
+      "label": "Hit",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    },
+    {
+      "id": "strict-after8-14",
+      "time": 560.4,
+      "type": "end",
+      "label": "Final",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    },
+    {
+      "id": "strict-after8-15",
+      "time": 601.0,
+      "type": "hit",
+      "label": "Hit",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    },
+    {
+      "id": "strict-after8-17",
+      "time": 678.0,
+      "type": "serve",
+      "label": "Saque",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    },
+    {
+      "id": "strict-after8-16",
+      "time": 681.0,
+      "type": "hit",
+      "label": "Hit",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    },
+    {
+      "id": "strict-after8-18",
+      "time": 695.4,
+      "type": "end",
+      "label": "Final",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    },
+    {
+      "id": "strict-after8-20",
+      "time": 788.0,
+      "type": "serve",
+      "label": "Saque",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    },
+    {
+      "id": "strict-after8-19",
+      "time": 800.0,
+      "type": "hit",
+      "label": "Hit",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    },
+    {
+      "id": "strict-after8-21",
+      "time": 802.4,
+      "type": "end",
+      "label": "Final",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    },
+    {
+      "id": "strict-after8-23",
+      "time": 875.0,
+      "type": "serve",
+      "label": "Saque",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    },
+    {
+      "id": "strict-after8-22",
+      "time": 878.0,
+      "type": "hit",
+      "label": "Hit",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    },
+    {
+      "id": "strict-after8-24",
+      "time": 881.4,
+      "type": "end",
+      "label": "Final",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    },
+    {
+      "id": "strict-after8-25",
+      "time": 891.0,
+      "type": "hit",
+      "label": "Hit",
+      "suggested": true,
+      "source": "strict-candidate-after-8m"
+    }
+  ],
+  "scenes": [
+    {
+      "id": "human-scene-1",
+      "start": 156.352,
+      "end": 161.09,
+      "source": "human-confirmed-until-8m",
+      "tags": []
+    },
+    {
+      "id": "human-scene-2",
+      "start": 166.888,
+      "end": 180.833,
+      "source": "human-confirmed-until-8m",
+      "tags": []
+    },
+    {
+      "id": "human-scene-3",
+      "start": 190.697,
+      "end": 195.755,
+      "source": "human-confirmed-until-8m",
+      "tags": []
+    },
+    {
+      "id": "human-scene-4",
+      "start": 200.031,
+      "end": 204.436,
+      "source": "human-confirmed-until-8m",
+      "tags": []
+    },
+    {
+      "id": "human-scene-5",
+      "start": 258.0,
+      "end": 263.0,
+      "source": "human-confirmed-until-8m",
+      "tags": [
+        "hit"
+      ]
+    },
+    {
+      "id": "human-scene-6",
+      "start": 285.565,
+      "end": 328.516,
+      "source": "human-confirmed-until-8m",
+      "tags": [
+        "hit"
+      ]
+    },
+    {
+      "id": "human-scene-7",
+      "start": 345.452,
+      "end": 364.806,
+      "source": "human-confirmed-until-8m",
+      "tags": []
+    },
+    {
+      "id": "human-scene-8",
+      "start": 400.897,
+      "end": 414.823,
+      "source": "human-confirmed-until-8m",
+      "tags": []
+    },
+    {
+      "id": "human-scene-9",
+      "start": 429.41,
+      "end": 436.248,
+      "source": "human-confirmed-until-8m",
+      "tags": []
+    },
+    {
+      "id": "human-scene-10",
+      "start": 470.0,
+      "end": 476.0,
+      "source": "human-confirmed-until-8m",
+      "tags": [
+        "hit"
+      ]
+    },
+    {
+      "id": "strict-scene-after8-6",
+      "start": 550.0,
+      "end": 560.4,
+      "peak": 559.0,
+      "source": "local-motion-strong",
+      "suggested": true,
+      "tags": [
+        "candidate"
+      ]
+    },
+    {
+      "id": "strict-scene-after8-7",
+      "start": 597.0,
+      "end": 602.4,
+      "peak": 601.0,
+      "source": "local-motion",
+      "suggested": true,
+      "tags": [
+        "candidate"
+      ]
+    },
+    {
+      "id": "strict-scene-after8-8",
+      "start": 678.0,
+      "end": 695.4,
+      "peak": 681.0,
+      "source": "local-motion-strong",
+      "suggested": true,
+      "tags": [
+        "candidate"
+      ]
+    },
+    {
+      "id": "strict-scene-after8-9",
+      "start": 788.0,
+      "end": 802.4,
+      "peak": 800.0,
+      "source": "local-motion-strong",
+      "suggested": true,
+      "tags": [
+        "candidate"
+      ]
+    },
+    {
+      "id": "strict-scene-after8-10",
+      "start": 875.0,
+      "end": 881.4,
+      "peak": 878.0,
+      "source": "local-motion-strong",
+      "suggested": true,
+      "tags": [
+        "candidate"
+      ]
+    },
+    {
+      "id": "strict-scene-after8-11",
+      "start": 888.0,
+      "end": 893.4,
+      "peak": 891.0,
+      "source": "local-motion",
+      "suggested": true,
+      "tags": [
+        "candidate"
+      ]
+    }
+  ],
+  "highlights": []
+}
