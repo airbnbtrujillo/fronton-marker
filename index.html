@@ -66,7 +66,7 @@
     }
 
     .topbar {
-      display: grid;
+      display: none;
       grid-template-columns: minmax(0, 1fr) auto auto;
       gap: 8px;
       align-items: center;
@@ -498,9 +498,127 @@
     }
 
     @media (orientation: landscape) and (max-height: 540px) {
-      .workspace { grid-template-columns: minmax(0, 1fr) 300px; }
-      .viewer { height: calc(100dvh - 184px); min-height: 210px; }
-      .list { max-height: calc(100dvh - 220px); }
+      main {
+        height: 100dvh;
+        min-height: 0;
+        gap: 4px;
+        padding: max(4px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(4px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
+        grid-template-rows: minmax(0, 1fr) auto auto;
+        overflow: hidden;
+      }
+      .topbar { display: none; }
+      .workspace {
+        min-height: 0;
+        grid-template-columns: minmax(0, 1fr);
+      }
+      .left {
+        min-height: 0;
+        display: grid;
+        grid-template-rows: minmax(118px, 39dvh) 36px 18px 26px 24px minmax(76px, 1fr);
+        gap: 4px;
+      }
+      .viewer {
+        height: auto;
+        min-height: 0;
+      }
+      .pill {
+        padding: 3px 7px;
+        font-size: 11px;
+      }
+      .hud {
+        left: 6px;
+        right: 6px;
+        bottom: 6px;
+      }
+      .timeline {
+        height: 36px;
+        border-radius: 6px;
+      }
+      .mark {
+        top: 16px;
+        height: calc(var(--this-mark-size, var(--mark-size, 7px)) + 6px);
+      }
+      .mark.selected {
+        height: calc(var(--this-mark-size, var(--mark-size, 7px)) + 8px);
+      }
+      .timeline-tools {
+        gap: 6px;
+        font-size: 11px;
+      }
+      .controls,
+      .transport {
+        gap: 4px;
+      }
+      .controls button {
+        min-height: 26px;
+        padding: 0 4px;
+        font-size: 10px;
+        border-radius: 6px;
+      }
+      .transport button {
+        min-height: 24px;
+        padding: 0 3px;
+        font-size: 10px;
+        border-radius: 6px;
+      }
+      .marks-panel {
+        min-height: 0;
+      }
+      .marks-panel .panel-head {
+        padding: 4px 7px;
+      }
+      .marks-panel .panel-title {
+        font-size: 13px;
+      }
+      .marks-panel .panel-small {
+        display: none;
+      }
+      .marks-panel .list {
+        max-height: none;
+        height: 100%;
+      }
+      .mark-row {
+        grid-template-columns: 54px minmax(0, 1fr) 58px;
+        gap: 4px;
+        padding: 4px 6px;
+      }
+      .time {
+        font-size: 11px;
+      }
+      .time-cell .reset-btn {
+        min-height: 20px;
+        font-size: 9px;
+      }
+      .mark-adjust,
+      .type-tools {
+        gap: 3px;
+      }
+      .mark-adjust button,
+      .type-tools button {
+        min-height: 19px;
+        padding: 0 2px;
+        font-size: 9px;
+        border-radius: 5px;
+      }
+      .footer {
+        position: static;
+        left: auto;
+        right: auto;
+        bottom: auto;
+        gap: 5px;
+        padding: 0;
+        background: transparent;
+      }
+      .footer button {
+        min-height: 26px;
+        padding: 0 5px;
+        font-size: 10px;
+        border-radius: 6px;
+      }
+      .status {
+        min-height: 12px;
+        font-size: 10px;
+      }
     }
   </style>
 </head>
