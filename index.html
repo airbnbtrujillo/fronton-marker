@@ -229,7 +229,7 @@
     .controls {
       display: grid;
       grid-template-columns: repeat(5, minmax(0, 1fr));
-      gap: 8px;
+      gap: 6px;
     }
 
     .serve { background: var(--serve); color: #071018; }
@@ -247,12 +247,24 @@
     .transport {
       display: grid;
       grid-template-columns: repeat(7, minmax(0, 1fr));
-      gap: 8px;
+      gap: 6px;
     }
 
     .transport button, .controls button, .footer button {
       min-width: 0;
       white-space: nowrap;
+    }
+
+    .controls button {
+      min-height: 34px;
+      padding: 0 8px;
+      font-size: 13px;
+    }
+
+    .transport button {
+      min-height: 30px;
+      padding: 0 7px;
+      font-size: 13px;
     }
 
     .panel {
@@ -344,9 +356,9 @@
     }
 
     .type-tools button {
-      min-height: 26px;
-      padding: 0 5px;
-      font-size: 11px;
+      min-height: 22px;
+      padding: 0 4px;
+      font-size: 10px;
     }
 
     .mark-adjust {
@@ -357,9 +369,9 @@
     }
 
     .mark-adjust button {
-      min-height: 26px;
-      padding: 0 4px;
-      font-size: 11px;
+      min-height: 22px;
+      padding: 0 3px;
+      font-size: 10px;
     }
 
     .mark-adjust .now-btn { grid-column: span 2; }
@@ -420,7 +432,12 @@
       .timeline-tools { order: 2; }
       .controls {
         order: 3;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+      }
+      .controls button {
+        min-height: 30px;
+        padding: 0 4px;
+        font-size: 11px;
       }
       .side {
         order: 4;
@@ -441,7 +458,13 @@
       .side .list { max-height: 96px; }
       .transport {
         order: 5;
-        grid-template-columns: repeat(4, minmax(0, 1fr));
+        grid-template-columns: repeat(7, minmax(0, 1fr));
+        gap: 4px;
+      }
+      .transport button {
+        min-height: 28px;
+        padding: 0 3px;
+        font-size: 10px;
       }
       .marks-panel { order: 6; }
       .marks-panel .panel-head { padding: 8px 10px; }
@@ -452,8 +475,8 @@
       }
       .type-tools, .mark-adjust { gap: 4px; }
       .type-tools button, .mark-adjust button {
-        min-height: 24px;
-        font-size: 10px;
+        min-height: 20px;
+        font-size: 9px;
       }
       .mark-adjust {
         grid-template-columns: repeat(6, minmax(0, 1fr));
