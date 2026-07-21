@@ -168,10 +168,17 @@
 
     .timeline-tools {
       display: grid;
-      grid-template-columns: auto minmax(0, 1fr) auto;
+      grid-template-columns: auto auto minmax(0, 1fr) auto auto;
       gap: 8px;
       align-items: center;
       color: var(--muted);
+      font-size: 12px;
+    }
+
+    .timeline-tools button {
+      min-height: 28px;
+      padding: 0 8px;
+      border-radius: 7px;
       font-size: 12px;
     }
 
@@ -541,6 +548,13 @@
       .timeline-tools {
         grid-column: 1 / -1;
         grid-row: 3;
+        grid-template-columns: auto auto minmax(0, 1fr) auto auto;
+        gap: 5px;
+      }
+      .timeline-tools button {
+        min-height: 22px;
+        padding: 0 6px;
+        font-size: 10px;
       }
       .transport {
         grid-column: 1 / -1;
@@ -627,6 +641,11 @@
       .timeline-tools {
         gap: 6px;
         font-size: 11px;
+      }
+      .timeline-tools button {
+        min-height: 20px;
+        padding: 0 5px;
+        font-size: 10px;
       }
       .controls,
       .transport {
@@ -736,7 +755,9 @@
         </div>
         <div class="timeline-tools">
           <span>Todo</span>
+          <button id="prevMarkBtn" class="ghost" type="button">Ant</button>
           <input id="timelineZoom" type="range" min="1" max="8" step="1" value="1" aria-label="Zoom de linea de tiempo">
+          <button id="nextMarkBtn" class="ghost" type="button">Sig</button>
           <span id="timelineZoomLabel">x1</span>
         </div>
 
@@ -1121,6 +1142,30 @@
       return ordered.reduce((best, mark) => Math.abs(mark.time - time) < Math.abs(best.time - time) ? mark : best, ordered[0]);
     }
 
+    function jumpMark(direction) {
+      const ordered = sortedMarks();
+      if (!ordered.length) return;
+      const useful = ordered.filter(mark => mark.type !== 'trash');
+      const pool = useful.length ? useful : ordered;
+      const selectedIndex = selectedMarkId ? pool.findIndex(mark => mark.id === selectedMarkId) : -1;
+      let nextIndex = -1;
+      if (selectedIndex >= 0) {
+        nextIndex = (selectedIndex + direction + pool.length) % pool.length;
+      } else if (direction > 0) {
+        nextIndex = pool.findIndex(mark => mark.time > (video.currentTime || 0) + 0.05);
+        if (nextIndex < 0) nextIndex = 0;
+      } else {
+        for (let index = pool.length - 1; index >= 0; index -= 1) {
+          if (pool[index].time < (video.currentTime || 0) - 0.05) {
+            nextIndex = index;
+            break;
+          }
+        }
+        if (nextIndex < 0) nextIndex = pool.length - 1;
+      }
+      selectMark(pool[nextIndex].id, true);
+    }
+
     function selectMark(id, shouldSeek = false) {
       selectedMarkId = id;
       const mark = marks.find(item => item.id === id);
@@ -1311,6 +1356,8 @@
       timelineZoomLabel.textContent = `x${timelineZoom.value}`;
       renderTimeline();
     });
+    $('prevMarkBtn').addEventListener('click', () => jumpMark(-1));
+    $('nextMarkBtn').addEventListener('click', () => jumpMark(1));
     $('loadBtn').addEventListener('click', () => setVideo(videoUrl.value));
     videoUrl.addEventListener('keydown', event => { if (event.key === 'Enter') setVideo(videoUrl.value); });
     $('fileBtn').addEventListener('click', () => $('fileInput').click());
