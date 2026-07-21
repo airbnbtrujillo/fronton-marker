@@ -85,7 +85,7 @@
 
     .workspace {
       display: grid;
-      grid-template-columns: minmax(0, 1fr) minmax(270px, 330px);
+      grid-template-columns: minmax(0, 1fr);
       gap: 10px;
       min-height: 0;
     }
@@ -95,6 +95,10 @@
       display: grid;
       gap: 10px;
       align-content: start;
+    }
+
+    .side {
+      display: none;
     }
 
     .viewer {
@@ -162,6 +166,20 @@
       touch-action: none;
     }
 
+    .timeline-tools {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr) auto;
+      gap: 8px;
+      align-items: center;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .timeline-tools input[type="range"] {
+      width: 100%;
+      accent-color: var(--accent);
+    }
+
     .progress {
       position: absolute;
       inset: 0 auto 0 0;
@@ -191,13 +209,21 @@
 
     .mark {
       position: absolute;
-      top: 22px;
-      bottom: 7px;
-      width: 12px;
-      margin-left: -6px;
-      border: 2px solid rgba(255,255,255,.78);
+      top: 25px;
+      width: var(--this-mark-size, var(--mark-size, 7px));
+      height: calc(var(--this-mark-size, var(--mark-size, 7px)) + 8px);
+      margin-left: calc(var(--this-mark-size, var(--mark-size, 7px)) / -2);
+      border: 1px solid rgba(255,255,255,.72);
       border-radius: 999px;
-      box-shadow: 0 0 0 2px rgba(0,0,0,.35);
+      box-shadow: 0 0 0 1px rgba(0,0,0,.35);
+    }
+
+    .mark.selected {
+      width: calc(var(--this-mark-size, var(--mark-size, 7px)) + 4px);
+      height: calc(var(--this-mark-size, var(--mark-size, 7px)) + 10px);
+      margin-left: calc((var(--this-mark-size, var(--mark-size, 7px)) + 4px) / -2);
+      border-color: #fff;
+      box-shadow: 0 0 0 2px rgba(57,217,138,.55), 0 0 12px rgba(57,217,138,.8);
     }
 
     .controls {
@@ -265,15 +291,30 @@
     .row {
       display: grid;
       grid-template-columns: 76px minmax(0, 1fr) auto;
-      gap: 8px;
+      gap: 6px;
       align-items: center;
-      padding: 9px 10px;
+      padding: 7px 8px;
       border-bottom: 1px solid rgba(255,255,255,.07);
     }
 
     .row:last-child { border-bottom: 0; }
     .row.active { background: rgba(57,217,138,.10); }
+    .mark-row.selected { background: rgba(57,217,138,.16); }
+    .mark-row {
+      grid-template-columns: 76px minmax(0, 1fr) 78px;
+      align-items: start;
+    }
     .time { color: var(--muted); font-variant-numeric: tabular-nums; }
+    .time-cell {
+      display: grid;
+      gap: 4px;
+      align-content: start;
+    }
+    .time-cell .reset-btn {
+      min-height: 24px;
+      padding: 0 5px;
+      font-size: 10px;
+    }
     .tag { font-weight: 750; overflow: hidden; text-overflow: ellipsis; }
     .serve-text { color: var(--serve); }
     .end-text { color: var(--end); }
@@ -283,9 +324,51 @@
 
     .footer {
       display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 8px;
     }
+
+    .status {
+      min-height: 18px;
+      color: var(--muted);
+      font-size: 12px;
+      text-align: center;
+    }
+
+    .type-tools {
+      grid-column: 2 / -1;
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 4px;
+      margin-top: -2px;
+    }
+
+    .type-tools button {
+      min-height: 26px;
+      padding: 0 5px;
+      font-size: 11px;
+    }
+
+    .mark-adjust {
+      grid-column: 2 / -1;
+      display: grid;
+      grid-template-columns: repeat(8, minmax(0, 1fr));
+      gap: 4px;
+    }
+
+    .mark-adjust button {
+      min-height: 26px;
+      padding: 0 4px;
+      font-size: 11px;
+    }
+
+    .mark-adjust .now-btn { grid-column: span 2; }
+
+    .type-tools .serve { background: var(--serve); color: #071018; }
+    .type-tools .hit { background: var(--hit); color: #061014; }
+    .type-tools .end { background: var(--end); color: #171107; }
+    .type-tools .trash { background: var(--trash); color: var(--text); }
+    .type-tools .paddle { background: var(--paddle); color: var(--text); }
 
     .drawer {
       position: fixed;
@@ -315,14 +398,80 @@
     }
 
     @media (max-width: 820px) {
-      main { padding-left: 8px; padding-right: 8px; }
+      main {
+        gap: 8px;
+        padding-left: 8px;
+        padding-right: 8px;
+        padding-bottom: calc(112px + env(safe-area-inset-bottom));
+      }
       .topbar { grid-template-columns: 1fr auto; }
       #openDriveBtn { display: none; }
-      .workspace { grid-template-columns: 1fr; }
-      .viewer { height: 42dvh; min-height: 220px; }
-      .controls { grid-template-columns: repeat(3, minmax(0, 1fr)); }
-      .transport { grid-template-columns: repeat(4, minmax(0, 1fr)); }
-      .list { max-height: 26dvh; }
+      .workspace {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+      .left { display: contents; }
+      .viewer {
+        order: 1;
+        height: 36dvh;
+        min-height: 190px;
+      }
+      .timeline { order: 2; height: 46px; }
+      .timeline-tools { order: 2; }
+      .controls {
+        order: 3;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
+      .side {
+        order: 4;
+        z-index: 5;
+      }
+      .scenes-panel .panel-head { padding: 8px 10px; }
+      .scenes-panel .panel-title { font-size: 14px; }
+      .scene-actions {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        padding: 8px;
+        gap: 6px;
+      }
+      .scene-actions button {
+        min-height: 40px;
+        padding: 0 7px;
+        font-size: 13px;
+      }
+      .side .list { max-height: 96px; }
+      .transport {
+        order: 5;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+      }
+      .marks-panel { order: 6; }
+      .marks-panel .panel-head { padding: 8px 10px; }
+      .marks-panel .list { max-height: 408px; }
+      .mark-row {
+        grid-template-columns: 58px minmax(0, 1fr) 62px;
+        padding: 6px;
+      }
+      .type-tools, .mark-adjust { gap: 4px; }
+      .type-tools button, .mark-adjust button {
+        min-height: 24px;
+        font-size: 10px;
+      }
+      .mark-adjust {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+      }
+      .footer {
+        position: fixed;
+        left: 8px;
+        right: 8px;
+        bottom: env(safe-area-inset-bottom);
+        z-index: 6;
+        padding: 8px 0;
+        background: var(--bg);
+      }
+      .footer button {
+        min-height: 40px;
+        padding: 0 7px;
+        font-size: 13px;
+      }
     }
 
     @media (orientation: landscape) and (max-height: 540px) {
@@ -344,7 +493,7 @@
     <section class="workspace">
       <div class="left">
         <div class="viewer">
-          <video id="video" playsinline controls preload="metadata" crossorigin="anonymous"></video>
+          <video id="video" playsinline controls preload="metadata"></video>
           <div id="notice" class="notice">
             <div>
               <strong>El video aun no esta cargando.</strong>
@@ -360,6 +509,11 @@
         <div id="timeline" class="timeline" aria-label="Linea de tiempo">
           <div id="progress" class="progress"></div>
           <div id="playhead" class="playhead"></div>
+        </div>
+        <div class="timeline-tools">
+          <span>Todo</span>
+          <input id="timelineZoom" type="range" min="1" max="8" step="1" value="1" aria-label="Zoom de linea de tiempo">
+          <span id="timelineZoomLabel">x1</span>
         </div>
 
         <div class="controls">
@@ -380,7 +534,7 @@
           <button data-nudge="5" class="ghost">+5s</button>
         </div>
 
-        <div class="panel">
+        <div class="panel marks-panel">
           <div class="panel-head">
             <div>
               <div class="panel-title">Marcas</div>
@@ -392,7 +546,7 @@
       </div>
 
       <aside class="side">
-        <div class="panel">
+        <div class="panel scenes-panel">
           <div class="panel-head">
             <div>
               <div class="panel-title">Escenas</div>
@@ -412,9 +566,12 @@
 
     <div class="footer">
       <button id="undoBtn" class="ghost">Deshacer</button>
+      <button id="saveBtn" class="ghost">Guardar</button>
+      <button id="finalBtn" class="ghost">Final 1</button>
       <button id="jsonBtn" class="ghost">JSON</button>
       <button id="clearBtn" class="ghost">Limpiar</button>
     </div>
+    <div id="saveStatus" class="status"></div>
   </main>
 
   <div id="drawer" class="drawer">
@@ -428,6 +585,8 @@
     const video = $('video');
     const videoUrl = $('videoUrl');
     const timeline = $('timeline');
+    const timelineZoom = $('timelineZoom');
+    const timelineZoomLabel = $('timelineZoomLabel');
     const progress = $('progress');
     const playhead = $('playhead');
     const notice = $('notice');
@@ -440,9 +599,11 @@
     const jsonBox = $('jsonBox');
     const storeKey = 'fronton-marker-v2';
     const labels = { serve: 'Saque', hit: 'Hit', end: 'Final', trash: 'Basura', paddle: 'Paleta' };
+    const shortLabels = { serve: 'S', hit: 'H', end: 'F', trash: 'B', paddle: 'P' };
     let marks = [];
     let manualScenes = [];
     let selectedScene = -1;
+    let selectedMarkId = null;
     let lastDeleted = null;
 
     function driveToDirect(url) {
@@ -491,7 +652,9 @@
           marks = analysis.marks.map((mark, index) => ({
             id: mark.id || `remote-mark-${index + 1}`,
             type: mark.type,
-            time: Number(mark.time) || 0
+            time: Number(mark.time) || 0,
+            originalTime: Number(mark.time) || 0,
+            suggested: mark.suggested === true || String(mark.id || '').startsWith('cal-')
           }));
         }
         if (Array.isArray(analysis.scenes)) {
@@ -500,7 +663,8 @@
             source: scene.source || 'remote-analysis',
             start: Number(scene.start) || 0,
             end: Number(scene.end) || 0,
-            tags: Array.isArray(scene.tags) ? scene.tags : []
+            tags: Array.isArray(scene.tags) ? scene.tags : [],
+            suggested: scene.suggested === true || String(scene.source || '').startsWith('calibrated')
           }));
         }
         if (!videoUrl.value && analysis.video_source) {
@@ -535,7 +699,7 @@
     }
 
     function derivedScenes() {
-      const usable = sortedMarks().filter(mark => mark.type !== 'trash');
+      const usable = sortedMarks().filter(mark => mark.type !== 'trash' && !mark.suggested);
       const scenes = [];
       for (const serve of usable.filter(mark => mark.type === 'serve')) {
         const end = usable.find(mark => mark.type === 'end' && mark.time > serve.time);
@@ -551,7 +715,30 @@
           tags
         });
       }
-      return scenes.concat(manualScenes).sort((a, b) => a.start - b.start);
+      const confirmedManual = manualScenes.filter(scene => !scene.suggested && !String(scene.source || '').startsWith('calibrated'));
+      return scenes.concat(confirmedManual).sort((a, b) => a.start - b.start);
+    }
+
+    function derivedHighlights() {
+      const scenes = derivedScenes();
+      const paddles = sortedMarks('paddle');
+      const highlights = [];
+      let last = -Infinity;
+      for (const paddle of paddles) {
+        if (paddle.time - last < 2.5) continue;
+        last = paddle.time;
+        const scene = scenes
+          .filter(item => item.start <= paddle.time && item.end >= paddle.time)
+          .sort((a, b) => (b.end - b.start) - (a.end - a.start))[0];
+        if (!scene) continue;
+        highlights.push({
+          start: Number(scene.start.toFixed(3)),
+          end: Number(scene.end.toFixed(3)),
+          paddle_time: Number(paddle.time.toFixed(3)),
+          source: 'paddle-confirmed'
+        });
+      }
+      return highlights;
     }
 
     function currentPayload() {
@@ -570,7 +757,8 @@
           end: Number(scene.end.toFixed(3)),
           source: scene.source,
           tags: scene.tags || []
-        }))
+        })),
+        highlights: derivedHighlights()
       };
     }
 
@@ -580,7 +768,7 @@
       if (hit >= 0) {
         lastDeleted = { kind: 'mark', item: marks.splice(hit, 1)[0] };
       } else {
-        marks.push({ id: crypto.randomUUID(), type, time });
+      marks.push({ id: crypto.randomUUID(), type, time, originalTime: time });
       }
       saveState();
       render();
@@ -592,6 +780,72 @@
         lastDeleted = { kind: 'mark', item: marks.splice(index, 1)[0] };
         saveState();
         render();
+      }
+    }
+
+    function changeMarkType(id, type) {
+      const mark = marks.find(item => item.id === id);
+      if (!mark) return;
+      mark.type = type;
+      saveState();
+      render();
+    }
+
+    function adjustMarkTime(id, delta) {
+      const mark = marks.find(item => item.id === id);
+      if (!mark) return;
+      const duration = Number.isFinite(video.duration) ? video.duration : Infinity;
+      mark.time = Math.max(0, Math.min(duration, mark.time + delta));
+      seek(mark.time);
+      saveState();
+      render();
+    }
+
+    function setMarkToNow(id) {
+      const mark = marks.find(item => item.id === id);
+      if (!mark) return;
+      const duration = Number.isFinite(video.duration) ? video.duration : Infinity;
+      mark.time = Math.max(0, Math.min(duration, video.currentTime || 0));
+      seek(mark.time);
+      saveState();
+      render();
+    }
+
+    function resetMarkTime(id) {
+      const mark = marks.find(item => item.id === id);
+      if (!mark || !Number.isFinite(mark.originalTime)) return;
+      mark.time = mark.originalTime;
+      seek(mark.time);
+      saveState();
+      render();
+    }
+
+    async function submitPayload(final = false) {
+      if (final && localStorage.getItem('fronton-final-pin-ok') !== '1') {
+        const pin = prompt('Clave final');
+        if (pin !== '1') {
+          $('saveStatus').textContent = 'Final no enviado: clave incorrecta.';
+          return;
+        }
+        localStorage.setItem('fronton-final-pin-ok', '1');
+      }
+
+      const payload = currentPayload();
+      $('saveStatus').textContent = final ? 'Enviando final...' : 'Guardando...';
+      try {
+        const response = await fetch('/submit', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ final, payload })
+        });
+        const result = await response.json();
+        if (!response.ok || !result.ok) throw new Error(result.error || `HTTP ${response.status}`);
+        $('saveStatus').textContent = final
+          ? `Final guardado: ${result.file}`
+          : `Guardado: ${result.file}`;
+      } catch (error) {
+        $('saveStatus').textContent = 'No se pudo guardar. Usa JSON como respaldo.';
+        console.error(error);
       }
     }
 
@@ -622,6 +876,38 @@
       video.currentTime = Math.max(0, Math.min(video.duration || time, time));
     }
 
+    function timelineWindow() {
+      const duration = Number.isFinite(video.duration) ? video.duration : 0;
+      const zoom = Number(timelineZoom.value || 1);
+      if (!duration || zoom <= 1) return { start: 0, end: duration, zoom };
+      const span = duration / zoom;
+      const center = Math.max(span / 2, Math.min(duration - span / 2, video.currentTime || 0));
+      return { start: center - span / 2, end: center + span / 2, zoom };
+    }
+
+    function timeToPercent(time) {
+      const view = timelineWindow();
+      if (!view.end || view.end <= view.start) return 0;
+      return ((time - view.start) / (view.end - view.start)) * 100;
+    }
+
+    function nearestMark(time) {
+      const ordered = sortedMarks();
+      if (!ordered.length) return null;
+      return ordered.reduce((best, mark) => Math.abs(mark.time - time) < Math.abs(best.time - time) ? mark : best, ordered[0]);
+    }
+
+    function selectMark(id, shouldSeek = false) {
+      selectedMarkId = id;
+      const mark = marks.find(item => item.id === id);
+      if (mark && shouldSeek) seek(mark.time);
+      render();
+      requestAnimationFrame(() => {
+        const row = marksList.querySelector(`[data-mark-row="${id}"]`);
+        if (row) marksList.scrollTop = Math.max(0, row.offsetTop - marksList.offsetTop);
+      });
+    }
+
     function gotoScene(index) {
       const scenes = derivedScenes();
       if (!scenes.length) return;
@@ -647,34 +933,46 @@
     function seekRatio(clientX) {
       const rect = timeline.getBoundingClientRect();
       const ratio = Math.min(1, Math.max(0, (clientX - rect.left) / rect.width));
-      if (Number.isFinite(video.duration)) seek(ratio * video.duration);
+      const view = timelineWindow();
+      if (Number.isFinite(video.duration)) {
+        const time = view.start + ratio * (view.end - view.start);
+        seek(time);
+        const mark = nearestMark(time);
+        if (mark) selectMark(mark.id, false);
+      }
     }
 
     function renderTimeline() {
       timeline.querySelectorAll('.mark,.scene-band').forEach(node => node.remove());
       if (!Number.isFinite(video.duration) || video.duration <= 0) return;
-      for (const scene of derivedScenes()) {
-        const band = document.createElement('button');
-        band.className = 'scene-band';
-        band.style.left = `${(scene.start / video.duration) * 100}%`;
-        band.style.width = `${Math.max(1, ((scene.end - scene.start) / video.duration) * 100)}%`;
-        band.title = `Escena ${fmt(scene.start)} - ${fmt(scene.end)}`;
-        band.addEventListener('click', event => {
-          event.stopPropagation();
-          selectedScene = derivedScenes().findIndex(item => item.id === scene.id);
-          seek(scene.start);
-          render();
-        });
-        timeline.appendChild(band);
-      }
-      for (const mark of marks) {
+      const zoom = Number(timelineZoom.value || 1);
+      const baseMarkSize = Math.min(7.5, 1.6 + zoom * 0.55);
+      timeline.style.setProperty('--mark-size', `${baseMarkSize}px`);
+      const visibleMarks = marks
+        .map(mark => ({ mark, left: timeToPercent(mark.time) }))
+        .filter(item => item.left >= -2 && item.left <= 102)
+        .sort((a, b) => a.left - b.left);
+      const timelineWidth = Math.max(1, timeline.clientWidth || 1);
+      for (let index = 0; index < visibleMarks.length; index += 1) {
+        const { mark, left } = visibleMarks[index];
+        const previousGap = index > 0 ? left - visibleMarks[index - 1].left : Infinity;
+        const nextGap = index < visibleMarks.length - 1 ? visibleMarks[index + 1].left - left : Infinity;
+        const tightestGap = Math.min(previousGap, nextGap);
+        const pixelGap = (tightestGap / 100) * timelineWidth;
+        let markSize = baseMarkSize;
+        if (pixelGap < 8) markSize = Math.max(1.4, baseMarkSize * 0.28);
+        else if (pixelGap < 14) markSize = Math.max(1.8, baseMarkSize * 0.4);
+        else if (pixelGap < 22) markSize = Math.max(2.2, baseMarkSize * 0.58);
+        else if (pixelGap < 34) markSize = Math.max(2.8, baseMarkSize * 0.76);
         const node = document.createElement('button');
-        node.className = `mark ${mark.type}`;
-        node.style.left = `${(mark.time / video.duration) * 100}%`;
+        node.className = `mark ${mark.type}${mark.id === selectedMarkId ? ' selected' : ''}`;
+        if (mark.suggested) node.style.opacity = '0.42';
+        node.style.left = `${left}%`;
+        node.style.setProperty('--this-mark-size', `${markSize}px`);
         node.title = `${labels[mark.type]} ${fmt(mark.time)}`;
         node.addEventListener('click', event => {
           event.stopPropagation();
-          seek(mark.time);
+          selectMark(mark.id, true);
         });
         node.addEventListener('dblclick', event => {
           event.stopPropagation();
@@ -685,21 +983,43 @@
     }
 
     function renderMarks() {
-      const rows = sortedMarks().map(mark => `
-        <div class="row">
-          <div class="time">${fmt(mark.time)}</div>
-          <button class="ghost tag ${mark.type}-text" data-seek="${mark.time}">${labels[mark.type]}</button>
+      const orderedMarks = sortedMarks();
+      const rows = orderedMarks.map(mark => `
+        <div class="row mark-row${mark.id === selectedMarkId ? ' selected' : ''}" data-mark-row="${mark.id}">
+          <div class="time-cell">
+            <div class="time">${fmt(mark.time)}</div>
+            <button class="ghost reset-btn" data-reset-mark="${mark.id}">Reset</button>
+          </div>
+          <button class="ghost tag ${mark.type}-text" data-seek="${mark.time}" data-select-mark="${mark.id}">${labels[mark.type]}</button>
           <button class="ghost" data-delete-mark="${mark.id}">Borrar</button>
+          <div class="mark-adjust">
+            <button class="ghost" data-adjust-mark="${mark.id}" data-adjust="-5">-5</button>
+            <button class="ghost" data-adjust-mark="${mark.id}" data-adjust="-1">-1</button>
+            <button class="ghost" data-adjust-mark="${mark.id}" data-adjust="-0.5">-.5</button>
+            <button class="ghost" data-adjust-mark="${mark.id}" data-adjust="0.5">+.5</button>
+            <button class="ghost" data-adjust-mark="${mark.id}" data-adjust="1">+1</button>
+            <button class="ghost" data-adjust-mark="${mark.id}" data-adjust="5">+5</button>
+            <button class="ghost now-btn" data-now-mark="${mark.id}">Ahora</button>
+          </div>
+          <div class="type-tools">
+            ${Object.keys(labels).map(type => `<button class="${type}" data-change-mark="${mark.id}" data-change-type="${type}">${shortLabels[type]}</button>`).join('')}
+          </div>
         </div>
       `).join('');
       marksList.innerHTML = rows || '<div class="row"><div class="time">--</div><div class="tag">Sin marcas todavia</div><span></span></div>';
-      marksList.querySelectorAll('[data-seek]').forEach(button => button.addEventListener('click', () => seek(Number(button.dataset.seek))));
+      marksList.querySelectorAll('[data-seek]').forEach(button => button.addEventListener('click', () => selectMark(button.dataset.selectMark, true)));
       marksList.querySelectorAll('[data-delete-mark]').forEach(button => button.addEventListener('click', () => deleteMark(button.dataset.deleteMark)));
+      marksList.querySelectorAll('[data-change-mark]').forEach(button => button.addEventListener('click', () => changeMarkType(button.dataset.changeMark, button.dataset.changeType)));
+      marksList.querySelectorAll('[data-adjust-mark]').forEach(button => button.addEventListener('click', () => adjustMarkTime(button.dataset.adjustMark, Number(button.dataset.adjust))));
+      marksList.querySelectorAll('[data-now-mark]').forEach(button => button.addEventListener('click', () => setMarkToNow(button.dataset.nowMark)));
+      marksList.querySelectorAll('[data-reset-mark]').forEach(button => button.addEventListener('click', () => resetMarkTime(button.dataset.resetMark)));
     }
 
     function renderScenes() {
       const scenes = derivedScenes();
-      sceneHint.textContent = scenes.length ? `${scenes.length} escena${scenes.length === 1 ? '' : 's'} lista${scenes.length === 1 ? '' : 's'}` : 'Saque -> Final crea una escena.';
+      sceneHint.textContent = scenes.length
+        ? `Escena ${selectedScene >= 0 ? selectedScene + 1 : '-'} de ${scenes.length}`
+        : 'Saque -> Final crea una escena.';
       sceneList.innerHTML = scenes.map((scene, index) => {
         const tags = (scene.tags && scene.tags.length) ? ` · ${scene.tags.join(', ')}` : '';
         const active = index === selectedScene ? ' active' : '';
@@ -714,6 +1034,10 @@
       }).join('') || '<div class="row"><div class="time">--</div><div class="tag">Marca Saque y Final</div><span></span></div>';
       sceneList.querySelectorAll('[data-scene]').forEach(button => button.addEventListener('click', () => gotoScene(Number(button.dataset.scene))));
       sceneList.querySelectorAll('[data-delete-scene]').forEach(button => button.addEventListener('click', () => deleteScene(button.dataset.deleteScene)));
+      const activeRow = sceneList.querySelector('.row.active');
+      if (activeRow) {
+        sceneList.scrollTop = Math.max(0, activeRow.offsetTop - sceneList.offsetTop - (sceneList.clientHeight - activeRow.clientHeight) / 2);
+      }
       $('prevScene').disabled = scenes.length === 0;
       $('nextScene').disabled = scenes.length === 0;
       $('playScene').disabled = selectedScene < 0 || !scenes[selectedScene];
@@ -729,14 +1053,28 @@
     function updateClock() {
       const duration = Number.isFinite(video.duration) ? video.duration : 0;
       const ratio = duration > 0 ? video.currentTime / duration : 0;
-      progress.style.width = `${ratio * 100}%`;
-      playhead.style.left = `${ratio * 100}%`;
+      const zoomRatio = timeToPercent(video.currentTime);
+      progress.style.width = timelineWindow().zoom <= 1 ? `${ratio * 100}%` : '0%';
+      playhead.style.left = `${Math.max(0, Math.min(100, zoomRatio))}%`;
       clock.textContent = `${fmt(video.currentTime)} / ${fmt(duration)}`;
+      if (timelineWindow().zoom > 1 && !dragging) renderTimeline();
       requestAnimationFrame(updateClock);
     }
 
     document.querySelectorAll('[data-type]').forEach(button => button.addEventListener('click', () => addOrToggle(button.dataset.type)));
     document.querySelectorAll('[data-nudge]').forEach(button => button.addEventListener('click', () => seek((video.currentTime || 0) + Number(button.dataset.nudge))));
+    document.addEventListener('keydown', event => {
+      if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName)) return;
+      if (!['ArrowLeft', 'ArrowRight'].includes(event.key)) return;
+      event.preventDefault();
+      const amount = event.shiftKey ? 5 : (event.altKey ? 0.2 : 1);
+      seek((video.currentTime || 0) + (event.key === 'ArrowRight' ? amount : -amount));
+      renderTimeline();
+    });
+    timelineZoom.addEventListener('input', () => {
+      timelineZoomLabel.textContent = `x${timelineZoom.value}`;
+      renderTimeline();
+    });
     $('loadBtn').addEventListener('click', () => setVideo(videoUrl.value));
     videoUrl.addEventListener('keydown', event => { if (event.key === 'Enter') setVideo(videoUrl.value); });
     $('fileBtn').addEventListener('click', () => $('fileInput').click());
@@ -769,6 +1107,8 @@
       saveState();
       render();
     });
+    $('saveBtn').addEventListener('click', () => submitPayload(false));
+    $('finalBtn').addEventListener('click', () => submitPayload(true));
     $('jsonBtn').addEventListener('click', () => {
       jsonBox.value = JSON.stringify(currentPayload(), null, 2);
       drawer.classList.add('open');
