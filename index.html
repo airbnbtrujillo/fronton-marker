@@ -614,7 +614,7 @@
         min-height: 0;
         display: grid;
         grid-template-columns: minmax(0, 1fr) 66px;
-        grid-template-rows: clamp(58px, 17dvh, 80px) 40px 24px 20px minmax(112px, 1fr);
+        grid-template-rows: clamp(112px, 34dvh, 150px) 40px 24px 20px minmax(78px, 1fr);
         gap: 4px;
       }
       .viewer {
@@ -622,6 +622,10 @@
         grid-row: 1;
         height: auto;
         min-height: 0;
+      }
+      .viewer video {
+        object-fit: contain;
+        transform: none;
       }
       .controls {
         grid-column: 2;
@@ -690,7 +694,7 @@
         min-height: 0;
       }
       .marks-panel .panel-head {
-        padding: 4px 7px;
+        display: none;
       }
       .marks-panel .panel-title {
         font-size: 13px;
@@ -700,20 +704,20 @@
       }
       .marks-panel .list {
         max-height: none;
-        height: calc(100% - 27px);
-        max-height: calc(100% - 27px);
+        height: 100%;
+        max-height: 100%;
         min-height: 0;
       }
       .mark-row {
-        grid-template-columns: 54px minmax(0, 1fr) 58px;
+        grid-template-columns: 50px minmax(0, 1fr) 54px;
         gap: 3px;
-        padding: 3px 5px;
+        padding: 2px 5px;
       }
       .time {
         font-size: 10px;
       }
       .time-cell .reset-btn {
-        min-height: 17px;
+        min-height: 15px;
         font-size: 9px;
       }
       .mark-adjust,
@@ -722,9 +726,9 @@
       }
       .mark-adjust button,
       .type-tools button {
-        min-height: 16px;
+        min-height: 14px;
         padding: 0 2px;
-        font-size: 9px;
+        font-size: 8px;
         border-radius: 5px;
       }
       .mark-adjust {
@@ -734,8 +738,13 @@
         grid-column: span 1;
       }
       .tag {
-        min-height: 24px;
-        font-size: 12px;
+        min-height: 20px;
+        font-size: 11px;
+      }
+      .mark-row > .ghost[data-delete-mark] {
+        min-height: 42px;
+        padding: 0 4px;
+        font-size: 11px;
       }
       .footer {
         position: static;
