@@ -1286,6 +1286,9 @@
         node.style.left = `${left}%`;
         node.style.setProperty('--this-mark-size', `${markSize}px`);
         node.title = `${labels[mark.type]} ${fmt(mark.time)}`;
+        node.addEventListener('pointerdown', event => {
+          event.stopPropagation();
+        });
         node.addEventListener('click', event => {
           event.stopPropagation();
           selectMark(mark.id, true);
