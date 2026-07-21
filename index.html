@@ -611,12 +611,30 @@
       .left {
         min-height: 0;
         display: grid;
-        grid-template-rows: minmax(118px, 39dvh) 36px 18px 26px 24px minmax(76px, 1fr);
+        grid-template-columns: minmax(0, 1fr) 66px;
+        grid-template-rows: minmax(98px, 32dvh) 42px 26px 24px minmax(78px, 1fr);
         gap: 4px;
       }
       .viewer {
+        grid-column: 1;
+        grid-row: 1;
         height: auto;
         min-height: 0;
+      }
+      .controls {
+        grid-column: 2;
+        grid-row: 1;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3px;
+        min-height: 0;
+      }
+      .controls button {
+        min-height: 0;
+        height: 100%;
+        padding: 0 2px;
+        font-size: 9px;
+        border-radius: 5px;
       }
       .pill {
         padding: 3px 7px;
@@ -628,6 +646,8 @@
         bottom: 6px;
       }
       .timeline {
+        grid-column: 1 / -1;
+        grid-row: 2;
         height: 36px;
         border-radius: 6px;
       }
@@ -639,23 +659,22 @@
         height: calc(var(--this-mark-size, var(--mark-size, 7px)) + 8px);
       }
       .timeline-tools {
-        gap: 6px;
+        grid-column: 1 / -1;
+        grid-row: 3;
+        grid-template-columns: 28px 44px minmax(0, 1fr) 44px 24px;
+        gap: 4px;
         font-size: 11px;
       }
       .timeline-tools button {
-        min-height: 20px;
-        padding: 0 5px;
-        font-size: 10px;
-      }
-      .controls,
-      .transport {
-        gap: 4px;
-      }
-      .controls button {
-        min-height: 26px;
+        min-height: 24px;
         padding: 0 4px;
         font-size: 10px;
         border-radius: 6px;
+      }
+      .transport {
+        grid-column: 1 / -1;
+        grid-row: 4;
+        gap: 4px;
       }
       .transport button {
         min-height: 24px;
@@ -664,6 +683,8 @@
         border-radius: 6px;
       }
       .marks-panel {
+        grid-column: 1 / -1;
+        grid-row: 5;
         min-height: 0;
       }
       .marks-panel .panel-head {
