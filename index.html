@@ -602,11 +602,14 @@
         min-height: 0;
         gap: 4px;
         padding: max(4px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(4px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left));
-        grid-template-rows: minmax(0, 1fr) auto auto;
+        grid-template-columns: minmax(0, 1fr) 70px;
+        grid-template-rows: minmax(0, 1fr) 12px;
         overflow: hidden;
       }
       .topbar { display: none; }
       .workspace {
+        grid-column: 1;
+        grid-row: 1;
         min-height: 0;
         grid-template-columns: minmax(0, 1fr);
       }
@@ -747,21 +750,26 @@
         font-size: 11px;
       }
       .footer {
+        grid-column: 2;
+        grid-row: 1;
         position: static;
-        left: auto;
-        right: auto;
-        bottom: auto;
         gap: 5px;
         padding: 0;
         background: transparent;
+        grid-template-columns: 1fr;
+        align-content: start;
       }
       .footer button {
-        min-height: 26px;
-        padding: 0 5px;
-        font-size: 10px;
+        min-height: 34px;
+        padding: 0 4px;
+        font-size: 9px;
         border-radius: 6px;
+        white-space: normal;
+        line-height: 1.05;
       }
       .status {
+        grid-column: 1 / -1;
+        grid-row: 2;
         min-height: 12px;
         font-size: 10px;
       }
@@ -1217,7 +1225,10 @@
       render();
       requestAnimationFrame(() => {
         const row = marksList.querySelector(`[data-mark-row="${id}"]`);
-        if (row) marksList.scrollTop = Math.max(0, row.offsetTop - marksList.offsetTop);
+        const first = marksList.querySelector('[data-mark-row]');
+        if (row && first) {
+          marksList.scrollTop = Math.max(0, row.offsetTop - first.offsetTop);
+        }
       });
     }
 
@@ -1298,6 +1309,12 @@
         node.addEventListener('pointerdown', event => {
           event.stopPropagation();
         });
+        node.addEventListener('pointerup', event => {
+          event.stopPropagation();
+        });
+        node.addEventListener('touchstart', event => {
+          event.stopPropagation();
+        }, { passive: true });
         node.addEventListener('click', event => {
           event.stopPropagation();
           selectMark(mark.id, true);
