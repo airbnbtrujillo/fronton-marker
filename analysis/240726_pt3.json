@@ -1,0 +1,5313 @@
+{
+  "created_at": "2026-08-05T15:27:19",
+  "video": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\work\\fronton-session-host\\videos\\240726_pt3-proxy.mp4",
+  "video_source": "240726_pt3-proxy.mp4",
+  "metadata": {
+    "duration": 440.148042,
+    "size": 5481737,
+    "width": 640,
+    "height": 360,
+    "fps": "24000/1001"
+  },
+  "guidance": {
+    "version": 3,
+    "updated_at": "2026-08-05",
+    "trusted_examples": {
+      "old_human_serves": 89,
+      "youtube_valid_until_8m_serves": 11,
+      "youtube_trusted_full_serves": 23,
+      "total_trusted_serves": 132,
+      "trusted_ends": 117,
+      "trusted_hits": 35,
+      "trusted_paddle_signals": 13,
+      "trusted_trash": 12,
+      "trusted_not_serve_negatives": 10,
+      "training_conflicts_excluded": 3,
+      "renato_rolo_renato_mauricio_serves": 20
+    },
+    "exclude_from_training": [
+      {
+        "file": "youtube_1oNOWqOeE64-human-final.json",
+        "reason": "Superseded by youtube_1oNOWqOeE64-human-final-trusted.json after the corrected final pass.",
+        "valid_until_seconds": 480
+      }
+    ],
+    "use_for_training": [
+      "180726_pt1-human-final.json",
+      "180726_pt2-human-final.json",
+      "180726_pt3-human-final.json",
+      "180726_pt4-human-final.json",
+      "180726_pt5-human-final.json",
+      "180726_pt6-human-final.json",
+      "GX013976-human-corrected.json",
+      "youtube_1oNOWqOeE64-human-final-trusted.json",
+      "Renato_Rolo_Renato_Mauricio-human-converted.json"
+    ],
+    "better_detection_playbook": {
+      "serve": [
+        "Treat serve as a transition, not a single visual pose.",
+        "Best serve evidence is: players reset/aligned, most bodies relatively still, server starts motion, receiver/reacting player starts moving immediately after.",
+        "A person standing with a paddle is not enough; require reset-to-rally context.",
+        "If the camera is blocked at the exact contact, infer only from surrounding reset and immediate rally, otherwise omit.",
+        "Audio can support a candidate when a paddle/ball hit appears near the reset-to-rally transition, but audio alone must not create a serve."
+      ],
+      "end": [
+        "Final is often easier than serve: players stop chasing, posture relaxes, they walk back or align again.",
+        "Paddle collision/acknowledgement means point ended.",
+        "If the rally continues after a candidate final, reject the final."
+      ],
+      "paddle_highlight": [
+        "Raised paddle/highlight requires a deliberate signal held around 2 seconds.",
+        "A player or body blocking the camera is not a highlight.",
+        "Normal horizontal paddle during play is not enough unless held deliberately as a signal."
+      ],
+      "camera_framing": [
+        "Higher camera angle can reduce blocks, but must not lose seated people or the court context.",
+        "The model should tolerate occasional blocks by using before/after context."
+      ],
+      "negative_examples": [
+        "Use negatives explicitly: otra_cosa without Fin de punto usually means not a serve, even if motion/stance looked tempting.",
+        "Do not train contradictory entries where decision says saque but note says Fin de punto; keep them for human review only.",
+        "Basura means ignore for serve/end training unless a separate final note is later confirmed."
+      ]
+    },
+    "strict_rules": [
+      "Do not label a serve from motion alone.",
+      "A serve candidate requires a reset posture: players relatively still, server separated enough to initiate, then the rally starts immediately after.",
+      "Do not mark the same rally with multiple serve starts unless the previous point has a confirmed end.",
+      "Do not label a final from motion alone.",
+      "A final candidate requires the rally to visibly stop: players stop chasing/running, paddle collision/acknowledgement, ball dead, or clear reset before the next serve.",
+      "A hit is not a point boundary; it is only an internal action marker.",
+      "Local-motion scenes are hints only. They must not become final serve/end pairs unless supported by a serve-to-end pattern.",
+      "If uncertain, omit the mark instead of inventing it. It is faster for the human to add a missing mark than delete many false marks.",
+      "Paddle highlight is valid only when the paddle is deliberately held/signaled for about 2 seconds, not when normal play or body obstruction hides the camera.",
+      "Any annotation after 08:00 in youtube_1oNOWqOeE64-human-final.json must be ignored."
+    ],
+    "youtube_1oNOWqOeE64_valid_corrections_until_8m": [
+      {
+        "time": 147.747,
+        "type": "end"
+      },
+      {
+        "time": 156.352,
+        "type": "serve"
+      },
+      {
+        "time": 161.09,
+        "type": "end"
+      },
+      {
+        "time": 166.888,
+        "type": "serve"
+      },
+      {
+        "time": 180.833,
+        "type": "end"
+      },
+      {
+        "time": 190.697,
+        "type": "serve"
+      },
+      {
+        "time": 195.755,
+        "type": "end"
+      },
+      {
+        "time": 200.031,
+        "type": "serve"
+      },
+      {
+        "time": 204.436,
+        "type": "end"
+      },
+      {
+        "time": 258.0,
+        "type": "serve"
+      },
+      {
+        "time": 261.0,
+        "type": "hit"
+      },
+      {
+        "time": 263.0,
+        "type": "end"
+      },
+      {
+        "time": 285.565,
+        "type": "serve"
+      },
+      {
+        "time": 314.131,
+        "type": "hit"
+      },
+      {
+        "time": 328.516,
+        "type": "end"
+      },
+      {
+        "time": 345.452,
+        "type": "serve"
+      },
+      {
+        "time": 364.806,
+        "type": "end"
+      },
+      {
+        "time": 400.897,
+        "type": "serve"
+      },
+      {
+        "time": 414.823,
+        "type": "end"
+      },
+      {
+        "time": 429.41,
+        "type": "serve"
+      },
+      {
+        "time": 436.248,
+        "type": "end"
+      },
+      {
+        "time": 449.156,
+        "type": "serve"
+      },
+      {
+        "time": 470.0,
+        "type": "serve"
+      },
+      {
+        "time": 473.0,
+        "type": "hit"
+      },
+      {
+        "time": 476.0,
+        "type": "end"
+      }
+    ]
+  },
+  "training_profile": {
+    "trusted_serves": 132,
+    "trusted_not_serve_negatives": 10,
+    "serve_rate_per_minute": 1.7010280051065205,
+    "min_serve_gap": 5.875559949874878,
+    "typical_serve_gap": 28.85099983215332,
+    "short_point": 5.0,
+    "typical_point": 14.968000411987305,
+    "long_point": 50.44869613647461
+  },
+  "motion_threshold_note": "Modo aprendido: usa ejemplos humanos para buscar reposo antes del saque y arranque de rally despues. Si hay duda, omitir antes que inventar.",
+  "scenes": [
+    {
+      "id": "scene-1",
+      "source": "learned-reset-rally",
+      "start": 24.2,
+      "end": 34.8,
+      "peak": 32.0,
+      "score": 2.89942,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.0253,
+        "post_motion": 0.04478,
+        "quiet_ratio": 0.75,
+        "active_ratio": 1.0,
+        "audio_boost": 0.206
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto en los fotogramas proporcionados."
+      }
+    },
+    {
+      "id": "scene-2",
+      "source": "learned-reset-rally",
+      "start": 43.2,
+      "end": 51.8,
+      "peak": 45.0,
+      "score": 3.26939,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01288,
+        "post_motion": 0.04903,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.714,
+        "audio_boost": 0.183
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto en los fotogramas proporcionados."
+      }
+    },
+    {
+      "id": "scene-3",
+      "source": "learned-reset-rally",
+      "start": 56.2,
+      "end": 67.8,
+      "peak": 64.0,
+      "score": 3.60079,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01936,
+        "post_motion": 0.05893,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.857,
+        "audio_boost": 0.193
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto en los fotogramas proporcionados."
+      }
+    },
+    {
+      "id": "scene-4",
+      "source": "learned-reset-rally",
+      "start": 72.2,
+      "end": 85.8,
+      "peak": 82.0,
+      "score": 3.19118,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01652,
+        "post_motion": 0.04397,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.714,
+        "audio_boost": 0.414
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto en los fotogramas proporcionados."
+      }
+    },
+    {
+      "id": "scene-5",
+      "source": "learned-reset-rally",
+      "start": 88.2,
+      "end": 99.8,
+      "peak": 93.0,
+      "score": 3.10613,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.0263,
+        "post_motion": 0.06007,
+        "quiet_ratio": 0.5,
+        "active_ratio": 0.857,
+        "audio_boost": 0.305
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto en los fotogramas proporcionados."
+      }
+    },
+    {
+      "id": "scene-6",
+      "source": "learned-reset-rally",
+      "start": 107.2,
+      "end": 119.8,
+      "peak": 111.0,
+      "score": 3.11522,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.02908,
+        "post_motion": 0.05705,
+        "quiet_ratio": 0.5,
+        "active_ratio": 1.0,
+        "audio_boost": 0.32
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto en los fotogramas proporcionados."
+      }
+    },
+    {
+      "id": "scene-7",
+      "source": "learned-reset-rally",
+      "start": 134.2,
+      "end": 147.8,
+      "peak": 141.0,
+      "score": 4.17465,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01368,
+        "post_motion": 0.0649,
+        "quiet_ratio": 1.0,
+        "active_ratio": 1.0,
+        "audio_boost": 0.152
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto. Los jugadores parecen estar en una fase intermedia de la jugada, sin señales claras de inicio o fin del punto."
+      }
+    },
+    {
+      "id": "scene-8",
+      "source": "learned-reset-rally",
+      "start": 158.2,
+      "end": 165.8,
+      "peak": 162.0,
+      "score": 2.33943,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01781,
+        "post_motion": 0.0463,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.286,
+        "audio_boost": 0.126
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto. Los jugadores parecen estar en una posición de juego normal, sin señales claras de un saque o el fin del punto."
+      }
+    },
+    {
+      "id": "scene-9",
+      "source": "learned-reset-rally",
+      "start": 171.2,
+      "end": 179.8,
+      "peak": 176.0,
+      "score": 4.218,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01024,
+        "post_motion": 0.05866,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.857,
+        "audio_boost": 0.495
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto en los fotogramas proporcionados."
+      }
+    },
+    {
+      "id": "scene-10",
+      "source": "learned-reset-rally",
+      "start": 189.2,
+      "end": 196.8,
+      "peak": 191.0,
+      "score": 3.44189,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01645,
+        "post_motion": 0.05772,
+        "quiet_ratio": 0.75,
+        "active_ratio": 0.714,
+        "audio_boost": 0.373
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto en los fotogramas proporcionados."
+      }
+    },
+    {
+      "id": "scene-11",
+      "source": "learned-reset-rally",
+      "start": 221.2,
+      "end": 232.8,
+      "peak": 224.0,
+      "score": 4.94844,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01599,
+        "post_motion": 0.08499,
+        "quiet_ratio": 1.0,
+        "active_ratio": 1.0,
+        "audio_boost": 0.293
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto en los fotogramas proporcionados."
+      }
+    },
+    {
+      "id": "scene-12",
+      "source": "learned-reset-rally",
+      "start": 311.2,
+      "end": 317.8,
+      "peak": 314.0,
+      "score": 2.73742,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00602,
+        "post_motion": 0.04147,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.429,
+        "audio_boost": 0.076
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto en los fotogramas proporcionados."
+      }
+    },
+    {
+      "id": "scene-13",
+      "source": "learned-reset-rally",
+      "start": 364.2,
+      "end": 407.8,
+      "peak": 398.0,
+      "score": 2.34083,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01785,
+        "post_motion": 0.02789,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.429,
+        "audio_boost": 0.283
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto en los fotogramas proporcionados."
+      }
+    },
+    {
+      "id": "scene-14",
+      "source": "learned-reset-rally",
+      "start": 421.2,
+      "end": 433.8,
+      "peak": 424.0,
+      "score": 4.38235,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.02131,
+        "post_motion": 0.08047,
+        "quiet_ratio": 0.75,
+        "active_ratio": 1.0,
+        "audio_boost": 0.277
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": true,
+        "end_tile": 12,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "El rally ya ha comenzado y no hay evidencia clara de un saque inicial antes del inicio del rally."
+      }
+    },
+    {
+      "id": "scene-15",
+      "source": "learned-reset-rally",
+      "start": 437.2,
+      "end": 440.148,
+      "peak": 439.0,
+      "score": 6.43256,
+      "tags": [
+        "learned-serve-candidate",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.02661,
+        "post_motion": 0.14715,
+        "quiet_ratio": 0.5,
+        "active_ratio": 1.0,
+        "audio_boost": 0.343
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.5,
+        "reason": "No hay evidencia clara de un saque inicial o final del punto. Los jugadores parecen estar en una fase intermedia de la jugada, sin señales claras de inicio o fin del punto."
+      }
+    }
+  ],
+  "marks": [
+    {
+      "id": "serve-1",
+      "type": "serve",
+      "time": 24.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-1",
+      "type": "hit",
+      "time": 32.0,
+      "suggested": true
+    },
+    {
+      "id": "end-1",
+      "type": "end",
+      "time": 34.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-2",
+      "type": "serve",
+      "time": 43.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-2",
+      "type": "hit",
+      "time": 45.0,
+      "suggested": true
+    },
+    {
+      "id": "end-2",
+      "type": "end",
+      "time": 51.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-3",
+      "type": "serve",
+      "time": 56.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-3",
+      "type": "hit",
+      "time": 64.0,
+      "suggested": true
+    },
+    {
+      "id": "end-3",
+      "type": "end",
+      "time": 67.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-4",
+      "type": "serve",
+      "time": 72.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-4",
+      "type": "hit",
+      "time": 82.0,
+      "suggested": true
+    },
+    {
+      "id": "end-4",
+      "type": "end",
+      "time": 85.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-5",
+      "type": "serve",
+      "time": 88.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-5",
+      "type": "hit",
+      "time": 93.0,
+      "suggested": true
+    },
+    {
+      "id": "end-5",
+      "type": "end",
+      "time": 99.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-6",
+      "type": "serve",
+      "time": 107.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-6",
+      "type": "hit",
+      "time": 111.0,
+      "suggested": true
+    },
+    {
+      "id": "end-6",
+      "type": "end",
+      "time": 119.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-7",
+      "type": "serve",
+      "time": 134.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-7",
+      "type": "hit",
+      "time": 141.0,
+      "suggested": true
+    },
+    {
+      "id": "end-7",
+      "type": "end",
+      "time": 147.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-8",
+      "type": "serve",
+      "time": 158.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-8",
+      "type": "hit",
+      "time": 162.0,
+      "suggested": true
+    },
+    {
+      "id": "end-8",
+      "type": "end",
+      "time": 165.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-9",
+      "type": "serve",
+      "time": 171.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-9",
+      "type": "hit",
+      "time": 176.0,
+      "suggested": true
+    },
+    {
+      "id": "end-9",
+      "type": "end",
+      "time": 179.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-10",
+      "type": "serve",
+      "time": 189.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-10",
+      "type": "hit",
+      "time": 191.0,
+      "suggested": true
+    },
+    {
+      "id": "end-10",
+      "type": "end",
+      "time": 196.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-11",
+      "type": "serve",
+      "time": 221.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-11",
+      "type": "hit",
+      "time": 224.0,
+      "suggested": true
+    },
+    {
+      "id": "end-11",
+      "type": "end",
+      "time": 232.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-12",
+      "type": "serve",
+      "time": 311.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-12",
+      "type": "hit",
+      "time": 314.0,
+      "suggested": true
+    },
+    {
+      "id": "end-12",
+      "type": "end",
+      "time": 317.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-13",
+      "type": "serve",
+      "time": 364.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-13",
+      "type": "hit",
+      "time": 398.0,
+      "suggested": true
+    },
+    {
+      "id": "end-13",
+      "type": "end",
+      "time": 407.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-14",
+      "type": "serve",
+      "time": 421.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-14",
+      "type": "hit",
+      "time": 424.0,
+      "suggested": true
+    },
+    {
+      "id": "end-14",
+      "type": "end",
+      "time": 433.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-15",
+      "type": "serve",
+      "time": 437.2,
+      "suggested": true
+    },
+    {
+      "id": "hit-15",
+      "type": "hit",
+      "time": 439.0,
+      "suggested": true
+    },
+    {
+      "id": "end-15",
+      "type": "end",
+      "time": 440.148,
+      "suggested": true
+    }
+  ],
+  "motion_series": [
+    {
+      "time": 1.0,
+      "motion": 0.09040217101573944,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00002.jpg"
+    },
+    {
+      "time": 2.0,
+      "motion": 0.012206768617033958,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00003.jpg"
+    },
+    {
+      "time": 3.0,
+      "motion": 0.016774239018559456,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00004.jpg"
+    },
+    {
+      "time": 4.0,
+      "motion": 0.06102008372545242,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00005.jpg"
+    },
+    {
+      "time": 5.0,
+      "motion": 0.06850279122591019,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00006.jpg"
+    },
+    {
+      "time": 6.0,
+      "motion": 0.01676647737622261,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00007.jpg"
+    },
+    {
+      "time": 7.0,
+      "motion": 0.016725149005651474,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00008.jpg"
+    },
+    {
+      "time": 8.0,
+      "motion": 0.011138072237372398,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00009.jpg"
+    },
+    {
+      "time": 9.0,
+      "motion": 0.008475149981677532,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00010.jpg"
+    },
+    {
+      "time": 10.0,
+      "motion": 0.017858047038316727,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00011.jpg"
+    },
+    {
+      "time": 11.0,
+      "motion": 0.008718614466488361,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00012.jpg"
+    },
+    {
+      "time": 12.0,
+      "motion": 0.0323752760887146,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00013.jpg"
+    },
+    {
+      "time": 13.0,
+      "motion": 0.03790454939007759,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00014.jpg"
+    },
+    {
+      "time": 14.0,
+      "motion": 0.030611520633101463,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00015.jpg"
+    },
+    {
+      "time": 15.0,
+      "motion": 0.023243259638547897,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00016.jpg"
+    },
+    {
+      "time": 16.0,
+      "motion": 0.017939746379852295,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00017.jpg"
+    },
+    {
+      "time": 17.0,
+      "motion": 0.025204315781593323,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00018.jpg"
+    },
+    {
+      "time": 18.0,
+      "motion": 0.0071900878101587296,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00019.jpg"
+    },
+    {
+      "time": 19.0,
+      "motion": 0.006615196820348501,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00020.jpg"
+    },
+    {
+      "time": 20.0,
+      "motion": 0.021710854023694992,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00021.jpg"
+    },
+    {
+      "time": 21.0,
+      "motion": 0.022556917741894722,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00022.jpg"
+    },
+    {
+      "time": 22.0,
+      "motion": 0.020061887800693512,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00023.jpg"
+    },
+    {
+      "time": 23.0,
+      "motion": 0.03879833593964577,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00024.jpg"
+    },
+    {
+      "time": 24.0,
+      "motion": 0.019783498719334602,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00025.jpg"
+    },
+    {
+      "time": 25.0,
+      "motion": 0.026841914281249046,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00026.jpg"
+    },
+    {
+      "time": 26.0,
+      "motion": 0.03925762698054314,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00027.jpg"
+    },
+    {
+      "time": 27.0,
+      "motion": 0.05001600459218025,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00028.jpg"
+    },
+    {
+      "time": 28.0,
+      "motion": 0.06211240962147713,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00029.jpg"
+    },
+    {
+      "time": 29.0,
+      "motion": 0.04568851739168167,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00030.jpg"
+    },
+    {
+      "time": 30.0,
+      "motion": 0.04093103110790253,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00031.jpg"
+    },
+    {
+      "time": 31.0,
+      "motion": 0.05254160240292549,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00032.jpg"
+    },
+    {
+      "time": 32.0,
+      "motion": 0.15339182317256927,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00033.jpg"
+    },
+    {
+      "time": 33.0,
+      "motion": 0.03060457669198513,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00034.jpg"
+    },
+    {
+      "time": 34.0,
+      "motion": 0.012430896982550621,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00035.jpg"
+    },
+    {
+      "time": 35.0,
+      "motion": 0.009015931747853756,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00036.jpg"
+    },
+    {
+      "time": 36.0,
+      "motion": 0.013635620474815369,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00037.jpg"
+    },
+    {
+      "time": 37.0,
+      "motion": 0.006026007700711489,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00038.jpg"
+    },
+    {
+      "time": 38.0,
+      "motion": 0.012076593935489655,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00039.jpg"
+    },
+    {
+      "time": 39.0,
+      "motion": 0.011487948708236217,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00040.jpg"
+    },
+    {
+      "time": 40.0,
+      "motion": 0.014495234936475754,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00041.jpg"
+    },
+    {
+      "time": 41.0,
+      "motion": 0.01110661868005991,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00042.jpg"
+    },
+    {
+      "time": 42.0,
+      "motion": 0.016700640320777893,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00043.jpg"
+    },
+    {
+      "time": 43.0,
+      "motion": 0.009218409657478333,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00044.jpg"
+    },
+    {
+      "time": 44.0,
+      "motion": 0.024752384051680565,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00045.jpg"
+    },
+    {
+      "time": 45.0,
+      "motion": 0.07317224889993668,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00046.jpg"
+    },
+    {
+      "time": 46.0,
+      "motion": 0.0459647998213768,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00047.jpg"
+    },
+    {
+      "time": 47.0,
+      "motion": 0.03858299180865288,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00048.jpg"
+    },
+    {
+      "time": 48.0,
+      "motion": 0.06265298277139664,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00049.jpg"
+    },
+    {
+      "time": 49.0,
+      "motion": 0.033073391765356064,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00050.jpg"
+    },
+    {
+      "time": 50.0,
+      "motion": 0.046614110469818115,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00051.jpg"
+    },
+    {
+      "time": 51.0,
+      "motion": 0.020855052396655083,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00052.jpg"
+    },
+    {
+      "time": 52.0,
+      "motion": 0.021803855895996094,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00053.jpg"
+    },
+    {
+      "time": 53.0,
+      "motion": 0.015909383073449135,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00054.jpg"
+    },
+    {
+      "time": 54.0,
+      "motion": 0.01956256851553917,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00055.jpg"
+    },
+    {
+      "time": 55.0,
+      "motion": 0.02155807428061962,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00056.jpg"
+    },
+    {
+      "time": 56.0,
+      "motion": 0.020420342683792114,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00057.jpg"
+    },
+    {
+      "time": 57.0,
+      "motion": 0.048779141157865524,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00058.jpg"
+    },
+    {
+      "time": 58.0,
+      "motion": 0.023404208943247795,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00059.jpg"
+    },
+    {
+      "time": 59.0,
+      "motion": 0.03515169024467468,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00060.jpg"
+    },
+    {
+      "time": 60.0,
+      "motion": 0.09230712801218033,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00061.jpg"
+    },
+    {
+      "time": 61.0,
+      "motion": 0.09501157701015472,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00062.jpg"
+    },
+    {
+      "time": 62.0,
+      "motion": 0.06472610682249069,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00063.jpg"
+    },
+    {
+      "time": 63.0,
+      "motion": 0.04741789028048515,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00064.jpg"
+    },
+    {
+      "time": 64.0,
+      "motion": 0.11780011653900146,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00065.jpg"
+    },
+    {
+      "time": 65.0,
+      "motion": 0.09265168756246567,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00066.jpg"
+    },
+    {
+      "time": 66.0,
+      "motion": 0.06102362647652626,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00067.jpg"
+    },
+    {
+      "time": 67.0,
+      "motion": 0.024315770715475082,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00068.jpg"
+    },
+    {
+      "time": 68.0,
+      "motion": 0.013342932797968388,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00069.jpg"
+    },
+    {
+      "time": 69.0,
+      "motion": 0.016942879185080528,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00070.jpg"
+    },
+    {
+      "time": 70.0,
+      "motion": 0.01509068626910448,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00071.jpg"
+    },
+    {
+      "time": 71.0,
+      "motion": 0.011638889089226723,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00072.jpg"
+    },
+    {
+      "time": 72.0,
+      "motion": 0.022399168461561203,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00073.jpg"
+    },
+    {
+      "time": 73.0,
+      "motion": 0.023623570799827576,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00074.jpg"
+    },
+    {
+      "time": 74.0,
+      "motion": 0.05554405227303505,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00075.jpg"
+    },
+    {
+      "time": 75.0,
+      "motion": 0.04780133441090584,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00076.jpg"
+    },
+    {
+      "time": 76.0,
+      "motion": 0.06304404884576797,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00077.jpg"
+    },
+    {
+      "time": 77.0,
+      "motion": 0.029848381876945496,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00078.jpg"
+    },
+    {
+      "time": 78.0,
+      "motion": 0.028059368953108788,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00079.jpg"
+    },
+    {
+      "time": 79.0,
+      "motion": 0.04199618846178055,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00080.jpg"
+    },
+    {
+      "time": 80.0,
+      "motion": 0.043177150189876556,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00081.jpg"
+    },
+    {
+      "time": 81.0,
+      "motion": 0.017262186855077744,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00082.jpg"
+    },
+    {
+      "time": 82.0,
+      "motion": 0.06637534499168396,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00083.jpg"
+    },
+    {
+      "time": 83.0,
+      "motion": 0.038646381348371506,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00084.jpg"
+    },
+    {
+      "time": 84.0,
+      "motion": 0.06532973051071167,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00085.jpg"
+    },
+    {
+      "time": 85.0,
+      "motion": 0.016843069344758987,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00086.jpg"
+    },
+    {
+      "time": 86.0,
+      "motion": 0.016699211671948433,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00087.jpg"
+    },
+    {
+      "time": 87.0,
+      "motion": 0.032986726611852646,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00088.jpg"
+    },
+    {
+      "time": 88.0,
+      "motion": 0.03868307173252106,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00089.jpg"
+    },
+    {
+      "time": 89.0,
+      "motion": 0.031622279435396194,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00090.jpg"
+    },
+    {
+      "time": 90.0,
+      "motion": 0.023357775062322617,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00091.jpg"
+    },
+    {
+      "time": 91.0,
+      "motion": 0.035567063838243484,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00092.jpg"
+    },
+    {
+      "time": 92.0,
+      "motion": 0.07473822683095932,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00093.jpg"
+    },
+    {
+      "time": 93.0,
+      "motion": 0.13504208624362946,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00094.jpg"
+    },
+    {
+      "time": 94.0,
+      "motion": 0.06906270980834961,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00095.jpg"
+    },
+    {
+      "time": 95.0,
+      "motion": 0.060762662440538406,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00096.jpg"
+    },
+    {
+      "time": 96.0,
+      "motion": 0.051562707871198654,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00097.jpg"
+    },
+    {
+      "time": 97.0,
+      "motion": 0.10481937974691391,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00098.jpg"
+    },
+    {
+      "time": 98.0,
+      "motion": 0.02486962266266346,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00099.jpg"
+    },
+    {
+      "time": 99.0,
+      "motion": 0.021602941676974297,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00100.jpg"
+    },
+    {
+      "time": 100.0,
+      "motion": 0.017500272020697594,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00101.jpg"
+    },
+    {
+      "time": 101.0,
+      "motion": 0.018297724425792694,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00102.jpg"
+    },
+    {
+      "time": 102.0,
+      "motion": 0.021381603553891182,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00103.jpg"
+    },
+    {
+      "time": 103.0,
+      "motion": 0.01784089207649231,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00104.jpg"
+    },
+    {
+      "time": 104.0,
+      "motion": 0.02335716225206852,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00105.jpg"
+    },
+    {
+      "time": 105.0,
+      "motion": 0.025453638285398483,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00106.jpg"
+    },
+    {
+      "time": 106.0,
+      "motion": 0.044675037264823914,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00107.jpg"
+    },
+    {
+      "time": 107.0,
+      "motion": 0.02282659336924553,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00108.jpg"
+    },
+    {
+      "time": 108.0,
+      "motion": 0.029768316075205803,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00109.jpg"
+    },
+    {
+      "time": 109.0,
+      "motion": 0.06955215334892273,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00110.jpg"
+    },
+    {
+      "time": 110.0,
+      "motion": 0.035724058747291565,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00111.jpg"
+    },
+    {
+      "time": 111.0,
+      "motion": 0.10543662309646606,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00112.jpg"
+    },
+    {
+      "time": 112.0,
+      "motion": 0.04478023201227188,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00113.jpg"
+    },
+    {
+      "time": 113.0,
+      "motion": 0.07082564383745193,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00114.jpg"
+    },
+    {
+      "time": 114.0,
+      "motion": 0.03962431848049164,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00115.jpg"
+    },
+    {
+      "time": 115.0,
+      "motion": 0.07601287215948105,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00116.jpg"
+    },
+    {
+      "time": 116.0,
+      "motion": 0.05683108791708946,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00117.jpg"
+    },
+    {
+      "time": 117.0,
+      "motion": 0.029735226184129715,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00118.jpg"
+    },
+    {
+      "time": 118.0,
+      "motion": 0.033696893602609634,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00119.jpg"
+    },
+    {
+      "time": 119.0,
+      "motion": 0.02207775041460991,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00120.jpg"
+    },
+    {
+      "time": 120.0,
+      "motion": 0.024572236463427544,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00121.jpg"
+    },
+    {
+      "time": 121.0,
+      "motion": 0.03662050887942314,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00122.jpg"
+    },
+    {
+      "time": 122.0,
+      "motion": 0.03461914509534836,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00123.jpg"
+    },
+    {
+      "time": 123.0,
+      "motion": 0.03677424043416977,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00124.jpg"
+    },
+    {
+      "time": 124.0,
+      "motion": 0.033211126923561096,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00125.jpg"
+    },
+    {
+      "time": 125.0,
+      "motion": 0.04255371913313866,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00126.jpg"
+    },
+    {
+      "time": 126.0,
+      "motion": 0.05987316370010376,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00127.jpg"
+    },
+    {
+      "time": 127.0,
+      "motion": 0.016385076567530632,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00128.jpg"
+    },
+    {
+      "time": 128.0,
+      "motion": 0.018100081011652946,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00129.jpg"
+    },
+    {
+      "time": 129.0,
+      "motion": 0.01176919974386692,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00130.jpg"
+    },
+    {
+      "time": 130.0,
+      "motion": 0.0070010218769311905,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00131.jpg"
+    },
+    {
+      "time": 131.0,
+      "motion": 0.009895016439259052,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00132.jpg"
+    },
+    {
+      "time": 132.0,
+      "motion": 0.011306985281407833,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00133.jpg"
+    },
+    {
+      "time": 133.0,
+      "motion": 0.01280290074646473,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00134.jpg"
+    },
+    {
+      "time": 134.0,
+      "motion": 0.02073352411389351,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00135.jpg"
+    },
+    {
+      "time": 135.0,
+      "motion": 0.05367204546928406,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00136.jpg"
+    },
+    {
+      "time": 136.0,
+      "motion": 0.060361314564943314,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00137.jpg"
+    },
+    {
+      "time": 137.0,
+      "motion": 0.051953501999378204,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00138.jpg"
+    },
+    {
+      "time": 138.0,
+      "motion": 0.09124251455068588,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00139.jpg"
+    },
+    {
+      "time": 139.0,
+      "motion": 0.06729473173618317,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00140.jpg"
+    },
+    {
+      "time": 140.0,
+      "motion": 0.051819100975990295,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00141.jpg"
+    },
+    {
+      "time": 141.0,
+      "motion": 0.09845983237028122,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00142.jpg"
+    },
+    {
+      "time": 142.0,
+      "motion": 0.08765393495559692,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00143.jpg"
+    },
+    {
+      "time": 143.0,
+      "motion": 0.05792953446507454,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00144.jpg"
+    },
+    {
+      "time": 144.0,
+      "motion": 0.09121187776327133,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00145.jpg"
+    },
+    {
+      "time": 145.0,
+      "motion": 0.01754622720181942,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00146.jpg"
+    },
+    {
+      "time": 146.0,
+      "motion": 0.02615196257829666,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00147.jpg"
+    },
+    {
+      "time": 147.0,
+      "motion": 0.007793368771672249,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00148.jpg"
+    },
+    {
+      "time": 148.0,
+      "motion": 0.016098788008093834,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00149.jpg"
+    },
+    {
+      "time": 149.0,
+      "motion": 0.01659674569964409,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00150.jpg"
+    },
+    {
+      "time": 150.0,
+      "motion": 0.015950094908475876,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00151.jpg"
+    },
+    {
+      "time": 151.0,
+      "motion": 0.009996051900088787,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00152.jpg"
+    },
+    {
+      "time": 152.0,
+      "motion": 0.010925790295004845,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00153.jpg"
+    },
+    {
+      "time": 153.0,
+      "motion": 0.023591842502355576,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00154.jpg"
+    },
+    {
+      "time": 154.0,
+      "motion": 0.026938864961266518,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00155.jpg"
+    },
+    {
+      "time": 155.0,
+      "motion": 0.01574387401342392,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00156.jpg"
+    },
+    {
+      "time": 156.0,
+      "motion": 0.02362295798957348,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00157.jpg"
+    },
+    {
+      "time": 157.0,
+      "motion": 0.017198598012328148,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00158.jpg"
+    },
+    {
+      "time": 158.0,
+      "motion": 0.014672317542135715,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00159.jpg"
+    },
+    {
+      "time": 159.0,
+      "motion": 0.03383592143654823,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00160.jpg"
+    },
+    {
+      "time": 160.0,
+      "motion": 0.06774080544710159,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00161.jpg"
+    },
+    {
+      "time": 161.0,
+      "motion": 0.022056713700294495,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00162.jpg"
+    },
+    {
+      "time": 162.0,
+      "motion": 0.08082754164934158,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00163.jpg"
+    },
+    {
+      "time": 163.0,
+      "motion": 0.02705882303416729,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00164.jpg"
+    },
+    {
+      "time": 164.0,
+      "motion": 0.026520494371652603,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00165.jpg"
+    },
+    {
+      "time": 165.0,
+      "motion": 0.018338032066822052,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00166.jpg"
+    },
+    {
+      "time": 166.0,
+      "motion": 0.014305147342383862,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00167.jpg"
+    },
+    {
+      "time": 167.0,
+      "motion": 0.014965210109949112,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00168.jpg"
+    },
+    {
+      "time": 168.0,
+      "motion": 0.008793709799647331,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00169.jpg"
+    },
+    {
+      "time": 169.0,
+      "motion": 0.013045343570411205,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00170.jpg"
+    },
+    {
+      "time": 170.0,
+      "motion": 0.00707502756267786,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00171.jpg"
+    },
+    {
+      "time": 171.0,
+      "motion": 0.012036016210913658,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00172.jpg"
+    },
+    {
+      "time": 172.0,
+      "motion": 0.048500750213861465,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00173.jpg"
+    },
+    {
+      "time": 173.0,
+      "motion": 0.051546163856983185,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00174.jpg"
+    },
+    {
+      "time": 174.0,
+      "motion": 0.058865197002887726,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00175.jpg"
+    },
+    {
+      "time": 175.0,
+      "motion": 0.05863065645098686,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00176.jpg"
+    },
+    {
+      "time": 176.0,
+      "motion": 0.07577355206012726,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00177.jpg"
+    },
+    {
+      "time": 177.0,
+      "motion": 0.07195036858320236,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00178.jpg"
+    },
+    {
+      "time": 178.0,
+      "motion": 0.04373202845454216,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00179.jpg"
+    },
+    {
+      "time": 179.0,
+      "motion": 0.017969362437725067,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00180.jpg"
+    },
+    {
+      "time": 180.0,
+      "motion": 0.013755583204329014,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00181.jpg"
+    },
+    {
+      "time": 181.0,
+      "motion": 0.010331222787499428,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00182.jpg"
+    },
+    {
+      "time": 182.0,
+      "motion": 0.02243361994624138,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00183.jpg"
+    },
+    {
+      "time": 183.0,
+      "motion": 0.029886983335018158,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00184.jpg"
+    },
+    {
+      "time": 184.0,
+      "motion": 0.01887431927025318,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00185.jpg"
+    },
+    {
+      "time": 185.0,
+      "motion": 0.020939884707331657,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00186.jpg"
+    },
+    {
+      "time": 186.0,
+      "motion": 0.013748162426054478,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00187.jpg"
+    },
+    {
+      "time": 187.0,
+      "motion": 0.026857027783989906,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00188.jpg"
+    },
+    {
+      "time": 188.0,
+      "motion": 0.017208673059940338,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00189.jpg"
+    },
+    {
+      "time": 189.0,
+      "motion": 0.007979370653629303,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00190.jpg"
+    },
+    {
+      "time": 190.0,
+      "motion": 0.028189612552523613,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00191.jpg"
+    },
+    {
+      "time": 191.0,
+      "motion": 0.0801396369934082,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00192.jpg"
+    },
+    {
+      "time": 192.0,
+      "motion": 0.06795745342969894,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00193.jpg"
+    },
+    {
+      "time": 193.0,
+      "motion": 0.05837472528219223,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00194.jpg"
+    },
+    {
+      "time": 194.0,
+      "motion": 0.05393661931157112,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00195.jpg"
+    },
+    {
+      "time": 195.0,
+      "motion": 0.0590130053460598,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00196.jpg"
+    },
+    {
+      "time": 196.0,
+      "motion": 0.023928990587592125,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00197.jpg"
+    },
+    {
+      "time": 197.0,
+      "motion": 0.023641543462872505,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00198.jpg"
+    },
+    {
+      "time": 198.0,
+      "motion": 0.02097991481423378,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00199.jpg"
+    },
+    {
+      "time": 199.0,
+      "motion": 0.020456155762076378,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00200.jpg"
+    },
+    {
+      "time": 200.0,
+      "motion": 0.015285131521522999,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00201.jpg"
+    },
+    {
+      "time": 201.0,
+      "motion": 0.012378131970763206,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00202.jpg"
+    },
+    {
+      "time": 202.0,
+      "motion": 0.015056099742650986,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00203.jpg"
+    },
+    {
+      "time": 203.0,
+      "motion": 0.020079180598258972,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00204.jpg"
+    },
+    {
+      "time": 204.0,
+      "motion": 0.015277505852282047,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00205.jpg"
+    },
+    {
+      "time": 205.0,
+      "motion": 0.01489290688186884,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00206.jpg"
+    },
+    {
+      "time": 206.0,
+      "motion": 0.015062568709254265,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00207.jpg"
+    },
+    {
+      "time": 207.0,
+      "motion": 0.01053465437144041,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00208.jpg"
+    },
+    {
+      "time": 208.0,
+      "motion": 0.012063657864928246,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00209.jpg"
+    },
+    {
+      "time": 209.0,
+      "motion": 0.01455630362033844,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00210.jpg"
+    },
+    {
+      "time": 210.0,
+      "motion": 0.005921160336583853,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00211.jpg"
+    },
+    {
+      "time": 211.0,
+      "motion": 0.008172249421477318,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00212.jpg"
+    },
+    {
+      "time": 212.0,
+      "motion": 0.008733048103749752,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00213.jpg"
+    },
+    {
+      "time": 213.0,
+      "motion": 0.019076457247138023,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00214.jpg"
+    },
+    {
+      "time": 214.0,
+      "motion": 0.011755038052797318,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00215.jpg"
+    },
+    {
+      "time": 215.0,
+      "motion": 0.011274918913841248,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00216.jpg"
+    },
+    {
+      "time": 216.0,
+      "motion": 0.010327749885618687,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00217.jpg"
+    },
+    {
+      "time": 217.0,
+      "motion": 0.013951525092124939,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00218.jpg"
+    },
+    {
+      "time": 218.0,
+      "motion": 0.012722835876047611,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00219.jpg"
+    },
+    {
+      "time": 219.0,
+      "motion": 0.014061410911381245,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00220.jpg"
+    },
+    {
+      "time": 220.0,
+      "motion": 0.023496801033616066,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00221.jpg"
+    },
+    {
+      "time": 221.0,
+      "motion": 0.013664351776242256,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00222.jpg"
+    },
+    {
+      "time": 222.0,
+      "motion": 0.03722542151808739,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00223.jpg"
+    },
+    {
+      "time": 223.0,
+      "motion": 0.10083027184009552,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00224.jpg"
+    },
+    {
+      "time": 224.0,
+      "motion": 0.13569724559783936,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00225.jpg"
+    },
+    {
+      "time": 225.0,
+      "motion": 0.06015202775597572,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00226.jpg"
+    },
+    {
+      "time": 226.0,
+      "motion": 0.09102566540241241,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00227.jpg"
+    },
+    {
+      "time": 227.0,
+      "motion": 0.04042728990316391,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00228.jpg"
+    },
+    {
+      "time": 228.0,
+      "motion": 0.06353697180747986,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00229.jpg"
+    },
+    {
+      "time": 229.0,
+      "motion": 0.03511948511004448,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00230.jpg"
+    },
+    {
+      "time": 230.0,
+      "motion": 0.02137690596282482,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00231.jpg"
+    },
+    {
+      "time": 231.0,
+      "motion": 0.04299353435635567,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00232.jpg"
+    },
+    {
+      "time": 232.0,
+      "motion": 0.022776007652282715,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00233.jpg"
+    },
+    {
+      "time": 233.0,
+      "motion": 0.016915306448936462,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00234.jpg"
+    },
+    {
+      "time": 234.0,
+      "motion": 0.010264161042869091,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00235.jpg"
+    },
+    {
+      "time": 235.0,
+      "motion": 0.00886567309498787,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00236.jpg"
+    },
+    {
+      "time": 236.0,
+      "motion": 0.008343478664755821,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00237.jpg"
+    },
+    {
+      "time": 237.0,
+      "motion": 0.006410267204046249,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00238.jpg"
+    },
+    {
+      "time": 238.0,
+      "motion": 0.006700912024825811,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00239.jpg"
+    },
+    {
+      "time": 239.0,
+      "motion": 0.0074500953778624535,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00240.jpg"
+    },
+    {
+      "time": 240.0,
+      "motion": 0.015398488380014896,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00241.jpg"
+    },
+    {
+      "time": 241.0,
+      "motion": 0.00752110593020916,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00242.jpg"
+    },
+    {
+      "time": 242.0,
+      "motion": 0.019365400075912476,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00243.jpg"
+    },
+    {
+      "time": 243.0,
+      "motion": 0.02239909954369068,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00244.jpg"
+    },
+    {
+      "time": 244.0,
+      "motion": 0.012808006256818771,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00245.jpg"
+    },
+    {
+      "time": 245.0,
+      "motion": 0.007598449010401964,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00246.jpg"
+    },
+    {
+      "time": 246.0,
+      "motion": 0.01046064868569374,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00247.jpg"
+    },
+    {
+      "time": 247.0,
+      "motion": 0.021922454237937927,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00248.jpg"
+    },
+    {
+      "time": 248.0,
+      "motion": 0.03614958003163338,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00249.jpg"
+    },
+    {
+      "time": 249.0,
+      "motion": 0.012034517712891102,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00250.jpg"
+    },
+    {
+      "time": 250.0,
+      "motion": 0.01598297990858555,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00251.jpg"
+    },
+    {
+      "time": 251.0,
+      "motion": 0.007599606178700924,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00252.jpg"
+    },
+    {
+      "time": 252.0,
+      "motion": 0.008228963240981102,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00253.jpg"
+    },
+    {
+      "time": 253.0,
+      "motion": 0.01015264168381691,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00254.jpg"
+    },
+    {
+      "time": 254.0,
+      "motion": 0.009889297187328339,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00255.jpg"
+    },
+    {
+      "time": 255.0,
+      "motion": 0.00753778638318181,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00256.jpg"
+    },
+    {
+      "time": 256.0,
+      "motion": 0.004539284389466047,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00257.jpg"
+    },
+    {
+      "time": 257.0,
+      "motion": 0.006431917194277048,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00258.jpg"
+    },
+    {
+      "time": 258.0,
+      "motion": 0.007524237968027592,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00259.jpg"
+    },
+    {
+      "time": 259.0,
+      "motion": 0.008185525424778461,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00260.jpg"
+    },
+    {
+      "time": 260.0,
+      "motion": 0.0075452751480042934,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00261.jpg"
+    },
+    {
+      "time": 261.0,
+      "motion": 0.011334490031003952,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00262.jpg"
+    },
+    {
+      "time": 262.0,
+      "motion": 0.005688657984137535,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00263.jpg"
+    },
+    {
+      "time": 263.0,
+      "motion": 0.007241421844810247,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00264.jpg"
+    },
+    {
+      "time": 264.0,
+      "motion": 0.009965822100639343,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00265.jpg"
+    },
+    {
+      "time": 265.0,
+      "motion": 0.010457721538841724,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00266.jpg"
+    },
+    {
+      "time": 266.0,
+      "motion": 0.009517770260572433,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00267.jpg"
+    },
+    {
+      "time": 267.0,
+      "motion": 0.00870867446064949,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00268.jpg"
+    },
+    {
+      "time": 268.0,
+      "motion": 0.009321419522166252,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00269.jpg"
+    },
+    {
+      "time": 269.0,
+      "motion": 0.010578704066574574,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00270.jpg"
+    },
+    {
+      "time": 270.0,
+      "motion": 0.00708816759288311,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00271.jpg"
+    },
+    {
+      "time": 271.0,
+      "motion": 0.017362337559461594,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00272.jpg"
+    },
+    {
+      "time": 272.0,
+      "motion": 0.0285122562199831,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00273.jpg"
+    },
+    {
+      "time": 273.0,
+      "motion": 0.018419118598103523,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00274.jpg"
+    },
+    {
+      "time": 274.0,
+      "motion": 0.014342729933559895,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00275.jpg"
+    },
+    {
+      "time": 275.0,
+      "motion": 0.019497143104672432,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00276.jpg"
+    },
+    {
+      "time": 276.0,
+      "motion": 0.033143725246191025,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00277.jpg"
+    },
+    {
+      "time": 277.0,
+      "motion": 0.02171759307384491,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00278.jpg"
+    },
+    {
+      "time": 278.0,
+      "motion": 0.015525463037192822,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00279.jpg"
+    },
+    {
+      "time": 279.0,
+      "motion": 0.019634464755654335,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00280.jpg"
+    },
+    {
+      "time": 280.0,
+      "motion": 0.018893519416451454,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00281.jpg"
+    },
+    {
+      "time": 281.0,
+      "motion": 0.014377860352396965,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00282.jpg"
+    },
+    {
+      "time": 282.0,
+      "motion": 0.020284995436668396,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00283.jpg"
+    },
+    {
+      "time": 283.0,
+      "motion": 0.016411492601037025,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00284.jpg"
+    },
+    {
+      "time": 284.0,
+      "motion": 0.02034919708967209,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00285.jpg"
+    },
+    {
+      "time": 285.0,
+      "motion": 0.044383104890584946,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00286.jpg"
+    },
+    {
+      "time": 286.0,
+      "motion": 0.040049295872449875,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00287.jpg"
+    },
+    {
+      "time": 287.0,
+      "motion": 0.011107775382697582,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00288.jpg"
+    },
+    {
+      "time": 288.0,
+      "motion": 0.008771105669438839,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00289.jpg"
+    },
+    {
+      "time": 289.0,
+      "motion": 0.0063134534284472466,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00290.jpg"
+    },
+    {
+      "time": 290.0,
+      "motion": 0.01042313501238823,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00291.jpg"
+    },
+    {
+      "time": 291.0,
+      "motion": 0.0229750145226717,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00292.jpg"
+    },
+    {
+      "time": 292.0,
+      "motion": 0.020891817286610603,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00293.jpg"
+    },
+    {
+      "time": 293.0,
+      "motion": 0.01012799609452486,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00294.jpg"
+    },
+    {
+      "time": 294.0,
+      "motion": 0.009876498021185398,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00295.jpg"
+    },
+    {
+      "time": 295.0,
+      "motion": 0.008024441078305244,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00296.jpg"
+    },
+    {
+      "time": 296.0,
+      "motion": 0.008857367560267448,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00297.jpg"
+    },
+    {
+      "time": 297.0,
+      "motion": 0.012790236622095108,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00298.jpg"
+    },
+    {
+      "time": 298.0,
+      "motion": 0.010208673775196075,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00299.jpg"
+    },
+    {
+      "time": 299.0,
+      "motion": 0.010393450036644936,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00300.jpg"
+    },
+    {
+      "time": 300.0,
+      "motion": 0.01328867208212614,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00301.jpg"
+    },
+    {
+      "time": 301.0,
+      "motion": 0.01265039574354887,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00302.jpg"
+    },
+    {
+      "time": 302.0,
+      "motion": 0.015445331111550331,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00303.jpg"
+    },
+    {
+      "time": 303.0,
+      "motion": 0.01757686585187912,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00304.jpg"
+    },
+    {
+      "time": 304.0,
+      "motion": 0.003551675006747246,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00305.jpg"
+    },
+    {
+      "time": 305.0,
+      "motion": 0.006713235285133123,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00306.jpg"
+    },
+    {
+      "time": 306.0,
+      "motion": 0.009602397680282593,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00307.jpg"
+    },
+    {
+      "time": 307.0,
+      "motion": 0.00861805584281683,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00308.jpg"
+    },
+    {
+      "time": 308.0,
+      "motion": 0.008865469135344028,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00309.jpg"
+    },
+    {
+      "time": 309.0,
+      "motion": 0.00560355419293046,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00310.jpg"
+    },
+    {
+      "time": 310.0,
+      "motion": 0.004901552572846413,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00311.jpg"
+    },
+    {
+      "time": 311.0,
+      "motion": 0.004693287890404463,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00312.jpg"
+    },
+    {
+      "time": 312.0,
+      "motion": 0.013066108338534832,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00313.jpg"
+    },
+    {
+      "time": 313.0,
+      "motion": 0.04361315444111824,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00314.jpg"
+    },
+    {
+      "time": 314.0,
+      "motion": 0.08216142654418945,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00315.jpg"
+    },
+    {
+      "time": 315.0,
+      "motion": 0.035351578146219254,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00316.jpg"
+    },
+    {
+      "time": 316.0,
+      "motion": 0.03313814103603363,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00317.jpg"
+    },
+    {
+      "time": 317.0,
+      "motion": 0.020913127809762955,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00318.jpg"
+    },
+    {
+      "time": 318.0,
+      "motion": 0.01682053506374359,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00319.jpg"
+    },
+    {
+      "time": 319.0,
+      "motion": 0.016742443665862083,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00320.jpg"
+    },
+    {
+      "time": 320.0,
+      "motion": 0.010343069210648537,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00321.jpg"
+    },
+    {
+      "time": 321.0,
+      "motion": 0.015521378256380558,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00322.jpg"
+    },
+    {
+      "time": 322.0,
+      "motion": 0.01782291755080223,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00323.jpg"
+    },
+    {
+      "time": 323.0,
+      "motion": 0.03393695503473282,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00324.jpg"
+    },
+    {
+      "time": 324.0,
+      "motion": 0.024757079780101776,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00325.jpg"
+    },
+    {
+      "time": 325.0,
+      "motion": 0.013840073719620705,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00326.jpg"
+    },
+    {
+      "time": 326.0,
+      "motion": 0.009972563944756985,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00327.jpg"
+    },
+    {
+      "time": 327.0,
+      "motion": 0.007962282747030258,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00328.jpg"
+    },
+    {
+      "time": 328.0,
+      "motion": 0.009323528967797756,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00329.jpg"
+    },
+    {
+      "time": 329.0,
+      "motion": 0.010148761793971062,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00330.jpg"
+    },
+    {
+      "time": 330.0,
+      "motion": 0.011865808628499508,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00331.jpg"
+    },
+    {
+      "time": 331.0,
+      "motion": 0.012785403057932854,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00332.jpg"
+    },
+    {
+      "time": 332.0,
+      "motion": 0.013152845203876495,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00333.jpg"
+    },
+    {
+      "time": 333.0,
+      "motion": 0.012403594329953194,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00334.jpg"
+    },
+    {
+      "time": 334.0,
+      "motion": 0.021897468715906143,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00335.jpg"
+    },
+    {
+      "time": 335.0,
+      "motion": 0.04209130257368088,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00336.jpg"
+    },
+    {
+      "time": 336.0,
+      "motion": 0.0341896116733551,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00337.jpg"
+    },
+    {
+      "time": 337.0,
+      "motion": 0.018826458603143692,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00338.jpg"
+    },
+    {
+      "time": 338.0,
+      "motion": 0.007977873086929321,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00339.jpg"
+    },
+    {
+      "time": 339.0,
+      "motion": 0.008051402866840363,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00340.jpg"
+    },
+    {
+      "time": 340.0,
+      "motion": 0.00877512339502573,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00341.jpg"
+    },
+    {
+      "time": 341.0,
+      "motion": 0.016918573528528214,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00342.jpg"
+    },
+    {
+      "time": 342.0,
+      "motion": 0.009836329147219658,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00343.jpg"
+    },
+    {
+      "time": 343.0,
+      "motion": 0.013346610590815544,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00344.jpg"
+    },
+    {
+      "time": 344.0,
+      "motion": 0.019870711490511894,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00345.jpg"
+    },
+    {
+      "time": 345.0,
+      "motion": 0.016867171972990036,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00346.jpg"
+    },
+    {
+      "time": 346.0,
+      "motion": 0.02033333294093609,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00347.jpg"
+    },
+    {
+      "time": 347.0,
+      "motion": 0.016581837087869644,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00348.jpg"
+    },
+    {
+      "time": 348.0,
+      "motion": 0.02170744724571705,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00349.jpg"
+    },
+    {
+      "time": 349.0,
+      "motion": 0.008146379142999649,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00350.jpg"
+    },
+    {
+      "time": 350.0,
+      "motion": 0.01096868235617876,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00351.jpg"
+    },
+    {
+      "time": 351.0,
+      "motion": 0.011747549287974834,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00352.jpg"
+    },
+    {
+      "time": 352.0,
+      "motion": 0.01066918671131134,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00353.jpg"
+    },
+    {
+      "time": 353.0,
+      "motion": 0.008699823170900345,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00354.jpg"
+    },
+    {
+      "time": 354.0,
+      "motion": 0.009056917391717434,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00355.jpg"
+    },
+    {
+      "time": 355.0,
+      "motion": 0.01355950441211462,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00356.jpg"
+    },
+    {
+      "time": 356.0,
+      "motion": 0.006112337112426758,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00357.jpg"
+    },
+    {
+      "time": 357.0,
+      "motion": 0.007806645706295967,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00358.jpg"
+    },
+    {
+      "time": 358.0,
+      "motion": 0.007107639219611883,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00359.jpg"
+    },
+    {
+      "time": 359.0,
+      "motion": 0.023936957120895386,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00360.jpg"
+    },
+    {
+      "time": 360.0,
+      "motion": 0.02024448849260807,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00361.jpg"
+    },
+    {
+      "time": 361.0,
+      "motion": 0.024244075641036034,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00362.jpg"
+    },
+    {
+      "time": 362.0,
+      "motion": 0.012699891813099384,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00363.jpg"
+    },
+    {
+      "time": 363.0,
+      "motion": 0.01905364915728569,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00364.jpg"
+    },
+    {
+      "time": 364.0,
+      "motion": 0.015402507036924362,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00365.jpg"
+    },
+    {
+      "time": 365.0,
+      "motion": 0.026714598760008812,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00366.jpg"
+    },
+    {
+      "time": 366.0,
+      "motion": 0.02699469029903412,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00367.jpg"
+    },
+    {
+      "time": 367.0,
+      "motion": 0.03637799993157387,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00368.jpg"
+    },
+    {
+      "time": 368.0,
+      "motion": 0.026016954332590103,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00369.jpg"
+    },
+    {
+      "time": 369.0,
+      "motion": 0.023328840732574463,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00370.jpg"
+    },
+    {
+      "time": 370.0,
+      "motion": 0.029652370139956474,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00371.jpg"
+    },
+    {
+      "time": 371.0,
+      "motion": 0.050379764288663864,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00372.jpg"
+    },
+    {
+      "time": 372.0,
+      "motion": 0.0743265300989151,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00373.jpg"
+    },
+    {
+      "time": 373.0,
+      "motion": 0.047461945563554764,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00374.jpg"
+    },
+    {
+      "time": 374.0,
+      "motion": 0.07369472086429596,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00375.jpg"
+    },
+    {
+      "time": 375.0,
+      "motion": 0.08067367225885391,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00376.jpg"
+    },
+    {
+      "time": 376.0,
+      "motion": 0.07913997769355774,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00377.jpg"
+    },
+    {
+      "time": 377.0,
+      "motion": 0.07999591529369354,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00378.jpg"
+    },
+    {
+      "time": 378.0,
+      "motion": 0.059950705617666245,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00379.jpg"
+    },
+    {
+      "time": 379.0,
+      "motion": 0.10486241430044174,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00380.jpg"
+    },
+    {
+      "time": 380.0,
+      "motion": 0.0658353790640831,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00381.jpg"
+    },
+    {
+      "time": 381.0,
+      "motion": 0.1131056696176529,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00382.jpg"
+    },
+    {
+      "time": 382.0,
+      "motion": 0.09011941403150558,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00383.jpg"
+    },
+    {
+      "time": 383.0,
+      "motion": 0.05384538322687149,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00384.jpg"
+    },
+    {
+      "time": 384.0,
+      "motion": 0.051053717732429504,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00385.jpg"
+    },
+    {
+      "time": 385.0,
+      "motion": 0.06669417768716812,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00386.jpg"
+    },
+    {
+      "time": 386.0,
+      "motion": 0.07132258266210556,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00387.jpg"
+    },
+    {
+      "time": 387.0,
+      "motion": 0.06970997154712677,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00388.jpg"
+    },
+    {
+      "time": 388.0,
+      "motion": 0.021028323099017143,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00389.jpg"
+    },
+    {
+      "time": 389.0,
+      "motion": 0.025754699483513832,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00390.jpg"
+    },
+    {
+      "time": 390.0,
+      "motion": 0.021841231733560562,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00391.jpg"
+    },
+    {
+      "time": 391.0,
+      "motion": 0.050450846552848816,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00392.jpg"
+    },
+    {
+      "time": 392.0,
+      "motion": 0.11782646924257278,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00393.jpg"
+    },
+    {
+      "time": 393.0,
+      "motion": 0.0338558703660965,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00394.jpg"
+    },
+    {
+      "time": 394.0,
+      "motion": 0.036023080348968506,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00395.jpg"
+    },
+    {
+      "time": 395.0,
+      "motion": 0.03607312589883804,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00396.jpg"
+    },
+    {
+      "time": 396.0,
+      "motion": 0.029708467423915863,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00397.jpg"
+    },
+    {
+      "time": 397.0,
+      "motion": 0.04251749813556671,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00398.jpg"
+    },
+    {
+      "time": 398.0,
+      "motion": 0.12649857997894287,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00399.jpg"
+    },
+    {
+      "time": 399.0,
+      "motion": 0.08046746253967285,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00400.jpg"
+    },
+    {
+      "time": 400.0,
+      "motion": 0.08956603705883026,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00401.jpg"
+    },
+    {
+      "time": 401.0,
+      "motion": 0.06815244257450104,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00402.jpg"
+    },
+    {
+      "time": 402.0,
+      "motion": 0.04981311410665512,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00403.jpg"
+    },
+    {
+      "time": 403.0,
+      "motion": 0.0421094074845314,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00404.jpg"
+    },
+    {
+      "time": 404.0,
+      "motion": 0.05633292347192764,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00405.jpg"
+    },
+    {
+      "time": 405.0,
+      "motion": 0.03431011736392975,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00406.jpg"
+    },
+    {
+      "time": 406.0,
+      "motion": 0.02481045573949814,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00407.jpg"
+    },
+    {
+      "time": 407.0,
+      "motion": 0.023271584883332253,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00408.jpg"
+    },
+    {
+      "time": 408.0,
+      "motion": 0.013792144134640694,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00409.jpg"
+    },
+    {
+      "time": 409.0,
+      "motion": 0.010866694152355194,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00410.jpg"
+    },
+    {
+      "time": 410.0,
+      "motion": 0.010394267737865448,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00411.jpg"
+    },
+    {
+      "time": 411.0,
+      "motion": 0.011412990279495716,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00412.jpg"
+    },
+    {
+      "time": 412.0,
+      "motion": 0.012221133336424828,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00413.jpg"
+    },
+    {
+      "time": 413.0,
+      "motion": 0.01136397011578083,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00414.jpg"
+    },
+    {
+      "time": 414.0,
+      "motion": 0.012128404341638088,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00415.jpg"
+    },
+    {
+      "time": 415.0,
+      "motion": 0.017337962985038757,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00416.jpg"
+    },
+    {
+      "time": 416.0,
+      "motion": 0.014914488419890404,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00417.jpg"
+    },
+    {
+      "time": 417.0,
+      "motion": 0.020093342289328575,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00418.jpg"
+    },
+    {
+      "time": 418.0,
+      "motion": 0.018385281786322594,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00419.jpg"
+    },
+    {
+      "time": 419.0,
+      "motion": 0.016547182574868202,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00420.jpg"
+    },
+    {
+      "time": 420.0,
+      "motion": 0.016294119879603386,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00421.jpg"
+    },
+    {
+      "time": 421.0,
+      "motion": 0.03401763364672661,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00422.jpg"
+    },
+    {
+      "time": 422.0,
+      "motion": 0.05769499018788338,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00423.jpg"
+    },
+    {
+      "time": 423.0,
+      "motion": 0.046830128878355026,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00424.jpg"
+    },
+    {
+      "time": 424.0,
+      "motion": 0.11439637839794159,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00425.jpg"
+    },
+    {
+      "time": 425.0,
+      "motion": 0.07958449423313141,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00426.jpg"
+    },
+    {
+      "time": 426.0,
+      "motion": 0.10383966565132141,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00427.jpg"
+    },
+    {
+      "time": 427.0,
+      "motion": 0.10343389213085175,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00428.jpg"
+    },
+    {
+      "time": 428.0,
+      "motion": 0.06975817680358887,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00429.jpg"
+    },
+    {
+      "time": 429.0,
+      "motion": 0.047067541629076004,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00430.jpg"
+    },
+    {
+      "time": 430.0,
+      "motion": 0.02773202769458294,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00431.jpg"
+    },
+    {
+      "time": 431.0,
+      "motion": 0.03957836702466011,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00432.jpg"
+    },
+    {
+      "time": 432.0,
+      "motion": 0.035408906638622284,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00433.jpg"
+    },
+    {
+      "time": 433.0,
+      "motion": 0.02383340150117874,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00434.jpg"
+    },
+    {
+      "time": 434.0,
+      "motion": 0.0242141205817461,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00435.jpg"
+    },
+    {
+      "time": 435.0,
+      "motion": 0.02629275619983673,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00436.jpg"
+    },
+    {
+      "time": 436.0,
+      "motion": 0.02400442771613598,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00437.jpg"
+    },
+    {
+      "time": 437.0,
+      "motion": 0.03191986680030823,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00438.jpg"
+    },
+    {
+      "time": 438.0,
+      "motion": 0.07011308521032333,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00439.jpg"
+    },
+    {
+      "time": 439.0,
+      "motion": 0.2241881936788559,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-240726\\240726_pt3-model-v1\\_frames\\frame_00440.jpg"
+    }
+  ],
+  "audio_series": [
+    {
+      "time": 0.0,
+      "audio_rms": 0.00634554261341691,
+      "audio_peak": 0.041595458984375
+    },
+    {
+      "time": 1.0,
+      "audio_rms": 0.011177608743309975,
+      "audio_peak": 0.08376165479421616
+    },
+    {
+      "time": 2.0,
+      "audio_rms": 0.016889261081814766,
+      "audio_peak": 0.0979742705821991
+    },
+    {
+      "time": 3.0,
+      "audio_rms": 0.03217709809541702,
+      "audio_peak": 0.2053070068359375
+    },
+    {
+      "time": 4.0,
+      "audio_rms": 0.0991303101181984,
+      "audio_peak": 0.582651674747467
+    },
+    {
+      "time": 5.0,
+      "audio_rms": 0.039323873817920685,
+      "audio_peak": 0.20965880155563354
+    },
+    {
+      "time": 6.0,
+      "audio_rms": 0.029344329610466957,
+      "audio_peak": 0.1368429809808731
+    },
+    {
+      "time": 7.0,
+      "audio_rms": 0.03389665111899376,
+      "audio_peak": 0.18614926934242249
+    },
+    {
+      "time": 8.0,
+      "audio_rms": 0.019300412386655807,
+      "audio_peak": 0.12776680290699005
+    },
+    {
+      "time": 9.0,
+      "audio_rms": 0.017715375870466232,
+      "audio_peak": 0.1743076741695404
+    },
+    {
+      "time": 10.0,
+      "audio_rms": 0.020181914791464806,
+      "audio_peak": 0.11110252141952515
+    },
+    {
+      "time": 11.0,
+      "audio_rms": 0.026670580729842186,
+      "audio_peak": 0.22989343106746674
+    },
+    {
+      "time": 12.0,
+      "audio_rms": 0.026178967207670212,
+      "audio_peak": 0.14300349354743958
+    },
+    {
+      "time": 13.0,
+      "audio_rms": 0.055875204503536224,
+      "audio_peak": 0.4538440704345703
+    },
+    {
+      "time": 14.0,
+      "audio_rms": 0.02723218873143196,
+      "audio_peak": 0.3314397931098938
+    },
+    {
+      "time": 15.0,
+      "audio_rms": 0.027143828570842743,
+      "audio_peak": 0.23885881900787354
+    },
+    {
+      "time": 16.0,
+      "audio_rms": 0.07870819419622421,
+      "audio_peak": 0.6302657127380371
+    },
+    {
+      "time": 17.0,
+      "audio_rms": 0.01819821633398533,
+      "audio_peak": 0.0660676509141922
+    },
+    {
+      "time": 18.0,
+      "audio_rms": 0.022528838366270065,
+      "audio_peak": 0.36317718029022217
+    },
+    {
+      "time": 19.0,
+      "audio_rms": 0.02467447705566883,
+      "audio_peak": 0.3023764491081238
+    },
+    {
+      "time": 20.0,
+      "audio_rms": 0.02122221514582634,
+      "audio_peak": 0.1767781376838684
+    },
+    {
+      "time": 21.0,
+      "audio_rms": 0.02782755345106125,
+      "audio_peak": 0.12568113207817078
+    },
+    {
+      "time": 22.0,
+      "audio_rms": 0.02939123660326004,
+      "audio_peak": 0.18681789934635162
+    },
+    {
+      "time": 23.0,
+      "audio_rms": 0.03323325142264366,
+      "audio_peak": 0.26273399591445923
+    },
+    {
+      "time": 24.0,
+      "audio_rms": 0.0382324643433094,
+      "audio_peak": 0.31853213906288147
+    },
+    {
+      "time": 25.0,
+      "audio_rms": 0.036984633654356,
+      "audio_peak": 0.36865368485450745
+    },
+    {
+      "time": 26.0,
+      "audio_rms": 0.038175616413354874,
+      "audio_peak": 0.373281329870224
+    },
+    {
+      "time": 27.0,
+      "audio_rms": 0.044262226670980453,
+      "audio_peak": 0.6209116578102112
+    },
+    {
+      "time": 28.0,
+      "audio_rms": 0.044172126799821854,
+      "audio_peak": 0.253309965133667
+    },
+    {
+      "time": 29.0,
+      "audio_rms": 0.04995359107851982,
+      "audio_peak": 0.3302830457687378
+    },
+    {
+      "time": 30.0,
+      "audio_rms": 0.0659383237361908,
+      "audio_peak": 0.4427061975002289
+    },
+    {
+      "time": 31.0,
+      "audio_rms": 0.04303065314888954,
+      "audio_peak": 0.34573519229888916
+    },
+    {
+      "time": 32.0,
+      "audio_rms": 0.04396890848875046,
+      "audio_peak": 0.26576611399650574
+    },
+    {
+      "time": 33.0,
+      "audio_rms": 0.041334472596645355,
+      "audio_peak": 0.20471709966659546
+    },
+    {
+      "time": 34.0,
+      "audio_rms": 0.03798624500632286,
+      "audio_peak": 0.16856542229652405
+    },
+    {
+      "time": 35.0,
+      "audio_rms": 0.039071422070264816,
+      "audio_peak": 0.15063226222991943
+    },
+    {
+      "time": 36.0,
+      "audio_rms": 0.03402821719646454,
+      "audio_peak": 0.18000324070453644
+    },
+    {
+      "time": 37.0,
+      "audio_rms": 0.042608749121427536,
+      "audio_peak": 0.1936446726322174
+    },
+    {
+      "time": 38.0,
+      "audio_rms": 0.03741028532385826,
+      "audio_peak": 0.2690601348876953
+    },
+    {
+      "time": 39.0,
+      "audio_rms": 0.0413830503821373,
+      "audio_peak": 0.3182167410850525
+    },
+    {
+      "time": 40.0,
+      "audio_rms": 0.0600539892911911,
+      "audio_peak": 0.48428165912628174
+    },
+    {
+      "time": 41.0,
+      "audio_rms": 0.05732438340783119,
+      "audio_peak": 0.977542519569397
+    },
+    {
+      "time": 42.0,
+      "audio_rms": 0.05914289876818657,
+      "audio_peak": 0.4077095091342926
+    },
+    {
+      "time": 43.0,
+      "audio_rms": 0.04061196744441986,
+      "audio_peak": 0.3050273656845093
+    },
+    {
+      "time": 44.0,
+      "audio_rms": 0.04441062733530998,
+      "audio_peak": 0.3855857849121094
+    },
+    {
+      "time": 45.0,
+      "audio_rms": 0.0201572198420763,
+      "audio_peak": 0.10553291440010071
+    },
+    {
+      "time": 46.0,
+      "audio_rms": 0.019347596913576126,
+      "audio_peak": 0.089128777384758
+    },
+    {
+      "time": 47.0,
+      "audio_rms": 0.022273719310760498,
+      "audio_peak": 0.0999487042427063
+    },
+    {
+      "time": 48.0,
+      "audio_rms": 0.028000902384519577,
+      "audio_peak": 0.133461132645607
+    },
+    {
+      "time": 49.0,
+      "audio_rms": 0.03338814154267311,
+      "audio_peak": 0.2130807340145111
+    },
+    {
+      "time": 50.0,
+      "audio_rms": 0.030195189639925957,
+      "audio_peak": 0.13347263634204865
+    },
+    {
+      "time": 51.0,
+      "audio_rms": 0.03464997559785843,
+      "audio_peak": 0.478202223777771
+    },
+    {
+      "time": 52.0,
+      "audio_rms": 0.033086325973272324,
+      "audio_peak": 0.3258424401283264
+    },
+    {
+      "time": 53.0,
+      "audio_rms": 0.05034944415092468,
+      "audio_peak": 0.6110356450080872
+    },
+    {
+      "time": 54.0,
+      "audio_rms": 0.04096313938498497,
+      "audio_peak": 0.4276566207408905
+    },
+    {
+      "time": 55.0,
+      "audio_rms": 0.06282022595405579,
+      "audio_peak": 0.6181537508964539
+    },
+    {
+      "time": 56.0,
+      "audio_rms": 0.038495272397994995,
+      "audio_peak": 0.2728838324546814
+    },
+    {
+      "time": 57.0,
+      "audio_rms": 0.0467352457344532,
+      "audio_peak": 0.22598931193351746
+    },
+    {
+      "time": 58.0,
+      "audio_rms": 0.03134600445628166,
+      "audio_peak": 0.16712075471878052
+    },
+    {
+      "time": 59.0,
+      "audio_rms": 0.03672154247760773,
+      "audio_peak": 0.31486278772354126
+    },
+    {
+      "time": 60.0,
+      "audio_rms": 0.032174691557884216,
+      "audio_peak": 0.19994144141674042
+    },
+    {
+      "time": 61.0,
+      "audio_rms": 0.02967762015759945,
+      "audio_peak": 0.1398814618587494
+    },
+    {
+      "time": 62.0,
+      "audio_rms": 0.03594305366277695,
+      "audio_peak": 0.5333847999572754
+    },
+    {
+      "time": 63.0,
+      "audio_rms": 0.037555161863565445,
+      "audio_peak": 0.3000059127807617
+    },
+    {
+      "time": 64.0,
+      "audio_rms": 0.03183736279606819,
+      "audio_peak": 0.18274027109146118
+    },
+    {
+      "time": 65.0,
+      "audio_rms": 0.047274574637413025,
+      "audio_peak": 0.8025951385498047
+    },
+    {
+      "time": 66.0,
+      "audio_rms": 0.0360473208129406,
+      "audio_peak": 0.3556698262691498
+    },
+    {
+      "time": 67.0,
+      "audio_rms": 0.053065136075019836,
+      "audio_peak": 0.8646561503410339
+    },
+    {
+      "time": 68.0,
+      "audio_rms": 0.06597334146499634,
+      "audio_peak": 0.36974915862083435
+    },
+    {
+      "time": 69.0,
+      "audio_rms": 0.07660917192697525,
+      "audio_peak": 0.4232870936393738
+    },
+    {
+      "time": 70.0,
+      "audio_rms": 0.05413305014371872,
+      "audio_peak": 0.24291247129440308
+    },
+    {
+      "time": 71.0,
+      "audio_rms": 0.03044978342950344,
+      "audio_peak": 0.17512723803520203
+    },
+    {
+      "time": 72.0,
+      "audio_rms": 0.041754499077796936,
+      "audio_peak": 0.23913633823394775
+    },
+    {
+      "time": 73.0,
+      "audio_rms": 0.10037951171398163,
+      "audio_peak": 0.4856615662574768
+    },
+    {
+      "time": 74.0,
+      "audio_rms": 0.02194252610206604,
+      "audio_peak": 0.23842176795005798
+    },
+    {
+      "time": 75.0,
+      "audio_rms": 0.03880847617983818,
+      "audio_peak": 0.6461201906204224
+    },
+    {
+      "time": 76.0,
+      "audio_rms": 0.024307318031787872,
+      "audio_peak": 0.2716997265815735
+    },
+    {
+      "time": 77.0,
+      "audio_rms": 0.025723841041326523,
+      "audio_peak": 0.3886668086051941
+    },
+    {
+      "time": 78.0,
+      "audio_rms": 0.019260309636592865,
+      "audio_peak": 0.19244924187660217
+    },
+    {
+      "time": 79.0,
+      "audio_rms": 0.030480319634079933,
+      "audio_peak": 0.3315635323524475
+    },
+    {
+      "time": 80.0,
+      "audio_rms": 0.05249541997909546,
+      "audio_peak": 0.5283650159835815
+    },
+    {
+      "time": 81.0,
+      "audio_rms": 0.033330123871564865,
+      "audio_peak": 0.1524409055709839
+    },
+    {
+      "time": 82.0,
+      "audio_rms": 0.021054452285170555,
+      "audio_peak": 0.10373692959547043
+    },
+    {
+      "time": 83.0,
+      "audio_rms": 0.023966282606124878,
+      "audio_peak": 0.13338202238082886
+    },
+    {
+      "time": 84.0,
+      "audio_rms": 0.018202384933829308,
+      "audio_peak": 0.0906713455915451
+    },
+    {
+      "time": 85.0,
+      "audio_rms": 0.10487300902605057,
+      "audio_peak": 0.7117550373077393
+    },
+    {
+      "time": 86.0,
+      "audio_rms": 0.043432846665382385,
+      "audio_peak": 0.2914432883262634
+    },
+    {
+      "time": 87.0,
+      "audio_rms": 0.024427717551589012,
+      "audio_peak": 0.14256811141967773
+    },
+    {
+      "time": 88.0,
+      "audio_rms": 0.017020558938384056,
+      "audio_peak": 0.09436333179473877
+    },
+    {
+      "time": 89.0,
+      "audio_rms": 0.017095835879445076,
+      "audio_peak": 0.08326542377471924
+    },
+    {
+      "time": 90.0,
+      "audio_rms": 0.02293899655342102,
+      "audio_peak": 0.10751842707395554
+    },
+    {
+      "time": 91.0,
+      "audio_rms": 0.0738479495048523,
+      "audio_peak": 0.4233778119087219
+    },
+    {
+      "time": 92.0,
+      "audio_rms": 0.07323308289051056,
+      "audio_peak": 0.494417667388916
+    },
+    {
+      "time": 93.0,
+      "audio_rms": 0.06739682704210281,
+      "audio_peak": 0.3431830406188965
+    },
+    {
+      "time": 94.0,
+      "audio_rms": 0.043183036148548126,
+      "audio_peak": 0.22663503885269165
+    },
+    {
+      "time": 95.0,
+      "audio_rms": 0.05149689316749573,
+      "audio_peak": 0.23912177979946136
+    },
+    {
+      "time": 96.0,
+      "audio_rms": 0.0403594970703125,
+      "audio_peak": 0.18887469172477722
+    },
+    {
+      "time": 97.0,
+      "audio_rms": 0.05762575939297676,
+      "audio_peak": 0.3976123631000519
+    },
+    {
+      "time": 98.0,
+      "audio_rms": 0.05752714350819588,
+      "audio_peak": 0.3781047463417053
+    },
+    {
+      "time": 99.0,
+      "audio_rms": 0.02190915308892727,
+      "audio_peak": 0.14352653920650482
+    },
+    {
+      "time": 100.0,
+      "audio_rms": 0.09565451741218567,
+      "audio_peak": 0.9506692290306091
+    },
+    {
+      "time": 101.0,
+      "audio_rms": 0.08354505151510239,
+      "audio_peak": 0.5023588538169861
+    },
+    {
+      "time": 102.0,
+      "audio_rms": 0.027216041460633278,
+      "audio_peak": 0.13792791962623596
+    },
+    {
+      "time": 103.0,
+      "audio_rms": 0.021368514746427536,
+      "audio_peak": 0.24147388339042664
+    },
+    {
+      "time": 104.0,
+      "audio_rms": 0.018858274444937706,
+      "audio_peak": 0.1749027520418167
+    },
+    {
+      "time": 105.0,
+      "audio_rms": 0.03645894676446915,
+      "audio_peak": 0.8808015584945679
+    },
+    {
+      "time": 106.0,
+      "audio_rms": 0.03504941612482071,
+      "audio_peak": 0.4319807291030884
+    },
+    {
+      "time": 107.0,
+      "audio_rms": 0.050404760986566544,
+      "audio_peak": 0.6860693693161011
+    },
+    {
+      "time": 108.0,
+      "audio_rms": 0.038489848375320435,
+      "audio_peak": 0.31336092948913574
+    },
+    {
+      "time": 109.0,
+      "audio_rms": 0.032335735857486725,
+      "audio_peak": 0.3026942312717438
+    },
+    {
+      "time": 110.0,
+      "audio_rms": 0.049654521048069,
+      "audio_peak": 0.7400997281074524
+    },
+    {
+      "time": 111.0,
+      "audio_rms": 0.07749424874782562,
+      "audio_peak": 0.36523687839508057
+    },
+    {
+      "time": 112.0,
+      "audio_rms": 0.04735630005598068,
+      "audio_peak": 0.21436285972595215
+    },
+    {
+      "time": 113.0,
+      "audio_rms": 0.06175997853279114,
+      "audio_peak": 0.2909863293170929
+    },
+    {
+      "time": 114.0,
+      "audio_rms": 0.04141718149185181,
+      "audio_peak": 0.5076237916946411
+    },
+    {
+      "time": 115.0,
+      "audio_rms": 0.05407138168811798,
+      "audio_peak": 0.3170076608657837
+    },
+    {
+      "time": 116.0,
+      "audio_rms": 0.0460270419716835,
+      "audio_peak": 0.28362154960632324
+    },
+    {
+      "time": 117.0,
+      "audio_rms": 0.06429211795330048,
+      "audio_peak": 0.2584332227706909
+    },
+    {
+      "time": 118.0,
+      "audio_rms": 0.08877188712358475,
+      "audio_peak": 0.3563981056213379
+    },
+    {
+      "time": 119.0,
+      "audio_rms": 0.06867966055870056,
+      "audio_peak": 0.3366904556751251
+    },
+    {
+      "time": 120.0,
+      "audio_rms": 0.04676080122590065,
+      "audio_peak": 0.2837952673435211
+    },
+    {
+      "time": 121.0,
+      "audio_rms": 0.058815404772758484,
+      "audio_peak": 0.2859407365322113
+    },
+    {
+      "time": 122.0,
+      "audio_rms": 0.05306811258196831,
+      "audio_peak": 0.41451650857925415
+    },
+    {
+      "time": 123.0,
+      "audio_rms": 0.02959556132555008,
+      "audio_peak": 0.10946858674287796
+    },
+    {
+      "time": 124.0,
+      "audio_rms": 0.021051552146673203,
+      "audio_peak": 0.09909968078136444
+    },
+    {
+      "time": 125.0,
+      "audio_rms": 0.03587253391742706,
+      "audio_peak": 0.3978586196899414
+    },
+    {
+      "time": 126.0,
+      "audio_rms": 0.03128117322921753,
+      "audio_peak": 0.1479792594909668
+    },
+    {
+      "time": 127.0,
+      "audio_rms": 0.04244840145111084,
+      "audio_peak": 0.48772111535072327
+    },
+    {
+      "time": 128.0,
+      "audio_rms": 0.019130440428853035,
+      "audio_peak": 0.08721128851175308
+    },
+    {
+      "time": 129.0,
+      "audio_rms": 0.03603934124112129,
+      "audio_peak": 0.243910014629364
+    },
+    {
+      "time": 130.0,
+      "audio_rms": 0.02325715310871601,
+      "audio_peak": 0.1505454182624817
+    },
+    {
+      "time": 131.0,
+      "audio_rms": 0.029030540958046913,
+      "audio_peak": 0.1774827539920807
+    },
+    {
+      "time": 132.0,
+      "audio_rms": 0.02330406941473484,
+      "audio_peak": 0.11868004500865936
+    },
+    {
+      "time": 133.0,
+      "audio_rms": 0.03089338168501854,
+      "audio_peak": 0.14606299996376038
+    },
+    {
+      "time": 134.0,
+      "audio_rms": 0.033487673848867416,
+      "audio_peak": 0.1547207534313202
+    },
+    {
+      "time": 135.0,
+      "audio_rms": 0.028716877102851868,
+      "audio_peak": 0.31409499049186707
+    },
+    {
+      "time": 136.0,
+      "audio_rms": 0.036864023655653,
+      "audio_peak": 0.273441344499588
+    },
+    {
+      "time": 137.0,
+      "audio_rms": 0.03051837906241417,
+      "audio_peak": 0.11137436330318451
+    },
+    {
+      "time": 138.0,
+      "audio_rms": 0.025206219404935837,
+      "audio_peak": 0.10619527101516724
+    },
+    {
+      "time": 139.0,
+      "audio_rms": 0.021008150652050972,
+      "audio_peak": 0.11316961795091629
+    },
+    {
+      "time": 140.0,
+      "audio_rms": 0.03487560153007507,
+      "audio_peak": 0.18647025525569916
+    },
+    {
+      "time": 141.0,
+      "audio_rms": 0.03111138753592968,
+      "audio_peak": 0.13268445432186127
+    },
+    {
+      "time": 142.0,
+      "audio_rms": 0.03341485187411308,
+      "audio_peak": 0.2383946031332016
+    },
+    {
+      "time": 143.0,
+      "audio_rms": 0.050038933753967285,
+      "audio_peak": 0.2993178069591522
+    },
+    {
+      "time": 144.0,
+      "audio_rms": 0.0475013442337513,
+      "audio_peak": 0.27275505661964417
+    },
+    {
+      "time": 145.0,
+      "audio_rms": 0.07986582070589066,
+      "audio_peak": 0.6474366188049316
+    },
+    {
+      "time": 146.0,
+      "audio_rms": 0.019212471321225166,
+      "audio_peak": 0.1169884130358696
+    },
+    {
+      "time": 147.0,
+      "audio_rms": 0.021840376779437065,
+      "audio_peak": 0.10109075903892517
+    },
+    {
+      "time": 148.0,
+      "audio_rms": 0.02809012681245804,
+      "audio_peak": 0.25504612922668457
+    },
+    {
+      "time": 149.0,
+      "audio_rms": 0.0673404186964035,
+      "audio_peak": 0.3187727630138397
+    },
+    {
+      "time": 150.0,
+      "audio_rms": 0.021231209859251976,
+      "audio_peak": 0.11065424978733063
+    },
+    {
+      "time": 151.0,
+      "audio_rms": 0.020695282146334648,
+      "audio_peak": 0.07894440740346909
+    },
+    {
+      "time": 152.0,
+      "audio_rms": 0.017091216519474983,
+      "audio_peak": 0.1012067198753357
+    },
+    {
+      "time": 153.0,
+      "audio_rms": 0.013235010206699371,
+      "audio_peak": 0.11615869402885437
+    },
+    {
+      "time": 154.0,
+      "audio_rms": 0.024442488327622414,
+      "audio_peak": 0.1031959056854248
+    },
+    {
+      "time": 155.0,
+      "audio_rms": 0.039106592535972595,
+      "audio_peak": 0.2830656170845032
+    },
+    {
+      "time": 156.0,
+      "audio_rms": 0.022259948775172234,
+      "audio_peak": 0.17058195173740387
+    },
+    {
+      "time": 157.0,
+      "audio_rms": 0.020057037472724915,
+      "audio_peak": 0.09079130738973618
+    },
+    {
+      "time": 158.0,
+      "audio_rms": 0.015728356316685677,
+      "audio_peak": 0.07886028289794922
+    },
+    {
+      "time": 159.0,
+      "audio_rms": 0.022577473893761635,
+      "audio_peak": 0.10460397601127625
+    },
+    {
+      "time": 160.0,
+      "audio_rms": 0.03041822277009487,
+      "audio_peak": 0.19640186429023743
+    },
+    {
+      "time": 161.0,
+      "audio_rms": 0.015264236368238926,
+      "audio_peak": 0.10994173586368561
+    },
+    {
+      "time": 162.0,
+      "audio_rms": 0.01949940249323845,
+      "audio_peak": 0.32152318954467773
+    },
+    {
+      "time": 163.0,
+      "audio_rms": 0.01894155703485012,
+      "audio_peak": 0.12592624127864838
+    },
+    {
+      "time": 164.0,
+      "audio_rms": 0.025308487936854362,
+      "audio_peak": 0.21268174052238464
+    },
+    {
+      "time": 165.0,
+      "audio_rms": 0.023842766880989075,
+      "audio_peak": 0.1435171663761139
+    },
+    {
+      "time": 166.0,
+      "audio_rms": 0.022752003744244576,
+      "audio_peak": 0.11541628837585449
+    },
+    {
+      "time": 167.0,
+      "audio_rms": 0.01877346634864807,
+      "audio_peak": 0.19411785900592804
+    },
+    {
+      "time": 168.0,
+      "audio_rms": 0.03241420537233353,
+      "audio_peak": 0.24347379803657532
+    },
+    {
+      "time": 169.0,
+      "audio_rms": 0.03906197100877762,
+      "audio_peak": 0.2892113924026489
+    },
+    {
+      "time": 170.0,
+      "audio_rms": 0.022015247493982315,
+      "audio_peak": 0.1456584334373474
+    },
+    {
+      "time": 171.0,
+      "audio_rms": 0.04796537011861801,
+      "audio_peak": 0.27912068367004395
+    },
+    {
+      "time": 172.0,
+      "audio_rms": 0.0740005224943161,
+      "audio_peak": 0.39686429500579834
+    },
+    {
+      "time": 173.0,
+      "audio_rms": 0.06990668922662735,
+      "audio_peak": 0.33767807483673096
+    },
+    {
+      "time": 174.0,
+      "audio_rms": 0.11991245299577713,
+      "audio_peak": 0.4339580535888672
+    },
+    {
+      "time": 175.0,
+      "audio_rms": 0.08324232697486877,
+      "audio_peak": 0.40300583839416504
+    },
+    {
+      "time": 176.0,
+      "audio_rms": 0.09725043177604675,
+      "audio_peak": 0.4016151428222656
+    },
+    {
+      "time": 177.0,
+      "audio_rms": 0.07251612842082977,
+      "audio_peak": 0.3722740113735199
+    },
+    {
+      "time": 178.0,
+      "audio_rms": 0.09414255619049072,
+      "audio_peak": 0.36896973848342896
+    },
+    {
+      "time": 179.0,
+      "audio_rms": 0.05917072668671608,
+      "audio_peak": 0.2883327603340149
+    },
+    {
+      "time": 180.0,
+      "audio_rms": 0.040964387357234955,
+      "audio_peak": 0.19187229871749878
+    },
+    {
+      "time": 181.0,
+      "audio_rms": 0.04816906899213791,
+      "audio_peak": 0.2591332197189331
+    },
+    {
+      "time": 182.0,
+      "audio_rms": 0.06560750305652618,
+      "audio_peak": 0.33391985297203064
+    },
+    {
+      "time": 183.0,
+      "audio_rms": 0.06342657655477524,
+      "audio_peak": 0.28091639280319214
+    },
+    {
+      "time": 184.0,
+      "audio_rms": 0.0575595386326313,
+      "audio_peak": 0.29942888021469116
+    },
+    {
+      "time": 185.0,
+      "audio_rms": 0.06939086318016052,
+      "audio_peak": 0.29075324535369873
+    },
+    {
+      "time": 186.0,
+      "audio_rms": 0.05005665123462677,
+      "audio_peak": 0.2450706660747528
+    },
+    {
+      "time": 187.0,
+      "audio_rms": 0.09807345271110535,
+      "audio_peak": 0.4068183898925781
+    },
+    {
+      "time": 188.0,
+      "audio_rms": 0.07966459542512894,
+      "audio_peak": 0.3250023424625397
+    },
+    {
+      "time": 189.0,
+      "audio_rms": 0.05365831404924393,
+      "audio_peak": 0.25031548738479614
+    },
+    {
+      "time": 190.0,
+      "audio_rms": 0.06210247054696083,
+      "audio_peak": 0.36840173602104187
+    },
+    {
+      "time": 191.0,
+      "audio_rms": 0.06545457243919373,
+      "audio_peak": 0.32366251945495605
+    },
+    {
+      "time": 192.0,
+      "audio_rms": 0.0648002177476883,
+      "audio_peak": 0.28367048501968384
+    },
+    {
+      "time": 193.0,
+      "audio_rms": 0.09046594053506851,
+      "audio_peak": 0.5019639730453491
+    },
+    {
+      "time": 194.0,
+      "audio_rms": 0.07195934653282166,
+      "audio_peak": 0.3439045548439026
+    },
+    {
+      "time": 195.0,
+      "audio_rms": 0.06661920249462128,
+      "audio_peak": 0.3314173221588135
+    },
+    {
+      "time": 196.0,
+      "audio_rms": 0.03786764666438103,
+      "audio_peak": 0.2442283034324646
+    },
+    {
+      "time": 197.0,
+      "audio_rms": 0.029243625700473785,
+      "audio_peak": 0.1654720902442932
+    },
+    {
+      "time": 198.0,
+      "audio_rms": 0.038649387657642365,
+      "audio_peak": 0.1765996366739273
+    },
+    {
+      "time": 199.0,
+      "audio_rms": 0.061193522065877914,
+      "audio_peak": 0.3255401849746704
+    },
+    {
+      "time": 200.0,
+      "audio_rms": 0.0596466064453125,
+      "audio_peak": 0.2542753219604492
+    },
+    {
+      "time": 201.0,
+      "audio_rms": 0.042324185371398926,
+      "audio_peak": 0.2575130760669708
+    },
+    {
+      "time": 202.0,
+      "audio_rms": 0.037404950708150864,
+      "audio_peak": 0.18877889215946198
+    },
+    {
+      "time": 203.0,
+      "audio_rms": 0.03803477808833122,
+      "audio_peak": 0.5381401777267456
+    },
+    {
+      "time": 204.0,
+      "audio_rms": 0.03225511312484741,
+      "audio_peak": 0.383303701877594
+    },
+    {
+      "time": 205.0,
+      "audio_rms": 0.0430443249642849,
+      "audio_peak": 0.6114938855171204
+    },
+    {
+      "time": 206.0,
+      "audio_rms": 0.037903252989053726,
+      "audio_peak": 0.3705728054046631
+    },
+    {
+      "time": 207.0,
+      "audio_rms": 0.0476827435195446,
+      "audio_peak": 0.5744052529335022
+    },
+    {
+      "time": 208.0,
+      "audio_rms": 0.03579925000667572,
+      "audio_peak": 0.6683355569839478
+    },
+    {
+      "time": 209.0,
+      "audio_rms": 0.0342189259827137,
+      "audio_peak": 0.33793991804122925
+    },
+    {
+      "time": 210.0,
+      "audio_rms": 0.04611096531152725,
+      "audio_peak": 1.045739769935608
+    },
+    {
+      "time": 211.0,
+      "audio_rms": 0.049015533179044724,
+      "audio_peak": 0.7938092947006226
+    },
+    {
+      "time": 212.0,
+      "audio_rms": 0.039191558957099915,
+      "audio_peak": 0.42569699883461
+    },
+    {
+      "time": 213.0,
+      "audio_rms": 0.05998346582055092,
+      "audio_peak": 0.6312872767448425
+    },
+    {
+      "time": 214.0,
+      "audio_rms": 0.04775351285934448,
+      "audio_peak": 0.586906373500824
+    },
+    {
+      "time": 215.0,
+      "audio_rms": 0.047053057700395584,
+      "audio_peak": 1.1243679523468018
+    },
+    {
+      "time": 216.0,
+      "audio_rms": 0.052918050438165665,
+      "audio_peak": 0.5017267465591431
+    },
+    {
+      "time": 217.0,
+      "audio_rms": 0.02667241543531418,
+      "audio_peak": 0.23465679585933685
+    },
+    {
+      "time": 218.0,
+      "audio_rms": 0.03280745819211006,
+      "audio_peak": 0.15077345073223114
+    },
+    {
+      "time": 219.0,
+      "audio_rms": 0.09082931280136108,
+      "audio_peak": 0.39461827278137207
+    },
+    {
+      "time": 220.0,
+      "audio_rms": 0.048072699457407,
+      "audio_peak": 0.39390140771865845
+    },
+    {
+      "time": 221.0,
+      "audio_rms": 0.02820301055908203,
+      "audio_peak": 0.11003188788890839
+    },
+    {
+      "time": 222.0,
+      "audio_rms": 0.07106494903564453,
+      "audio_peak": 0.38023102283477783
+    },
+    {
+      "time": 223.0,
+      "audio_rms": 0.061973344534635544,
+      "audio_peak": 0.32102128863334656
+    },
+    {
+      "time": 224.0,
+      "audio_rms": 0.03690332546830177,
+      "audio_peak": 0.21444086730480194
+    },
+    {
+      "time": 225.0,
+      "audio_rms": 0.027046550065279007,
+      "audio_peak": 0.11713793873786926
+    },
+    {
+      "time": 226.0,
+      "audio_rms": 0.026933835819363594,
+      "audio_peak": 0.11879713833332062
+    },
+    {
+      "time": 227.0,
+      "audio_rms": 0.031827040016651154,
+      "audio_peak": 0.13301491737365723
+    },
+    {
+      "time": 228.0,
+      "audio_rms": 0.04266016185283661,
+      "audio_peak": 0.25243431329727173
+    },
+    {
+      "time": 229.0,
+      "audio_rms": 0.03684041276574135,
+      "audio_peak": 0.1238221824169159
+    },
+    {
+      "time": 230.0,
+      "audio_rms": 0.0376039519906044,
+      "audio_peak": 0.41050422191619873
+    },
+    {
+      "time": 231.0,
+      "audio_rms": 0.02623661980032921,
+      "audio_peak": 0.3099449872970581
+    },
+    {
+      "time": 232.0,
+      "audio_rms": 0.05737129598855972,
+      "audio_peak": 1.015803575515747
+    },
+    {
+      "time": 233.0,
+      "audio_rms": 0.04782259091734886,
+      "audio_peak": 0.5715383291244507
+    },
+    {
+      "time": 234.0,
+      "audio_rms": 0.043965425342321396,
+      "audio_peak": 0.4234235882759094
+    },
+    {
+      "time": 235.0,
+      "audio_rms": 0.0387667752802372,
+      "audio_peak": 0.35829517245292664
+    },
+    {
+      "time": 236.0,
+      "audio_rms": 0.03442579135298729,
+      "audio_peak": 0.32764846086502075
+    },
+    {
+      "time": 237.0,
+      "audio_rms": 0.02386154979467392,
+      "audio_peak": 0.2512185871601105
+    },
+    {
+      "time": 238.0,
+      "audio_rms": 0.03417147323489189,
+      "audio_peak": 0.3608852028846741
+    },
+    {
+      "time": 239.0,
+      "audio_rms": 0.0350671261548996,
+      "audio_peak": 0.3530438542366028
+    },
+    {
+      "time": 240.0,
+      "audio_rms": 0.036926645785570145,
+      "audio_peak": 0.4826367497444153
+    },
+    {
+      "time": 241.0,
+      "audio_rms": 0.04269334301352501,
+      "audio_peak": 0.3292512893676758
+    },
+    {
+      "time": 242.0,
+      "audio_rms": 0.07179540395736694,
+      "audio_peak": 0.38805150985717773
+    },
+    {
+      "time": 243.0,
+      "audio_rms": 0.02377697266638279,
+      "audio_peak": 0.15163162350654602
+    },
+    {
+      "time": 244.0,
+      "audio_rms": 0.024855749681591988,
+      "audio_peak": 0.11955420672893524
+    },
+    {
+      "time": 245.0,
+      "audio_rms": 0.05243838578462601,
+      "audio_peak": 0.3113839626312256
+    },
+    {
+      "time": 246.0,
+      "audio_rms": 0.05069231986999512,
+      "audio_peak": 0.500601053237915
+    },
+    {
+      "time": 247.0,
+      "audio_rms": 0.033679381012916565,
+      "audio_peak": 0.4183681011199951
+    },
+    {
+      "time": 248.0,
+      "audio_rms": 0.04547242820262909,
+      "audio_peak": 0.773628830909729
+    },
+    {
+      "time": 249.0,
+      "audio_rms": 0.030342034995555878,
+      "audio_peak": 0.18225878477096558
+    },
+    {
+      "time": 250.0,
+      "audio_rms": 0.09086927771568298,
+      "audio_peak": 0.5946038365364075
+    },
+    {
+      "time": 251.0,
+      "audio_rms": 0.05666970834136009,
+      "audio_peak": 0.3925454020500183
+    },
+    {
+      "time": 252.0,
+      "audio_rms": 0.0827413946390152,
+      "audio_peak": 0.6786789894104004
+    },
+    {
+      "time": 253.0,
+      "audio_rms": 0.0756688192486763,
+      "audio_peak": 0.5841760635375977
+    },
+    {
+      "time": 254.0,
+      "audio_rms": 0.06218687817454338,
+      "audio_peak": 0.46606549620628357
+    },
+    {
+      "time": 255.0,
+      "audio_rms": 0.06105657294392586,
+      "audio_peak": 0.5003377199172974
+    },
+    {
+      "time": 256.0,
+      "audio_rms": 0.07944034785032272,
+      "audio_peak": 0.5562077760696411
+    },
+    {
+      "time": 257.0,
+      "audio_rms": 0.1005605161190033,
+      "audio_peak": 0.8513010740280151
+    },
+    {
+      "time": 258.0,
+      "audio_rms": 0.13355925679206848,
+      "audio_peak": 0.6768753528594971
+    },
+    {
+      "time": 259.0,
+      "audio_rms": 0.0957159623503685,
+      "audio_peak": 0.6288174390792847
+    },
+    {
+      "time": 260.0,
+      "audio_rms": 0.04910096153616905,
+      "audio_peak": 0.3298163414001465
+    },
+    {
+      "time": 261.0,
+      "audio_rms": 0.059434134513139725,
+      "audio_peak": 0.39138466119766235
+    },
+    {
+      "time": 262.0,
+      "audio_rms": 0.0911182314157486,
+      "audio_peak": 0.8359091877937317
+    },
+    {
+      "time": 263.0,
+      "audio_rms": 0.07743954658508301,
+      "audio_peak": 0.7047702074050903
+    },
+    {
+      "time": 264.0,
+      "audio_rms": 0.11838478595018387,
+      "audio_peak": 0.6982511281967163
+    },
+    {
+      "time": 265.0,
+      "audio_rms": 0.05930564925074577,
+      "audio_peak": 0.35350731015205383
+    },
+    {
+      "time": 266.0,
+      "audio_rms": 0.0698872059583664,
+      "audio_peak": 0.805479884147644
+    },
+    {
+      "time": 267.0,
+      "audio_rms": 0.06598546355962753,
+      "audio_peak": 0.6531296968460083
+    },
+    {
+      "time": 268.0,
+      "audio_rms": 0.06121395528316498,
+      "audio_peak": 0.4932194948196411
+    },
+    {
+      "time": 269.0,
+      "audio_rms": 0.08971323072910309,
+      "audio_peak": 0.6030955910682678
+    },
+    {
+      "time": 270.0,
+      "audio_rms": 0.15330883860588074,
+      "audio_peak": 0.5251235961914062
+    },
+    {
+      "time": 271.0,
+      "audio_rms": 0.04104136303067207,
+      "audio_peak": 0.3548094630241394
+    },
+    {
+      "time": 272.0,
+      "audio_rms": 0.08755963295698166,
+      "audio_peak": 0.6444365978240967
+    },
+    {
+      "time": 273.0,
+      "audio_rms": 0.14296883344650269,
+      "audio_peak": 0.6590576767921448
+    },
+    {
+      "time": 274.0,
+      "audio_rms": 0.05794844776391983,
+      "audio_peak": 0.21891504526138306
+    },
+    {
+      "time": 275.0,
+      "audio_rms": 0.12451007217168808,
+      "audio_peak": 0.5937321186065674
+    },
+    {
+      "time": 276.0,
+      "audio_rms": 0.049242645502090454,
+      "audio_peak": 0.33662962913513184
+    },
+    {
+      "time": 277.0,
+      "audio_rms": 0.0496707521378994,
+      "audio_peak": 0.30814850330352783
+    },
+    {
+      "time": 278.0,
+      "audio_rms": 0.04642137512564659,
+      "audio_peak": 0.2090650200843811
+    },
+    {
+      "time": 279.0,
+      "audio_rms": 0.12867043912410736,
+      "audio_peak": 1.3394057750701904
+    },
+    {
+      "time": 280.0,
+      "audio_rms": 0.029398666694760323,
+      "audio_peak": 0.17948254942893982
+    },
+    {
+      "time": 281.0,
+      "audio_rms": 0.03019578568637371,
+      "audio_peak": 0.15727700293064117
+    },
+    {
+      "time": 282.0,
+      "audio_rms": 0.03733540326356888,
+      "audio_peak": 0.22109568119049072
+    },
+    {
+      "time": 283.0,
+      "audio_rms": 0.044565100222826004,
+      "audio_peak": 0.26477742195129395
+    },
+    {
+      "time": 284.0,
+      "audio_rms": 0.022601179778575897,
+      "audio_peak": 0.21200114488601685
+    },
+    {
+      "time": 285.0,
+      "audio_rms": 0.10683035105466843,
+      "audio_peak": 0.6610132455825806
+    },
+    {
+      "time": 286.0,
+      "audio_rms": 0.018976449966430664,
+      "audio_peak": 0.09206324815750122
+    },
+    {
+      "time": 287.0,
+      "audio_rms": 0.013523890636861324,
+      "audio_peak": 0.05665138363838196
+    },
+    {
+      "time": 288.0,
+      "audio_rms": 0.016657039523124695,
+      "audio_peak": 0.06791038811206818
+    },
+    {
+      "time": 289.0,
+      "audio_rms": 0.011828159913420677,
+      "audio_peak": 0.12168274819850922
+    },
+    {
+      "time": 290.0,
+      "audio_rms": 0.02970358356833458,
+      "audio_peak": 0.1758359968662262
+    },
+    {
+      "time": 291.0,
+      "audio_rms": 0.029544875025749207,
+      "audio_peak": 0.40267419815063477
+    },
+    {
+      "time": 292.0,
+      "audio_rms": 0.027844039723277092,
+      "audio_peak": 0.3048371970653534
+    },
+    {
+      "time": 293.0,
+      "audio_rms": 0.035762969404459,
+      "audio_peak": 0.333903044462204
+    },
+    {
+      "time": 294.0,
+      "audio_rms": 0.03046841360628605,
+      "audio_peak": 0.40539461374282837
+    },
+    {
+      "time": 295.0,
+      "audio_rms": 0.0280583668500185,
+      "audio_peak": 0.24053320288658142
+    },
+    {
+      "time": 296.0,
+      "audio_rms": 0.07000846415758133,
+      "audio_peak": 0.5200236439704895
+    },
+    {
+      "time": 297.0,
+      "audio_rms": 0.033143769949674606,
+      "audio_peak": 0.4025415778160095
+    },
+    {
+      "time": 298.0,
+      "audio_rms": 0.01832984946668148,
+      "audio_peak": 0.11819955706596375
+    },
+    {
+      "time": 299.0,
+      "audio_rms": 0.014447140507400036,
+      "audio_peak": 0.062318965792655945
+    },
+    {
+      "time": 300.0,
+      "audio_rms": 0.09031523019075394,
+      "audio_peak": 0.9565238952636719
+    },
+    {
+      "time": 301.0,
+      "audio_rms": 0.029585853219032288,
+      "audio_peak": 0.19096776843070984
+    },
+    {
+      "time": 302.0,
+      "audio_rms": 0.015178009867668152,
+      "audio_peak": 0.0600973479449749
+    },
+    {
+      "time": 303.0,
+      "audio_rms": 0.013071528635919094,
+      "audio_peak": 0.052367232739925385
+    },
+    {
+      "time": 304.0,
+      "audio_rms": 0.015784867107868195,
+      "audio_peak": 0.06951682269573212
+    },
+    {
+      "time": 305.0,
+      "audio_rms": 0.03500879183411598,
+      "audio_peak": 0.458371102809906
+    },
+    {
+      "time": 306.0,
+      "audio_rms": 0.038526713848114014,
+      "audio_peak": 1.143692970275879
+    },
+    {
+      "time": 307.0,
+      "audio_rms": 0.0378270260989666,
+      "audio_peak": 0.43444395065307617
+    },
+    {
+      "time": 308.0,
+      "audio_rms": 0.04500487074255943,
+      "audio_peak": 0.8136922717094421
+    },
+    {
+      "time": 309.0,
+      "audio_rms": 0.08445947617292404,
+      "audio_peak": 0.36869335174560547
+    },
+    {
+      "time": 310.0,
+      "audio_rms": 0.05962563306093216,
+      "audio_peak": 0.4016086459159851
+    },
+    {
+      "time": 311.0,
+      "audio_rms": 0.0184265598654747,
+      "audio_peak": 0.2417454570531845
+    },
+    {
+      "time": 312.0,
+      "audio_rms": 0.013877891935408115,
+      "audio_peak": 0.06786813586950302
+    },
+    {
+      "time": 313.0,
+      "audio_rms": 0.016258683055639267,
+      "audio_peak": 0.20364385843276978
+    },
+    {
+      "time": 314.0,
+      "audio_rms": 0.011056056246161461,
+      "audio_peak": 0.1310524195432663
+    },
+    {
+      "time": 315.0,
+      "audio_rms": 0.01751943677663803,
+      "audio_peak": 0.10032808780670166
+    },
+    {
+      "time": 316.0,
+      "audio_rms": 0.014443839900195599,
+      "audio_peak": 0.10304383933544159
+    },
+    {
+      "time": 317.0,
+      "audio_rms": 0.03408193588256836,
+      "audio_peak": 0.3898348808288574
+    },
+    {
+      "time": 318.0,
+      "audio_rms": 0.038017820566892624,
+      "audio_peak": 0.450039267539978
+    },
+    {
+      "time": 319.0,
+      "audio_rms": 0.02275140769779682,
+      "audio_peak": 0.1340806484222412
+    },
+    {
+      "time": 320.0,
+      "audio_rms": 0.03294576704502106,
+      "audio_peak": 0.4499112367630005
+    },
+    {
+      "time": 321.0,
+      "audio_rms": 0.028599485754966736,
+      "audio_peak": 0.34305691719055176
+    },
+    {
+      "time": 322.0,
+      "audio_rms": 0.04240009933710098,
+      "audio_peak": 0.929938554763794
+    },
+    {
+      "time": 323.0,
+      "audio_rms": 0.038024112582206726,
+      "audio_peak": 0.3824823796749115
+    },
+    {
+      "time": 324.0,
+      "audio_rms": 0.04594036564230919,
+      "audio_peak": 0.5074573755264282
+    },
+    {
+      "time": 325.0,
+      "audio_rms": 0.04998856410384178,
+      "audio_peak": 1.1375062465667725
+    },
+    {
+      "time": 326.0,
+      "audio_rms": 0.03385579213500023,
+      "audio_peak": 0.3783358335494995
+    },
+    {
+      "time": 327.0,
+      "audio_rms": 0.054494574666023254,
+      "audio_peak": 0.6460005044937134
+    },
+    {
+      "time": 328.0,
+      "audio_rms": 0.04344772547483444,
+      "audio_peak": 0.18511611223220825
+    },
+    {
+      "time": 329.0,
+      "audio_rms": 0.03743378445506096,
+      "audio_peak": 0.3625108003616333
+    },
+    {
+      "time": 330.0,
+      "audio_rms": 0.035120006650686264,
+      "audio_peak": 0.3001965582370758
+    },
+    {
+      "time": 331.0,
+      "audio_rms": 0.03933556750416756,
+      "audio_peak": 0.32628315687179565
+    },
+    {
+      "time": 332.0,
+      "audio_rms": 0.0336444191634655,
+      "audio_peak": 0.16775250434875488
+    },
+    {
+      "time": 333.0,
+      "audio_rms": 0.05979452654719353,
+      "audio_peak": 0.49885961413383484
+    },
+    {
+      "time": 334.0,
+      "audio_rms": 0.04588259384036064,
+      "audio_peak": 0.3483426868915558
+    },
+    {
+      "time": 335.0,
+      "audio_rms": 0.036065101623535156,
+      "audio_peak": 0.25691208243370056
+    },
+    {
+      "time": 336.0,
+      "audio_rms": 0.037862349301576614,
+      "audio_peak": 0.13622257113456726
+    },
+    {
+      "time": 337.0,
+      "audio_rms": 0.033673349767923355,
+      "audio_peak": 0.11738927662372589
+    },
+    {
+      "time": 338.0,
+      "audio_rms": 0.03247969225049019,
+      "audio_peak": 0.111841581761837
+    },
+    {
+      "time": 339.0,
+      "audio_rms": 0.03560624271631241,
+      "audio_peak": 0.13924136757850647
+    },
+    {
+      "time": 340.0,
+      "audio_rms": 0.038277558982372284,
+      "audio_peak": 0.5064200758934021
+    },
+    {
+      "time": 341.0,
+      "audio_rms": 0.04786726459860802,
+      "audio_peak": 0.4570871591567993
+    },
+    {
+      "time": 342.0,
+      "audio_rms": 0.05781645327806473,
+      "audio_peak": 1.1231646537780762
+    },
+    {
+      "time": 343.0,
+      "audio_rms": 0.04682284966111183,
+      "audio_peak": 0.6304119825363159
+    },
+    {
+      "time": 344.0,
+      "audio_rms": 0.05318724364042282,
+      "audio_peak": 0.6016565561294556
+    },
+    {
+      "time": 345.0,
+      "audio_rms": 0.04790608212351799,
+      "audio_peak": 1.0141000747680664
+    },
+    {
+      "time": 346.0,
+      "audio_rms": 0.0360514298081398,
+      "audio_peak": 0.3422423303127289
+    },
+    {
+      "time": 347.0,
+      "audio_rms": 0.06803153455257416,
+      "audio_peak": 0.6156424283981323
+    },
+    {
+      "time": 348.0,
+      "audio_rms": 0.05806729942560196,
+      "audio_peak": 0.5172203779220581
+    },
+    {
+      "time": 349.0,
+      "audio_rms": 0.03891518712043762,
+      "audio_peak": 0.3576228618621826
+    },
+    {
+      "time": 350.0,
+      "audio_rms": 0.048551175743341446,
+      "audio_peak": 0.6977269649505615
+    },
+    {
+      "time": 351.0,
+      "audio_rms": 0.03829007223248482,
+      "audio_peak": 0.3921399712562561
+    },
+    {
+      "time": 352.0,
+      "audio_rms": 0.05587691813707352,
+      "audio_peak": 0.6530947685241699
+    },
+    {
+      "time": 353.0,
+      "audio_rms": 0.04750896617770195,
+      "audio_peak": 0.3869483470916748
+    },
+    {
+      "time": 354.0,
+      "audio_rms": 0.05578865110874176,
+      "audio_peak": 0.7860472202301025
+    },
+    {
+      "time": 355.0,
+      "audio_rms": 0.043277643620967865,
+      "audio_peak": 0.571293830871582
+    },
+    {
+      "time": 356.0,
+      "audio_rms": 0.04056849330663681,
+      "audio_peak": 0.3551819324493408
+    },
+    {
+      "time": 357.0,
+      "audio_rms": 0.05507153272628784,
+      "audio_peak": 0.6701720952987671
+    },
+    {
+      "time": 358.0,
+      "audio_rms": 0.040915463119745255,
+      "audio_peak": 0.23856401443481445
+    },
+    {
+      "time": 359.0,
+      "audio_rms": 0.036083582788705826,
+      "audio_peak": 0.2111528217792511
+    },
+    {
+      "time": 360.0,
+      "audio_rms": 0.03607849404215813,
+      "audio_peak": 0.15882886946201324
+    },
+    {
+      "time": 361.0,
+      "audio_rms": 0.03209478408098221,
+      "audio_peak": 0.12688212096691132
+    },
+    {
+      "time": 362.0,
+      "audio_rms": 0.03467009961605072,
+      "audio_peak": 0.13655799627304077
+    },
+    {
+      "time": 363.0,
+      "audio_rms": 0.0436968170106411,
+      "audio_peak": 0.18609417974948883
+    },
+    {
+      "time": 364.0,
+      "audio_rms": 0.06867258995771408,
+      "audio_peak": 0.2905379831790924
+    },
+    {
+      "time": 365.0,
+      "audio_rms": 0.028767434880137444,
+      "audio_peak": 0.13681386411190033
+    },
+    {
+      "time": 366.0,
+      "audio_rms": 0.032927095890045166,
+      "audio_peak": 0.15451857447624207
+    },
+    {
+      "time": 367.0,
+      "audio_rms": 0.03067817911505699,
+      "audio_peak": 0.13444988429546356
+    },
+    {
+      "time": 368.0,
+      "audio_rms": 0.031820859760046005,
+      "audio_peak": 0.12648336589336395
+    },
+    {
+      "time": 369.0,
+      "audio_rms": 0.03022603504359722,
+      "audio_peak": 0.11640742421150208
+    },
+    {
+      "time": 370.0,
+      "audio_rms": 0.04453346133232117,
+      "audio_peak": 0.30326712131500244
+    },
+    {
+      "time": 371.0,
+      "audio_rms": 0.0691407099366188,
+      "audio_peak": 0.3411668539047241
+    },
+    {
+      "time": 372.0,
+      "audio_rms": 0.04723573103547096,
+      "audio_peak": 0.240886390209198
+    },
+    {
+      "time": 373.0,
+      "audio_rms": 0.035974450409412384,
+      "audio_peak": 0.246127650141716
+    },
+    {
+      "time": 374.0,
+      "audio_rms": 0.06336526572704315,
+      "audio_peak": 0.46685394644737244
+    },
+    {
+      "time": 375.0,
+      "audio_rms": 0.05633816495537758,
+      "audio_peak": 0.48198285698890686
+    },
+    {
+      "time": 376.0,
+      "audio_rms": 0.030583983287215233,
+      "audio_peak": 0.15735042095184326
+    },
+    {
+      "time": 377.0,
+      "audio_rms": 0.03376994654536247,
+      "audio_peak": 0.18645788729190826
+    },
+    {
+      "time": 378.0,
+      "audio_rms": 0.03680327162146568,
+      "audio_peak": 0.23813380300998688
+    },
+    {
+      "time": 379.0,
+      "audio_rms": 0.07051876187324524,
+      "audio_peak": 0.36314332485198975
+    },
+    {
+      "time": 380.0,
+      "audio_rms": 0.050593506544828415,
+      "audio_peak": 0.24493804574012756
+    },
+    {
+      "time": 381.0,
+      "audio_rms": 0.08775153756141663,
+      "audio_peak": 0.5554962158203125
+    },
+    {
+      "time": 382.0,
+      "audio_rms": 0.05400022119283676,
+      "audio_peak": 0.33455705642700195
+    },
+    {
+      "time": 383.0,
+      "audio_rms": 0.038438331335783005,
+      "audio_peak": 0.17376837134361267
+    },
+    {
+      "time": 384.0,
+      "audio_rms": 0.040574654936790466,
+      "audio_peak": 0.5725269913673401
+    },
+    {
+      "time": 385.0,
+      "audio_rms": 0.029820095747709274,
+      "audio_peak": 0.4016849100589752
+    },
+    {
+      "time": 386.0,
+      "audio_rms": 0.017230812460184097,
+      "audio_peak": 0.2363997846841812
+    },
+    {
+      "time": 387.0,
+      "audio_rms": 0.03581955283880234,
+      "audio_peak": 0.7380407452583313
+    },
+    {
+      "time": 388.0,
+      "audio_rms": 0.03964613005518913,
+      "audio_peak": 0.3450940251350403
+    },
+    {
+      "time": 389.0,
+      "audio_rms": 0.054758306592702866,
+      "audio_peak": 0.7196906208992004
+    },
+    {
+      "time": 390.0,
+      "audio_rms": 0.03942616656422615,
+      "audio_peak": 0.370332270860672
+    },
+    {
+      "time": 391.0,
+      "audio_rms": 0.03137115016579628,
+      "audio_peak": 0.1438782662153244
+    },
+    {
+      "time": 392.0,
+      "audio_rms": 0.04247328266501427,
+      "audio_peak": 0.1591559499502182
+    },
+    {
+      "time": 393.0,
+      "audio_rms": 0.03025730699300766,
+      "audio_peak": 0.1377226561307907
+    },
+    {
+      "time": 394.0,
+      "audio_rms": 0.047526076436042786,
+      "audio_peak": 0.348966121673584
+    },
+    {
+      "time": 395.0,
+      "audio_rms": 0.023185502737760544,
+      "audio_peak": 0.1490364968776703
+    },
+    {
+      "time": 396.0,
+      "audio_rms": 0.024279305711388588,
+      "audio_peak": 0.13852441310882568
+    },
+    {
+      "time": 397.0,
+      "audio_rms": 0.02117989771068096,
+      "audio_peak": 0.10012634098529816
+    },
+    {
+      "time": 398.0,
+      "audio_rms": 0.01832064799964428,
+      "audio_peak": 0.0770125463604927
+    },
+    {
+      "time": 399.0,
+      "audio_rms": 0.02343057282269001,
+      "audio_peak": 0.09883292019367218
+    },
+    {
+      "time": 400.0,
+      "audio_rms": 0.020236719399690628,
+      "audio_peak": 0.08089032769203186
+    },
+    {
+      "time": 401.0,
+      "audio_rms": 0.04115423187613487,
+      "audio_peak": 0.5011246204376221
+    },
+    {
+      "time": 402.0,
+      "audio_rms": 0.038517847657203674,
+      "audio_peak": 0.7359937429428101
+    },
+    {
+      "time": 403.0,
+      "audio_rms": 0.03458708897233009,
+      "audio_peak": 0.3090294301509857
+    },
+    {
+      "time": 404.0,
+      "audio_rms": 0.04776592552661896,
+      "audio_peak": 0.6832097768783569
+    },
+    {
+      "time": 405.0,
+      "audio_rms": 0.038734689354896545,
+      "audio_peak": 0.682018518447876
+    },
+    {
+      "time": 406.0,
+      "audio_rms": 0.033267825841903687,
+      "audio_peak": 0.6533594131469727
+    },
+    {
+      "time": 407.0,
+      "audio_rms": 0.049813419580459595,
+      "audio_peak": 0.7162164449691772
+    },
+    {
+      "time": 408.0,
+      "audio_rms": 0.03935662657022476,
+      "audio_peak": 0.348855197429657
+    },
+    {
+      "time": 409.0,
+      "audio_rms": 0.062096938490867615,
+      "audio_peak": 1.0274968147277832
+    },
+    {
+      "time": 410.0,
+      "audio_rms": 0.04558851569890976,
+      "audio_peak": 0.5594221949577332
+    },
+    {
+      "time": 411.0,
+      "audio_rms": 0.04672236740589142,
+      "audio_peak": 0.39918598532676697
+    },
+    {
+      "time": 412.0,
+      "audio_rms": 0.04250355809926987,
+      "audio_peak": 0.5280730724334717
+    },
+    {
+      "time": 413.0,
+      "audio_rms": 0.038135796785354614,
+      "audio_peak": 0.5389254093170166
+    },
+    {
+      "time": 414.0,
+      "audio_rms": 0.03570835292339325,
+      "audio_peak": 0.45110243558883667
+    },
+    {
+      "time": 415.0,
+      "audio_rms": 0.046529583632946014,
+      "audio_peak": 0.5713528394699097
+    },
+    {
+      "time": 416.0,
+      "audio_rms": 0.035172510892152786,
+      "audio_peak": 0.35151153802871704
+    },
+    {
+      "time": 417.0,
+      "audio_rms": 0.03304107487201691,
+      "audio_peak": 0.2592446804046631
+    },
+    {
+      "time": 418.0,
+      "audio_rms": 0.05316022038459778,
+      "audio_peak": 0.9111454486846924
+    },
+    {
+      "time": 419.0,
+      "audio_rms": 0.052645519375801086,
+      "audio_peak": 1.2758010625839233
+    },
+    {
+      "time": 420.0,
+      "audio_rms": 0.05971980839967728,
+      "audio_peak": 0.5746369361877441
+    },
+    {
+      "time": 421.0,
+      "audio_rms": 0.06721300631761551,
+      "audio_peak": 0.35212892293930054
+    },
+    {
+      "time": 422.0,
+      "audio_rms": 0.03308061882853508,
+      "audio_peak": 0.21688584983348846
+    },
+    {
+      "time": 423.0,
+      "audio_rms": 0.03251524269580841,
+      "audio_peak": 0.1909797489643097
+    },
+    {
+      "time": 424.0,
+      "audio_rms": 0.02679257094860077,
+      "audio_peak": 0.11180581152439117
+    },
+    {
+      "time": 425.0,
+      "audio_rms": 0.03424835205078125,
+      "audio_peak": 0.263308584690094
+    },
+    {
+      "time": 426.0,
+      "audio_rms": 0.04926557466387749,
+      "audio_peak": 0.3058379888534546
+    },
+    {
+      "time": 427.0,
+      "audio_rms": 0.06069885939359665,
+      "audio_peak": 0.36147525906562805
+    },
+    {
+      "time": 428.0,
+      "audio_rms": 0.047186385840177536,
+      "audio_peak": 0.34135308861732483
+    },
+    {
+      "time": 429.0,
+      "audio_rms": 0.03655388578772545,
+      "audio_peak": 0.36634600162506104
+    },
+    {
+      "time": 430.0,
+      "audio_rms": 0.028282906860113144,
+      "audio_peak": 0.18430449068546295
+    },
+    {
+      "time": 431.0,
+      "audio_rms": 0.03638532757759094,
+      "audio_peak": 0.37059539556503296
+    },
+    {
+      "time": 432.0,
+      "audio_rms": 0.026361213997006416,
+      "audio_peak": 0.17671042680740356
+    },
+    {
+      "time": 433.0,
+      "audio_rms": 0.046733468770980835,
+      "audio_peak": 0.5854505896568298
+    },
+    {
+      "time": 434.0,
+      "audio_rms": 0.042898159474134445,
+      "audio_peak": 0.5981009006500244
+    },
+    {
+      "time": 435.0,
+      "audio_rms": 0.03939102217555046,
+      "audio_peak": 0.2476428747177124
+    },
+    {
+      "time": 436.0,
+      "audio_rms": 0.04527214169502258,
+      "audio_peak": 0.4613650143146515
+    },
+    {
+      "time": 437.0,
+      "audio_rms": 0.038698501884937286,
+      "audio_peak": 0.3649090528488159
+    },
+    {
+      "time": 438.0,
+      "audio_rms": 0.08321276307106018,
+      "audio_peak": 0.6595790982246399
+    },
+    {
+      "time": 439.0,
+      "audio_rms": 0.08250769972801208,
+      "audio_peak": 0.8720723986625671
+    },
+    {
+      "time": 440.0,
+      "audio_rms": 0.07178511470556259,
+      "audio_peak": 0.29113084077835083
+    }
+  ]
+}
