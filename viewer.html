@@ -984,7 +984,7 @@
     let selectedScene = -1;
     let selectedMarkId = null;
     let lastDeleted = null;
-    let xTarget = 'timeline';
+    let editTarget = 'video';
 
     function driveToDirect(url) {
       const text = url.trim();
@@ -1218,6 +1218,14 @@
 
       const payload = currentPayload();
       $('saveStatus').textContent = final ? 'Enviando final...' : 'Guardando...';
+      const hasLocalSubmitServer = ['localhost', '127.0.0.1'].includes(location.hostname);
+      if (location.protocol === 'file:' || !hasLocalSubmitServer) {
+        openJsonBackup(payload);
+        $('saveStatus').textContent = final
+          ? 'Final listo como respaldo JSON. En GitHub no hay servidor automatico.'
+          : 'Respaldo JSON listo. En GitHub no hay servidor automatico.';
+        return;
+      }
       try {
         const response = await fetch('/submit', {
           method: 'POST',
@@ -1318,15 +1326,14 @@
     function jumpMark(direction) {
       const ordered = sortedMarks();
       if (!ordered.length) return;
-      const useful = ordered.filter(mark => mark.type !== 'trash');
-      const pool = useful.length ? useful : ordered;
+      const pool = ordered;
       const selectedIndex = selectedMarkId ? pool.findIndex(mark => mark.id === selectedMarkId) : -1;
       let nextIndex = -1;
       if (selectedIndex >= 0) {
-        nextIndex = (selectedIndex + direction + pool.length) % pool.length;
+        nextIndex = Math.max(0, Math.min(pool.length - 1, selectedIndex + direction));
       } else if (direction > 0) {
         nextIndex = pool.findIndex(mark => mark.time > (video.currentTime || 0) + 0.05);
-        if (nextIndex < 0) nextIndex = 0;
+        if (nextIndex < 0) nextIndex = pool.length - 1;
       } else {
         for (let index = pool.length - 1; index >= 0; index -= 1) {
           if (pool[index].time < (video.currentTime || 0) - 0.05) {
@@ -1357,14 +1364,51 @@
       });
     }
 
-    function setMarkerFocus(target) {
+    function ensureSelectedMark() {
       let mark = selectedMarkId ? marks.find(item => item.id === selectedMarkId) : null;
       if (!mark) {
         mark = nearestMark(video.currentTime || 0);
         if (mark) selectedMarkId = mark.id;
       }
+      return mark;
+    }
+
+    function setEditTarget(target) {
+      editTarget = target;
+      const mark = ensureSelectedMark();
+      if (target === 'mark') {
+        if (mark) {
+          render();
+          scrollSelectedMarkToTop(mark.id);
+          $('saveStatus').textContent = `X: ajustes mueven marca ${fmt(mark.time)}`;
+        } else {
+          $('saveStatus').textContent = 'X: ajustes mueven marca, pero no hay marcas.';
+        }
+      } else {
+        $('saveStatus').textContent = 'Z: ajustes mueven video.';
+      }
+    }
+
+    function toggleEditTarget() {
+      setEditTarget(editTarget === 'mark' ? 'video' : 'mark');
+    }
+
+    function nudge(delta) {
+      if (editTarget === 'mark') {
+        const mark = ensureSelectedMark();
+        if (mark) {
+          adjustMarkTime(mark.id, delta);
+          $('saveStatus').textContent = `Marca ${fmt(mark.time)} (${delta > 0 ? '+' : ''}${delta}s)`;
+          return;
+        }
+      }
+      seek((video.currentTime || 0) + delta);
+      renderTimeline();
+    }
+
+    function setMarkerFocus(target) {
+      const mark = ensureSelectedMark();
       if (!mark) return;
-      xTarget = target;
       if (target === 'timeline') {
         seek(mark.time);
         renderTimeline();
@@ -1551,7 +1595,7 @@
     }
 
     document.querySelectorAll('[data-type]').forEach(button => button.addEventListener('click', () => addOrToggle(button.dataset.type)));
-    document.querySelectorAll('[data-nudge]').forEach(button => button.addEventListener('click', () => seek((video.currentTime || 0) + Number(button.dataset.nudge))));
+    document.querySelectorAll('[data-nudge]').forEach(button => button.addEventListener('click', () => nudge(Number(button.dataset.nudge))));
     document.addEventListener('keydown', event => {
       if (isTypingTarget(event.target) || event.ctrlKey || event.metaKey) return;
       const key = event.key.toLowerCase();
@@ -1562,8 +1606,7 @@
       }
       if (Object.prototype.hasOwnProperty.call(seekHotkeys, key)) {
         event.preventDefault();
-        seek((video.currentTime || 0) + seekHotkeys[key]);
-        renderTimeline();
+        nudge(seekHotkeys[key]);
         return;
       }
       if (key === 'k' || key === 'l') {
@@ -1573,12 +1616,17 @@
       }
       if (key === 'x') {
         event.preventDefault();
-        setMarkerFocus('marks');
+        setEditTarget('mark');
         return;
       }
       if (key === 'z') {
         event.preventDefault();
-        setMarkerFocus('timeline');
+        setEditTarget('video');
+        return;
+      }
+      if (key === 'y') {
+        event.preventDefault();
+        toggleEditTarget();
         return;
       }
       if (key === 'v' || key === 'b') {
