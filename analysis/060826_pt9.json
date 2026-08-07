@@ -1,0 +1,365 @@
+{
+  "version": 2,
+  "source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/060826_pt9-proxy.mp4",
+  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/060826_pt9-proxy.mp4",
+  "duration": null,
+  "marks": [
+    {
+      "id": "serve-1",
+      "type": "serve",
+      "time": 46.6,
+      "suggested": true
+    },
+    {
+      "id": "hit-1",
+      "type": "hit",
+      "time": 46.6,
+      "suggested": true
+    },
+    {
+      "id": "end-1",
+      "type": "end",
+      "time": 54.6,
+      "suggested": true
+    },
+    {
+      "id": "serve-2",
+      "type": "serve",
+      "time": 168.6,
+      "suggested": true
+    },
+    {
+      "id": "hit-2",
+      "type": "hit",
+      "time": 168.6,
+      "suggested": true
+    },
+    {
+      "id": "end-2",
+      "type": "end",
+      "time": 176.6,
+      "suggested": true
+    },
+    {
+      "id": "serve-3",
+      "type": "serve",
+      "time": 218.6,
+      "suggested": true
+    },
+    {
+      "id": "hit-3",
+      "type": "hit",
+      "time": 218.6,
+      "suggested": true
+    },
+    {
+      "id": "end-3",
+      "type": "end",
+      "time": 226.6,
+      "suggested": true
+    },
+    {
+      "id": "serve-4",
+      "type": "serve",
+      "time": 276.6,
+      "suggested": true
+    },
+    {
+      "id": "hit-4",
+      "type": "hit",
+      "time": 276.6,
+      "suggested": true
+    },
+    {
+      "id": "end-4",
+      "type": "end",
+      "time": 284.6,
+      "suggested": true
+    },
+    {
+      "id": "serve-5",
+      "type": "serve",
+      "time": 302.6,
+      "suggested": true
+    },
+    {
+      "id": "hit-5",
+      "type": "hit",
+      "time": 302.6,
+      "suggested": true
+    },
+    {
+      "id": "end-5",
+      "type": "end",
+      "time": 310.6,
+      "suggested": true
+    },
+    {
+      "id": "serve-6",
+      "type": "serve",
+      "time": 325.6,
+      "suggested": true
+    },
+    {
+      "id": "hit-6",
+      "type": "hit",
+      "time": 325.6,
+      "suggested": true
+    },
+    {
+      "id": "end-6",
+      "type": "end",
+      "time": 333.6,
+      "suggested": true
+    },
+    {
+      "id": "serve-7",
+      "type": "serve",
+      "time": 339.2,
+      "suggested": true,
+      "lowConfidence": true
+    },
+    {
+      "id": "hit-7",
+      "type": "hit",
+      "time": 352.8,
+      "suggested": true,
+      "lowConfidence": true
+    },
+    {
+      "id": "end-7",
+      "type": "end",
+      "time": 352.8,
+      "suggested": true,
+      "lowConfidence": true
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene-1",
+      "source": "model-confirmed-serve",
+      "start": 46.6,
+      "end": 54.6,
+      "peak": 12.0,
+      "score": 3.16027,
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-serve"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00332,
+        "post_motion": 0.02278,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.75,
+        "audio_boost": 0.206
+      },
+      "model": {
+        "has_serve": true,
+        "serve_tile": 12,
+        "has_rally": false,
+        "has_point_end": true,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.85,
+        "reason": "El jugador está en posición inicial, con la paleta levantada y listo para servir. La pelota se ve claramente cerca del punto de contacto, lo que sugiere un saque. El final del punto es evidente por el relajamiento corporal y la retirada del jugador."
+      }
+    },
+    {
+      "id": "scene-2",
+      "source": "model-confirmed-serve",
+      "start": 168.6,
+      "end": 176.6,
+      "peak": 149.0,
+      "score": 1.50689,
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00408,
+        "post_motion": 0.00665,
+        "quiet_ratio": 0.75,
+        "active_ratio": 0.375,
+        "audio_boost": 0.236
+      },
+      "model": {
+        "has_serve": true,
+        "serve_tile": 12,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.95,
+        "reason": "El jugador en el servidor está en una postura de reset y luego inicia movimiento, lo que sugiere un saque. El receptor comienza a moverse inmediatamente después del saque, lo cual es consistente con la dinámica de un rally. No hay evidencia clara de final de punto en las imágenes posteriores."
+      }
+    },
+    {
+      "id": "scene-3",
+      "source": "model-confirmed-serve",
+      "start": 218.6,
+      "end": 226.6,
+      "peak": 198.0,
+      "score": 2.50826,
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00301,
+        "post_motion": 0.01066,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.75,
+        "audio_boost": 0.224
+      },
+      "model": {
+        "has_serve": true,
+        "serve_tile": 10,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.85,
+        "reason": "El jugador está en posición de servir, con el cuerpo y la paleta alineados para iniciar el movimiento del saque. La pelota se ve cerca del suelo, lo que sugiere un intento de servicio. No hay evidencia clara de un punto final o una celebración."
+      }
+    },
+    {
+      "id": "scene-4",
+      "source": "model-confirmed-serve",
+      "start": 276.6,
+      "end": 284.6,
+      "peak": 250.0,
+      "score": 2.52708,
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00342,
+        "post_motion": 0.01299,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.625,
+        "audio_boost": 0.309
+      },
+      "model": {
+        "has_serve": true,
+        "serve_tile": 12,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.95,
+        "reason": "El jugador en el lado derecho del frontón se prepara para servir, con la paleta levantada y en movimiento hacia adelante. El otro jugador está listo para recibir, lo que indica un cambio de punto. No hay evidencia clara de un final de punto en estos fotogramas."
+      }
+    },
+    {
+      "id": "scene-5",
+      "source": "model-confirmed-serve",
+      "start": 302.6,
+      "end": 310.6,
+      "peak": 282.0,
+      "score": 1.85992,
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00437,
+        "post_motion": 0.0111,
+        "quiet_ratio": 0.75,
+        "active_ratio": 0.375,
+        "audio_boost": 0.353
+      },
+      "model": {
+        "has_serve": true,
+        "serve_tile": 12,
+        "has_rally": true,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.95,
+        "reason": "El jugador delantero se prepara para servir, con el cuerpo en una posición estática y alineada, mientras que el receptor comienza a moverse inmediatamente después de la supuesta paleta inicial."
+      }
+    },
+    {
+      "id": "scene-6",
+      "source": "model-confirmed-serve",
+      "start": 325.6,
+      "end": 333.6,
+      "peak": 303.0,
+      "score": 2.35246,
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00348,
+        "post_motion": 0.01432,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.5,
+        "audio_boost": 0.238
+      },
+      "model": {
+        "has_serve": true,
+        "serve_tile": 12,
+        "has_rally": false,
+        "has_point_end": false,
+        "end_tile": null,
+        "has_paddle_signal": false,
+        "confidence": 0.95,
+        "reason": "El jugador está en posición de servir, con el cuerpo y la paleta en una postura estable antes del movimiento inicial. La pelota no es visible pero se infiere que el punto comienza inmediatamente después de esta posición."
+      }
+    },
+    {
+      "id": "scene-7",
+      "source": "review-dense-candidate",
+      "start": 339.2,
+      "end": 352.8,
+      "peak": 353.0,
+      "score": 7.04305,
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "model-serve",
+        "motion",
+        "rally",
+        "review-candidate"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00075,
+        "post_motion": 0.00311,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.375,
+        "audio_boost": 0.272
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": true,
+        "end_tile": 12,
+        "has_paddle_signal": false,
+        "confidence": 0.75,
+        "reason": "El punto termina con la relajación de los jugadores y el final del rally, pero no hay evidencia clara de un saque inicial."
+      },
+      "review_note": "Candidato publicado aunque el modelo lo rechazo; corregir o borrar."
+    }
+  ],
+  "highlights": [],
+  "review_mode": "dense-human-correction",
+  "review_note": "Comparacion: el analisis normal puede rechazar saques reales; este archivo conserva todos los candidatos para correccion humana.",
+  "normal_model_counts": {
+    "serve": 6,
+    "hit": 6,
+    "end": 6
+  },
+  "dense_counts": {
+    "serve": 7,
+    "hit": 7,
+    "end": 7
+  }
+}

@@ -1107,15 +1107,19 @@
       for (const paddle of paddles) {
         if (paddle.time - last < 2.5) continue;
         last = paddle.time;
-        const scene = scenes
+        const previousScenes = scenes
+          .filter(item => item.end < paddle.time - 0.2)
+          .sort((a, b) => b.end - a.end);
+        const containingScenes = scenes
           .filter(item => item.start <= paddle.time && item.end >= paddle.time)
-          .sort((a, b) => (b.end - b.start) - (a.end - a.start))[0];
+          .sort((a, b) => (b.end - b.start) - (a.end - a.start));
+        const scene = previousScenes[0] || containingScenes[0];
         if (!scene) continue;
         highlights.push({
           start: Number(scene.start.toFixed(3)),
           end: Number(scene.end.toFixed(3)),
           paddle_time: Number(paddle.time.toFixed(3)),
-          source: 'paddle-confirmed'
+          source: previousScenes[0] ? 'paddle-previous-point' : 'paddle-confirmed'
         });
       }
       return highlights;
