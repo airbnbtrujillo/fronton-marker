@@ -1230,9 +1230,30 @@
           ? `Final guardado: ${result.file}`
           : `Guardado: ${result.file}`;
       } catch (error) {
-        $('saveStatus').textContent = 'No se pudo guardar. Usa JSON como respaldo.';
+        openJsonBackup(payload);
+        $('saveStatus').textContent = 'Servidor no disponible; respaldo JSON abierto.';
         console.error(error);
       }
+    }
+
+    function openJsonBackup(payload = currentPayload()) {
+      jsonBox.value = JSON.stringify(payload, null, 2);
+      drawer.classList.add('open');
+      jsonBox.focus();
+      jsonBox.select();
+      if (navigator.clipboard?.writeText) {
+        navigator.clipboard.writeText(jsonBox.value).catch(() => {});
+      }
+      const blob = new Blob([jsonBox.value], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      const source = (payload.source || videoUrl.value || 'fronton').split('/').pop().replace(/\.[^.]+$/, '');
+      link.href = url;
+      link.download = `${source || 'fronton'}-${Date.now()}.json`;
+      document.body.appendChild(link);
+      link.click();
+      link.remove();
+      setTimeout(() => URL.revokeObjectURL(url), 2000);
     }
 
     function addScene() {
@@ -1336,23 +1357,22 @@
       });
     }
 
-    function toggleXTarget() {
+    function setMarkerFocus(target) {
       let mark = selectedMarkId ? marks.find(item => item.id === selectedMarkId) : null;
       if (!mark) {
         mark = nearestMark(video.currentTime || 0);
         if (mark) selectedMarkId = mark.id;
       }
       if (!mark) return;
-      if (xTarget === 'timeline') {
+      xTarget = target;
+      if (target === 'timeline') {
         seek(mark.time);
         renderTimeline();
-        $('saveStatus').textContent = `X: timeline ${fmt(mark.time)}`;
-        xTarget = 'marks';
+        $('saveStatus').textContent = `Z: timeline ${fmt(mark.time)}`;
       } else {
         render();
         scrollSelectedMarkToTop(mark.id);
         $('saveStatus').textContent = `X: marcas ${fmt(mark.time)}`;
-        xTarget = 'timeline';
       }
     }
 
@@ -1553,7 +1573,17 @@
       }
       if (key === 'x') {
         event.preventDefault();
-        toggleXTarget();
+        setMarkerFocus('marks');
+        return;
+      }
+      if (key === 'z') {
+        event.preventDefault();
+        setMarkerFocus('timeline');
+        return;
+      }
+      if (key === 'v' || key === 'b') {
+        event.preventDefault();
+        jumpMark(key === 'v' ? 1 : -1);
         return;
       }
       if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
@@ -1608,8 +1638,7 @@
     $('saveBtn').addEventListener('click', () => submitPayload(false));
     $('finalBtn').addEventListener('click', () => submitPayload(true));
     $('jsonBtn').addEventListener('click', () => {
-      jsonBox.value = JSON.stringify(currentPayload(), null, 2);
-      drawer.classList.add('open');
+      openJsonBackup();
     });
     $('copyBtn').addEventListener('click', async () => {
       jsonBox.select();
