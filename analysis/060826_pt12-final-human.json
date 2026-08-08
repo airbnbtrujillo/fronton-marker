@@ -1,0 +1,570 @@
+{
+  "version": 2,
+  "source": "videos/060826_pt12_v2-proxy.mp4",
+  "direct_source": "https://airbnbtrujillo.github.io/fronton-marker/videos/060826_pt12_v2-proxy.mp4",
+  "duration": 1031.989,
+  "marks": [
+    {
+      "time": 15.6,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 54.6,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 68.223,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 78.073,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 129.336,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 135.344,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 163.747,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 183.055,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 200.755,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 222.6,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 267.8,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 274.813,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 278.334,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 289.811,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 297.307,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 303.114,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 307.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 316.8,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 335.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 353.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 366.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 374.023,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 382.109,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 384.034,
+      "type": "paddle",
+      "label": "Paleta"
+    },
+    {
+      "time": 408.998,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 420.697,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 444.439,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 457.268,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 482.655,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 492.545,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 503.883,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 510.82,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 512.236,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 518.144,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 551.412,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 559.834,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 566.966,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 591.6,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 601.8,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 607.942,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 664.362,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 672.257,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 709.678,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 736.375,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 759.6,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 762.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 767.6,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 779.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 795.6,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 817.8,
+      "type": "end",
+      "label": "Final"
+    }
+  ],
+  "scenes": [
+    {
+      "start": 20.6,
+      "end": 28.6,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "motion",
+        "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 31.6,
+      "end": 39.6,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "motion",
+        "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 68.223,
+      "end": 78.073,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 129.336,
+      "end": 135.344,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 163.747,
+      "end": 183.055,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 200.755,
+      "end": 274.813,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 214.6,
+      "end": 222.6,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 245.2,
+      "end": 268.8,
+      "source": "review-dense-candidate",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "motion",
+        "rally",
+        "review-candidate"
+      ]
+    },
+    {
+      "start": 278.334,
+      "end": 289.811,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 297.307,
+      "end": 303.114,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 307.2,
+      "end": 314.8,
+      "source": "review-dense-candidate",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally",
+        "review-candidate"
+      ]
+    },
+    {
+      "start": 322.6,
+      "end": 335.8,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 353.2,
+      "end": 366.8,
+      "source": "review-dense-candidate",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally",
+        "review-candidate"
+      ]
+    },
+    {
+      "start": 374.023,
+      "end": 382.109,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 408.998,
+      "end": 420.697,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 444.439,
+      "end": 457.268,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 482.655,
+      "end": 492.545,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 503.883,
+      "end": 510.82,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 510.2,
+      "end": 528.8,
+      "source": "review-dense-candidate",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "motion",
+        "rally",
+        "review-candidate"
+      ]
+    },
+    {
+      "start": 512.236,
+      "end": 518.144,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 533.2,
+      "end": 540.8,
+      "source": "review-dense-candidate",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally",
+        "review-candidate"
+      ]
+    },
+    {
+      "start": 551.412,
+      "end": 559.834,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 566.966,
+      "end": 607.942,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 583.6,
+      "end": 591.6,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 586.6,
+      "end": 602.8,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 655.6,
+      "end": 657.4,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 664.362,
+      "end": 672.257,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 709.678,
+      "end": 736.375,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 759.6,
+      "end": 767.6,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 762.2,
+      "end": 779.8,
+      "source": "review-dense-candidate",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "motion",
+        "rally",
+        "review-candidate"
+      ]
+    },
+    {
+      "start": 795.6,
+      "end": 804.8,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 852,
+      "end": 902.8,
+      "source": "local-motion-strong",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "rally"
+      ]
+    },
+    {
+      "start": 913.2,
+      "end": 919.8,
+      "source": "review-dense-candidate",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally",
+        "review-candidate"
+      ]
+    },
+    {
+      "start": 923,
+      "end": 981.8,
+      "source": "local-motion-strong",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "rally"
+      ]
+    },
+    {
+      "start": 1007.2,
+      "end": 1029.8,
+      "source": "review-dense-candidate",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "motion",
+        "rally",
+        "review-candidate"
+      ]
+    }
+  ],
+  "highlights": [
+    {
+      "start": 374.023,
+      "end": 382.109,
+      "paddle_time": 384.034,
+      "source": "paddle-previous-point"
+    }
+  ]
+}
