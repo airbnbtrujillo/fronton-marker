@@ -1,101 +1,97 @@
 {
   "version": 2,
-  "source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/070826_pt1-proxy.mp4",
+  "source": "videos/070826_pt1-proxy.mp4",
   "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/070826_pt1-proxy.mp4",
-  "duration": null,
+  "duration": 1452.409292,
   "marks": [
     {
       "id": "serve-1",
       "type": "serve",
-      "time": 22.6,
+      "time": 0.0,
       "suggested": true
     },
     {
       "id": "end-1",
       "type": "end",
-      "time": 30.6,
+      "time": 7.4,
       "suggested": true
     },
     {
       "id": "serve-2",
       "type": "serve",
-      "time": 46.6,
+      "time": 31.2,
       "suggested": true
     },
     {
       "id": "end-2",
       "type": "end",
-      "time": 54.6,
+      "time": 38.8,
       "suggested": true
     },
     {
       "id": "serve-3",
       "type": "serve",
-      "time": 59.6,
+      "time": 42.0,
       "suggested": true
     },
     {
       "id": "end-3",
       "type": "end",
-      "time": 67.6,
+      "time": 51.8,
       "suggested": true
     },
     {
       "id": "serve-4",
       "type": "serve",
       "time": 99.2,
-      "suggested": true,
-      "lowConfidence": true
+      "suggested": true
     },
     {
       "id": "end-4",
       "type": "end",
       "time": 122.8,
-      "suggested": true,
-      "lowConfidence": true
+      "suggested": true
     },
     {
       "id": "serve-5",
       "type": "serve",
-      "time": 148.6,
+      "time": 125.2,
       "suggested": true
     },
     {
       "id": "end-5",
       "type": "end",
-      "time": 156.6,
+      "time": 133.8,
       "suggested": true
     },
     {
       "id": "serve-6",
       "type": "serve",
-      "time": 247.6,
+      "time": 238.0,
       "suggested": true
     },
     {
       "id": "end-6",
       "type": "end",
-      "time": 255.6,
+      "time": 258.8,
       "suggested": true
     },
     {
       "id": "serve-7",
       "type": "serve",
-      "time": 260.2,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 261.2,
+      "suggested": true
     },
     {
       "id": "end-7",
       "type": "end",
       "time": 267.8,
-      "suggested": true,
-      "lowConfidence": true
+      "suggested": true
     },
     {
       "id": "serve-8",
       "type": "serve",
-      "time": 274.6,
+      "time": 271.2,
       "suggested": true
     },
     {
@@ -107,13 +103,13 @@
     {
       "id": "serve-9",
       "type": "serve",
-      "time": 365.6,
+      "time": 359.6,
       "suggested": true
     },
     {
       "id": "end-9",
       "type": "end",
-      "time": 373.6,
+      "time": 367.6,
       "suggested": true
     },
     {
@@ -132,34 +128,30 @@
       "id": "serve-11",
       "type": "serve",
       "time": 528.2,
-      "suggested": true,
-      "lowConfidence": true
+      "suggested": true
     },
     {
       "id": "end-11",
       "type": "end",
       "time": 535.8,
-      "suggested": true,
-      "lowConfidence": true
+      "suggested": true
     },
     {
       "id": "serve-12",
       "type": "serve",
       "time": 565.2,
-      "suggested": true,
-      "lowConfidence": true
+      "suggested": true
     },
     {
       "id": "end-12",
       "type": "end",
-      "time": 571.8,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 572.8,
+      "suggested": true
     },
     {
       "id": "serve-13",
       "type": "serve",
-      "time": 595.0,
+      "time": 594.2,
       "suggested": true
     },
     {
@@ -171,282 +163,315 @@
     {
       "id": "serve-14",
       "type": "serve",
-      "time": 700.6,
+      "time": 685.2,
       "suggested": true
     },
     {
       "id": "end-14",
       "type": "end",
-      "time": 708.6,
+      "time": 691.8,
       "suggested": true
     },
     {
       "id": "serve-15",
       "type": "serve",
-      "time": 767.6,
-      "suggested": true
-    },
-    {
-      "id": "serve-16",
-      "type": "serve",
-      "time": 768.6,
+      "time": 715.2,
       "suggested": true
     },
     {
       "id": "end-15",
       "type": "end",
-      "time": 775.6,
+      "time": 722.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-16",
+      "type": "serve",
+      "time": 743.2,
       "suggested": true
     },
     {
       "id": "end-16",
       "type": "end",
-      "time": 776.8,
+      "time": 753.8,
       "suggested": true
     },
     {
       "id": "serve-17",
       "type": "serve",
-      "time": 800.2,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 768.0,
+      "suggested": true
     },
     {
       "id": "end-17",
       "type": "end",
-      "time": 807.8,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 776.8,
+      "suggested": true
     },
     {
       "id": "serve-18",
       "type": "serve",
-      "time": 832.2,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 800.2,
+      "suggested": true
     },
     {
       "id": "end-18",
       "type": "end",
-      "time": 839.8,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 807.8,
+      "suggested": true
     },
     {
       "id": "serve-19",
       "type": "serve",
-      "time": 904.2,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 832.2,
+      "suggested": true
     },
     {
       "id": "end-19",
       "type": "end",
-      "time": 911.8,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 839.8,
+      "suggested": true
     },
     {
       "id": "serve-20",
       "type": "serve",
-      "time": 949.6,
+      "time": 904.2,
       "suggested": true
     },
     {
       "id": "end-20",
       "type": "end",
-      "time": 957.6,
+      "time": 911.8,
       "suggested": true
     },
     {
       "id": "serve-21",
       "type": "serve",
-      "time": 989.6,
+      "time": 949.6,
       "suggested": true
     },
     {
       "id": "end-21",
       "type": "end",
-      "time": 1037.8,
+      "time": 957.6,
       "suggested": true
     },
     {
       "id": "serve-22",
       "type": "serve",
-      "time": 1050.2,
+      "time": 969.2,
       "suggested": true
     },
     {
       "id": "end-22",
       "type": "end",
-      "time": 1088.8,
+      "time": 1036.8,
       "suggested": true
     },
     {
       "id": "serve-23",
       "type": "serve",
-      "time": 1110.2,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 1051.2,
+      "suggested": true
     },
     {
       "id": "end-23",
       "type": "end",
-      "time": 1135.8,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 1089.8,
+      "suggested": true
     },
     {
       "id": "serve-24",
       "type": "serve",
-      "time": 1183.2,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 1110.2,
+      "suggested": true
     },
     {
       "id": "end-24",
       "type": "end",
-      "time": 1191.8,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 1123.8,
+      "suggested": true
     },
     {
       "id": "serve-25",
       "type": "serve",
-      "time": 1245.2,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 1126.2,
+      "suggested": true
     },
     {
       "id": "end-25",
       "type": "end",
-      "time": 1264.8,
-      "suggested": true,
-      "lowConfidence": true
+      "time": 1135.8,
+      "suggested": true
     },
     {
       "id": "serve-26",
       "type": "serve",
-      "time": 1352.6,
+      "time": 1153.2,
       "suggested": true
     },
     {
       "id": "end-26",
       "type": "end",
-      "time": 1369.8,
+      "time": 1176.8,
       "suggested": true
     },
     {
       "id": "serve-27",
       "type": "serve",
-      "time": 1446.6,
+      "time": 1183.2,
       "suggested": true
     },
     {
       "id": "end-27",
       "type": "end",
-      "time": 1452.409,
+      "time": 1191.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-28",
+      "type": "serve",
+      "time": 1245.2,
+      "suggested": true
+    },
+    {
+      "id": "end-28",
+      "type": "end",
+      "time": 1264.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-29",
+      "type": "serve",
+      "time": 1290.2,
+      "suggested": true
+    },
+    {
+      "id": "end-29",
+      "type": "end",
+      "time": 1301.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-30",
+      "type": "serve",
+      "time": 1348.2,
+      "suggested": true
+    },
+    {
+      "id": "end-30",
+      "type": "end",
+      "time": 1369.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-31",
+      "type": "serve",
+      "time": 1441.2,
+      "suggested": true
+    },
+    {
+      "id": "end-31",
+      "type": "end",
+      "time": 1450.8,
       "suggested": true
     }
   ],
   "scenes": [
     {
       "id": "scene-1",
-      "source": "model-confirmed-serve",
-      "start": 22.6,
-      "end": 30.6,
+      "source": "local-motion-strong",
+      "start": 0.0,
+      "end": 7.4,
       "peak": 1.0,
-      "score": 0.21909,
+      "score": 0.2172,
       "tags": [
         "motion",
-        "model-serve",
         "rally"
       ],
       "model": {
-        "has_serve": true,
-        "serve_tile": 12,
+        "has_serve": false,
+        "serve_tile": null,
         "has_rally": true,
-        "has_point_end": false,
-        "end_tile": null,
+        "has_point_end": true,
+        "end_tile": 12,
         "has_paddle_signal": false,
-        "confidence": 0.85,
-        "reason": "El jugador en el servidor está en una postura de reset, con la paleta levantada y listo para servir. La pelota se ve claramente cerca del punto de contacto, lo que sugiere un saque inmediato. No hay evidencia de un rally o final de punto después del saque."
+        "confidence": 0.8,
+        "reason": "El rally comienza con movimiento de los jugadores, pero no hay evidencia clara de un saque inicial. La pelota aparece en el aire y los jugadores reaccionan inmediatamente, lo que sugiere que ya se encuentra en pleno rally. No hay una paleta elevada o señal clara para identificar un saque."
       }
     },
     {
       "id": "scene-2",
-      "source": "model-confirmed-serve",
-      "start": 46.6,
-      "end": 54.6,
+      "source": "model-rejected-serve",
+      "start": 31.2,
+      "end": 38.8,
       "peak": 35.0,
-      "score": 3.49162,
+      "score": 3.53917,
       "tags": [
         "learned-serve-candidate",
         "motion",
-        "model-serve",
+        "model-rejected",
         "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00561,
-        "post_motion": 0.04792,
+        "pre_motion": 0.00551,
+        "post_motion": 0.04884,
         "quiet_ratio": 1.0,
         "active_ratio": 0.625,
         "audio_boost": 0.11
       },
       "model": {
-        "has_serve": true,
-        "serve_tile": 10,
+        "has_serve": false,
+        "serve_tile": null,
         "has_rally": true,
-        "has_point_end": false,
-        "end_tile": null,
+        "has_point_end": true,
+        "end_tile": 12,
         "has_paddle_signal": false,
-        "confidence": 0.85,
-        "reason": "El jugador está en posición inicial, con la paleta levantada y listo para servir. La pelota se ve claramente cerca de la paleta del servidor, lo que sugiere un saque inmediato."
+        "confidence": 0.8,
+        "reason": "El rally parece estar en curso, pero no hay evidencia clara de un saque inicial. Los jugadores están intercambiando la pelota y el punto termina con una relajación del cuerpo y una postura más relajada."
       }
     },
     {
       "id": "scene-3",
-      "source": "model-confirmed-serve",
-      "start": 59.6,
-      "end": 67.6,
+      "source": "local-motion",
+      "start": 42.0,
+      "end": 51.8,
       "peak": 45.0,
-      "score": 4.10075,
+      "score": 4.28341,
       "tags": [
         "learned-serve-candidate",
         "motion",
-        "model-serve",
         "rally"
       ],
       "model": {
-        "has_serve": true,
-        "serve_tile": 10,
+        "has_serve": false,
+        "serve_tile": null,
         "has_rally": true,
-        "has_point_end": false,
-        "end_tile": null,
+        "has_point_end": true,
+        "end_tile": 12,
         "has_paddle_signal": false,
-        "confidence": 0.85,
-        "reason": "El jugador en el servidor está en una postura de reset, con la paleta levantada y listo para servir. La pelota se ve claramente cerca del servidor, lo que sugiere un saque inmediato. El receptor parece estar listo para recibir."
+        "confidence": 0.8,
+        "reason": "El rally ya ha comenzado y no hay evidencia clara de un saque inicial antes del frame 3."
       }
     },
     {
       "id": "scene-4",
-      "source": "review-dense-candidate",
+      "source": "model-rejected-serve",
       "start": 99.2,
       "end": 122.8,
       "peak": 110.0,
-      "score": 3.25346,
+      "score": 3.24297,
       "tags": [
         "learned-serve-candidate",
-        "model-rejected",
         "motion",
-        "rally",
-        "review-candidate"
+        "model-rejected",
+        "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00376,
-        "post_motion": 0.00594,
+        "pre_motion": 0.00375,
+        "post_motion": 0.00587,
         "quiet_ratio": 1.0,
-        "active_ratio": 0.375,
+        "active_ratio": 0.5,
         "audio_boost": 0.137
       },
       "model": {
@@ -456,92 +481,81 @@
         "has_point_end": true,
         "end_tile": 12,
         "has_paddle_signal": false,
-        "confidence": 0.85,
-        "reason": "El rally parece estar en curso, pero no hay evidencia clara de un saque inicial. Los jugadores están moviéndose y reaccionando a la pelota, lo que sugiere que el punto está terminando."
-      },
-      "review_note": "Candidato publicado aunque el modelo lo rechazo; corregir o borrar."
+        "confidence": 0.75,
+        "reason": "No hay evidencia clara de un saque inicial, ya que los jugadores no están en una posición de reset ni se mueven hacia la pelota. El punto termina con el jugador del lado derecho caminando y relajándose."
+      }
     },
     {
       "id": "scene-5",
-      "source": "model-confirmed-serve",
-      "start": 148.6,
-      "end": 156.6,
+      "source": "model-rejected-serve",
+      "start": 125.2,
+      "end": 133.8,
       "peak": 130.0,
-      "score": 1.92977,
+      "score": 1.93314,
       "tags": [
         "learned-serve-candidate",
-        "model-serve",
+        "model-rejected",
         "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.0007,
-        "post_motion": 0.01072,
+        "pre_motion": 0.00072,
+        "post_motion": 0.01078,
         "quiet_ratio": 1.0,
         "active_ratio": 0.375,
         "audio_boost": 0.201
       },
       "model": {
-        "has_serve": true,
-        "serve_tile": 12,
+        "has_serve": false,
+        "serve_tile": null,
         "has_rally": true,
-        "has_point_end": false,
-        "end_tile": null,
+        "has_point_end": true,
+        "end_tile": 12,
         "has_paddle_signal": false,
-        "confidence": 0.85,
-        "reason": "El jugador está en una posición preparada para servir, con la paleta levantada y el cuerpo alineado. La pelota es visible cerca del suelo, lo que sugiere un intento de servicio. No hay evidencia clara de un punto final."
+        "confidence": 0.8,
+        "reason": "El rally comienza con el jugador en movimiento, pero no hay evidencia clara de un saque inicial. El punto termina cuando los jugadores se relajan y caminan hacia atrás."
       }
     },
     {
       "id": "scene-6",
-      "source": "model-confirmed-serve",
-      "start": 247.6,
-      "end": 255.6,
-      "peak": 229.0,
-      "score": 3.9386,
+      "source": "local-motion-strong",
+      "start": 238.0,
+      "end": 258.8,
+      "peak": 241.0,
+      "score": 4.20301,
       "tags": [
         "learned-serve-candidate",
-        "motion",
         "model-serve",
+        "motion",
         "rally"
       ],
-      "diagnostic": {
-        "pre_motion": 0.00662,
-        "post_motion": 0.01333,
-        "quiet_ratio": 0.75,
-        "active_ratio": 0.625,
-        "audio_boost": 0.297
-      },
       "model": {
-        "has_serve": true,
-        "serve_tile": 12,
+        "has_serve": false,
+        "serve_tile": null,
         "has_rally": true,
-        "has_point_end": false,
-        "end_tile": null,
+        "has_point_end": true,
+        "end_tile": 12,
         "has_paddle_signal": false,
-        "confidence": 0.95,
-        "reason": "El jugador en el lado derecho del frontón se prepara para servir, con la paleta levantada y en posición inicial. La pelota está cerca de su mano derecha, lo que sugiere un movimiento inminente hacia la pelota. Los jugadores en el otro lado del frontón están listos para recibir, lo que indica que el punto ha comenzado."
+        "confidence": 0.8,
+        "reason": "No hay evidencia clara de un saque inicial, ya que los jugadores no están en una posición de reset ni se mueven hacia la pelota. El rally parece estar en curso y termina con el jugador que lanza la pelota alejándose del área activa."
       }
     },
     {
       "id": "scene-7",
-      "source": "review-dense-candidate",
-      "start": 260.2,
+      "source": "model-rejected-serve",
+      "start": 261.2,
       "end": 267.8,
-      "peak": 263.0,
-      "score": 4.20222,
+      "peak": 264.0,
+      "score": 1.92353,
       "tags": [
         "learned-serve-candidate",
         "model-rejected",
-        "model-serve",
-        "motion",
-        "rally",
-        "review-candidate"
+        "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00436,
-        "post_motion": 0.01679,
+        "pre_motion": 0.00406,
+        "post_motion": 0.01725,
         "quiet_ratio": 1.0,
-        "active_ratio": 0.375,
+        "active_ratio": 0.25,
         "audio_boost": 0.24
       },
       "model": {
@@ -552,69 +566,68 @@
         "end_tile": 12,
         "has_paddle_signal": false,
         "confidence": 0.8,
-        "reason": "El rally parece haber comenzado antes de la imagen numerada 5, pero no hay evidencia clara del saque en esta secuencia."
-      },
-      "review_note": "Candidato publicado aunque el modelo lo rechazo; corregir o borrar."
+        "reason": "El rally comienza con movimiento de los jugadores, pero no hay evidencia clara de un saque inicial. La pelota aparece en el aire y los jugadores están en movimiento, lo que sugiere que es parte del rally. No se observa una paleta elevada o una posición de reset para inferir un saque. El punto termina cuando los jugadores parecen relajarse y caminar hacia atrás."
+      }
     },
     {
       "id": "scene-8",
-      "source": "model-confirmed-serve",
-      "start": 274.6,
+      "source": "model-rejected-serve",
+      "start": 271.2,
       "end": 289.8,
       "peak": 279.0,
-      "score": 3.34749,
+      "score": 3.34688,
       "tags": [
         "learned-serve-candidate",
         "motion",
-        "model-serve",
+        "model-rejected",
         "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00487,
-        "post_motion": 0.0231,
+        "pre_motion": 0.00484,
+        "post_motion": 0.02299,
         "quiet_ratio": 1.0,
         "active_ratio": 0.875,
         "audio_boost": 0.587
       },
       "model": {
-        "has_serve": true,
-        "serve_tile": 5,
+        "has_serve": false,
+        "serve_tile": null,
         "has_rally": true,
-        "has_point_end": false,
-        "end_tile": null,
+        "has_point_end": true,
+        "end_tile": 12,
         "has_paddle_signal": false,
-        "confidence": 0.9,
-        "reason": "El jugador en el servidor está en una postura de reset, con la paleta levantada y listo para servir. Los jugadores del receptor están en posición inicial, lo que sugiere un punto de saque. No hay evidencia clara de un final de punto en estos fotogramas."
+        "confidence": 0.8,
+        "reason": "No hay evidencia clara de un saque inicial, los jugadores parecen estar en pleno rally y no hay una paleta elevada o señal deliberada que indique el inicio del punto."
       }
     },
     {
       "id": "scene-9",
       "source": "model-confirmed-serve",
-      "start": 365.6,
-      "end": 373.6,
-      "peak": 340.0,
-      "score": 1.96328,
+      "start": 359.6,
+      "end": 367.6,
+      "peak": 345.0,
+      "score": 1.9511,
       "tags": [
         "learned-serve-candidate",
         "model-serve",
         "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00478,
-        "post_motion": 0.01323,
+        "pre_motion": 0.00497,
+        "post_motion": 0.01308,
         "quiet_ratio": 0.75,
         "active_ratio": 0.625,
         "audio_boost": 0.148
       },
       "model": {
         "has_serve": true,
-        "serve_tile": 12,
+        "serve_tile": 10,
         "has_rally": true,
         "has_point_end": false,
         "end_tile": null,
         "has_paddle_signal": false,
         "confidence": 0.85,
-        "reason": "El jugador en el lado izquierdo del frontón se prepara para servir, con la paleta levantada y en posición inicial. La pelota está cerca de su mano derecha, lo que sugiere un movimiento inminente hacia la pelota. Los jugadores en el lado derecho están listos para recibir, lo que indica que el rally ha comenzado. No hay evidencia clara de final de punto en estas imágenes."
+        "reason": "El jugador en el servidor (jugador con la camiseta naranja) se encuentra en una postura de reset, y luego inicia el movimiento para servir. El receptor (jugador con la camiseta blanca) comienza a moverse inmediatamente después del movimiento del servidor, lo que sugiere un rally inmediato."
       }
     },
     {
@@ -622,8 +635,8 @@
       "source": "local-motion",
       "start": 506.0,
       "end": 514.8,
-      "peak": 509.0,
-      "score": 6.09036,
+      "peak": 508.0,
+      "score": 6.13725,
       "tags": [
         "learned-serve-candidate",
         "motion",
@@ -637,26 +650,25 @@
         "end_tile": 12,
         "has_paddle_signal": false,
         "confidence": 0.8,
-        "reason": "El rally ya ha comenzado y no hay evidencia clara de un saque inicial antes del frame 494.0s."
+        "reason": "El rally ya ha comenzado y no hay evidencia clara de un saque inicial antes del frame 6."
       }
     },
     {
       "id": "scene-11",
-      "source": "review-dense-candidate",
+      "source": "model-rejected-serve",
       "start": 528.2,
       "end": 535.8,
       "peak": 532.0,
-      "score": 3.39249,
+      "score": 3.37152,
       "tags": [
         "learned-serve-candidate",
-        "model-rejected",
         "motion",
-        "rally",
-        "review-candidate"
+        "model-rejected",
+        "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00499,
-        "post_motion": 0.05005,
+        "pre_motion": 0.00498,
+        "post_motion": 0.04934,
         "quiet_ratio": 1.0,
         "active_ratio": 0.5,
         "audio_boost": 0.075
@@ -669,27 +681,25 @@
         "end_tile": 12,
         "has_paddle_signal": false,
         "confidence": 0.8,
-        "reason": "El rally ya ha comenzado y no hay evidencia clara de un saque inicial antes del frame 9."
-      },
-      "review_note": "Candidato publicado aunque el modelo lo rechazo; corregir o borrar."
+        "reason": "No hay evidencia clara de un saque inicial, los jugadores no están en una postura de reset ni se mueven hacia la pelota. El punto termina con el jugador caminando y relajándose."
+      }
     },
     {
       "id": "scene-12",
-      "source": "review-dense-candidate",
+      "source": "model-rejected-serve",
       "start": 565.2,
-      "end": 571.8,
-      "peak": 570.0,
-      "score": 3.44435,
+      "end": 572.8,
+      "peak": 569.0,
+      "score": 3.28145,
       "tags": [
         "learned-serve-candidate",
         "model-rejected",
-        "rally",
-        "review-candidate"
+        "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.0022,
-        "post_motion": 0.04452,
-        "quiet_ratio": 1.0,
+        "pre_motion": 0.0024,
+        "post_motion": 0.04547,
+        "quiet_ratio": 0.75,
         "active_ratio": 0.375,
         "audio_boost": 0.412
       },
@@ -701,17 +711,137 @@
         "end_tile": 12,
         "has_paddle_signal": false,
         "confidence": 0.8,
-        "reason": "El rally parece estar en curso, pero no hay evidencia clara de un saque inicial. Los jugadores parecen estar en movimiento y reaccionando a la pelota, lo que sugiere que el punto está terminando."
-      },
-      "review_note": "Candidato publicado aunque el modelo lo rechazo; corregir o borrar."
+        "reason": "No hay evidencia clara de un saque inicial, ya que la pelota no aparece y los jugadores no están en una postura de reset para iniciar el rally."
+      }
     },
     {
       "id": "scene-13",
-      "source": "local-motion",
-      "start": 595.0,
+      "source": "model-rejected-serve",
+      "start": 594.2,
       "end": 603.8,
       "peak": 598.0,
-      "score": 3.35044,
+      "score": 3.40633,
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00052,
+        "post_motion": 0.04078,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.625,
+        "audio_boost": 0.101
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": true,
+        "end_tile": 12,
+        "has_paddle_signal": false,
+        "confidence": 0.8,
+        "reason": "El rally comienza con jugadores en movimiento y la pelota visible, pero no hay evidencia clara de un saque inicial. El punto termina cuando los jugadores se relajan y caminan hacia atrás."
+      }
+    },
+    {
+      "id": "scene-14",
+      "source": "model-rejected-serve",
+      "start": 685.2,
+      "end": 691.8,
+      "peak": 687.0,
+      "score": 1.89596,
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00402,
+        "post_motion": 0.01541,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.375,
+        "audio_boost": 0.11
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": true,
+        "end_tile": 12,
+        "has_paddle_signal": false,
+        "confidence": 0.8,
+        "reason": "No hay evidencia clara de un saque inicial, los jugadores parecen estar en una fase intermedia del rally y no se observa el inicio del punto hasta la última imagen."
+      }
+    },
+    {
+      "id": "scene-15",
+      "source": "model-rejected-serve",
+      "start": 715.2,
+      "end": 722.8,
+      "peak": 720.0,
+      "score": 1.97363,
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.003,
+        "post_motion": 0.01378,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.25,
+        "audio_boost": 0.387
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": true,
+        "end_tile": 12,
+        "has_paddle_signal": false,
+        "confidence": 0.8,
+        "reason": "No hay evidencia clara de un saque inicial, los jugadores parecen estar en una fase intermedia del rally y no se observa el inicio del punto hasta el final de la secuencia."
+      }
+    },
+    {
+      "id": "scene-16",
+      "source": "model-rejected-serve",
+      "start": 743.2,
+      "end": 753.8,
+      "peak": 744.0,
+      "score": 4.75222,
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00426,
+        "post_motion": 0.07607,
+        "quiet_ratio": 0.75,
+        "active_ratio": 0.625,
+        "audio_boost": 0.369
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": true,
+        "end_tile": 12,
+        "has_paddle_signal": false,
+        "confidence": 0.8,
+        "reason": "El rally comienza con movimiento de los jugadores, pero no hay evidencia clara de un saque inicial. Los jugadores parecen estar en una posición de juego normal y el punto termina cuando uno de ellos se aleja del área activa."
+      }
+    },
+    {
+      "id": "scene-17",
+      "source": "local-motion-strong",
+      "start": 768.0,
+      "end": 776.8,
+      "peak": 773.0,
+      "score": 4.87198,
       "tags": [
         "learned-serve-candidate",
         "motion",
@@ -725,109 +855,24 @@
         "end_tile": 12,
         "has_paddle_signal": false,
         "confidence": 0.8,
-        "reason": "El punto termina con la relajación de los jugadores y el final del rally, pero no hay evidencia clara de un saque inicial."
+        "reason": "No hay evidencia clara de un saque inicial, el rally parece estar en curso y la jugada termina con una relajación del cuerpo."
       }
     },
     {
-      "id": "scene-14",
-      "source": "model-confirmed-serve",
-      "start": 700.6,
-      "end": 708.6,
-      "peak": 687.0,
-      "score": 1.88883,
-      "tags": [
-        "learned-serve-candidate",
-        "model-serve",
-        "rally"
-      ],
-      "diagnostic": {
-        "pre_motion": 0.00413,
-        "post_motion": 0.01539,
-        "quiet_ratio": 1.0,
-        "active_ratio": 0.375,
-        "audio_boost": 0.11
-      },
-      "model": {
-        "has_serve": true,
-        "serve_tile": 10,
-        "has_rally": true,
-        "has_point_end": false,
-        "end_tile": null,
-        "has_paddle_signal": false,
-        "confidence": 0.85,
-        "reason": "El jugador en el lado izquierdo del frontón se encuentra en una postura de saque, con la paleta levantada y listo para golpear la pelota. La secuencia muestra que el saque comienza a las 691.0s (tile 7), pero el inicio exacto del punto se puede inferir desde el tile anterior (688.0s - tile 6) donde el jugador está en una postura de preparación para el saque."
-      }
-    },
-    {
-      "id": "scene-15",
-      "source": "model-confirmed-serve",
-      "start": 767.6,
-      "end": 775.6,
-      "peak": 744.0,
-      "score": 4.70245,
-      "tags": [
-        "learned-serve-candidate",
-        "model-serve",
-        "rally"
-      ],
-      "diagnostic": {
-        "pre_motion": 0.00396,
-        "post_motion": 0.07558,
-        "quiet_ratio": 0.75,
-        "active_ratio": 0.625,
-        "audio_boost": 0.338
-      },
-      "model": {
-        "has_serve": true,
-        "serve_tile": 12,
-        "has_rally": true,
-        "has_point_end": false,
-        "end_tile": null,
-        "has_paddle_signal": false,
-        "confidence": 0.85,
-        "reason": "El jugador en el servidor está en una postura de reset, con la paleta levantada y listo para iniciar el movimiento hacia la pelota. Los jugadores del receptor están en posición inicial, lo que sugiere un punto de saque. No hay evidencia clara de un final de punto en estos fotogramas."
-      }
-    },
-    {
-      "id": "scene-16",
-      "source": "model-confirmed-serve",
-      "start": 768.6,
-      "end": 776.8,
-      "peak": 773.0,
-      "score": 4.90933,
-      "tags": [
-        "learned-serve-candidate",
-        "motion",
-        "model-serve",
-        "rally"
-      ],
-      "model": {
-        "has_serve": true,
-        "serve_tile": 5,
-        "has_rally": true,
-        "has_point_end": false,
-        "end_tile": null,
-        "has_paddle_signal": false,
-        "confidence": 0.9,
-        "reason": "El jugador en el servidor está en una postura de reset, con la paleta levantada y listo para servir. La pelota es visible cerca del punto de contacto, lo que sugiere un saque. No hay evidencia clara de un final de punto en estos fotogramas."
-      }
-    },
-    {
-      "id": "scene-17",
-      "source": "review-dense-candidate",
+      "id": "scene-18",
+      "source": "model-rejected-serve",
       "start": 800.2,
       "end": 807.8,
       "peak": 803.0,
-      "score": 3.64992,
+      "score": 3.63278,
       "tags": [
         "learned-serve-candidate",
         "model-rejected",
-        "rally",
-        "review-candidate"
+        "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00102,
-        "post_motion": 0.03448,
+        "pre_motion": 0.00082,
+        "post_motion": 0.03373,
         "quiet_ratio": 1.0,
         "active_ratio": 0.5,
         "audio_boost": 0.8
@@ -840,26 +885,24 @@
         "end_tile": 12,
         "has_paddle_signal": false,
         "confidence": 0.8,
-        "reason": "El rally empieza con el jugador en movimiento, pero no hay evidencia clara de un saque inicial. El punto termina cuando los jugadores parecen relajarse y dejar de perseguir la pelota."
-      },
-      "review_note": "Candidato publicado aunque el modelo lo rechazo; corregir o borrar."
+        "reason": "El rally comienza con jugadores en movimiento, pero no hay evidencia clara de un saque inicial. Los jugadores parecen estar esperando o preparándose para recibir la pelota, lo que sugiere el inicio del punto. No se observa una paleta elevada por más de 2 segundos ni una reacción clara de los jugadores que indique el final del punto."
+      }
     },
     {
-      "id": "scene-18",
-      "source": "review-dense-candidate",
+      "id": "scene-19",
+      "source": "model-rejected-serve",
       "start": 832.2,
       "end": 839.8,
       "peak": 837.0,
-      "score": 2.24658,
+      "score": 2.22042,
       "tags": [
         "learned-serve-candidate",
         "model-rejected",
-        "rally",
-        "review-candidate"
+        "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.0057,
-        "post_motion": 0.01305,
+        "pre_motion": 0.00549,
+        "post_motion": 0.01217,
         "quiet_ratio": 1.0,
         "active_ratio": 0.25,
         "audio_boost": 0.8
@@ -872,26 +915,24 @@
         "end_tile": 12,
         "has_paddle_signal": false,
         "confidence": 0.8,
-        "reason": "El rally parece haber comenzado antes de la imagen 9, pero no hay evidencia clara del saque en las imágenes anteriores. El punto finaliza con los jugadores relajándose y caminando hacia atrás."
-      },
-      "review_note": "Candidato publicado aunque el modelo lo rechazo; corregir o borrar."
+        "reason": "No hay evidencia clara de un saque inicial, los jugadores parecen estar en una fase intermedia del rally y no se observa el inicio del punto hasta la última imagen."
+      }
     },
     {
-      "id": "scene-19",
-      "source": "review-dense-candidate",
+      "id": "scene-20",
+      "source": "model-rejected-serve",
       "start": 904.2,
       "end": 911.8,
       "peak": 908.0,
-      "score": 2.01743,
+      "score": 2.02033,
       "tags": [
         "learned-serve-candidate",
         "model-rejected",
-        "rally",
-        "review-candidate"
+        "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00668,
-        "post_motion": 0.01426,
+        "pre_motion": 0.00657,
+        "post_motion": 0.0142,
         "quiet_ratio": 1.0,
         "active_ratio": 0.5,
         "audio_boost": 0.211
@@ -904,24 +945,23 @@
         "end_tile": 12,
         "has_paddle_signal": false,
         "confidence": 0.8,
-        "reason": "El rally parece estar en curso, pero no hay evidencia clara de un saque inicial. Los jugadores parecen estar en movimiento y reaccionando a la pelota, lo que sugiere que el punto está terminando."
-      },
-      "review_note": "Candidato publicado aunque el modelo lo rechazo; corregir o borrar."
+        "reason": "El rally ya ha comenzado y no hay evidencia clara de un saque inicial antes del frame 9."
+      }
     },
     {
-      "id": "scene-20",
+      "id": "scene-21",
       "source": "model-confirmed-serve",
       "start": 949.6,
       "end": 957.6,
       "peak": 939.0,
-      "score": 2.12781,
+      "score": 2.12764,
       "tags": [
         "learned-serve-candidate",
         "model-serve",
         "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00161,
+        "pre_motion": 0.00166,
         "post_motion": 0.01312,
         "quiet_ratio": 1.0,
         "active_ratio": 0.5,
@@ -935,88 +975,86 @@
         "end_tile": null,
         "has_paddle_signal": false,
         "confidence": 0.85,
-        "reason": "El jugador en el servidor está en una postura de reset y luego inicia movimiento, lo que sugiere un saque. El receptor comienza a moverse inmediatamente después del saque, lo cual es consistente con la dinámica de un rally. No hay evidencia clara de final de punto en estos fotogramas."
+        "reason": "The rally starts with a clear reset and immediate movement, indicating the serve. The players are in position and ready to play."
       }
     },
     {
-      "id": "scene-21",
-      "source": "model-confirmed-serve",
-      "start": 989.6,
-      "end": 1037.8,
+      "id": "scene-22",
+      "source": "model-rejected-serve",
+      "start": 969.2,
+      "end": 1036.8,
       "peak": 977.0,
-      "score": 8.63748,
+      "score": 8.63919,
       "tags": [
         "learned-serve-candidate",
         "motion",
-        "model-serve",
+        "model-rejected",
         "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00656,
-        "post_motion": 0.01239,
+        "pre_motion": 0.00647,
+        "post_motion": 0.01168,
         "quiet_ratio": 0.75,
         "active_ratio": 0.5,
         "audio_boost": 0.8
       },
       "model": {
-        "has_serve": true,
-        "serve_tile": 5,
+        "has_serve": false,
+        "serve_tile": null,
         "has_rally": true,
-        "has_point_end": false,
-        "end_tile": null,
+        "has_point_end": true,
+        "end_tile": 12,
         "has_paddle_signal": false,
         "confidence": 0.8,
-        "reason": "El jugador en el servidor está en una postura de reset, con la paleta levantada y listo para servir. Los jugadores del receptor están en posición inicial, lo que sugiere un punto de saque. No hay evidencia clara de un final de punto en estos fotogramas."
-      }
-    },
-    {
-      "id": "scene-22",
-      "source": "model-confirmed-serve",
-      "start": 1050.2,
-      "end": 1088.8,
-      "peak": 1078.0,
-      "score": 2.16838,
-      "tags": [
-        "learned-serve-candidate",
-        "motion",
-        "model-serve",
-        "rally"
-      ],
-      "diagnostic": {
-        "pre_motion": 0.00344,
-        "post_motion": 0.0094,
-        "quiet_ratio": 1.0,
-        "active_ratio": 0.5,
-        "audio_boost": 0.428
-      },
-      "model": {
-        "has_serve": true,
-        "serve_tile": 1038.0,
-        "has_rally": true,
-        "has_point_end": false,
-        "end_tile": null,
-        "has_paddle_signal": false,
-        "confidence": 0.95,
-        "reason": "El jugador está en posición inicial, con la paleta levantada y listo para servir. La pelota se ve pequeña pero es posible que esté cerca del punto de contacto. No hay evidencia clara de un final de punto."
+        "reason": "El rally parece estar en curso, pero no hay evidencia clara de un saque inicial. Los jugadores parecen estar en movimiento y reaccionando a la pelota, lo que sugiere que el punto está terminando."
       }
     },
     {
       "id": "scene-23",
-      "source": "review-dense-candidate",
+      "source": "model-rejected-serve",
+      "start": 1051.2,
+      "end": 1089.8,
+      "peak": 1078.0,
+      "score": 2.31986,
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00431,
+        "post_motion": 0.00967,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.625,
+        "audio_boost": 0.428
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": true,
+        "end_tile": 12,
+        "has_paddle_signal": false,
+        "confidence": 0.75,
+        "reason": "No hay evidencia clara de un saque inicial, ya que los jugadores no están en una posición de reset ni se mueven hacia la pelota. El punto termina con el jugador del lado derecho parando y relajándose."
+      }
+    },
+    {
+      "id": "scene-24",
+      "source": "model-rejected-serve",
       "start": 1110.2,
-      "end": 1135.8,
+      "end": 1123.8,
       "peak": 1111.0,
-      "score": 2.63439,
+      "score": 1.96255,
       "tags": [
         "learned-serve-candidate",
         "model-rejected",
-        "motion",
-        "rally",
-        "review-candidate"
+        "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00343,
-        "post_motion": 0.01315,
+        "pre_motion": 0.00314,
+        "post_motion": 0.01084,
         "quiet_ratio": 1.0,
         "active_ratio": 0.375,
         "audio_boost": 0.326
@@ -1029,28 +1067,85 @@
         "end_tile": 12,
         "has_paddle_signal": false,
         "confidence": 0.8,
-        "reason": "El rally parece haber comenzado antes de la imagen 9, pero no hay evidencia clara del saque inicial en las imágenes anteriores. El punto termina con el jugador que se aleja y deja de perseguir la pelota."
-      },
-      "review_note": "Candidato publicado aunque el modelo lo rechazo; corregir o borrar."
+        "reason": "No hay evidencia clara de un saque inicial, los jugadores parecen estar en una fase intermedia del rally y no se observa el inicio del punto hasta la última imagen."
+      }
     },
     {
-      "id": "scene-24",
-      "source": "review-dense-candidate",
-      "start": 1183.2,
-      "end": 1191.8,
-      "peak": 1187.0,
-      "score": 3.22897,
+      "id": "scene-25",
+      "source": "model-rejected-serve",
+      "start": 1126.2,
+      "end": 1135.8,
+      "peak": 1127.0,
+      "score": 2.99378,
       "tags": [
         "learned-serve-candidate",
         "model-rejected",
-        "model-serve",
-        "motion",
-        "rally",
-        "review-candidate"
+        "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.0054,
-        "post_motion": 0.04364,
+        "pre_motion": 0.00579,
+        "post_motion": 0.02392,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.75,
+        "audio_boost": 0.41
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": true,
+        "end_tile": 12,
+        "has_paddle_signal": false,
+        "confidence": 0.8,
+        "reason": "No se observa un saque claro, el rally parece estar en curso y los jugadores no parecen haber finalizado la jugada."
+      }
+    },
+    {
+      "id": "scene-26",
+      "source": "model-rejected-serve",
+      "start": 1153.2,
+      "end": 1176.8,
+      "peak": 1158.0,
+      "score": 2.02523,
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00694,
+        "post_motion": 0.02014,
+        "quiet_ratio": 0.5,
+        "active_ratio": 0.625,
+        "audio_boost": 0.216
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": true,
+        "end_tile": 12,
+        "has_paddle_signal": false,
+        "confidence": 0.8,
+        "reason": "El rally comienza con el jugador en posición de recibir, pero no hay evidencia clara de un saque inicial. La jugada termina cuando los jugadores se alejan del área activa y parecen haber finalizado la partida."
+      }
+    },
+    {
+      "id": "scene-27",
+      "source": "model-rejected-serve",
+      "start": 1183.2,
+      "end": 1191.8,
+      "peak": 1187.0,
+      "score": 3.16999,
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00447,
+        "post_motion": 0.04111,
         "quiet_ratio": 0.75,
         "active_ratio": 0.5,
         "audio_boost": 0.386
@@ -1062,28 +1157,26 @@
         "has_point_end": true,
         "end_tile": 12,
         "has_paddle_signal": false,
-        "confidence": 0.8,
-        "reason": "No hay evidencia clara de un saque inicial, el rally parece estar en curso y la jugada termina con una relajación del cuerpo."
-      },
-      "review_note": "Candidato publicado aunque el modelo lo rechazo; corregir o borrar."
+        "confidence": 0.75,
+        "reason": "No hay evidencia clara de un saque inicial, ya que los jugadores no están en una posición de reset ni se mueven hacia la pelota. El punto termina con el jugador retirándose del campo."
+      }
     },
     {
-      "id": "scene-25",
-      "source": "review-dense-candidate",
+      "id": "scene-28",
+      "source": "model-rejected-serve",
       "start": 1245.2,
       "end": 1264.8,
       "peak": 1257.0,
-      "score": 5.3799,
+      "score": 5.41573,
       "tags": [
         "learned-serve-candidate",
-        "model-rejected",
         "motion",
-        "rally",
-        "review-candidate"
+        "model-rejected",
+        "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00237,
-        "post_motion": 0.00239,
+        "pre_motion": 0.00257,
+        "post_motion": 0.00194,
         "quiet_ratio": 0.75,
         "active_ratio": 0.375,
         "audio_boost": 0.206
@@ -1096,82 +1189,111 @@
         "end_tile": 12,
         "has_paddle_signal": false,
         "confidence": 0.8,
-        "reason": "El rally ya ha comenzado y no hay evidencia clara de un saque inicial antes del frame 5."
-      },
-      "review_note": "Candidato publicado aunque el modelo lo rechazo; corregir o borrar."
+        "reason": "No hay evidencia clara de un saque inicial, ya que el primer fotograma muestra a los jugadores en una posición de juego normal y no hay indicio claro de un movimiento de saque. El punto termina con la relajación del cuerpo y la retirada de los jugadores."
+      }
     },
     {
-      "id": "scene-26",
-      "source": "model-confirmed-serve",
-      "start": 1352.6,
-      "end": 1369.8,
-      "peak": 1352.0,
-      "score": 3.00193,
+      "id": "scene-29",
+      "source": "model-rejected-serve",
+      "start": 1290.2,
+      "end": 1301.8,
+      "peak": 1294.0,
+      "score": 2.05624,
       "tags": [
         "learned-serve-candidate",
-        "motion",
-        "model-serve",
+        "model-rejected",
         "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00269,
-        "post_motion": 0.00501,
+        "pre_motion": 0.00101,
+        "post_motion": 0.01075,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.25,
+        "audio_boost": 0.512
+      },
+      "model": {
+        "has_serve": false,
+        "serve_tile": null,
+        "has_rally": true,
+        "has_point_end": true,
+        "end_tile": 12,
+        "has_paddle_signal": false,
+        "confidence": 0.8,
+        "reason": "No hay evidencia clara de un saque inicial, ya que los jugadores no están en una posición de reset ni se mueven hacia la pelota. El punto termina con el jugador en movimiento y sin paletas visibles."
+      }
+    },
+    {
+      "id": "scene-30",
+      "source": "model-rejected-serve",
+      "start": 1348.2,
+      "end": 1369.8,
+      "peak": 1352.0,
+      "score": 3.03941,
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00283,
+        "post_motion": 0.00439,
         "quiet_ratio": 0.75,
         "active_ratio": 0.375,
         "audio_boost": 0.224
       },
       "model": {
-        "has_serve": true,
-        "serve_tile": 5,
+        "has_serve": false,
+        "serve_tile": null,
         "has_rally": true,
-        "has_point_end": false,
-        "end_tile": null,
+        "has_point_end": true,
+        "end_tile": 12,
         "has_paddle_signal": false,
         "confidence": 0.8,
-        "reason": "El jugador está en posición de saque, con la paleta levantada y listo para el movimiento inicial del saque."
+        "reason": "No se observa un saque claro, el rally comienza pero no hay evidencia de un reset o una posición inicial clara antes del inicio del rally."
       }
     },
     {
-      "id": "scene-27",
-      "source": "model-confirmed-serve",
-      "start": 1446.6,
-      "end": 1452.409,
+      "id": "scene-31",
+      "source": "model-rejected-serve",
+      "start": 1441.2,
+      "end": 1450.8,
       "peak": 1451.0,
-      "score": 5.67482,
+      "score": 5.66504,
       "tags": [
         "learned-serve-candidate",
         "motion",
-        "model-serve",
+        "model-rejected",
         "rally"
       ],
       "diagnostic": {
-        "pre_motion": 0.00568,
-        "post_motion": 0.00445,
+        "pre_motion": 0.00582,
+        "post_motion": 0.00432,
         "quiet_ratio": 0.75,
         "active_ratio": 0.375,
         "audio_boost": 0.231
       },
       "model": {
-        "has_serve": true,
-        "serve_tile": 10,
+        "has_serve": false,
+        "serve_tile": null,
         "has_rally": true,
-        "has_point_end": false,
-        "end_tile": null,
+        "has_point_end": true,
+        "end_tile": 12,
         "has_paddle_signal": false,
-        "confidence": 0.95,
-        "reason": "El jugador está en posición inicial, con el cuerpo relativamente inmóvil y la paleta levantada, lo que sugiere un saque. La pelota no es visible pero el contexto indica que se trata de una jugada de saque."
+        "confidence": 0.8,
+        "reason": "El rally comienza con movimiento de los jugadores, pero no hay evidencia clara de un saque inicial. La pelota aparece en el aire y los jugadores reaccionan inmediatamente, lo que sugiere que ya se encuentra en pleno rally. No hay indicio claro de un reset o una paleta elevada por más de 2 segundos."
       }
     }
   ],
   "highlights": [],
   "review_mode": "dense-human-correction",
-  "review_note": "Comparacion: el analisis normal puede rechazar saques reales; este archivo conserva candidatos para correccion humana. No agrega Hit automaticos salvo correccion humana posterior.",
+  "review_note": "Reanalizado con -noautorotate porque este GoPro venia horizontal con display matrix que lo volteaba a vertical. Sin Hit automatico.",
   "normal_model_counts": {
-    "serve": 15,
-    "end": 15
+    "serve": 5,
+    "end": 5
   },
   "dense_counts": {
-    "serve": 27,
-    "end": 27
+    "serve": 31,
+    "end": 31
   }
 }
