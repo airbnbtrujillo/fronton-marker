@@ -1,0 +1,222 @@
+{
+  "version": 2,
+  "source": "videos/070826_pt2-proxy.mp4",
+  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/070826_pt2-proxy.mp4",
+  "duration": null,
+  "marks": [
+    {
+      "time": 0.0,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 5.4,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 122.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 128.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 132.0,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 140.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 197.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 206.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 353.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 359.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 362.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 369.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 373.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 387.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 395.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 420.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 457.6,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 465.6,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 502.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 508.8,
+      "type": "end",
+      "label": "Final"
+    }
+  ],
+  "scenes": [
+    {
+      "start": 0.0,
+      "end": 5.4,
+      "source": "local-motion",
+      "tags": [
+        "motion",
+        "rally"
+      ]
+    },
+    {
+      "start": 122.2,
+      "end": 128.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 132.0,
+      "end": 140.8,
+      "source": "local-motion-strong",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "rally"
+      ]
+    },
+    {
+      "start": 197.2,
+      "end": 206.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 353.2,
+      "end": 359.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 362.2,
+      "end": 369.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 373.2,
+      "end": 387.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 395.2,
+      "end": 420.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 457.6,
+      "end": 465.6,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 502.2,
+      "end": 508.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ]
+    }
+  ],
+  "highlights": [],
+  "normal_model_counts": {
+    "serve": 2,
+    "end": 2
+  },
+  "dense_counts": {
+    "serve": 10,
+    "end": 10
+  },
+  "note": "070826 Pt2 analysis from updated local model; dense review JSON from candidate scenes."
+}
