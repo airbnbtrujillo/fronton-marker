@@ -195,6 +195,14 @@
       pointer-events: none;
     }
 
+    .reviewed-band {
+      position: absolute;
+      inset: 0 auto 0 0;
+      width: 0%;
+      background: linear-gradient(90deg, rgba(88,183,232,.18), rgba(88,183,232,.06));
+      pointer-events: none;
+    }
+
     .scene-band {
       position: absolute;
       top: 8px;
@@ -320,7 +328,7 @@
     .row.active { background: rgba(57,217,138,.10); }
     .mark-row.selected { background: rgba(57,217,138,.16); }
     .mark-row {
-      grid-template-columns: 68px minmax(0, 1fr) 64px;
+      grid-template-columns: 58px minmax(0, 1fr) 54px;
       align-items: start;
     }
     .time { color: var(--muted); font-variant-numeric: tabular-nums; }
@@ -363,22 +371,22 @@
     }
 
     .type-tools button {
-      min-height: 19px;
+      min-height: 17px;
       padding: 0 3px;
-      font-size: 9px;
+      font-size: 8px;
     }
 
     .mark-adjust {
       grid-column: 2 / -1;
       display: grid;
       grid-template-columns: repeat(8, minmax(0, 1fr));
-      gap: 3px;
+      gap: 2px;
     }
 
     .mark-adjust button {
-      min-height: 19px;
+      min-height: 17px;
       padding: 0 2px;
-      font-size: 9px;
+      font-size: 8px;
     }
 
     .mark-adjust .now-btn { grid-column: span 2; }
@@ -792,9 +800,9 @@
         min-height: 0;
       }
       .mark-row {
-        grid-template-columns: 50px minmax(0, 1fr) 54px;
+        grid-template-columns: 46px minmax(0, 1fr) 46px;
         gap: 3px;
-        padding: 2px 5px;
+        padding: 1px 4px;
       }
       .time {
         font-size: 10px;
@@ -809,9 +817,9 @@
       }
       .mark-adjust button,
       .type-tools button {
-        min-height: 14px;
+        min-height: 12px;
         padding: 0 2px;
-        font-size: 8px;
+        font-size: 7px;
         border-radius: 5px;
       }
       .mark-adjust {
@@ -825,9 +833,9 @@
         font-size: 11px;
       }
       .mark-row > .ghost[data-delete-mark] {
-        min-height: 42px;
+        min-height: 34px;
         padding: 0 4px;
-        font-size: 11px;
+        font-size: 10px;
       }
       .footer {
         grid-column: 2;
@@ -903,11 +911,11 @@
 
         <div class="transport">
           <button data-nudge="-5" class="ghost">-5s</button>
+          <button data-nudge="-2" class="ghost">-2s</button>
           <button data-nudge="-1" class="ghost">-1s</button>
-          <button data-nudge="-0.2" class="ghost">-0.2</button>
           <button id="playPause" class="ghost">Play</button>
-          <button data-nudge="0.2" class="ghost">+0.2</button>
           <button data-nudge="1" class="ghost">+1s</button>
+          <button data-nudge="2" class="ghost">+2s</button>
           <button data-nudge="5" class="ghost">+5s</button>
         </div>
 
@@ -978,13 +986,14 @@
     const labels = { serve: 'Saque', hit: 'Hit', end: 'Final', trash: 'Basura', paddle: 'Paleta' };
     const shortLabels = { serve: 'S', hit: 'H', end: 'F', trash: 'B', paddle: 'P' };
     const typeHotkeys = { '1': 'serve', '2': 'hit', '3': 'end', '4': 'trash', '5': 'paddle' };
-    const seekHotkeys = { q: -5, w: -1, e: -0.5, r: -0.2, a: 0.2, s: 0.5, d: 1, f: 5 };
+    const seekHotkeys = { q: -5, w: -2, e: -1, r: 1, t: 2, y: 5 };
     let marks = [];
     let manualScenes = [];
     let selectedScene = -1;
     let selectedMarkId = null;
     let lastDeleted = null;
     let editTarget = 'video';
+    let reviewedUntil = 0;
 
     function driveToDirect(url) {
       const text = url.trim();
@@ -1004,7 +1013,7 @@
     }
 
     function saveState() {
-      localStorage.setItem(storeKey, JSON.stringify({ videoUrl: videoUrl.value, marks, manualScenes }));
+      localStorage.setItem(storeKey, JSON.stringify({ videoUrl: videoUrl.value, marks, manualScenes, reviewedUntil }));
     }
 
     function loadState() {
@@ -1014,6 +1023,7 @@
       const saved = JSON.parse(localStorage.getItem(storeKey) || '{}');
       marks = Array.isArray(initial.marks) ? initial.marks : (Array.isArray(saved.marks) ? saved.marks : []);
       manualScenes = Array.isArray(initial.manualScenes) ? initial.manualScenes : (Array.isArray(initial.scenes) ? initial.scenes : (Array.isArray(saved.manualScenes) ? saved.manualScenes : []));
+      reviewedUntil = Number(saved.reviewedUntil) || 0;
       videoUrl.value = src || initial.videoUrl || initial.source || saved.videoUrl || '';
       if (videoUrl.value) setVideo(videoUrl.value);
       render();
@@ -1220,9 +1230,9 @@
       $('saveStatus').textContent = final ? 'Enviando final...' : 'Guardando...';
       const hasLocalSubmitServer = ['localhost', '127.0.0.1'].includes(location.hostname);
       if (location.protocol === 'file:' || !hasLocalSubmitServer) {
-        openJsonBackup(payload);
+        openJsonBackup(payload, !final);
         $('saveStatus').textContent = final
-          ? 'Final listo como respaldo JSON. En GitHub no hay servidor automatico.'
+          ? 'Final descargado como JSON. Avísame y lo proceso.'
           : 'Respaldo JSON listo. En GitHub no hay servidor automatico.';
         return;
       }
@@ -1244,11 +1254,13 @@
       }
     }
 
-    function openJsonBackup(payload = currentPayload()) {
+    function openJsonBackup(payload = currentPayload(), showDrawer = true) {
       jsonBox.value = JSON.stringify(payload, null, 2);
-      drawer.classList.add('open');
-      jsonBox.focus();
-      jsonBox.select();
+      if (showDrawer) {
+        drawer.classList.add('open');
+        jsonBox.focus();
+        jsonBox.select();
+      }
       if (navigator.clipboard?.writeText) {
         navigator.clipboard.writeText(jsonBox.value).catch(() => {});
       }
@@ -1321,6 +1333,22 @@
       const ordered = sortedMarks();
       if (!ordered.length) return null;
       return ordered.reduce((best, mark) => Math.abs(mark.time - time) < Math.abs(best.time - time) ? mark : best, ordered[0]);
+    }
+
+    function deleteCurrentMark() {
+      const time = video.currentTime || 0;
+      const mark = selectedMarkId ? marks.find(item => item.id === selectedMarkId) : nearestMark(time);
+      if (!mark) {
+        $('saveStatus').textContent = 'No hay marca para borrar.';
+        return;
+      }
+      if (Math.abs(mark.time - time) > 4 && !selectedMarkId) {
+        $('saveStatus').textContent = 'No hay marca cercana para borrar.';
+        return;
+      }
+      deleteMark(mark.id);
+      selectedMarkId = null;
+      $('saveStatus').textContent = `Borrado ${labels[mark.type]} ${fmt(mark.time)}`;
     }
 
     function jumpMark(direction) {
@@ -1466,8 +1494,12 @@
     }
 
     function renderTimeline() {
-      timeline.querySelectorAll('.mark,.scene-band').forEach(node => node.remove());
+      timeline.querySelectorAll('.mark,.scene-band,.reviewed-band').forEach(node => node.remove());
       if (!Number.isFinite(video.duration) || video.duration <= 0) return;
+      const reviewed = document.createElement('div');
+      reviewed.className = 'reviewed-band';
+      reviewed.style.width = `${Math.max(0, Math.min(100, timeToPercent(reviewedUntil)))}%`;
+      timeline.appendChild(reviewed);
       const zoom = Number(timelineZoom.value || 1);
       const baseMarkSize = Math.min(8, 1.05 + zoom * 0.72);
       timeline.style.setProperty('--mark-size', `${baseMarkSize}px`);
@@ -1587,6 +1619,10 @@
       const duration = Number.isFinite(video.duration) ? video.duration : 0;
       const ratio = duration > 0 ? video.currentTime / duration : 0;
       const zoomRatio = timeToPercent(video.currentTime);
+      if (Number.isFinite(video.currentTime) && video.currentTime > reviewedUntil + 0.5) {
+        reviewedUntil = video.currentTime;
+        saveState();
+      }
       progress.style.width = timelineWindow().zoom <= 1 ? `${ratio * 100}%` : '0%';
       playhead.style.left = `${Math.max(0, Math.min(100, zoomRatio))}%`;
       clock.textContent = `${fmt(video.currentTime)} / ${fmt(duration)}`;
@@ -1624,14 +1660,14 @@
         setEditTarget('video');
         return;
       }
-      if (key === 'y') {
-        event.preventDefault();
-        toggleEditTarget();
-        return;
-      }
       if (key === 'v' || key === 'b') {
         event.preventDefault();
         jumpMark(key === 'b' ? 1 : -1);
+        return;
+      }
+      if (key === 'd') {
+        event.preventDefault();
+        deleteCurrentMark();
         return;
       }
       if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
