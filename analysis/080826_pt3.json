@@ -1,21 +1,31 @@
 {
   "version": 2,
   "source": "videos/080826_pt3-proxy.mp4",
-  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/080826_pt3-proxy.mp4",
-  "duration": null,
+  "direct_source": "https://airbnbtrujillo.github.io/fronton-marker/videos/080826_pt3-proxy.mp4",
+  "duration": 366.667,
   "marks": [
     {
-      "time": 0.0,
+      "time": 25.3,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 22.8,
+      "time": 35.419,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 64.2,
+      "time": 44.021,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 53.418,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 56.079,
       "type": "serve",
       "label": "Saque"
     },
@@ -30,67 +40,107 @@
       "label": "Saque"
     },
     {
-      "time": 92.8,
+      "time": 97.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 131.2,
+      "time": 110.73,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 149.8,
+      "time": 125.839,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 168.2,
+      "time": 139.075,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 178.8,
+      "time": 144.717,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 184.0,
+      "time": 158.118,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 199.8,
+      "time": 162.894,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 213.2,
+      "time": 165.351,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 230.8,
+      "time": 174.204,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 246.2,
+      "time": 189.753,
       "type": "serve",
       "label": "Saque"
+    },
+    {
+      "time": 195.478,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 217.696,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 225.851,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 242.7,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 251.106,
+      "type": "end",
+      "label": "Final"
     },
     {
       "time": 262.8,
-      "type": "end",
-      "label": "Final"
-    },
-    {
-      "time": 289.0,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 296.8,
+      "time": 278.048,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 281.12,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 288.242,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 291,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 302.8,
       "type": "end",
       "label": "Final"
     },
@@ -100,32 +150,22 @@
       "label": "Saque"
     },
     {
-      "time": 311.8,
-      "type": "end",
-      "label": "Final"
+      "time": 304.2,
+      "type": "paddle",
+      "label": "Paleta"
     },
     {
-      "time": 315.2,
+      "time": 324.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 324.8,
+      "time": 327.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 330.2,
-      "type": "serve",
-      "label": "Saque"
-    },
-    {
-      "time": 337.8,
-      "type": "end",
-      "label": "Final"
-    },
-    {
-      "time": 342.2,
+      "time": 349.621,
       "type": "serve",
       "label": "Saque"
     },
@@ -133,21 +173,11 @@
       "time": 356.8,
       "type": "end",
       "label": "Final"
-    },
-    {
-      "time": 363.2,
-      "type": "serve",
-      "label": "Saque"
-    },
-    {
-      "time": 365.8,
-      "type": "end",
-      "label": "Final"
     }
   ],
   "scenes": [
     {
-      "start": 0.0,
+      "start": 0,
       "end": 22.8,
       "source": "local-motion",
       "tags": [
@@ -155,6 +185,24 @@
         "motion",
         "rally"
       ]
+    },
+    {
+      "start": 25.3,
+      "end": 35.419,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 44.021,
+      "end": 53.418,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 56.079,
+      "end": 70.8,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 64.2,
@@ -168,6 +216,12 @@
     },
     {
       "start": 86.2,
+      "end": 97.8,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 86.2,
       "end": 92.8,
       "source": "model-rejected-serve",
       "tags": [
@@ -175,6 +229,12 @@
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 110.73,
+      "end": 125.839,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 131.2,
@@ -185,6 +245,24 @@
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 139.075,
+      "end": 144.717,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 158.118,
+      "end": 162.894,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 165.351,
+      "end": 174.204,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 168.2,
@@ -198,7 +276,7 @@
       ]
     },
     {
-      "start": 184.0,
+      "start": 184,
       "end": 199.8,
       "source": "local-motion-strong",
       "tags": [
@@ -206,6 +284,12 @@
         "motion",
         "rally"
       ]
+    },
+    {
+      "start": 189.753,
+      "end": 195.478,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 213.2,
@@ -216,6 +300,18 @@
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 217.696,
+      "end": 225.851,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 242.7,
+      "end": 251.106,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 246.2,
@@ -229,13 +325,39 @@
       ]
     },
     {
-      "start": 289.0,
+      "start": 262.8,
+      "end": 278.048,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 281.12,
+      "end": 288.242,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 289,
       "end": 296.8,
       "source": "local-motion",
       "tags": [
         "learned-serve-candidate",
         "motion",
         "rally"
+      ]
+    },
+    {
+      "start": 291,
+      "end": 302.8,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 304.2,
+      "end": 327.8,
+      "source": "auto",
+      "tags": [
+        "paddle"
       ]
     },
     {
@@ -260,6 +382,12 @@
       ]
     },
     {
+      "start": 324.2,
+      "end": 327.8,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 330.2,
       "end": 337.8,
       "source": "model-rejected-serve",
@@ -280,6 +408,12 @@
       ]
     },
     {
+      "start": 349.621,
+      "end": 356.8,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 363.2,
       "end": 365.8,
       "source": "model-rejected-serve",
@@ -290,14 +424,12 @@
       ]
     }
   ],
-  "highlights": [],
-  "normal_model_counts": {
-    "serve": 1,
-    "end": 1
-  },
-  "dense_counts": {
-    "serve": 14,
-    "end": 14
-  },
-  "note": "080826 Pt3 analysis with review recall boost enabled; includes broad serve/end candidates for correction."
+  "highlights": [
+    {
+      "start": 291,
+      "end": 302.8,
+      "paddle_time": 304.2,
+      "source": "paddle-previous-point"
+    }
+  ]
 }
