@@ -994,6 +994,52 @@
     let lastDeleted = null;
     let editTarget = 'video';
     let reviewedUntil = 0;
+    let undoStack = [];
+    let redoStack = [];
+
+    function cloneState() {
+      return {
+        marks: marks.map(mark => ({ ...mark })),
+        manualScenes: manualScenes.map(scene => ({ ...scene, tags: Array.isArray(scene.tags) ? scene.tags.slice() : [] })),
+        selectedMarkId,
+        selectedScene
+      };
+    }
+
+    function restoreState(state) {
+      marks = state.marks.map(mark => ({ ...mark }));
+      manualScenes = state.manualScenes.map(scene => ({ ...scene, tags: Array.isArray(scene.tags) ? scene.tags.slice() : [] }));
+      selectedMarkId = state.selectedMarkId || null;
+      selectedScene = Number.isFinite(state.selectedScene) ? state.selectedScene : -1;
+      saveState();
+      render();
+    }
+
+    function rememberChange() {
+      undoStack.push(cloneState());
+      if (undoStack.length > 80) undoStack.shift();
+      redoStack = [];
+    }
+
+    function undoChange() {
+      if (!undoStack.length) {
+        $('saveStatus').textContent = 'No hay cambios para deshacer.';
+        return;
+      }
+      redoStack.push(cloneState());
+      restoreState(undoStack.pop());
+      $('saveStatus').textContent = 'Cambio deshecho.';
+    }
+
+    function redoChange() {
+      if (!redoStack.length) {
+        $('saveStatus').textContent = 'No hay cambios para rehacer.';
+        return;
+      }
+      undoStack.push(cloneState());
+      restoreState(redoStack.pop());
+      $('saveStatus').textContent = 'Cambio rehecho.';
+    }
 
     function driveToDirect(url) {
       const text = url.trim();
@@ -1157,6 +1203,7 @@
     }
 
     function addOrToggle(type) {
+      rememberChange();
       const time = video.currentTime || 0;
       const hit = marks.findIndex(mark => mark.type === type && Math.abs(mark.time - time) <= 0.35);
       if (hit >= 0) {
@@ -1173,6 +1220,7 @@
     function deleteMark(id) {
       const index = marks.findIndex(mark => mark.id === id);
       if (index >= 0) {
+        rememberChange();
         lastDeleted = { kind: 'mark', item: marks.splice(index, 1)[0] };
         saveState();
         render();
@@ -1182,6 +1230,7 @@
     function changeMarkType(id, type) {
       const mark = marks.find(item => item.id === id);
       if (!mark) return;
+      rememberChange();
       mark.type = type;
       saveState();
       render();
@@ -1190,6 +1239,7 @@
     function adjustMarkTime(id, delta) {
       const mark = marks.find(item => item.id === id);
       if (!mark) return;
+      rememberChange();
       const duration = Number.isFinite(video.duration) ? video.duration : Infinity;
       mark.time = Math.max(0, Math.min(duration, mark.time + delta));
       seek(mark.time);
@@ -1200,6 +1250,7 @@
     function setMarkToNow(id) {
       const mark = marks.find(item => item.id === id);
       if (!mark) return;
+      rememberChange();
       const duration = Number.isFinite(video.duration) ? video.duration : Infinity;
       mark.time = Math.max(0, Math.min(duration, video.currentTime || 0));
       seek(mark.time);
@@ -1210,6 +1261,7 @@
     function resetMarkTime(id) {
       const mark = marks.find(item => item.id === id);
       if (!mark || !Number.isFinite(mark.originalTime)) return;
+      rememberChange();
       mark.time = mark.originalTime;
       seek(mark.time);
       saveState();
@@ -1277,6 +1329,7 @@
     }
 
     function addScene() {
+      rememberChange();
       const now = video.currentTime || 0;
       const previousServe = sortedMarks('serve').filter(mark => mark.time <= now).pop();
       const nextEnd = sortedMarks('end').find(mark => mark.time >= now);
@@ -1291,6 +1344,7 @@
     function deleteScene(id) {
       const index = manualScenes.findIndex(scene => scene.id === id);
       if (index >= 0) {
+        rememberChange();
         lastDeleted = { kind: 'scene', item: manualScenes.splice(index, 1)[0] };
         selectedScene = -1;
         saveState();
@@ -1633,6 +1687,12 @@
     document.querySelectorAll('[data-type]').forEach(button => button.addEventListener('click', () => addOrToggle(button.dataset.type)));
     document.querySelectorAll('[data-nudge]').forEach(button => button.addEventListener('click', () => nudge(Number(button.dataset.nudge))));
     document.addEventListener('keydown', event => {
+      if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z') {
+        event.preventDefault();
+        if (event.altKey) redoChange();
+        else undoChange();
+        return;
+      }
       if (isTypingTarget(event.target) || event.ctrlKey || event.metaKey) return;
       const key = event.key.toLowerCase();
       if (typeHotkeys[key]) {
@@ -1711,14 +1771,7 @@
         event.currentTarget.textContent = 'Play';
       }
     });
-    $('undoBtn').addEventListener('click', () => {
-      if (lastDeleted?.kind === 'mark') marks.push(lastDeleted.item);
-      else if (lastDeleted?.kind === 'scene') manualScenes.push(lastDeleted.item);
-      else marks.pop();
-      lastDeleted = null;
-      saveState();
-      render();
-    });
+    $('undoBtn').addEventListener('click', undoChange);
     $('saveBtn').addEventListener('click', () => submitPayload(false));
     $('finalBtn').addEventListener('click', () => submitPayload(true));
     $('jsonBtn').addEventListener('click', () => {
@@ -1731,6 +1784,7 @@
     $('closeBtn').addEventListener('click', () => drawer.classList.remove('open'));
     $('clearBtn').addEventListener('click', () => {
       if (confirm('Borrar todas las marcas y escenas?')) {
+        rememberChange();
         marks = [];
         manualScenes = [];
         selectedScene = -1;
