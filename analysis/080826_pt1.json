@@ -1,0 +1,119 @@
+{
+  "version": 2,
+  "source": "videos/080826_pt1-proxy.mp4",
+  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/080826_pt1-proxy.mp4",
+  "duration": null,
+  "marks": [
+    {
+      "time": 0.0,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 6.4,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 137.6,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 145.4,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 206.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 221.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 291.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 297.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 416.6,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 419.044,
+      "type": "end",
+      "label": "Final"
+    }
+  ],
+  "scenes": [
+    {
+      "start": 0.0,
+      "end": 6.4,
+      "source": "local-motion-strong",
+      "tags": [
+        "motion",
+        "rally"
+      ]
+    },
+    {
+      "start": 137.6,
+      "end": 145.4,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "motion",
+        "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 206.2,
+      "end": 221.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 291.2,
+      "end": 297.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 416.6,
+      "end": 419.044,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "rally"
+      ]
+    }
+  ],
+  "highlights": [],
+  "normal_model_counts": {
+    "serve": 3,
+    "end": 3
+  },
+  "dense_counts": {
+    "serve": 5,
+    "end": 5
+  },
+  "note": "080826 Pt1 analysis from updated local model; includes model marks and scene boundaries for review."
+}
