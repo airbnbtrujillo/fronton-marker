@@ -1,9 +1,19 @@
 {
   "version": 2,
   "source": "videos/080826_pt6-proxy.mp4",
-  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/080826_pt6-proxy.mp4",
-  "duration": null,
+  "direct_source": "https://airbnbtrujillo.github.io/fronton-marker/videos/080826_pt6-proxy.mp4",
+  "duration": 1076.2,
   "marks": [
+    {
+      "time": 5.223,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 16.043,
+      "type": "end",
+      "label": "Final"
+    },
     {
       "time": 50.2,
       "type": "serve",
@@ -35,109 +45,184 @@
       "label": "Final"
     },
     {
-      "time": 229.2,
+      "time": 154.363,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 245.8,
+      "time": 182.396,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 248.2,
+      "time": 195.921,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 262.8,
+      "time": 216.167,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 288.2,
+      "time": 242.561,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 310.8,
+      "time": 252.807,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 317.0,
+      "time": 258.053,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 331.8,
+      "time": 271.168,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 354.2,
+      "time": 276.496,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 366.8,
+      "time": 289.365,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 373.2,
+      "time": 305.103,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 390.8,
+      "time": 313.71,
+      "type": "hit",
+      "label": "Hit"
+    },
+    {
+      "time": 319.284,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 484.6,
+      "time": 327.644,
+      "type": "paddle",
+      "label": "Paleta"
+    },
+    {
+      "time": 329.694,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 491.8,
+      "time": 342.399,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 540.2,
+      "time": 359.694,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 556.8,
+      "time": 375.924,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 571.2,
+      "time": 388.711,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 585.8,
+      "time": 398.711,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 644.2,
+      "time": 406.416,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 658.8,
+      "time": 420.515,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 672.6,
+      "time": 454.204,
       "type": "serve",
       "label": "Saque"
+    },
+    {
+      "time": 472.155,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 477.647,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 493.713,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 509.615,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 519.697,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 525.189,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 542.648,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 587.321,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 609.616,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 615.518,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 644.125,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 655.109,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 668.962,
+      "type": "end",
+      "label": "Final"
     },
     {
       "time": 681.8,
@@ -145,12 +230,22 @@
       "label": "Final"
     },
     {
-      "time": 685.2,
+      "time": 697.651,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 700.8,
+      "time": 729.291,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 748.061,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 755.521,
       "type": "end",
       "label": "Final"
     },
@@ -165,22 +260,22 @@
       "label": "Final"
     },
     {
-      "time": 829.0,
+      "time": 805.75,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 835.8,
+      "time": 827.186,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 841.0,
+      "time": 841,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 849.8,
+      "time": 855.711,
       "type": "end",
       "label": "Final"
     },
@@ -190,7 +285,17 @@
       "label": "Saque"
     },
     {
-      "time": 888.8,
+      "time": 883.081,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 908.154,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 922.631,
       "type": "end",
       "label": "Final"
     },
@@ -220,7 +325,7 @@
       "label": "Saque"
     },
     {
-      "time": 984.8,
+      "time": 975.795,
       "type": "end",
       "label": "Final"
     },
@@ -228,6 +333,11 @@
       "time": 992.2,
       "type": "serve",
       "label": "Saque"
+    },
+    {
+      "time": 1001.615,
+      "type": "end",
+      "label": "Final"
     },
     {
       "time": 1014.8,
@@ -240,22 +350,29 @@
       "label": "Saque"
     },
     {
-      "time": 1036.8,
-      "type": "end",
-      "label": "Final"
-    },
-    {
-      "time": 1059.2,
+      "time": 1028.091,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 1074.8,
+      "time": 1057.6,
       "type": "end",
       "label": "Final"
     }
   ],
   "scenes": [
+    {
+      "start": 5.223,
+      "end": 16.043,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 50.2,
+      "end": 68.8,
+      "source": "auto",
+      "tags": []
+    },
     {
       "start": 50.2,
       "end": 68.8,
@@ -265,6 +382,12 @@
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 90.2,
+      "end": 96.8,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 90.2,
@@ -279,12 +402,30 @@
     {
       "start": 129.2,
       "end": 137.8,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 129.2,
+      "end": 137.8,
       "source": "model-rejected-serve",
       "tags": [
         "learned-serve-candidate",
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 154.363,
+      "end": 182.396,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 195.921,
+      "end": 216.167,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 229.2,
@@ -298,6 +439,12 @@
       ]
     },
     {
+      "start": 242.561,
+      "end": 252.807,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 248.2,
       "end": 262.8,
       "source": "model-rejected-serve",
@@ -306,6 +453,18 @@
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 258.053,
+      "end": 271.168,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 276.496,
+      "end": 289.365,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 288.2,
@@ -319,7 +478,15 @@
       ]
     },
     {
-      "start": 317.0,
+      "start": 305.103,
+      "end": 319.284,
+      "source": "auto",
+      "tags": [
+        "hit"
+      ]
+    },
+    {
+      "start": 317,
       "end": 331.8,
       "source": "local-motion-strong",
       "tags": [
@@ -327,6 +494,12 @@
         "motion",
         "rally"
       ]
+    },
+    {
+      "start": 329.694,
+      "end": 342.399,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 354.2,
@@ -337,6 +510,12 @@
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 359.694,
+      "end": 375.924,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 373.2,
@@ -350,6 +529,30 @@
       ]
     },
     {
+      "start": 388.711,
+      "end": 398.711,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 406.416,
+      "end": 420.515,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 454.204,
+      "end": 472.155,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 477.647,
+      "end": 493.713,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 484.6,
       "end": 491.8,
       "source": "model-confirmed-serve",
@@ -358,6 +561,18 @@
         "model-serve",
         "rally"
       ]
+    },
+    {
+      "start": 509.615,
+      "end": 519.697,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 525.189,
+      "end": 542.648,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 540.2,
@@ -382,6 +597,18 @@
       ]
     },
     {
+      "start": 587.321,
+      "end": 609.616,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 615.518,
+      "end": 644.125,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 644.2,
       "end": 658.8,
       "source": "model-rejected-serve",
@@ -390,6 +617,12 @@
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 655.109,
+      "end": 668.962,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 672.6,
@@ -413,6 +646,24 @@
       ]
     },
     {
+      "start": 697.651,
+      "end": 729.291,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 748.061,
+      "end": 755.521,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 769.2,
+      "end": 775.8,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 769.2,
       "end": 775.8,
       "source": "model-rejected-serve",
@@ -423,7 +674,13 @@
       ]
     },
     {
-      "start": 829.0,
+      "start": 805.75,
+      "end": 827.186,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 829,
       "end": 835.8,
       "source": "local-motion",
       "tags": [
@@ -433,7 +690,13 @@
       ]
     },
     {
-      "start": 841.0,
+      "start": 841,
+      "end": 855.711,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 841,
       "end": 849.8,
       "source": "local-motion-strong",
       "tags": [
@@ -441,6 +704,12 @@
         "motion",
         "rally"
       ]
+    },
+    {
+      "start": 875.2,
+      "end": 883.081,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 875.2,
@@ -452,6 +721,18 @@
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 908.154,
+      "end": 922.631,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 924.2,
+      "end": 932.8,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 924.2,
@@ -466,12 +747,24 @@
     {
       "start": 938.2,
       "end": 950.8,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 938.2,
+      "end": 950.8,
       "source": "model-rejected-serve",
       "tags": [
         "learned-serve-candidate",
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 966.2,
+      "end": 975.795,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 966.2,
@@ -486,6 +779,12 @@
     },
     {
       "start": 992.2,
+      "end": 1001.615,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 992.2,
       "end": 1014.8,
       "source": "model-rejected-serve",
       "tags": [
@@ -493,6 +792,12 @@
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 1019.2,
+      "end": 1057.6,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 1019.2,
@@ -506,6 +811,12 @@
       ]
     },
     {
+      "start": 1028.091,
+      "end": 1057.6,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 1059.2,
       "end": 1074.8,
       "source": "model-rejected-serve",
@@ -517,14 +828,12 @@
       ]
     }
   ],
-  "highlights": [],
-  "normal_model_counts": {
-    "serve": 4,
-    "end": 4
-  },
-  "dense_counts": {
-    "serve": 25,
-    "end": 25
-  },
-  "note": "080826 Pt6 analysis after Pt5 final training."
+  "highlights": [
+    {
+      "start": 305.103,
+      "end": 319.284,
+      "paddle_time": 327.644,
+      "source": "paddle-previous-point"
+    }
+  ]
 }
