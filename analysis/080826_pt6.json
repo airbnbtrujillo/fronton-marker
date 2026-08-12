@@ -1,294 +1,336 @@
 {
   "version": 2,
-  "source": "videos/080826_pt5-proxy.mp4",
-  "direct_source": "https://airbnbtrujillo.github.io/fronton-marker/videos/080826_pt5-proxy.mp4",
-  "duration": 673.067,
+  "source": "videos/080826_pt6-proxy.mp4",
+  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/080826_pt6-proxy.mp4",
+  "duration": null,
   "marks": [
     {
-      "time": 24.016,
+      "time": 50.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 29.235,
+      "time": 68.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 48.8,
+      "time": 90.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 55.352,
+      "time": 96.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 65.194,
+      "time": 129.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 74.559,
+      "time": 137.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 86.042,
+      "time": 229.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 93.2,
+      "time": 245.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 112.3,
+      "time": 248.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 124.945,
+      "time": 262.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 131.644,
+      "time": 288.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 139.641,
+      "time": 310.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 144.152,
+      "time": 317.0,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 179.74,
-      "type": "serve",
-      "label": "Saque"
-    },
-    {
-      "time": 191.1,
+      "time": 331.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 195.98,
+      "time": 354.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 218.044,
+      "time": 366.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 240.2,
+      "time": 373.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 245.352,
+      "time": 390.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 250.8,
+      "time": 484.6,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 260.28,
+      "time": 491.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 262.535,
+      "time": 540.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 281.524,
+      "time": 556.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 289.808,
+      "time": 571.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 295.87,
+      "time": 585.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 298.74,
+      "time": 644.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 300.832,
+      "time": 658.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 328.8,
+      "time": 672.6,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 337.002,
+      "time": 681.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 347.001,
+      "time": 685.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 353.081,
+      "time": 700.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 365.439,
+      "time": 769.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 374.331,
+      "time": 775.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 383.289,
+      "time": 829.0,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 389.5,
+      "time": 835.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 396.038,
+      "time": 841.0,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 401.661,
+      "time": 849.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 406.2,
+      "time": 875.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 413.3,
+      "time": 888.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 462.8,
+      "time": 924.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 465.51,
+      "time": 932.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 480.763,
+      "time": 938.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 490.442,
+      "time": 950.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 513.2,
+      "time": 966.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 521.8,
+      "time": 984.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 530.576,
+      "time": 992.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 543.2,
+      "time": 1014.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 572.144,
+      "time": 1019.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 579.485,
+      "time": 1036.8,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 587.072,
+      "time": 1059.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 594.864,
-      "type": "end",
-      "label": "Final"
-    },
-    {
-      "time": 603.23,
-      "type": "serve",
-      "label": "Saque"
-    },
-    {
-      "time": 616.887,
+      "time": 1074.8,
       "type": "end",
       "label": "Final"
     }
   ],
   "scenes": [
     {
-      "start": 0,
-      "end": 7.4,
+      "start": 50.2,
+      "end": 68.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 90.2,
+      "end": 96.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 129.2,
+      "end": 137.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 229.2,
+      "end": 245.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 248.2,
+      "end": 262.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 288.2,
+      "end": 310.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 317.0,
+      "end": 331.8,
       "source": "local-motion-strong",
       "tags": [
+        "learned-serve-candidate",
         "motion",
         "rally"
       ]
     },
     {
-      "start": 24.016,
-      "end": 29.235,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 40.2,
-      "end": 48.8,
+      "start": 354.2,
+      "end": 366.8,
       "source": "model-rejected-serve",
       "tags": [
         "learned-serve-candidate",
@@ -297,54 +339,19 @@
       ]
     },
     {
-      "start": 48.8,
-      "end": 55.352,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 65.194,
-      "end": 74.559,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 86.042,
-      "end": 93.2,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 93.2,
-      "end": 109.8,
+      "start": 373.2,
+      "end": 390.8,
       "source": "model-rejected-serve",
       "tags": [
         "learned-serve-candidate",
+        "motion",
         "model-rejected",
         "rally"
       ]
     },
     {
-      "start": 112.3,
-      "end": 124.945,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 131.644,
-      "end": 139.641,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 144.152,
-      "end": 191.1,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 160.6,
-      "end": 168.6,
+      "start": 484.6,
+      "end": 491.8,
       "source": "model-confirmed-serve",
       "tags": [
         "learned-serve-candidate",
@@ -353,74 +360,8 @@
       ]
     },
     {
-      "start": 163.2,
-      "end": 183.8,
-      "source": "model-rejected-serve",
-      "tags": [
-        "learned-serve-candidate",
-        "model-rejected",
-        "rally"
-      ]
-    },
-    {
-      "start": 179.74,
-      "end": 191.1,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 195.98,
-      "end": 218.044,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 213.2,
-      "end": 226.8,
-      "source": "model-rejected-serve",
-      "tags": [
-        "learned-serve-candidate",
-        "model-rejected",
-        "rally"
-      ]
-    },
-    {
-      "start": 240.2,
-      "end": 245.352,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 240.2,
-      "end": 250.8,
-      "source": "model-rejected-serve",
-      "tags": [
-        "learned-serve-candidate",
-        "model-rejected",
-        "rally"
-      ]
-    },
-    {
-      "start": 250.8,
-      "end": 260.28,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 262.535,
-      "end": 281.524,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 289.808,
-      "end": 295.87,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 298.2,
-      "end": 328.8,
+      "start": 540.2,
+      "end": 556.8,
       "source": "model-rejected-serve",
       "tags": [
         "learned-serve-candidate",
@@ -430,50 +371,8 @@
       ]
     },
     {
-      "start": 298.74,
-      "end": 300.832,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 328.8,
-      "end": 337.002,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 347.001,
-      "end": 353.081,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 365.439,
-      "end": 374.331,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 383.289,
-      "end": 389.5,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 396.038,
-      "end": 401.661,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 406.2,
-      "end": 413.3,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 406.2,
-      "end": 419.8,
+      "start": 571.2,
+      "end": 585.8,
       "source": "model-rejected-serve",
       "tags": [
         "learned-serve-candidate",
@@ -483,8 +382,8 @@
       ]
     },
     {
-      "start": 445.2,
-      "end": 457.8,
+      "start": 644.2,
+      "end": 658.8,
       "source": "model-rejected-serve",
       "tags": [
         "learned-serve-candidate",
@@ -493,98 +392,139 @@
       ]
     },
     {
-      "start": 462.8,
-      "end": 465.51,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 480.763,
-      "end": 490.442,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 509.2,
-      "end": 515.8,
-      "source": "model-rejected-serve",
-      "tags": [
-        "learned-serve-candidate",
-        "model-rejected",
-        "rally"
-      ]
-    },
-    {
-      "start": 513.2,
-      "end": 521.8,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 530.576,
-      "end": 543.2,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 536.2,
-      "end": 551.8,
-      "source": "model-rejected-serve",
-      "tags": [
-        "learned-serve-candidate",
-        "model-rejected",
-        "rally"
-      ]
-    },
-    {
-      "start": 558.2,
-      "end": 572.8,
-      "source": "model-rejected-serve",
-      "tags": [
-        "learned-serve-candidate",
-        "model-rejected",
-        "rally"
-      ]
-    },
-    {
-      "start": 572.144,
-      "end": 579.485,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 587.072,
-      "end": 594.864,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 603.23,
-      "end": 616.887,
-      "source": "auto",
-      "tags": []
-    },
-    {
-      "start": 615.6,
-      "end": 643.8,
+      "start": 672.6,
+      "end": 681.8,
       "source": "model-confirmed-serve",
       "tags": [
         "learned-serve-candidate",
         "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 685.2,
+      "end": 700.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 769.2,
+      "end": 775.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 829.0,
+      "end": 835.8,
+      "source": "local-motion",
+      "tags": [
+        "learned-serve-candidate",
         "motion",
         "rally"
       ]
     },
     {
-      "start": 664.2,
-      "end": 671.8,
+      "start": 841.0,
+      "end": 849.8,
+      "source": "local-motion-strong",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "rally"
+      ]
+    },
+    {
+      "start": 875.2,
+      "end": 888.8,
       "source": "model-rejected-serve",
       "tags": [
         "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 924.2,
+      "end": 932.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 938.2,
+      "end": 950.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 966.2,
+      "end": 984.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 992.2,
+      "end": 1014.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 1019.2,
+      "end": 1036.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 1059.2,
+      "end": 1074.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
         "model-rejected",
         "rally"
       ]
     }
   ],
-  "highlights": []
+  "highlights": [],
+  "normal_model_counts": {
+    "serve": 4,
+    "end": 4
+  },
+  "dense_counts": {
+    "serve": 25,
+    "end": 25
+  },
+  "note": "080826 Pt6 analysis after Pt5 final training."
 }
