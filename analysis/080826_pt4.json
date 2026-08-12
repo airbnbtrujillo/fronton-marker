@@ -1,73 +1,93 @@
 {
   "version": 2,
   "source": "videos/080826_pt4-proxy.mp4",
-  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/080826_pt4-proxy.mp4",
-  "duration": null,
+  "direct_source": "https://airbnbtrujillo.github.io/fronton-marker/videos/080826_pt4-proxy.mp4",
+  "duration": 756.467,
   "marks": [
     {
-      "time": 53.6,
+      "time": 0,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 66.8,
+      "time": 11.632,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 102.2,
+      "time": 19.02,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 110.8,
+      "time": 27.931,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 130.2,
+      "time": 31.542,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 137.8,
+      "time": 49.749,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 160.2,
+      "time": 64.726,
       "type": "serve",
       "label": "Saque"
+    },
+    {
+      "time": 93.442,
+      "type": "hit",
+      "label": "Hit"
+    },
+    {
+      "time": 103.967,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 138.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 153.948,
+      "type": "end",
+      "label": "Final"
     },
     {
       "time": 168.8,
-      "type": "end",
-      "label": "Final"
-    },
-    {
-      "time": 238.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 244.8,
+      "time": 184.241,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 247.6,
+      "time": 206.75,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 255.6,
+      "time": 216.353,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 260.2,
+      "time": 238.354,
       "type": "serve",
       "label": "Saque"
+    },
+    {
+      "time": 257.936,
+      "type": "end",
+      "label": "Final"
     },
     {
       "time": 268.8,
@@ -95,7 +115,7 @@
       "label": "Final"
     },
     {
-      "time": 346.0,
+      "time": 346,
       "type": "serve",
       "label": "Saque"
     },
@@ -110,37 +130,27 @@
       "label": "Saque"
     },
     {
-      "time": 403.8,
+      "time": 421.238,
       "type": "end",
       "label": "Final"
-    },
-    {
-      "time": 423.2,
-      "type": "serve",
-      "label": "Saque"
-    },
-    {
-      "time": 430.8,
-      "type": "end",
-      "label": "Final"
-    },
-    {
-      "time": 460.2,
-      "type": "serve",
-      "label": "Saque"
-    },
-    {
-      "time": 466.8,
-      "type": "end",
-      "label": "Final"
-    },
-    {
-      "time": 500.2,
-      "type": "serve",
-      "label": "Saque"
     },
     {
       "time": 514.8,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 534.774,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 538.307,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 547.526,
       "type": "end",
       "label": "Final"
     },
@@ -165,67 +175,90 @@
       "label": "Final"
     },
     {
-      "time": 580.2,
-      "type": "serve",
-      "label": "Saque"
-    },
-    {
       "time": 595.8,
-      "type": "end",
-      "label": "Final"
-    },
-    {
-      "time": 631.6,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 639.6,
+      "time": 607.016,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 641.6,
+      "time": 612.624,
       "type": "serve",
       "label": "Saque"
+    },
+    {
+      "time": 633.75,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 649.664,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 658.575,
+      "type": "end",
+      "label": "Final"
     },
     {
       "time": 662.8,
-      "type": "end",
-      "label": "Final"
-    },
-    {
-      "time": 670.0,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 676.4,
+      "time": 667.717,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 713.6,
+      "time": 706.106,
       "type": "serve",
       "label": "Saque"
+    },
+    {
+      "time": 717.672,
+      "type": "end",
+      "label": "Final"
     },
     {
       "time": 721.6,
-      "type": "end",
-      "label": "Final"
-    },
-    {
-      "time": 746.2,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 755.8,
+      "time": 740.57,
+      "type": "hit",
+      "label": "Hit"
+    },
+    {
+      "time": 743.07,
       "type": "end",
       "label": "Final"
     }
   ],
   "scenes": [
+    {
+      "start": 0,
+      "end": 11.632,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 19.02,
+      "end": 27.931,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 31.542,
+      "end": 49.749,
+      "source": "auto",
+      "tags": []
+    },
     {
       "start": 53.6,
       "end": 66.8,
@@ -235,6 +268,14 @@
         "motion",
         "model-serve",
         "rally"
+      ]
+    },
+    {
+      "start": 64.726,
+      "end": 103.967,
+      "source": "auto",
+      "tags": [
+        "hit"
       ]
     },
     {
@@ -259,6 +300,12 @@
       ]
     },
     {
+      "start": 138.2,
+      "end": 153.948,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 160.2,
       "end": 168.8,
       "source": "model-rejected-serve",
@@ -269,6 +316,18 @@
       ]
     },
     {
+      "start": 168.8,
+      "end": 184.241,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 206.75,
+      "end": 216.353,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 238.2,
       "end": 244.8,
       "source": "model-rejected-serve",
@@ -277,6 +336,12 @@
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 238.354,
+      "end": 257.936,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 247.6,
@@ -301,12 +366,24 @@
     {
       "start": 279.2,
       "end": 289.8,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 279.2,
+      "end": 289.8,
       "source": "model-rejected-serve",
       "tags": [
         "learned-serve-candidate",
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 297.2,
+      "end": 304.8,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 297.2,
@@ -319,7 +396,13 @@
       ]
     },
     {
-      "start": 346.0,
+      "start": 346,
+      "end": 378.8,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 346,
       "end": 378.8,
       "source": "local-motion-strong",
       "tags": [
@@ -327,6 +410,12 @@
         "motion",
         "rally"
       ]
+    },
+    {
+      "start": 383.2,
+      "end": 421.238,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 383.2,
@@ -370,6 +459,24 @@
       ]
     },
     {
+      "start": 514.8,
+      "end": 534.774,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 538.307,
+      "end": 547.526,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 551.2,
+      "end": 557.8,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 551.2,
       "end": 557.8,
       "source": "model-rejected-serve",
@@ -378,6 +485,12 @@
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 565.2,
+      "end": 574.8,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 565.2,
@@ -401,6 +514,18 @@
       ]
     },
     {
+      "start": 595.8,
+      "end": 607.016,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 612.624,
+      "end": 633.75,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 631.6,
       "end": 639.6,
       "source": "model-confirmed-serve",
@@ -422,13 +547,31 @@
       ]
     },
     {
-      "start": 670.0,
+      "start": 649.664,
+      "end": 658.575,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 662.8,
+      "end": 667.717,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 670,
       "end": 676.4,
       "source": "local-motion-strong",
       "tags": [
         "motion",
         "rally"
       ]
+    },
+    {
+      "start": 706.106,
+      "end": 717.672,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 713.6,
@@ -439,6 +582,14 @@
         "motion",
         "model-serve",
         "rally"
+      ]
+    },
+    {
+      "start": 721.6,
+      "end": 743.07,
+      "source": "auto",
+      "tags": [
+        "hit"
       ]
     },
     {
@@ -453,14 +604,5 @@
       ]
     }
   ],
-  "highlights": [],
-  "normal_model_counts": {
-    "serve": 7,
-    "end": 7
-  },
-  "dense_counts": {
-    "serve": 22,
-    "end": 22
-  },
-  "note": "080826 Pt4 analysis with serve and end recall boost enabled."
+  "highlights": []
 }
