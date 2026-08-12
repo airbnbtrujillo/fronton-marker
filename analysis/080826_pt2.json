@@ -1,0 +1,203 @@
+{
+  "version": 2,
+  "source": "videos/080826_pt2-proxy.mp4",
+  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/080826_pt2-proxy.mp4",
+  "duration": null,
+  "marks": [
+    {
+      "time": 5.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 11.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 71.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 89.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 117.0,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 123.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 196.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 206.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 243.0,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 268.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 274.0,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 283.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 304.6,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 311.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 334.6,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 342.6,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 350.0,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 361.8,
+      "type": "end",
+      "label": "Final"
+    }
+  ],
+  "scenes": [
+    {
+      "start": 5.2,
+      "end": 11.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 71.2,
+      "end": 89.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 117.0,
+      "end": 123.8,
+      "source": "local-motion",
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "motion",
+        "rally"
+      ]
+    },
+    {
+      "start": 196.2,
+      "end": 206.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 243.0,
+      "end": 268.8,
+      "source": "local-motion",
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "motion",
+        "rally"
+      ]
+    },
+    {
+      "start": 274.0,
+      "end": 283.8,
+      "source": "local-motion-strong",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "rally"
+      ]
+    },
+    {
+      "start": 304.6,
+      "end": 311.8,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 334.6,
+      "end": 342.6,
+      "source": "model-confirmed-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "rally"
+      ]
+    },
+    {
+      "start": 350.0,
+      "end": 361.8,
+      "source": "local-motion-strong",
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "motion",
+        "rally"
+      ]
+    }
+  ],
+  "highlights": [],
+  "normal_model_counts": {
+    "serve": 4,
+    "end": 4
+  },
+  "dense_counts": {
+    "serve": 9,
+    "end": 9
+  },
+  "note": "080826 Pt2 analysis from updated local model; includes model marks and scene boundaries for review."
+}
