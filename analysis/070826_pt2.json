@@ -1,91 +1,151 @@
 {
   "version": 2,
   "source": "videos/070826_pt2-proxy.mp4",
-  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/070826_pt2-proxy.mp4",
-  "duration": null,
+  "direct_source": "https://airbnbtrujillo.github.io/fronton-marker/videos/070826_pt2-proxy.mp4",
+  "duration": 509.2,
   "marks": [
     {
-      "time": 0.0,
+      "time": 39.228,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 5.4,
+      "time": 49.266,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 122.2,
+      "time": 91.927,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 128.8,
+      "time": 103.471,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 132.0,
+      "time": 111.702,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 140.8,
+      "time": 116.32,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 197.2,
+      "time": 127.7,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 206.8,
+      "time": 132,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 353.2,
+      "time": 144.255,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 359.8,
+      "time": 149.801,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 362.2,
+      "time": 173.304,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 369.8,
+      "time": 179.975,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 373.2,
+      "time": 189.671,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 387.8,
+      "time": 195.721,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 395.2,
+      "time": 254.405,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 420.8,
+      "time": 263.403,
       "type": "end",
       "label": "Final"
     },
     {
-      "time": 457.6,
+      "time": 307.189,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 316.303,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 323.362,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 328.016,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 361.3,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 365.419,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 381.926,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 389.799,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 402.8,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 410.983,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 432.6,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 450.751,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 460.679,
       "type": "serve",
       "label": "Saque"
     },
@@ -95,25 +155,53 @@
       "label": "Final"
     },
     {
-      "time": 502.2,
+      "time": 475.261,
       "type": "serve",
       "label": "Saque"
     },
     {
-      "time": 508.8,
+      "time": 482.32,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 490.154,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 498.842,
       "type": "end",
       "label": "Final"
     }
   ],
   "scenes": [
     {
-      "start": 0.0,
+      "start": 0,
       "end": 5.4,
       "source": "local-motion",
       "tags": [
         "motion",
         "rally"
       ]
+    },
+    {
+      "start": 39.228,
+      "end": 49.266,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 91.927,
+      "end": 103.471,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 111.702,
+      "end": 116.32,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 122.2,
@@ -126,7 +214,13 @@
       ]
     },
     {
-      "start": 132.0,
+      "start": 127.7,
+      "end": 132,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 132,
       "end": 140.8,
       "source": "local-motion-strong",
       "tags": [
@@ -134,6 +228,24 @@
         "motion",
         "rally"
       ]
+    },
+    {
+      "start": 144.255,
+      "end": 149.801,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 173.304,
+      "end": 179.975,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 189.671,
+      "end": 195.721,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 197.2,
@@ -147,6 +259,24 @@
       ]
     },
     {
+      "start": 254.405,
+      "end": 263.403,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 307.189,
+      "end": 316.303,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 323.362,
+      "end": 328.016,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 353.2,
       "end": 359.8,
       "source": "model-rejected-serve",
@@ -155,6 +285,12 @@
         "model-rejected",
         "rally"
       ]
+    },
+    {
+      "start": 361.3,
+      "end": 365.419,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 362.2,
@@ -177,6 +313,12 @@
       ]
     },
     {
+      "start": 381.926,
+      "end": 389.799,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 395.2,
       "end": 420.8,
       "source": "model-rejected-serve",
@@ -188,6 +330,18 @@
       ]
     },
     {
+      "start": 402.8,
+      "end": 410.983,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 432.6,
+      "end": 450.751,
+      "source": "auto",
+      "tags": []
+    },
+    {
       "start": 457.6,
       "end": 465.6,
       "source": "model-confirmed-serve",
@@ -196,6 +350,24 @@
         "model-serve",
         "rally"
       ]
+    },
+    {
+      "start": 460.679,
+      "end": 465.6,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 475.261,
+      "end": 482.32,
+      "source": "auto",
+      "tags": []
+    },
+    {
+      "start": 490.154,
+      "end": 498.842,
+      "source": "auto",
+      "tags": []
     },
     {
       "start": 502.2,
@@ -209,14 +381,5 @@
       ]
     }
   ],
-  "highlights": [],
-  "normal_model_counts": {
-    "serve": 2,
-    "end": 2
-  },
-  "dense_counts": {
-    "serve": 10,
-    "end": 10
-  },
-  "note": "070826 Pt2 analysis from updated local model; dense review JSON from candidate scenes."
+  "highlights": []
 }
