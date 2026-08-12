@@ -1689,7 +1689,7 @@
     document.addEventListener('keydown', event => {
       if ((event.ctrlKey || event.metaKey) && event.key.toLowerCase() === 'z') {
         event.preventDefault();
-        if (event.altKey) redoChange();
+        if (event.altKey || event.shiftKey) redoChange();
         else undoChange();
         return;
       }
