@@ -1,0 +1,303 @@
+{
+  "version": 2,
+  "source": "videos/080826_pt3-proxy.mp4",
+  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/080826_pt3-proxy.mp4",
+  "duration": null,
+  "marks": [
+    {
+      "time": 0.0,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 22.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 64.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 70.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 86.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 92.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 131.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 149.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 168.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 178.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 184.0,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 199.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 213.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 230.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 246.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 262.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 289.0,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 296.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 304.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 311.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 315.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 324.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 330.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 337.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 342.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 356.8,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 363.2,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 365.8,
+      "type": "end",
+      "label": "Final"
+    }
+  ],
+  "scenes": [
+    {
+      "start": 0.0,
+      "end": 22.8,
+      "source": "local-motion",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "rally"
+      ]
+    },
+    {
+      "start": 64.2,
+      "end": 70.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 86.2,
+      "end": 92.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 131.2,
+      "end": 149.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 168.2,
+      "end": 178.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 184.0,
+      "end": 199.8,
+      "source": "local-motion-strong",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "rally"
+      ]
+    },
+    {
+      "start": 213.2,
+      "end": 230.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 246.2,
+      "end": 262.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 289.0,
+      "end": 296.8,
+      "source": "local-motion",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "rally"
+      ]
+    },
+    {
+      "start": 304.2,
+      "end": 311.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "motion",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 315.2,
+      "end": 324.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 330.2,
+      "end": 337.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 342.2,
+      "end": 356.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    },
+    {
+      "start": 363.2,
+      "end": 365.8,
+      "source": "model-rejected-serve",
+      "tags": [
+        "learned-serve-candidate",
+        "model-rejected",
+        "rally"
+      ]
+    }
+  ],
+  "highlights": [],
+  "normal_model_counts": {
+    "serve": 1,
+    "end": 1
+  },
+  "dense_counts": {
+    "serve": 14,
+    "end": 14
+  },
+  "note": "080826 Pt3 analysis with review recall boost enabled; includes broad serve/end candidates for correction."
+}
