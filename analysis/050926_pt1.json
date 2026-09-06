@@ -1,0 +1,3150 @@
+{
+  "created_at": "2026-09-06T09:24:38",
+  "video": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\work\\fronton-session-host\\videos\\050926_pt1-proxy.mp4",
+  "video_source": "050926_pt1-proxy.mp4",
+  "metadata": {
+    "duration": 954.662042,
+    "size": 84871907,
+    "width": 960,
+    "height": 540,
+    "fps": "24000/1001"
+  },
+  "guidance": {
+    "version": 13,
+    "updated_at": "2026-08-12",
+    "trusted_examples": {
+      "old_human_serves": 89,
+      "youtube_valid_until_8m_serves": 11,
+      "youtube_trusted_full_serves": 23,
+      "total_trusted_serves": 272,
+      "trusted_ends": 252,
+      "trusted_hits": 49,
+      "trusted_paddle_signals": 20,
+      "trusted_trash": 24,
+      "trusted_not_serve_negatives": 10,
+      "training_conflicts_excluded": 3,
+      "renato_rolo_renato_mauricio_serves": 20,
+      "240726_pt3_final_serves": 10,
+      "240726_pt3_final_ends": 6,
+      "240726_pt3_final_trash": 12,
+      "huanchaco_2607_pt3_final_serves": 26,
+      "huanchaco_2607_pt3_final_ends": 26,
+      "huanchaco_2607_pt3_final_hits": 6,
+      "huanchaco_2607_pt3_final_paddle": 2,
+      "huanchaco_2607_pt4_final_serves": 16,
+      "huanchaco_2607_pt4_final_ends": 16,
+      "huanchaco_2607_pt4_final_hits": 3,
+      "huanchaco_2607_pt4_final_paddle": 2,
+      "julio_diego_guti_final_serves": 16,
+      "julio_diego_guti_final_ends": 16,
+      "060826_pt1_final_serves": 20,
+      "060826_pt1_final_ends": 19,
+      "060826_pt1_final_hits": 2,
+      "060826_pt9_final_serves": 8,
+      "060826_pt9_final_ends": 8,
+      "060826_pt9_final_hits": 2,
+      "060826_pt11_final_serves": 19,
+      "060826_pt11_final_ends": 20,
+      "060826_pt11_final_paddles": 1,
+      "060826_pt12_final_serves": 25,
+      "060826_pt12_final_ends": 24,
+      "060826_pt12_final_paddle": 1
+    },
+    "exclude_from_training": [
+      {
+        "file": "youtube_1oNOWqOeE64-human-final.json",
+        "reason": "Superseded by youtube_1oNOWqOeE64-human-final-trusted.json after the corrected final pass.",
+        "valid_until_seconds": 480
+      }
+    ],
+    "use_for_training": [
+      "180726_pt1-human-final.json",
+      "180726_pt2-human-final.json",
+      "180726_pt3-human-final.json",
+      "180726_pt4-human-final.json",
+      "180726_pt5-human-final.json",
+      "180726_pt6-human-final.json",
+      "GX013976-human-corrected.json",
+      "youtube_1oNOWqOeE64-human-final-trusted.json",
+      "Renato_Rolo_Renato_Mauricio-human-converted.json",
+      "240726_pt3-human-final.json",
+      "huanchaco_2607_pt3-human-final.json",
+      "huanchaco_2607_pt4-human-final.json",
+      "julio_diego_guti-human-final.json",
+      "060826_pt1-human-final.json",
+      "060826_pt9-human-final.json",
+      "060826_pt11-human-final.json",
+      "060826_pt12-human-final.json"
+    ],
+    "better_detection_playbook": {
+      "serve": [
+        "Treat serve as a transition, not a single visual pose.",
+        "Best serve evidence is: players reset/aligned, most bodies relatively still, server starts motion, receiver/reacting player starts moving immediately after.",
+        "A person standing with a paddle is not enough; require reset-to-rally context.",
+        "If the camera is blocked at the exact contact, infer only from surrounding reset and immediate rally, otherwise omit.",
+        "Audio can support a candidate when a paddle/ball hit appears near the reset-to-rally transition, but audio alone must not create a serve.",
+        "Huanchaco Pt3 trusted final shows many valid points begin after a clear short reset, not necessarily a long stationary pause.",
+        "For Huanchaco-style clips, keep the serve candidate only when it can be paired with a plausible rally and later stop; do not add extra serves inside that rally.",
+        "For user-marked or model-candidate serve moments, search tightly around that second; the true serve is often near the indicated second, not necessarily exactly on the sampled frame.",
+        "When a candidate second has reset posture and immediate rally start, prefer a mark close to that second rather than drifting several seconds away.",
+        "Pt11 trusted final confirms that missing a few seconds around a serve is acceptable, but a serve still needs reset/alignment followed by real rally movement.",
+        "Pt12 trusted final shows recall must be higher: publish more review candidates around plausible reset-to-rally moments, even when the firm model is unsure.",
+        "A reliable serve pattern is stillness/alignment before the point: server and receiver are mostly quiet, partners may make small positioning adjustments, then the server starts and the receiver/players react.",
+        "After a valid serve, ball/paddle/court audio within roughly 0.5 to 1.5 seconds plus player acceleration is strong evidence that the point really started."
+      ],
+      "end": [
+        "Final is often easier than serve: players stop chasing, posture relaxes, they walk back or align again.",
+        "Paddle collision/acknowledgement means point ended.",
+        "If the rally continues after a candidate final, reject the final.",
+        "Huanchaco Pt3 trusted final reinforces that point end often appears as immediate body relaxation/walking after the last return, even if the ball is hard to see.",
+        "Do not require repeated/static frames for point end; repeated frames are rare and should not be the main signal.",
+        "A point can be determined when players stop running with intensity, relax, walk away, or leave the active court area because the ball went too far/out.",
+        "If players are no longer chasing the ball and no one remains actively playing the rally, infer that the point ended earlier even if the exact ball exit is hard to see.",
+        "Pt11 trusted final has several ends where the ball is hard to see; infer end from the rally dying and players clearly dropping intensity or resetting.",
+        "During a live point, players keep reacting and ball impacts should continue in a plausible cadence. If movement and impact cadence stop for more than about 2-3 seconds, infer the point has ended.",
+        "If there is plenty of player movement and repeated ball impact audio after a serve, do not close the point early; the rally is still alive even if the ball is hard to see."
+      ],
+      "paddle_highlight": [
+        "Raised paddle/highlight requires a deliberate signal held around 2 seconds.",
+        "A player or body blocking the camera is not a highlight.",
+        "Normal horizontal paddle during play is not enough unless held deliberately as a signal."
+      ],
+      "camera_framing": [
+        "Higher camera angle can reduce blocks, but must not lose seated people or the court context.",
+        "The model should tolerate occasional blocks by using before/after context."
+      ],
+      "negative_examples": [
+        "Use negatives explicitly: otra_cosa without Fin de punto usually means not a serve, even if motion/stance looked tempting.",
+        "Do not train contradictory entries where decision says saque but note says Fin de punto; keep them for human review only.",
+        "Basura means ignore for serve/end training unless a separate final note is later confirmed."
+      ],
+      "hit": [
+        "Do not emit Hit automatically in review JSON; user uses Hit only for manual/explicit moments, and false hits slow correction."
+      ]
+    },
+    "strict_rules": [
+      "Do not label a serve from motion alone.",
+      "A serve candidate requires a reset posture: players relatively still, server separated enough to initiate, then the rally starts immediately after.",
+      "A serve is stronger when reset-to-rally motion is paired with ball/paddle/court audio shortly after the start.",
+      "Do not mark the same rally with multiple serve starts unless the previous point has a confirmed end.",
+      "Do not label a final from motion alone.",
+      "A final candidate requires the rally to visibly stop: players stop chasing/running, paddle collision/acknowledgement, ball dead, or clear reset before the next serve.",
+      "Do not close a point while players are still moving with rally intensity and ball-impact audio continues in a normal rally cadence.",
+      "If motion and ball-impact cadence disappear for more than 2-3 seconds after a rally, treat that as strong end evidence.",
+      "A hit is not a point boundary; it is only an internal action marker.",
+      "Local-motion scenes are hints only. They must not become final serve/end pairs unless supported by a serve-to-end pattern.",
+      "If uncertain, omit the mark instead of inventing it. It is faster for the human to add a missing mark than delete many false marks.",
+      "Paddle highlight is valid only when the paddle is deliberately held/signaled for about 2 seconds, not when normal play or body obstruction hides the camera.",
+      "Any annotation after 08:00 in youtube_1oNOWqOeE64-human-final.json must be ignored.",
+      "Human final 240726 Pt3 confirms that long dead or unclear stretches should be labeled trash/ignored instead of forcing serve/end pairs.",
+      "When a corrected clip has many trash marks, prefer conservative omission over dense invented rallies.",
+      "Use Huanchaco Pt3 as trusted cadence reference for Huanchaco Pt4: prefer one serve followed by one final per continuous rally.",
+      "Do not split a continuous Huanchaco rally into multiple points unless players visibly reset or acknowledge the end.",
+      "Huanchaco Pt4 final confirms render scenes should use the latest corrected serve before each final when multiple serves appear before the same end.",
+      "For final output, derive clips from human mark pairs rather than stale automatic scene spans when they disagree.",
+      "For endings, prioritize loss of player intensity and court disengagement over frame repetition.",
+      "When players stop chasing or leave the play area after a far/out ball, mark the final near the decisive stop, not at the next visible reset.",
+      "For serves, stay close to the indicated/candidate second unless surrounding context clearly proves a later or earlier serve.",
+      "Julio Diego Guti final adds trusted examples where points end by player intensity drop and disengagement, not by repeated frames.",
+      "When the final human marks disagree with automatic scenes, render and train from serve/end mark pairs.",
+      "060826 Pt1 final shows dense review candidates are useful: rejected model scenes can contain real serve/end pairs after human correction.",
+      "For future first-pass reviews, prefer a dense candidate set over an empty or overly conservative analysis when the match contains regular rallies.",
+      "060826 Pt9 final confirms that automatic Hit marks should be sparse; do not emit hit by default in dense review.",
+      "A paddle signal marks the previous completed point as highlight, not the current point containing the paddle signal.",
+      "Small serve timing deltas of a few seconds are acceptable when the predicted candidate is in the same reset-to-rally action; missing whole serve/end pairs is the main failure."
+    ],
+    "youtube_1oNOWqOeE64_valid_corrections_until_8m": [
+      {
+        "time": 147.747,
+        "type": "end"
+      },
+      {
+        "time": 156.352,
+        "type": "serve"
+      },
+      {
+        "time": 161.09,
+        "type": "end"
+      },
+      {
+        "time": 166.888,
+        "type": "serve"
+      },
+      {
+        "time": 180.833,
+        "type": "end"
+      },
+      {
+        "time": 190.697,
+        "type": "serve"
+      },
+      {
+        "time": 195.755,
+        "type": "end"
+      },
+      {
+        "time": 200.031,
+        "type": "serve"
+      },
+      {
+        "time": 204.436,
+        "type": "end"
+      },
+      {
+        "time": 258.0,
+        "type": "serve"
+      },
+      {
+        "time": 261.0,
+        "type": "hit"
+      },
+      {
+        "time": 263.0,
+        "type": "end"
+      },
+      {
+        "time": 285.565,
+        "type": "serve"
+      },
+      {
+        "time": 314.131,
+        "type": "hit"
+      },
+      {
+        "time": 328.516,
+        "type": "end"
+      },
+      {
+        "time": 345.452,
+        "type": "serve"
+      },
+      {
+        "time": 364.806,
+        "type": "end"
+      },
+      {
+        "time": 400.897,
+        "type": "serve"
+      },
+      {
+        "time": 414.823,
+        "type": "end"
+      },
+      {
+        "time": 429.41,
+        "type": "serve"
+      },
+      {
+        "time": 436.248,
+        "type": "end"
+      },
+      {
+        "time": 449.156,
+        "type": "serve"
+      },
+      {
+        "time": 470.0,
+        "type": "serve"
+      },
+      {
+        "time": 473.0,
+        "type": "hit"
+      },
+      {
+        "time": 476.0,
+        "type": "end"
+      }
+    ]
+  },
+  "training_profile": {
+    "trusted_serves": 272,
+    "trusted_not_serve_negatives": 10,
+    "serve_rate_per_minute": 1.5495258659732283,
+    "min_serve_gap": 5.868,
+    "typical_serve_gap": 28.302,
+    "short_point": 5.435,
+    "typical_point": 11.01,
+    "long_point": 28.389,
+    "no_auto_hits": true,
+    "expected_serve_padding": 8,
+    "review_recall_boost": true,
+    "end_recall_boost": true,
+    "local_model_version": 1
+  },
+  "motion_threshold_note": "Modo aprendido: usa ejemplos humanos para buscar reposo antes del saque y arranque de rally despues. Si hay duda, omitir antes que inventar.",
+  "scenes": [
+    {
+      "id": "scene-1",
+      "source": "learned-reset-rally",
+      "start": 21.2,
+      "end": 34.8,
+      "peak": 26.0,
+      "score": 2.1125,
+      "tags": [
+        "learned-serve-candidate"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.02121,
+        "post_motion": 0.0333,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.75,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-2",
+      "source": "learned-reset-rally",
+      "start": 39.2,
+      "end": 60.8,
+      "peak": 44.0,
+      "score": 7.67577,
+      "tags": [
+        "learned-serve-candidate",
+        "motion"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01775,
+        "post_motion": 0.02239,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.5,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-3",
+      "source": "learned-reset-rally",
+      "start": 65.2,
+      "end": 90.8,
+      "peak": 68.0,
+      "score": 2.51172,
+      "tags": [
+        "learned-serve-candidate",
+        "motion"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.02017,
+        "post_motion": 0.05669,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.5,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-4",
+      "source": "learned-reset-rally",
+      "start": 105.2,
+      "end": 166.8,
+      "peak": 110.0,
+      "score": 7.35972,
+      "tags": [
+        "learned-serve-candidate",
+        "motion"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01501,
+        "post_motion": 0.01679,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.5,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-5",
+      "source": "learned-reset-rally",
+      "start": 211.2,
+      "end": 226.8,
+      "peak": 216.0,
+      "score": 3.51053,
+      "tags": [
+        "learned-serve-candidate",
+        "motion"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01721,
+        "post_motion": 0.10981,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.5,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-6",
+      "source": "learned-reset-rally",
+      "start": 465.2,
+      "end": 508.8,
+      "peak": 472.0,
+      "score": 3.39395,
+      "tags": [
+        "learned-serve-candidate",
+        "motion"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01783,
+        "post_motion": 0.02387,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.25,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-7",
+      "source": "learned-reset-rally",
+      "start": 515.2,
+      "end": 548.8,
+      "peak": 516.0,
+      "score": 1.36309,
+      "tags": [
+        "learned-serve-candidate"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01672,
+        "post_motion": 0.02653,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.25,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-8",
+      "source": "learned-reset-rally",
+      "start": 555.2,
+      "end": 608.8,
+      "peak": 556.0,
+      "score": 4.05964,
+      "tags": [
+        "learned-serve-candidate",
+        "motion"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.02183,
+        "post_motion": 0.02025,
+        "quiet_ratio": 0.5,
+        "active_ratio": 0.25,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-9",
+      "source": "learned-reset-rally",
+      "start": 635.2,
+      "end": 666.8,
+      "peak": 638.0,
+      "score": 1.49569,
+      "tags": [
+        "learned-serve-candidate"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01835,
+        "post_motion": 0.01395,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.25,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-10",
+      "source": "learned-reset-rally",
+      "start": 705.2,
+      "end": 714.8,
+      "peak": 708.0,
+      "score": 1.28925,
+      "tags": [
+        "learned-serve-candidate"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01746,
+        "post_motion": 0.02388,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.25,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-11",
+      "source": "learned-reset-rally",
+      "start": 739.2,
+      "end": 758.8,
+      "peak": 744.0,
+      "score": 2.82388,
+      "tags": [
+        "learned-serve-candidate"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.02118,
+        "post_motion": 0.02019,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.5,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-12",
+      "source": "learned-reset-rally",
+      "start": 811.2,
+      "end": 834.8,
+      "peak": 816.0,
+      "score": 3.31193,
+      "tags": [
+        "learned-serve-candidate",
+        "motion"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00919,
+        "post_motion": 0.01084,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.5,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-13",
+      "source": "learned-reset-rally",
+      "start": 837.2,
+      "end": 846.8,
+      "peak": 840.0,
+      "score": 1.31302,
+      "tags": [
+        "learned-serve-candidate"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.02253,
+        "post_motion": 0.03004,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.25,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-14",
+      "source": "learned-reset-rally",
+      "start": 915.2,
+      "end": 938.8,
+      "peak": 920.0,
+      "score": 2.998,
+      "tags": [
+        "learned-serve-candidate",
+        "motion"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.00929,
+        "post_motion": 0.02163,
+        "quiet_ratio": 1.0,
+        "active_ratio": 0.75,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    },
+    {
+      "id": "scene-15",
+      "source": "learned-reset-rally",
+      "start": 943.2,
+      "end": 954.662,
+      "peak": 948.0,
+      "score": 3.11677,
+      "tags": [
+        "learned-serve-candidate"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.02388,
+        "post_motion": 0.02101,
+        "quiet_ratio": 0.5,
+        "active_ratio": 0.25,
+        "audio_boost": 0.0,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 0
+      }
+    }
+  ],
+  "marks": [
+    {
+      "id": "serve-1",
+      "type": "serve",
+      "time": 21.2,
+      "suggested": true
+    },
+    {
+      "id": "end-1",
+      "type": "end",
+      "time": 34.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-2",
+      "type": "serve",
+      "time": 39.2,
+      "suggested": true
+    },
+    {
+      "id": "end-2",
+      "type": "end",
+      "time": 60.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-3",
+      "type": "serve",
+      "time": 65.2,
+      "suggested": true
+    },
+    {
+      "id": "end-3",
+      "type": "end",
+      "time": 90.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-4",
+      "type": "serve",
+      "time": 105.2,
+      "suggested": true
+    },
+    {
+      "id": "end-4",
+      "type": "end",
+      "time": 166.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-5",
+      "type": "serve",
+      "time": 211.2,
+      "suggested": true
+    },
+    {
+      "id": "end-5",
+      "type": "end",
+      "time": 226.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-6",
+      "type": "serve",
+      "time": 465.2,
+      "suggested": true
+    },
+    {
+      "id": "end-6",
+      "type": "end",
+      "time": 508.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-7",
+      "type": "serve",
+      "time": 515.2,
+      "suggested": true
+    },
+    {
+      "id": "end-7",
+      "type": "end",
+      "time": 548.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-8",
+      "type": "serve",
+      "time": 555.2,
+      "suggested": true
+    },
+    {
+      "id": "end-8",
+      "type": "end",
+      "time": 608.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-9",
+      "type": "serve",
+      "time": 635.2,
+      "suggested": true
+    },
+    {
+      "id": "end-9",
+      "type": "end",
+      "time": 666.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-10",
+      "type": "serve",
+      "time": 705.2,
+      "suggested": true
+    },
+    {
+      "id": "end-10",
+      "type": "end",
+      "time": 714.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-11",
+      "type": "serve",
+      "time": 739.2,
+      "suggested": true
+    },
+    {
+      "id": "end-11",
+      "type": "end",
+      "time": 758.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-12",
+      "type": "serve",
+      "time": 811.2,
+      "suggested": true
+    },
+    {
+      "id": "end-12",
+      "type": "end",
+      "time": 834.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-13",
+      "type": "serve",
+      "time": 837.2,
+      "suggested": true
+    },
+    {
+      "id": "end-13",
+      "type": "end",
+      "time": 846.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-14",
+      "type": "serve",
+      "time": 915.2,
+      "suggested": true
+    },
+    {
+      "id": "end-14",
+      "type": "end",
+      "time": 938.8,
+      "suggested": true
+    },
+    {
+      "id": "serve-15",
+      "type": "serve",
+      "time": 943.2,
+      "suggested": true
+    },
+    {
+      "id": "end-15",
+      "type": "end",
+      "time": 954.662,
+      "suggested": true
+    }
+  ],
+  "motion_series": [
+    {
+      "time": 2.0,
+      "motion": 0.39616549015045166,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00002.jpg"
+    },
+    {
+      "time": 4.0,
+      "motion": 0.03972296789288521,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00003.jpg"
+    },
+    {
+      "time": 6.0,
+      "motion": 0.014439405873417854,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00004.jpg"
+    },
+    {
+      "time": 8.0,
+      "motion": 0.014264365658164024,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00005.jpg"
+    },
+    {
+      "time": 10.0,
+      "motion": 0.012784110382199287,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00006.jpg"
+    },
+    {
+      "time": 12.0,
+      "motion": 0.02353622019290924,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00007.jpg"
+    },
+    {
+      "time": 14.0,
+      "motion": 0.02710859104990959,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00008.jpg"
+    },
+    {
+      "time": 16.0,
+      "motion": 0.017198391258716583,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00009.jpg"
+    },
+    {
+      "time": 18.0,
+      "motion": 0.020795274525880814,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00010.jpg"
+    },
+    {
+      "time": 20.0,
+      "motion": 0.021618735045194626,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00011.jpg"
+    },
+    {
+      "time": 22.0,
+      "motion": 0.024066857993602753,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00012.jpg"
+    },
+    {
+      "time": 24.0,
+      "motion": 0.03528880700469017,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00013.jpg"
+    },
+    {
+      "time": 26.0,
+      "motion": 0.04053527116775513,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00014.jpg"
+    },
+    {
+      "time": 28.0,
+      "motion": 0.033273760229349136,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00015.jpg"
+    },
+    {
+      "time": 30.0,
+      "motion": 0.028541192412376404,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00016.jpg"
+    },
+    {
+      "time": 32.0,
+      "motion": 0.020896172150969505,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00017.jpg"
+    },
+    {
+      "time": 34.0,
+      "motion": 0.018497208133339882,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00018.jpg"
+    },
+    {
+      "time": 36.0,
+      "motion": 0.01858142577111721,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00019.jpg"
+    },
+    {
+      "time": 38.0,
+      "motion": 0.01691475883126259,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00020.jpg"
+    },
+    {
+      "time": 40.0,
+      "motion": 0.01967177540063858,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00021.jpg"
+    },
+    {
+      "time": 42.0,
+      "motion": 0.02197556011378765,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00022.jpg"
+    },
+    {
+      "time": 44.0,
+      "motion": 0.02551872283220291,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00023.jpg"
+    },
+    {
+      "time": 46.0,
+      "motion": 0.06663501262664795,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00024.jpg"
+    },
+    {
+      "time": 48.0,
+      "motion": 0.4312506318092346,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00025.jpg"
+    },
+    {
+      "time": 50.0,
+      "motion": 0.38521477580070496,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00026.jpg"
+    },
+    {
+      "time": 52.0,
+      "motion": 0.08142654597759247,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00027.jpg"
+    },
+    {
+      "time": 54.0,
+      "motion": 0.08925830572843552,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00028.jpg"
+    },
+    {
+      "time": 56.0,
+      "motion": 0.034560661762952805,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00029.jpg"
+    },
+    {
+      "time": 58.0,
+      "motion": 0.022312907502055168,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00030.jpg"
+    },
+    {
+      "time": 60.0,
+      "motion": 0.02199823223054409,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00031.jpg"
+    },
+    {
+      "time": 62.0,
+      "motion": 0.017223583534359932,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00032.jpg"
+    },
+    {
+      "time": 64.0,
+      "motion": 0.023119350895285606,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00033.jpg"
+    },
+    {
+      "time": 66.0,
+      "motion": 0.028040576726198196,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00034.jpg"
+    },
+    {
+      "time": 68.0,
+      "motion": 0.07642428576946259,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00035.jpg"
+    },
+    {
+      "time": 70.0,
+      "motion": 0.06560518592596054,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00036.jpg"
+    },
+    {
+      "time": 72.0,
+      "motion": 0.016378743574023247,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00037.jpg"
+    },
+    {
+      "time": 74.0,
+      "motion": 0.0174180269241333,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00038.jpg"
+    },
+    {
+      "time": 76.0,
+      "motion": 0.03125204145908356,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00039.jpg"
+    },
+    {
+      "time": 78.0,
+      "motion": 0.05802641808986664,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00040.jpg"
+    },
+    {
+      "time": 80.0,
+      "motion": 0.05284660682082176,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00041.jpg"
+    },
+    {
+      "time": 82.0,
+      "motion": 0.029979094862937927,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00042.jpg"
+    },
+    {
+      "time": 84.0,
+      "motion": 0.033822305500507355,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00043.jpg"
+    },
+    {
+      "time": 86.0,
+      "motion": 0.03283435478806496,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00044.jpg"
+    },
+    {
+      "time": 88.0,
+      "motion": 0.023207923397421837,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00045.jpg"
+    },
+    {
+      "time": 90.0,
+      "motion": 0.01701062172651291,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00046.jpg"
+    },
+    {
+      "time": 92.0,
+      "motion": 0.01349394116550684,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00047.jpg"
+    },
+    {
+      "time": 94.0,
+      "motion": 0.01909150369465351,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00048.jpg"
+    },
+    {
+      "time": 96.0,
+      "motion": 0.019280772656202316,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00049.jpg"
+    },
+    {
+      "time": 98.0,
+      "motion": 0.0167743731290102,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00050.jpg"
+    },
+    {
+      "time": 100.0,
+      "motion": 0.013099401257932186,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00051.jpg"
+    },
+    {
+      "time": 102.0,
+      "motion": 0.015248706564307213,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00052.jpg"
+    },
+    {
+      "time": 104.0,
+      "motion": 0.014761573635041714,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00053.jpg"
+    },
+    {
+      "time": 106.0,
+      "motion": 0.015932530164718628,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00054.jpg"
+    },
+    {
+      "time": 108.0,
+      "motion": 0.01494151633232832,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00055.jpg"
+    },
+    {
+      "time": 110.0,
+      "motion": 0.01948665641248226,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00056.jpg"
+    },
+    {
+      "time": 112.0,
+      "motion": 0.24974940717220306,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00057.jpg"
+    },
+    {
+      "time": 114.0,
+      "motion": 0.24583488702774048,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00058.jpg"
+    },
+    {
+      "time": 116.0,
+      "motion": 0.26898038387298584,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00059.jpg"
+    },
+    {
+      "time": 118.0,
+      "motion": 0.16176612675189972,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00060.jpg"
+    },
+    {
+      "time": 120.0,
+      "motion": 0.1534145623445511,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00061.jpg"
+    },
+    {
+      "time": 122.0,
+      "motion": 0.1898679882287979,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00062.jpg"
+    },
+    {
+      "time": 124.0,
+      "motion": 0.05861819535493851,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00063.jpg"
+    },
+    {
+      "time": 126.0,
+      "motion": 0.037362612783908844,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00064.jpg"
+    },
+    {
+      "time": 128.0,
+      "motion": 0.032471951097249985,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00065.jpg"
+    },
+    {
+      "time": 130.0,
+      "motion": 0.18903478980064392,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00066.jpg"
+    },
+    {
+      "time": 132.0,
+      "motion": 0.03485865890979767,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00067.jpg"
+    },
+    {
+      "time": 134.0,
+      "motion": 0.025581426918506622,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00068.jpg"
+    },
+    {
+      "time": 136.0,
+      "motion": 0.022351307794451714,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00069.jpg"
+    },
+    {
+      "time": 138.0,
+      "motion": 0.021051062270998955,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00070.jpg"
+    },
+    {
+      "time": 140.0,
+      "motion": 0.01752430573105812,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00071.jpg"
+    },
+    {
+      "time": 142.0,
+      "motion": 0.05172010883688927,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00072.jpg"
+    },
+    {
+      "time": 144.0,
+      "motion": 0.07984980195760727,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00073.jpg"
+    },
+    {
+      "time": 146.0,
+      "motion": 0.10944819450378418,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00074.jpg"
+    },
+    {
+      "time": 148.0,
+      "motion": 0.1970582753419876,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00075.jpg"
+    },
+    {
+      "time": 150.0,
+      "motion": 0.19563479721546173,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00076.jpg"
+    },
+    {
+      "time": 152.0,
+      "motion": 0.06556325405836105,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00077.jpg"
+    },
+    {
+      "time": 154.0,
+      "motion": 0.03141019865870476,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00078.jpg"
+    },
+    {
+      "time": 156.0,
+      "motion": 0.03793150931596756,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00079.jpg"
+    },
+    {
+      "time": 158.0,
+      "motion": 0.04879554733633995,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00080.jpg"
+    },
+    {
+      "time": 160.0,
+      "motion": 0.03374883905053139,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00081.jpg"
+    },
+    {
+      "time": 162.0,
+      "motion": 0.04155392199754715,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00082.jpg"
+    },
+    {
+      "time": 164.0,
+      "motion": 0.02359701879322529,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00083.jpg"
+    },
+    {
+      "time": 166.0,
+      "motion": 0.019159041345119476,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00084.jpg"
+    },
+    {
+      "time": 168.0,
+      "motion": 0.019555147737264633,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00085.jpg"
+    },
+    {
+      "time": 170.0,
+      "motion": 0.020312227308750153,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00086.jpg"
+    },
+    {
+      "time": 172.0,
+      "motion": 0.01931917481124401,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00087.jpg"
+    },
+    {
+      "time": 174.0,
+      "motion": 0.018722085282206535,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00088.jpg"
+    },
+    {
+      "time": 176.0,
+      "motion": 0.016499115154147148,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00089.jpg"
+    },
+    {
+      "time": 178.0,
+      "motion": 0.014671568758785725,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00090.jpg"
+    },
+    {
+      "time": 180.0,
+      "motion": 0.013956699520349503,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00091.jpg"
+    },
+    {
+      "time": 182.0,
+      "motion": 0.014738697558641434,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00092.jpg"
+    },
+    {
+      "time": 184.0,
+      "motion": 0.015048747882246971,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00093.jpg"
+    },
+    {
+      "time": 186.0,
+      "motion": 0.013614107854664326,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00094.jpg"
+    },
+    {
+      "time": 188.0,
+      "motion": 0.0132014574483037,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00095.jpg"
+    },
+    {
+      "time": 190.0,
+      "motion": 0.021003199741244316,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00096.jpg"
+    },
+    {
+      "time": 192.0,
+      "motion": 0.0257275328040123,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00097.jpg"
+    },
+    {
+      "time": 194.0,
+      "motion": 0.031638003885746,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00098.jpg"
+    },
+    {
+      "time": 196.0,
+      "motion": 0.02376450225710869,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00099.jpg"
+    },
+    {
+      "time": 198.0,
+      "motion": 0.02054731734097004,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00100.jpg"
+    },
+    {
+      "time": 200.0,
+      "motion": 0.02008203975856304,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00101.jpg"
+    },
+    {
+      "time": 202.0,
+      "motion": 0.022091979160904884,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00102.jpg"
+    },
+    {
+      "time": 204.0,
+      "motion": 0.02614004537463188,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00103.jpg"
+    },
+    {
+      "time": 206.0,
+      "motion": 0.02690359391272068,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00104.jpg"
+    },
+    {
+      "time": 208.0,
+      "motion": 0.018583199009299278,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00105.jpg"
+    },
+    {
+      "time": 210.0,
+      "motion": 0.015841638669371605,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00106.jpg"
+    },
+    {
+      "time": 212.0,
+      "motion": 0.01825326681137085,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00107.jpg"
+    },
+    {
+      "time": 214.0,
+      "motion": 0.1530538648366928,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00108.jpg"
+    },
+    {
+      "time": 216.0,
+      "motion": 0.15812675654888153,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00109.jpg"
+    },
+    {
+      "time": 218.0,
+      "motion": 0.026073595508933067,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00110.jpg"
+    },
+    {
+      "time": 220.0,
+      "motion": 0.03004623018205166,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00111.jpg"
+    },
+    {
+      "time": 222.0,
+      "motion": 0.02964971587061882,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00112.jpg"
+    },
+    {
+      "time": 224.0,
+      "motion": 0.019121596589684486,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00113.jpg"
+    },
+    {
+      "time": 226.0,
+      "motion": 0.015156385488808155,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00114.jpg"
+    },
+    {
+      "time": 228.0,
+      "motion": 0.021340344101190567,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00115.jpg"
+    },
+    {
+      "time": 230.0,
+      "motion": 0.023571690544486046,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00116.jpg"
+    },
+    {
+      "time": 232.0,
+      "motion": 0.025358933955430984,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00117.jpg"
+    },
+    {
+      "time": 234.0,
+      "motion": 0.02260396257042885,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00118.jpg"
+    },
+    {
+      "time": 236.0,
+      "motion": 0.022333059459924698,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00119.jpg"
+    },
+    {
+      "time": 238.0,
+      "motion": 0.017955200746655464,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00120.jpg"
+    },
+    {
+      "time": 240.0,
+      "motion": 0.01425067987293005,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00121.jpg"
+    },
+    {
+      "time": 242.0,
+      "motion": 0.011903391219675541,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00122.jpg"
+    },
+    {
+      "time": 244.0,
+      "motion": 0.012108864262700081,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00123.jpg"
+    },
+    {
+      "time": 246.0,
+      "motion": 0.010410402901470661,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00124.jpg"
+    },
+    {
+      "time": 248.0,
+      "motion": 0.015575776807963848,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00125.jpg"
+    },
+    {
+      "time": 250.0,
+      "motion": 0.020262662321329117,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00126.jpg"
+    },
+    {
+      "time": 252.0,
+      "motion": 0.01652947999536991,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00127.jpg"
+    },
+    {
+      "time": 254.0,
+      "motion": 0.020287785679101944,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00128.jpg"
+    },
+    {
+      "time": 256.0,
+      "motion": 0.030026892200112343,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00129.jpg"
+    },
+    {
+      "time": 258.0,
+      "motion": 0.027412855997681618,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00130.jpg"
+    },
+    {
+      "time": 260.0,
+      "motion": 0.025072915479540825,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00131.jpg"
+    },
+    {
+      "time": 262.0,
+      "motion": 0.02483721449971199,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00132.jpg"
+    },
+    {
+      "time": 264.0,
+      "motion": 0.014398080296814442,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00133.jpg"
+    },
+    {
+      "time": 266.0,
+      "motion": 0.015222903341054916,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00134.jpg"
+    },
+    {
+      "time": 268.0,
+      "motion": 0.012104847468435764,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00135.jpg"
+    },
+    {
+      "time": 270.0,
+      "motion": 0.01496044360101223,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00136.jpg"
+    },
+    {
+      "time": 272.0,
+      "motion": 0.017966367304325104,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00137.jpg"
+    },
+    {
+      "time": 274.0,
+      "motion": 0.016965754330158234,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00138.jpg"
+    },
+    {
+      "time": 276.0,
+      "motion": 0.014402097091078758,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00139.jpg"
+    },
+    {
+      "time": 278.0,
+      "motion": 0.014813248999416828,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00140.jpg"
+    },
+    {
+      "time": 280.0,
+      "motion": 0.013515523634850979,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00141.jpg"
+    },
+    {
+      "time": 282.0,
+      "motion": 0.016465414315462112,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00142.jpg"
+    },
+    {
+      "time": 284.0,
+      "motion": 0.02008850872516632,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00143.jpg"
+    },
+    {
+      "time": 286.0,
+      "motion": 0.024886097759008408,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00144.jpg"
+    },
+    {
+      "time": 288.0,
+      "motion": 0.024758851155638695,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00145.jpg"
+    },
+    {
+      "time": 290.0,
+      "motion": 0.01815938390791416,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00146.jpg"
+    },
+    {
+      "time": 292.0,
+      "motion": 0.016583332791924477,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00147.jpg"
+    },
+    {
+      "time": 294.0,
+      "motion": 0.016976308077573776,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00148.jpg"
+    },
+    {
+      "time": 296.0,
+      "motion": 0.0174245648086071,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00149.jpg"
+    },
+    {
+      "time": 298.0,
+      "motion": 0.016119621694087982,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00150.jpg"
+    },
+    {
+      "time": 300.0,
+      "motion": 0.021045411005616188,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00151.jpg"
+    },
+    {
+      "time": 302.0,
+      "motion": 0.016159653663635254,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00152.jpg"
+    },
+    {
+      "time": 304.0,
+      "motion": 0.019724877551198006,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00153.jpg"
+    },
+    {
+      "time": 306.0,
+      "motion": 0.020803989842534065,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00154.jpg"
+    },
+    {
+      "time": 308.0,
+      "motion": 0.019934026524424553,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00155.jpg"
+    },
+    {
+      "time": 310.0,
+      "motion": 0.01677219569683075,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00156.jpg"
+    },
+    {
+      "time": 312.0,
+      "motion": 0.01323025580495596,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00157.jpg"
+    },
+    {
+      "time": 314.0,
+      "motion": 0.009951593354344368,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00158.jpg"
+    },
+    {
+      "time": 316.0,
+      "motion": 0.01862214133143425,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00159.jpg"
+    },
+    {
+      "time": 318.0,
+      "motion": 0.023092931136488914,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00160.jpg"
+    },
+    {
+      "time": 320.0,
+      "motion": 0.025024782866239548,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00161.jpg"
+    },
+    {
+      "time": 322.0,
+      "motion": 0.027066107839345932,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00162.jpg"
+    },
+    {
+      "time": 324.0,
+      "motion": 0.02569839544594288,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00163.jpg"
+    },
+    {
+      "time": 326.0,
+      "motion": 0.028158633038401604,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00164.jpg"
+    },
+    {
+      "time": 328.0,
+      "motion": 0.024893518537282944,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00165.jpg"
+    },
+    {
+      "time": 330.0,
+      "motion": 0.02738228440284729,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00166.jpg"
+    },
+    {
+      "time": 332.0,
+      "motion": 0.031736522912979126,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00167.jpg"
+    },
+    {
+      "time": 334.0,
+      "motion": 0.021264979615807533,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00168.jpg"
+    },
+    {
+      "time": 336.0,
+      "motion": 0.021516405045986176,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00169.jpg"
+    },
+    {
+      "time": 338.0,
+      "motion": 0.024503743276000023,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00170.jpg"
+    },
+    {
+      "time": 340.0,
+      "motion": 0.028771856799721718,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00171.jpg"
+    },
+    {
+      "time": 342.0,
+      "motion": 0.024436071515083313,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00172.jpg"
+    },
+    {
+      "time": 344.0,
+      "motion": 0.02247106283903122,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00173.jpg"
+    },
+    {
+      "time": 346.0,
+      "motion": 0.01803111471235752,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00174.jpg"
+    },
+    {
+      "time": 348.0,
+      "motion": 0.01960695907473564,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00175.jpg"
+    },
+    {
+      "time": 350.0,
+      "motion": 0.014269812032580376,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00176.jpg"
+    },
+    {
+      "time": 352.0,
+      "motion": 0.011662853881716728,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00177.jpg"
+    },
+    {
+      "time": 354.0,
+      "motion": 0.01942102424800396,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00178.jpg"
+    },
+    {
+      "time": 356.0,
+      "motion": 0.019489513710141182,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00179.jpg"
+    },
+    {
+      "time": 358.0,
+      "motion": 0.016254696995019913,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00180.jpg"
+    },
+    {
+      "time": 360.0,
+      "motion": 0.014409994706511497,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00181.jpg"
+    },
+    {
+      "time": 362.0,
+      "motion": 0.016536083072423935,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00182.jpg"
+    },
+    {
+      "time": 364.0,
+      "motion": 0.02647535502910614,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00183.jpg"
+    },
+    {
+      "time": 366.0,
+      "motion": 0.03043661266565323,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00184.jpg"
+    },
+    {
+      "time": 368.0,
+      "motion": 0.026332242414355278,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00185.jpg"
+    },
+    {
+      "time": 370.0,
+      "motion": 0.02355235628783703,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00186.jpg"
+    },
+    {
+      "time": 372.0,
+      "motion": 0.01861022599041462,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00187.jpg"
+    },
+    {
+      "time": 374.0,
+      "motion": 0.02025667391717434,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00188.jpg"
+    },
+    {
+      "time": 376.0,
+      "motion": 0.02470819652080536,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00189.jpg"
+    },
+    {
+      "time": 378.0,
+      "motion": 0.022016000002622604,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00190.jpg"
+    },
+    {
+      "time": 380.0,
+      "motion": 0.015186138451099396,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00191.jpg"
+    },
+    {
+      "time": 382.0,
+      "motion": 0.017832381650805473,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00192.jpg"
+    },
+    {
+      "time": 384.0,
+      "motion": 0.01926259510219097,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00193.jpg"
+    },
+    {
+      "time": 386.0,
+      "motion": 0.022445600479841232,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00194.jpg"
+    },
+    {
+      "time": 388.0,
+      "motion": 0.020594431087374687,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00195.jpg"
+    },
+    {
+      "time": 390.0,
+      "motion": 0.0152451666072011,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00196.jpg"
+    },
+    {
+      "time": 392.0,
+      "motion": 0.014527845196425915,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00197.jpg"
+    },
+    {
+      "time": 394.0,
+      "motion": 0.02346813678741455,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00198.jpg"
+    },
+    {
+      "time": 396.0,
+      "motion": 0.027624592185020447,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00199.jpg"
+    },
+    {
+      "time": 398.0,
+      "motion": 0.02267974056303501,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00200.jpg"
+    },
+    {
+      "time": 400.0,
+      "motion": 0.0178164504468441,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00201.jpg"
+    },
+    {
+      "time": 402.0,
+      "motion": 0.012267837300896645,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00202.jpg"
+    },
+    {
+      "time": 404.0,
+      "motion": 0.019925108179450035,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00203.jpg"
+    },
+    {
+      "time": 406.0,
+      "motion": 0.028180351480841637,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00204.jpg"
+    },
+    {
+      "time": 408.0,
+      "motion": 0.0264220479875803,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00205.jpg"
+    },
+    {
+      "time": 410.0,
+      "motion": 0.0219613965600729,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00206.jpg"
+    },
+    {
+      "time": 412.0,
+      "motion": 0.020846949890255928,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00207.jpg"
+    },
+    {
+      "time": 414.0,
+      "motion": 0.02055242285132408,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00208.jpg"
+    },
+    {
+      "time": 416.0,
+      "motion": 0.015210716053843498,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00209.jpg"
+    },
+    {
+      "time": 418.0,
+      "motion": 0.015340141952037811,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00210.jpg"
+    },
+    {
+      "time": 420.0,
+      "motion": 0.012330949306488037,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00211.jpg"
+    },
+    {
+      "time": 422.0,
+      "motion": 0.015573255717754364,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00212.jpg"
+    },
+    {
+      "time": 424.0,
+      "motion": 0.01770615577697754,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00213.jpg"
+    },
+    {
+      "time": 426.0,
+      "motion": 0.02049155719578266,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00214.jpg"
+    },
+    {
+      "time": 428.0,
+      "motion": 0.017143383622169495,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00215.jpg"
+    },
+    {
+      "time": 430.0,
+      "motion": 0.020123707130551338,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00216.jpg"
+    },
+    {
+      "time": 432.0,
+      "motion": 0.016784653067588806,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00217.jpg"
+    },
+    {
+      "time": 434.0,
+      "motion": 0.021953431889414787,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00218.jpg"
+    },
+    {
+      "time": 436.0,
+      "motion": 0.024865197017788887,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00219.jpg"
+    },
+    {
+      "time": 438.0,
+      "motion": 0.021888822317123413,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00220.jpg"
+    },
+    {
+      "time": 440.0,
+      "motion": 0.025018928572535515,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00221.jpg"
+    },
+    {
+      "time": 442.0,
+      "motion": 0.026846474036574364,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00222.jpg"
+    },
+    {
+      "time": 444.0,
+      "motion": 0.022949006408452988,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00223.jpg"
+    },
+    {
+      "time": 446.0,
+      "motion": 0.020543640479445457,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00224.jpg"
+    },
+    {
+      "time": 448.0,
+      "motion": 0.018603214994072914,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00225.jpg"
+    },
+    {
+      "time": 450.0,
+      "motion": 0.01603342965245247,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00226.jpg"
+    },
+    {
+      "time": 452.0,
+      "motion": 0.016527710482478142,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00227.jpg"
+    },
+    {
+      "time": 454.0,
+      "motion": 0.021069034934043884,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00228.jpg"
+    },
+    {
+      "time": 456.0,
+      "motion": 0.01644519343972206,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00229.jpg"
+    },
+    {
+      "time": 458.0,
+      "motion": 0.017848243936896324,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00230.jpg"
+    },
+    {
+      "time": 460.0,
+      "motion": 0.017693355679512024,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00231.jpg"
+    },
+    {
+      "time": 462.0,
+      "motion": 0.018866419792175293,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00232.jpg"
+    },
+    {
+      "time": 464.0,
+      "motion": 0.016800586134195328,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00233.jpg"
+    },
+    {
+      "time": 466.0,
+      "motion": 0.025950774550437927,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00234.jpg"
+    },
+    {
+      "time": 468.0,
+      "motion": 0.025430895388126373,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00235.jpg"
+    },
+    {
+      "time": 470.0,
+      "motion": 0.020241012796759605,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00236.jpg"
+    },
+    {
+      "time": 472.0,
+      "motion": 0.031630244106054306,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00237.jpg"
+    },
+    {
+      "time": 474.0,
+      "motion": 0.039836395531892776,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00238.jpg"
+    },
+    {
+      "time": 476.0,
+      "motion": 0.15280699729919434,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00239.jpg"
+    },
+    {
+      "time": 478.0,
+      "motion": 0.10540004819631577,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00240.jpg"
+    },
+    {
+      "time": 480.0,
+      "motion": 0.27893996238708496,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00241.jpg"
+    },
+    {
+      "time": 482.0,
+      "motion": 0.21304935216903687,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00242.jpg"
+    },
+    {
+      "time": 484.0,
+      "motion": 0.15869008004665375,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00243.jpg"
+    },
+    {
+      "time": 486.0,
+      "motion": 0.04715372994542122,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00244.jpg"
+    },
+    {
+      "time": 488.0,
+      "motion": 0.028301198035478592,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00245.jpg"
+    },
+    {
+      "time": 490.0,
+      "motion": 0.02779248356819153,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00246.jpg"
+    },
+    {
+      "time": 492.0,
+      "motion": 0.027616560459136963,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00247.jpg"
+    },
+    {
+      "time": 494.0,
+      "motion": 0.020052354782819748,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00248.jpg"
+    },
+    {
+      "time": 496.0,
+      "motion": 0.02252954989671707,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00249.jpg"
+    },
+    {
+      "time": 498.0,
+      "motion": 0.025291461497545242,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00250.jpg"
+    },
+    {
+      "time": 500.0,
+      "motion": 0.03774243965744972,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00251.jpg"
+    },
+    {
+      "time": 502.0,
+      "motion": 0.03650980815291405,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00252.jpg"
+    },
+    {
+      "time": 504.0,
+      "motion": 0.03137432038784027,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00253.jpg"
+    },
+    {
+      "time": 506.0,
+      "motion": 0.02384204789996147,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00254.jpg"
+    },
+    {
+      "time": 508.0,
+      "motion": 0.017788806930184364,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00255.jpg"
+    },
+    {
+      "time": 510.0,
+      "motion": 0.015744894742965698,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00256.jpg"
+    },
+    {
+      "time": 512.0,
+      "motion": 0.019747072830796242,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00257.jpg"
+    },
+    {
+      "time": 514.0,
+      "motion": 0.013692538253962994,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00258.jpg"
+    },
+    {
+      "time": 516.0,
+      "motion": 0.028678037226200104,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00259.jpg"
+    },
+    {
+      "time": 518.0,
+      "motion": 0.028434641659259796,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00260.jpg"
+    },
+    {
+      "time": 520.0,
+      "motion": 0.022488901391625404,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00261.jpg"
+    },
+    {
+      "time": 522.0,
+      "motion": 0.02133728377521038,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00262.jpg"
+    },
+    {
+      "time": 524.0,
+      "motion": 0.03703812509775162,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00263.jpg"
+    },
+    {
+      "time": 526.0,
+      "motion": 0.03131889924407005,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00264.jpg"
+    },
+    {
+      "time": 528.0,
+      "motion": 0.02208026871085167,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00265.jpg"
+    },
+    {
+      "time": 530.0,
+      "motion": 0.03249094635248184,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00266.jpg"
+    },
+    {
+      "time": 532.0,
+      "motion": 0.028776004910469055,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00267.jpg"
+    },
+    {
+      "time": 534.0,
+      "motion": 0.023954451084136963,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00268.jpg"
+    },
+    {
+      "time": 536.0,
+      "motion": 0.026685796678066254,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00269.jpg"
+    },
+    {
+      "time": 538.0,
+      "motion": 0.02685614302754402,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00270.jpg"
+    },
+    {
+      "time": 540.0,
+      "motion": 0.029373981058597565,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00271.jpg"
+    },
+    {
+      "time": 542.0,
+      "motion": 0.02115972340106964,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00272.jpg"
+    },
+    {
+      "time": 544.0,
+      "motion": 0.02579963207244873,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00273.jpg"
+    },
+    {
+      "time": 546.0,
+      "motion": 0.02832856960594654,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00274.jpg"
+    },
+    {
+      "time": 548.0,
+      "motion": 0.023705406114459038,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00275.jpg"
+    },
+    {
+      "time": 550.0,
+      "motion": 0.023384327068924904,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00276.jpg"
+    },
+    {
+      "time": 552.0,
+      "motion": 0.017497481778264046,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00277.jpg"
+    },
+    {
+      "time": 554.0,
+      "motion": 0.02616843767464161,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00278.jpg"
+    },
+    {
+      "time": 556.0,
+      "motion": 0.02570064179599285,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00279.jpg"
+    },
+    {
+      "time": 558.0,
+      "motion": 0.017514023929834366,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00280.jpg"
+    },
+    {
+      "time": 560.0,
+      "motion": 0.017531318590044975,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00281.jpg"
+    },
+    {
+      "time": 562.0,
+      "motion": 0.02371881902217865,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00282.jpg"
+    },
+    {
+      "time": 564.0,
+      "motion": 0.03326933830976486,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00283.jpg"
+    },
+    {
+      "time": 566.0,
+      "motion": 0.07064760476350784,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00284.jpg"
+    },
+    {
+      "time": 568.0,
+      "motion": 0.06187322735786438,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00285.jpg"
+    },
+    {
+      "time": 570.0,
+      "motion": 0.04914065822958946,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00286.jpg"
+    },
+    {
+      "time": 572.0,
+      "motion": 0.03829929232597351,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00287.jpg"
+    },
+    {
+      "time": 574.0,
+      "motion": 0.007426674477756023,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00288.jpg"
+    },
+    {
+      "time": 576.0,
+      "motion": 0.005237199831753969,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00289.jpg"
+    },
+    {
+      "time": 578.0,
+      "motion": 0.0465417355298996,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00290.jpg"
+    },
+    {
+      "time": 580.0,
+      "motion": 0.14641408622264862,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00291.jpg"
+    },
+    {
+      "time": 582.0,
+      "motion": 0.13134770095348358,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00292.jpg"
+    },
+    {
+      "time": 584.0,
+      "motion": 0.05055079236626625,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00293.jpg"
+    },
+    {
+      "time": 586.0,
+      "motion": 0.03138351067900658,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00294.jpg"
+    },
+    {
+      "time": 588.0,
+      "motion": 0.03528376668691635,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00295.jpg"
+    },
+    {
+      "time": 590.0,
+      "motion": 0.03274659812450409,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00296.jpg"
+    },
+    {
+      "time": 592.0,
+      "motion": 0.025748910382390022,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00297.jpg"
+    },
+    {
+      "time": 594.0,
+      "motion": 0.026334287598729134,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00298.jpg"
+    },
+    {
+      "time": 596.0,
+      "motion": 0.02465924620628357,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00299.jpg"
+    },
+    {
+      "time": 598.0,
+      "motion": 0.0213346965610981,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00300.jpg"
+    },
+    {
+      "time": 600.0,
+      "motion": 0.020621664822101593,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00301.jpg"
+    },
+    {
+      "time": 602.0,
+      "motion": 0.03296772763133049,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00302.jpg"
+    },
+    {
+      "time": 604.0,
+      "motion": 0.030847152695059776,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00303.jpg"
+    },
+    {
+      "time": 606.0,
+      "motion": 0.01610913686454296,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00304.jpg"
+    },
+    {
+      "time": 608.0,
+      "motion": 0.016182666644454002,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00305.jpg"
+    },
+    {
+      "time": 610.0,
+      "motion": 0.019419390708208084,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00306.jpg"
+    },
+    {
+      "time": 612.0,
+      "motion": 0.025837350636720657,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00307.jpg"
+    },
+    {
+      "time": 614.0,
+      "motion": 0.019382013007998466,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00308.jpg"
+    },
+    {
+      "time": 616.0,
+      "motion": 0.016590209677815437,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00309.jpg"
+    },
+    {
+      "time": 618.0,
+      "motion": 0.014775054529309273,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00310.jpg"
+    },
+    {
+      "time": 620.0,
+      "motion": 0.014469362795352936,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00311.jpg"
+    },
+    {
+      "time": 622.0,
+      "motion": 0.0158165842294693,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00312.jpg"
+    },
+    {
+      "time": 624.0,
+      "motion": 0.018968749791383743,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00313.jpg"
+    },
+    {
+      "time": 626.0,
+      "motion": 0.025861384347081184,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00314.jpg"
+    },
+    {
+      "time": 628.0,
+      "motion": 0.030474742874503136,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00315.jpg"
+    },
+    {
+      "time": 630.0,
+      "motion": 0.022796092554926872,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00316.jpg"
+    },
+    {
+      "time": 632.0,
+      "motion": 0.02235471084713936,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00317.jpg"
+    },
+    {
+      "time": 634.0,
+      "motion": 0.014353416860103607,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00318.jpg"
+    },
+    {
+      "time": 636.0,
+      "motion": 0.013436547480523586,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00319.jpg"
+    },
+    {
+      "time": 638.0,
+      "motion": 0.014744417741894722,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00320.jpg"
+    },
+    {
+      "time": 640.0,
+      "motion": 0.013682393357157707,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00321.jpg"
+    },
+    {
+      "time": 642.0,
+      "motion": 0.024872686713933945,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00322.jpg"
+    },
+    {
+      "time": 644.0,
+      "motion": 0.033116213977336884,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00323.jpg"
+    },
+    {
+      "time": 646.0,
+      "motion": 0.032416123896837234,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00324.jpg"
+    },
+    {
+      "time": 648.0,
+      "motion": 0.026821009814739227,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00325.jpg"
+    },
+    {
+      "time": 650.0,
+      "motion": 0.023632284253835678,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00326.jpg"
+    },
+    {
+      "time": 652.0,
+      "motion": 0.030418232083320618,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00327.jpg"
+    },
+    {
+      "time": 654.0,
+      "motion": 0.03151177614927292,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00328.jpg"
+    },
+    {
+      "time": 656.0,
+      "motion": 0.026295071467757225,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00329.jpg"
+    },
+    {
+      "time": 658.0,
+      "motion": 0.025721337646245956,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00330.jpg"
+    },
+    {
+      "time": 660.0,
+      "motion": 0.02421364188194275,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00331.jpg"
+    },
+    {
+      "time": 662.0,
+      "motion": 0.026218613609671593,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00332.jpg"
+    },
+    {
+      "time": 664.0,
+      "motion": 0.021983658894896507,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00333.jpg"
+    },
+    {
+      "time": 666.0,
+      "motion": 0.015049904584884644,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00334.jpg"
+    },
+    {
+      "time": 668.0,
+      "motion": 0.015328568406403065,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00335.jpg"
+    },
+    {
+      "time": 670.0,
+      "motion": 0.01995302364230156,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00336.jpg"
+    },
+    {
+      "time": 672.0,
+      "motion": 0.02430085465312004,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00337.jpg"
+    },
+    {
+      "time": 674.0,
+      "motion": 0.023066040128469467,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00338.jpg"
+    },
+    {
+      "time": 676.0,
+      "motion": 0.019155366346240044,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00339.jpg"
+    },
+    {
+      "time": 678.0,
+      "motion": 0.014863426797091961,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00340.jpg"
+    },
+    {
+      "time": 680.0,
+      "motion": 0.015623707324266434,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00341.jpg"
+    },
+    {
+      "time": 682.0,
+      "motion": 0.015370779670774937,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00342.jpg"
+    },
+    {
+      "time": 684.0,
+      "motion": 0.007387254387140274,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00343.jpg"
+    },
+    {
+      "time": 686.0,
+      "motion": 0.006769267842173576,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00344.jpg"
+    },
+    {
+      "time": 688.0,
+      "motion": 0.020053375512361526,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00345.jpg"
+    },
+    {
+      "time": 690.0,
+      "motion": 0.02315693162381649,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00346.jpg"
+    },
+    {
+      "time": 692.0,
+      "motion": 0.02261982671916485,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00347.jpg"
+    },
+    {
+      "time": 694.0,
+      "motion": 0.022779205814003944,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00348.jpg"
+    },
+    {
+      "time": 696.0,
+      "motion": 0.026825029402971268,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00349.jpg"
+    },
+    {
+      "time": 698.0,
+      "motion": 0.026830747723579407,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00350.jpg"
+    },
+    {
+      "time": 700.0,
+      "motion": 0.027622617781162262,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00351.jpg"
+    },
+    {
+      "time": 702.0,
+      "motion": 0.01864773780107498,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00352.jpg"
+    },
+    {
+      "time": 704.0,
+      "motion": 0.01627587154507637,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00353.jpg"
+    },
+    {
+      "time": 706.0,
+      "motion": 0.0199198666960001,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00354.jpg"
+    },
+    {
+      "time": 708.0,
+      "motion": 0.033937226980924606,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00355.jpg"
+    },
+    {
+      "time": 710.0,
+      "motion": 0.01776811107993126,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00356.jpg"
+    },
+    {
+      "time": 712.0,
+      "motion": 0.02170173078775406,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00357.jpg"
+    },
+    {
+      "time": 714.0,
+      "motion": 0.014341844245791435,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00358.jpg"
+    },
+    {
+      "time": 716.0,
+      "motion": 0.020101305097341537,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00359.jpg"
+    },
+    {
+      "time": 718.0,
+      "motion": 0.0167404692620039,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00360.jpg"
+    },
+    {
+      "time": 720.0,
+      "motion": 0.019693152979016304,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00361.jpg"
+    },
+    {
+      "time": 722.0,
+      "motion": 0.015558551996946335,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00362.jpg"
+    },
+    {
+      "time": 724.0,
+      "motion": 0.017336465418338776,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00363.jpg"
+    },
+    {
+      "time": 726.0,
+      "motion": 0.0251221414655447,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00364.jpg"
+    },
+    {
+      "time": 728.0,
+      "motion": 0.0240981075912714,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00365.jpg"
+    },
+    {
+      "time": 730.0,
+      "motion": 0.01918831653892994,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00366.jpg"
+    },
+    {
+      "time": 732.0,
+      "motion": 0.019131332635879517,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00367.jpg"
+    },
+    {
+      "time": 734.0,
+      "motion": 0.01591680385172367,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00368.jpg"
+    },
+    {
+      "time": 736.0,
+      "motion": 0.018591774627566338,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00369.jpg"
+    },
+    {
+      "time": 738.0,
+      "motion": 0.023767292499542236,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00370.jpg"
+    },
+    {
+      "time": 740.0,
+      "motion": 0.018869690597057343,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00371.jpg"
+    },
+    {
+      "time": 742.0,
+      "motion": 0.019121937453746796,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00372.jpg"
+    },
+    {
+      "time": 744.0,
+      "motion": 0.022570669651031494,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00373.jpg"
+    },
+    {
+      "time": 746.0,
+      "motion": 0.036275532096624374,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00374.jpg"
+    },
+    {
+      "time": 748.0,
+      "motion": 0.06292497366666794,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00375.jpg"
+    },
+    {
+      "time": 750.0,
+      "motion": 0.04954085499048233,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00376.jpg"
+    },
+    {
+      "time": 752.0,
+      "motion": 0.06367436051368713,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00377.jpg"
+    },
+    {
+      "time": 754.0,
+      "motion": 0.05247528478503227,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00378.jpg"
+    },
+    {
+      "time": 756.0,
+      "motion": 0.009961125440895557,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00379.jpg"
+    },
+    {
+      "time": 758.0,
+      "motion": 0.008826592937111855,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00380.jpg"
+    },
+    {
+      "time": 760.0,
+      "motion": 0.007461125031113625,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00381.jpg"
+    },
+    {
+      "time": 762.0,
+      "motion": 0.008317606523633003,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00382.jpg"
+    },
+    {
+      "time": 764.0,
+      "motion": 0.008852191269397736,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00383.jpg"
+    },
+    {
+      "time": 766.0,
+      "motion": 0.008388549089431763,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00384.jpg"
+    },
+    {
+      "time": 768.0,
+      "motion": 0.00967756099998951,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00385.jpg"
+    },
+    {
+      "time": 770.0,
+      "motion": 0.009691515937447548,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00386.jpg"
+    },
+    {
+      "time": 772.0,
+      "motion": 0.010322235524654388,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00387.jpg"
+    },
+    {
+      "time": 774.0,
+      "motion": 0.008401688188314438,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00388.jpg"
+    },
+    {
+      "time": 776.0,
+      "motion": 0.007394130807369947,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00389.jpg"
+    },
+    {
+      "time": 778.0,
+      "motion": 0.006845451891422272,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00390.jpg"
+    },
+    {
+      "time": 780.0,
+      "motion": 0.006462350487709045,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00391.jpg"
+    },
+    {
+      "time": 782.0,
+      "motion": 0.007384395692497492,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00392.jpg"
+    },
+    {
+      "time": 784.0,
+      "motion": 0.01100231520831585,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00393.jpg"
+    },
+    {
+      "time": 786.0,
+      "motion": 0.010751089081168175,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00394.jpg"
+    },
+    {
+      "time": 788.0,
+      "motion": 0.010263276286423206,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00395.jpg"
+    },
+    {
+      "time": 790.0,
+      "motion": 0.009328363463282585,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00396.jpg"
+    },
+    {
+      "time": 792.0,
+      "motion": 0.008561546914279461,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00397.jpg"
+    },
+    {
+      "time": 794.0,
+      "motion": 0.009477123618125916,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00398.jpg"
+    },
+    {
+      "time": 796.0,
+      "motion": 0.00958735030144453,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00399.jpg"
+    },
+    {
+      "time": 798.0,
+      "motion": 0.016242237761616707,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00400.jpg"
+    },
+    {
+      "time": 800.0,
+      "motion": 0.008109817281365395,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00401.jpg"
+    },
+    {
+      "time": 802.0,
+      "motion": 0.010309776291251183,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00402.jpg"
+    },
+    {
+      "time": 804.0,
+      "motion": 0.009449074044823647,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00403.jpg"
+    },
+    {
+      "time": 806.0,
+      "motion": 0.00855126604437828,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00404.jpg"
+    },
+    {
+      "time": 808.0,
+      "motion": 0.009099332615733147,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00405.jpg"
+    },
+    {
+      "time": 810.0,
+      "motion": 0.00927702896296978,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00406.jpg"
+    },
+    {
+      "time": 812.0,
+      "motion": 0.007516203913837671,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00407.jpg"
+    },
+    {
+      "time": 814.0,
+      "motion": 0.008615263737738132,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00408.jpg"
+    },
+    {
+      "time": 816.0,
+      "motion": 0.01637568138539791,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00409.jpg"
+    },
+    {
+      "time": 818.0,
+      "motion": 0.06172113120555878,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00410.jpg"
+    },
+    {
+      "time": 820.0,
+      "motion": 0.0732569471001625,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00411.jpg"
+    },
+    {
+      "time": 822.0,
+      "motion": 0.056144535541534424,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00412.jpg"
+    },
+    {
+      "time": 824.0,
+      "motion": 0.08125218003988266,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00413.jpg"
+    },
+    {
+      "time": 826.0,
+      "motion": 0.06504949182271957,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00414.jpg"
+    },
+    {
+      "time": 828.0,
+      "motion": 0.044396039098501205,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00415.jpg"
+    },
+    {
+      "time": 830.0,
+      "motion": 0.031767360866069794,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00416.jpg"
+    },
+    {
+      "time": 832.0,
+      "motion": 0.022596269845962524,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00417.jpg"
+    },
+    {
+      "time": 834.0,
+      "motion": 0.023668302223086357,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00418.jpg"
+    },
+    {
+      "time": 836.0,
+      "motion": 0.021392157301306725,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00419.jpg"
+    },
+    {
+      "time": 838.0,
+      "motion": 0.027945123612880707,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00420.jpg"
+    },
+    {
+      "time": 840.0,
+      "motion": 0.036150939762592316,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00421.jpg"
+    },
+    {
+      "time": 842.0,
+      "motion": 0.026019608601927757,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00422.jpg"
+    },
+    {
+      "time": 844.0,
+      "motion": 0.017437567934393883,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00423.jpg"
+    },
+    {
+      "time": 846.0,
+      "motion": 0.020535333082079887,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00424.jpg"
+    },
+    {
+      "time": 848.0,
+      "motion": 0.019541801884770393,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00425.jpg"
+    },
+    {
+      "time": 850.0,
+      "motion": 0.019246596843004227,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00426.jpg"
+    },
+    {
+      "time": 852.0,
+      "motion": 0.019511710852384567,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00427.jpg"
+    },
+    {
+      "time": 854.0,
+      "motion": 0.018926063552498817,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00428.jpg"
+    },
+    {
+      "time": 856.0,
+      "motion": 0.01244110893458128,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00429.jpg"
+    },
+    {
+      "time": 858.0,
+      "motion": 0.010493054986000061,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00430.jpg"
+    },
+    {
+      "time": 860.0,
+      "motion": 0.012805147096514702,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00431.jpg"
+    },
+    {
+      "time": 862.0,
+      "motion": 0.018390389159321785,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00432.jpg"
+    },
+    {
+      "time": 864.0,
+      "motion": 0.024779003113508224,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00433.jpg"
+    },
+    {
+      "time": 866.0,
+      "motion": 0.025653595104813576,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00434.jpg"
+    },
+    {
+      "time": 868.0,
+      "motion": 0.01947610266506672,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00435.jpg"
+    },
+    {
+      "time": 870.0,
+      "motion": 0.02262057363986969,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00436.jpg"
+    },
+    {
+      "time": 872.0,
+      "motion": 0.018999388441443443,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00437.jpg"
+    },
+    {
+      "time": 874.0,
+      "motion": 0.02616162784397602,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00438.jpg"
+    },
+    {
+      "time": 876.0,
+      "motion": 0.023705339059233665,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00439.jpg"
+    },
+    {
+      "time": 878.0,
+      "motion": 0.01830984465777874,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00440.jpg"
+    },
+    {
+      "time": 880.0,
+      "motion": 0.01976177841424942,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00441.jpg"
+    },
+    {
+      "time": 882.0,
+      "motion": 0.020924359560012817,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00442.jpg"
+    },
+    {
+      "time": 884.0,
+      "motion": 0.020296363160014153,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00443.jpg"
+    },
+    {
+      "time": 886.0,
+      "motion": 0.017427491024136543,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00444.jpg"
+    },
+    {
+      "time": 888.0,
+      "motion": 0.02027689479291439,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00445.jpg"
+    },
+    {
+      "time": 890.0,
+      "motion": 0.015733864158391953,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00446.jpg"
+    },
+    {
+      "time": 892.0,
+      "motion": 0.015026143752038479,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00447.jpg"
+    },
+    {
+      "time": 894.0,
+      "motion": 0.01678485795855522,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00448.jpg"
+    },
+    {
+      "time": 896.0,
+      "motion": 0.022430352866649628,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00449.jpg"
+    },
+    {
+      "time": 898.0,
+      "motion": 0.02664896659553051,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00450.jpg"
+    },
+    {
+      "time": 900.0,
+      "motion": 0.023614581674337387,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00451.jpg"
+    },
+    {
+      "time": 902.0,
+      "motion": 0.021427355706691742,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00452.jpg"
+    },
+    {
+      "time": 904.0,
+      "motion": 0.022612201049923897,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00453.jpg"
+    },
+    {
+      "time": 906.0,
+      "motion": 0.01239372231066227,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00454.jpg"
+    },
+    {
+      "time": 908.0,
+      "motion": 0.016183413565158844,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00455.jpg"
+    },
+    {
+      "time": 910.0,
+      "motion": 0.010924292728304863,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00456.jpg"
+    },
+    {
+      "time": 912.0,
+      "motion": 0.008626975119113922,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00457.jpg"
+    },
+    {
+      "time": 914.0,
+      "motion": 0.009956630878150463,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00458.jpg"
+    },
+    {
+      "time": 916.0,
+      "motion": 0.013404753059148788,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00459.jpg"
+    },
+    {
+      "time": 918.0,
+      "motion": 0.018516339361667633,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00460.jpg"
+    },
+    {
+      "time": 920.0,
+      "motion": 0.03298325464129448,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00461.jpg"
+    },
+    {
+      "time": 922.0,
+      "motion": 0.051614515483379364,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00462.jpg"
+    },
+    {
+      "time": 924.0,
+      "motion": 0.07088126242160797,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00463.jpg"
+    },
+    {
+      "time": 926.0,
+      "motion": 0.12028200179338455,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00464.jpg"
+    },
+    {
+      "time": 928.0,
+      "motion": 0.07181753218173981,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00465.jpg"
+    },
+    {
+      "time": 930.0,
+      "motion": 0.048299357295036316,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00466.jpg"
+    },
+    {
+      "time": 932.0,
+      "motion": 0.032280705869197845,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00467.jpg"
+    },
+    {
+      "time": 934.0,
+      "motion": 0.02834572270512581,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00468.jpg"
+    },
+    {
+      "time": 936.0,
+      "motion": 0.012318763881921768,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00469.jpg"
+    },
+    {
+      "time": 938.0,
+      "motion": 0.013439133763313293,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00470.jpg"
+    },
+    {
+      "time": 940.0,
+      "motion": 0.02038990892469883,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00471.jpg"
+    },
+    {
+      "time": 942.0,
+      "motion": 0.027371324598789215,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00472.jpg"
+    },
+    {
+      "time": 944.0,
+      "motion": 0.021175311878323555,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00473.jpg"
+    },
+    {
+      "time": 946.0,
+      "motion": 0.01960328035056591,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00474.jpg"
+    },
+    {
+      "time": 948.0,
+      "motion": 0.022255241870880127,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00475.jpg"
+    },
+    {
+      "time": 950.0,
+      "motion": 0.023383239284157753,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00476.jpg"
+    },
+    {
+      "time": 952.0,
+      "motion": 0.10292211920022964,
+      "frame": "C:\\Users\\Ultra 7\\Documents\\Codex\\2026-07-17\\el-d-a-de-ma-ana\\outputs\\fronton-reviews-gopro\\050926_pt1-review\\_frames\\frame_00477.jpg"
+    }
+  ],
+  "audio_series": []
+}
