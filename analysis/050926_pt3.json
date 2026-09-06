@@ -1,0 +1,100 @@
+{
+  "version": 2,
+  "source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/050926_pt3-proxy.mp4",
+  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/050926_pt3-proxy.mp4",
+  "duration": 142.39225,
+  "marks": [
+    {
+      "id": "serve-1",
+      "type": "serve",
+      "time": 0.0,
+      "suggested": true
+    },
+    {
+      "id": "end-1",
+      "type": "end",
+      "time": 7.4,
+      "suggested": true
+    },
+    {
+      "id": "serve-2",
+      "type": "serve",
+      "time": 42.6,
+      "suggested": true
+    },
+    {
+      "id": "end-2",
+      "type": "end",
+      "time": 141.8,
+      "suggested": true
+    }
+  ],
+  "scenes": [
+    {
+      "id": "scene-1",
+      "source": "model-confirmed-serve",
+      "start": 0.0,
+      "end": 7.4,
+      "peak": 5.0,
+      "score": 0.24992,
+      "tags": [
+        "motion",
+        "model-serve",
+        "rally"
+      ],
+      "model": {
+        "has_serve": true,
+        "serve_tile": 1,
+        "has_rally": true,
+        "has_point_end": true,
+        "end_tile": 12,
+        "has_paddle_signal": false,
+        "confidence": 0.9,
+        "reason": "El jugador en el lado izquierdo se encuentra en una posición de servido, con el cuerpo y la paleta en una postura estática y alineada. Inmediatamente después, el jugador en el lado derecho comienza a moverse, lo que indica el inicio del rally. El punto termina cuando ambos jugadores dejan de perseguir la pelota y se retiran del campo."
+      }
+    },
+    {
+      "id": "scene-2",
+      "source": "model-confirmed-serve",
+      "start": 42.6,
+      "end": 141.8,
+      "peak": 62.0,
+      "score": 4.65613,
+      "tags": [
+        "learned-serve-candidate",
+        "model-serve",
+        "rally"
+      ],
+      "diagnostic": {
+        "pre_motion": 0.01074,
+        "post_motion": 0.01472,
+        "quiet_ratio": 0.75,
+        "active_ratio": 0.5,
+        "audio_boost": 0.125,
+        "early_audio_hits": 0,
+        "rally_audio_hits": 1
+      },
+      "model": {
+        "has_serve": true,
+        "serve_tile": 1,
+        "has_rally": true,
+        "has_point_end": true,
+        "end_tile": 12,
+        "has_paddle_signal": false,
+        "confidence": 0.9,
+        "reason": "El jugador en rojo está en posición de servir, y el receptor en negro está listo para recibir. La pelota está cerca de la posición de servicio, y el receptor inicia su movimiento inmediatamente después del servicio. El punto termina con el receptor y el servidor regresando a sus posiciones originales."
+      }
+    }
+  ],
+  "highlights": [],
+  "review_mode": "dense-human-correction",
+  "review_note": "Comparacion: el analisis normal puede rechazar saques reales; este archivo conserva candidatos para correccion humana. No agrega Hit automaticos salvo correccion humana posterior.",
+  "normal_model_counts": {
+    "serve": 2,
+    "end": 2
+  },
+  "dense_counts": {
+    "serve": 2,
+    "end": 2
+  }
+}
