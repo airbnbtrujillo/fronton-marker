@@ -65,6 +65,16 @@
       color: #c8d8e2;
     }
 
+    .shortcuts {
+      border: 1px solid var(--line);
+      border-radius: 8px;
+      background: var(--panel);
+      padding: 0 10px;
+    }
+    .shortcuts summary { cursor: pointer; min-height: 34px; display: flex; align-items: center; color: var(--accent); font-weight: 700; }
+    .shortcut-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px 14px; padding: 0 0 9px; color: var(--muted); font-size: 12px; }
+    .shortcut-grid b { color: var(--text); }
+
     .topbar {
       display: none;
       grid-template-columns: minmax(0, 1fr) auto auto;
@@ -879,6 +889,16 @@
       <button id="fileBtn" class="ghost">Archivo</button>
       <input id="fileInput" type="file" accept="video/*" hidden>
     </div>
+
+    <details class="shortcuts">
+      <summary>Atajos de teclado</summary>
+      <div class="shortcut-grid">
+        <span><b>Q/W/E</b> -5/-2/-1 s</span><span><b>R/T/Y</b> +1/+2/+5 s</span><span><b>K/L</b> velocidad -/+0.5</span>
+        <span><b>1-5</b> tipo de marca</span><span><b>V/B</b> marca anterior/siguiente</span><span><b>Flechas</b> navegar marcas</span>
+        <span><b>X</b> modo marcas</span><span><b>Z</b> modo video</span><span><b>D</b> borrar marca actual</span>
+        <span><b>Ctrl+Z</b> deshacer</span><span><b>Ctrl+Shift+Z</b> rehacer</span><span><b>Final 1</b> guardar respaldo</span>
+      </div>
+    </details>
 
     <section class="workspace">
       <div class="left">
