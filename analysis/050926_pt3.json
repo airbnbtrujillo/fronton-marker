@@ -5,96 +5,79 @@
   "duration": 142.39225,
   "marks": [
     {
-      "id": "serve-1",
-      "type": "serve",
-      "time": 0.0,
-      "suggested": true
-    },
-    {
-      "id": "end-1",
       "type": "end",
-      "time": 7.4,
-      "suggested": true
+      "time": 15.0,
+      "score": 0.68124,
+      "suggested": true,
+      "label": "Final"
     },
     {
-      "id": "serve-2",
-      "type": "serve",
-      "time": 42.6,
-      "suggested": true
-    },
-    {
-      "id": "end-2",
       "type": "end",
-      "time": 141.8,
-      "suggested": true
+      "time": 51.0,
+      "score": 0.72818,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 60.0,
+      "score": 0.57953,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 70.0,
+      "score": 0.76975,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "end",
+      "time": 127.5,
+      "score": 0.70661,
+      "suggested": true,
+      "label": "Final"
     }
   ],
   "scenes": [
     {
-      "id": "scene-1",
-      "source": "model-confirmed-serve",
-      "start": 0.0,
-      "end": 7.4,
-      "peak": 5.0,
-      "score": 0.24992,
-      "tags": [
-        "motion",
-        "model-serve",
-        "rally"
-      ],
-      "model": {
-        "has_serve": true,
-        "serve_tile": 1,
-        "has_rally": true,
-        "has_point_end": true,
-        "end_tile": 12,
-        "has_paddle_signal": false,
-        "confidence": 0.9,
-        "reason": "El jugador en el lado izquierdo se encuentra en una posición de servido, con el cuerpo y la paleta en una postura estática y alineada. Inmediatamente después, el jugador en el lado derecho comienza a moverse, lo que indica el inicio del rally. El punto termina cuando ambos jugadores dejan de perseguir la pelota y se retiran del campo."
-      }
-    },
-    {
-      "id": "scene-2",
-      "source": "model-confirmed-serve",
-      "start": 42.6,
-      "end": 141.8,
-      "peak": 62.0,
-      "score": 4.65613,
-      "tags": [
-        "learned-serve-candidate",
-        "model-serve",
-        "rally"
-      ],
-      "diagnostic": {
-        "pre_motion": 0.01074,
-        "post_motion": 0.01472,
-        "quiet_ratio": 0.75,
-        "active_ratio": 0.5,
-        "audio_boost": 0.125,
-        "early_audio_hits": 0,
-        "rally_audio_hits": 1
-      },
-      "model": {
-        "has_serve": true,
-        "serve_tile": 1,
-        "has_rally": true,
-        "has_point_end": true,
-        "end_tile": 12,
-        "has_paddle_signal": false,
-        "confidence": 0.9,
-        "reason": "El jugador en rojo está en posición de servir, y el receptor en negro está listo para recibir. La pelota está cerca de la posición de servicio, y el receptor inicia su movimiento inmediatamente después del servicio. El punto termina con el receptor y el servidor regresando a sus posiciones originales."
-      }
+      "start": 60.0,
+      "end": 70.0,
+      "source": "supervised-local-candidate",
+      "tags": []
     }
   ],
   "highlights": [],
-  "review_mode": "dense-human-correction",
-  "review_note": "Comparacion: el analisis normal puede rechazar saques reales; este archivo conserva candidatos para correccion humana. No agrega Hit automaticos salvo correccion humana posterior.",
+  "review_mode": "supervised-local",
+  "learning": {
+    "run_id": "20260906T212710Z",
+    "version": "temporal-av-1",
+    "features": "d349df2aeaea3e0717f9",
+    "audio_used": true,
+    "human_review_required": true,
+    "source_was_in_training": false
+  },
+  "boundary_issues": [
+    {
+      "kind": "end_without_serve",
+      "time": 15.0
+    },
+    {
+      "kind": "end_without_serve",
+      "time": 51.0
+    },
+    {
+      "kind": "end_without_serve",
+      "time": 127.5
+    }
+  ],
   "normal_model_counts": {
-    "serve": 2,
-    "end": 2
+    "end": 4,
+    "serve": 1
   },
   "dense_counts": {
-    "serve": 2,
-    "end": 2
+    "end": 4,
+    "serve": 1
   }
 }
