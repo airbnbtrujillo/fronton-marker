@@ -1,83 +1,110 @@
 {
   "version": 2,
-  "source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/050926_pt3-proxy.mp4",
-  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/050926_pt3-proxy.mp4",
-  "duration": 142.39225,
+  "source": "videos/050926_pt3-proxy.mp4",
+  "direct_source": "https://airbnbtrujillo.github.io/fronton-marker/videos/050926_pt3-proxy.mp4",
+  "duration": 142.392,
   "marks": [
     {
-      "type": "end",
-      "time": 15.0,
-      "score": 0.68124,
-      "suggested": true,
-      "label": "Final"
-    },
-    {
-      "type": "end",
-      "time": 51.0,
-      "score": 0.72818,
-      "suggested": true,
-      "label": "Final"
-    },
-    {
+      "time": 5.557,
       "type": "serve",
-      "time": 60.0,
-      "score": 0.57953,
-      "suggested": true,
       "label": "Saque"
     },
     {
+      "time": 15.0,
       "type": "end",
-      "time": 70.0,
-      "score": 0.76975,
-      "suggested": true,
       "label": "Final"
     },
     {
+      "time": 22.97,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 40.524,
       "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 47.688,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 51.0,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 60.0,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 70.0,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 88.003,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
+      "time": 97.17,
+      "type": "end",
+      "label": "Final"
+    },
+    {
+      "time": 120.308,
+      "type": "serve",
+      "label": "Saque"
+    },
+    {
       "time": 127.5,
-      "score": 0.70661,
-      "suggested": true,
+      "type": "end",
       "label": "Final"
     }
   ],
   "scenes": [
     {
+      "start": 5.557,
+      "end": 15.0,
+      "source": "human-marks",
+      "tags": []
+    },
+    {
+      "start": 22.97,
+      "end": 40.524,
+      "source": "human-marks",
+      "tags": []
+    },
+    {
+      "start": 47.688,
+      "end": 51.0,
+      "source": "human-marks",
+      "tags": []
+    },
+    {
       "start": 60.0,
       "end": 70.0,
-      "source": "supervised-local-candidate",
+      "source": "human-marks",
+      "tags": []
+    },
+    {
+      "start": 88.003,
+      "end": 97.17,
+      "source": "human-marks",
+      "tags": []
+    },
+    {
+      "start": 120.308,
+      "end": 127.5,
+      "source": "human-marks",
       "tags": []
     }
   ],
   "highlights": [],
-  "review_mode": "supervised-local",
-  "learning": {
-    "run_id": "20260906T212710Z",
-    "version": "temporal-av-1",
-    "features": "d349df2aeaea3e0717f9",
-    "audio_used": true,
-    "human_review_required": true,
-    "source_was_in_training": false
-  },
-  "boundary_issues": [
-    {
-      "kind": "end_without_serve",
-      "time": 15.0
-    },
-    {
-      "kind": "end_without_serve",
-      "time": 51.0
-    },
-    {
-      "kind": "end_without_serve",
-      "time": 127.5
-    }
-  ],
-  "normal_model_counts": {
-    "end": 4,
-    "serve": 1
-  },
-  "dense_counts": {
-    "end": 4,
-    "serve": 1
-  }
+  "validation_issues": [],
+  "human_final": true,
+  "accepted_at": "2026-09-07T04:28:32.084765+00:00"
 }
