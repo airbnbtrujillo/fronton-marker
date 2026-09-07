@@ -1,0 +1,203 @@
+{
+  "version": 2,
+  "source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/050926_pt9-proxy.mp4",
+  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/050926_pt9-proxy.mp4",
+  "duration": 341.549542,
+  "marks": [
+    {
+      "type": "serve",
+      "time": 9.5,
+      "score": 0.81791,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "serve",
+      "time": 16.5,
+      "score": 0.63392,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "serve",
+      "time": 30.0,
+      "score": 0.65138,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 84.0,
+      "score": 0.83181,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 102.0,
+      "score": 0.70311,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 114.0,
+      "score": 0.84119,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 125.0,
+      "score": 0.64399,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 157.5,
+      "score": 0.86974,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 181.0,
+      "score": 0.46436,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 190.0,
+      "score": 0.76068,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 205.0,
+      "score": 0.73,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 212.0,
+      "score": 0.74012,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 221.5,
+      "score": 0.70123,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 229.0,
+      "score": 0.69588,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "end",
+      "time": 245.0,
+      "score": 0.86398,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 289.5,
+      "score": 0.67462,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 319.0,
+      "score": 0.70256,
+      "suggested": true,
+      "label": "Final"
+    }
+  ],
+  "scenes": [
+    {
+      "start": 30.0,
+      "end": 84.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 102.0,
+      "end": 114.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 125.0,
+      "end": 157.5,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 181.0,
+      "end": 190.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 205.0,
+      "end": 212.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 221.5,
+      "end": 229.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 289.5,
+      "end": 319.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    }
+  ],
+  "highlights": [],
+  "review_mode": "supervised-local",
+  "learning": {
+    "run_id": "20260906T212710Z",
+    "version": "temporal-av-1",
+    "features": "691985f84aee3e6bd34c",
+    "audio_used": true,
+    "human_review_required": true,
+    "source_was_in_training": false
+  },
+  "boundary_issues": [
+    {
+      "kind": "serve_without_end",
+      "time": 9.5
+    },
+    {
+      "kind": "serve_without_end",
+      "time": 16.5
+    },
+    {
+      "kind": "end_without_serve",
+      "time": 245.0
+    }
+  ],
+  "normal_model_counts": {
+    "serve": 9,
+    "end": 8
+  },
+  "dense_counts": {
+    "serve": 9,
+    "end": 8
+  }
+}
