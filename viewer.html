@@ -1017,7 +1017,9 @@
     const sceneHint = $('sceneHint');
     const drawer = $('drawer');
     const jsonBox = $('jsonBox');
-    const storeKey = 'fronton-marker-v2';
+    const reviewAnalysis = new URLSearchParams(location.search).get('analysis') || '';
+    const storeKey = reviewAnalysis.includes('-model-test.json')
+      ? `fronton-marker-test:${reviewAnalysis}` : 'fronton-marker-v2';
     const labels = { serve: 'Saque', hit: 'Hit', end: 'Final', trash: 'Basura', paddle: 'Paleta' };
     const shortLabels = { serve: 'S', hit: 'H', end: 'F', trash: 'B', paddle: 'P' };
     const typeHotkeys = { '1': 'serve', '2': 'hit', '3': 'end', '4': 'trash', '5': 'paddle' };
