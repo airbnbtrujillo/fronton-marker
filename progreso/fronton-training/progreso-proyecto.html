@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fronton Marker | Evolucion del proyecto</title>
+  <style>
+    :root { --bg:#07151c; --panel:#0d2029; --line:#274653; --ink:#eef7fa; --muted:#9ab5be; --cyan:#54c8ec; --yellow:#f4c95d; --green:#46d69c; --red:#fa7373; }
+    * { box-sizing:border-box; }
+    body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.5 "Segoe UI",Arial,sans-serif; letter-spacing:0; }
+    .wrap { width:min(1180px, calc(100% - 32px)); margin:auto; }
+    header { padding:60px 0 34px; border-bottom:1px solid var(--line); background:linear-gradient(180deg,#0c2732 0%,var(--bg) 100%); }
+    .eyebrow { color:var(--cyan); font-weight:700; text-transform:uppercase; font-size:13px; }
+    h1 { font-size:clamp(32px,5vw,56px); line-height:1.05; margin:8px 0 14px; }
+    h2 { font-size:26px; margin:0 0 16px; }
+    h3 { font-size:18px; margin:0 0 8px; }
+    p { margin:0 0 12px; color:var(--muted); }
+    .lead { max-width:760px; font-size:19px; color:#d5e8ee; }
+    .notice { margin-top:24px; padding:13px 16px; border-left:4px solid var(--yellow); background:#18252a; color:#d4e0e4; }
+    main { padding:38px 0 72px; }
+    section { margin:0 0 48px; scroll-margin-top:20px; }
+    .nav { display:flex; gap:10px; flex-wrap:wrap; margin:24px 0 0; }
+    .nav a { text-decoration:none; color:var(--ink); padding:7px 11px; border:1px solid var(--line); border-radius:5px; font-size:14px; }
+    .nav a:hover { border-color:var(--cyan); color:var(--cyan); }
+    .compare { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    figure { padding:10px; margin:0; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+    figure img { width:100%; display:block; border-radius:4px; aspect-ratio:16/9; object-fit:cover; object-position:top; }
+    figcaption { padding:10px 4px 2px; color:var(--muted); font-size:14px; }
+    figcaption strong { color:var(--ink); }
+    .before-after { display:grid; grid-template-columns:1fr 1.2fr; gap:16px; margin-top:16px; }
+    .gallery { display:grid; grid-template-columns:repeat(3, 1fr); gap:12px; margin-top:16px; }
+    .gallery figure { padding:7px; }
+    .gallery figure:first-child { grid-column:span 2; }
+    .gallery img { aspect-ratio:16/9; object-fit:cover; }
+    .gallery .poster img { aspect-ratio:1/1; object-fit:cover; object-position:top; }
+    .archive { display:grid; grid-template-columns:repeat(4, 1fr); gap:10px; margin-top:14px; }
+    .archive a { display:block; min-width:0; text-decoration:none; background:var(--panel); border:1px solid var(--line); border-radius:6px; overflow:hidden; color:var(--muted); }
+    .archive a:hover { border-color:var(--cyan); }
+    .archive img { width:100%; aspect-ratio:16/10; display:block; object-fit:cover; }
+    .archive span { display:block; padding:7px 8px; font-size:12px; }
+    details { margin-top:18px; border:1px solid var(--line); border-radius:8px; background:#0b1d25; }
+    summary { cursor:pointer; padding:14px 16px; color:var(--ink); font-weight:700; }
+    details > div { padding:0 14px 14px; }
+    .card { padding:20px; border:1px solid var(--line); border-radius:8px; background:var(--panel); }
+    .card ul { margin:12px 0 0; padding-left:19px; color:var(--muted); }
+    .card li { margin:7px 0; }
+    .timeline { position:relative; margin-top:18px; padding-left:30px; }
+    .timeline:before { content:""; position:absolute; left:8px; top:8px; bottom:8px; width:2px; background:var(--line); }
+    .step { position:relative; padding:0 0 26px; }
+    .step:before { content:""; position:absolute; width:12px; height:12px; border-radius:50%; left:-27px; top:5px; background:var(--cyan); box-shadow:0 0 0 4px var(--bg); }
+    .step:nth-child(3n):before { background:var(--yellow); }
+    .step:nth-child(3n + 2):before { background:var(--green); }
+    .date { color:var(--cyan); font-size:13px; font-weight:700; text-transform:uppercase; }
+    .metrics { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .metric { padding:18px; background:var(--panel); border:1px solid var(--line); border-radius:8px; }
+    .metric .label { color:var(--muted); font-size:13px; display:block; min-height:40px; }
+    .metric .number { color:var(--cyan); font-weight:700; font-size:31px; line-height:1.1; display:block; margin:7px 0; }
+    .metric small { color:#bfdae2; }
+    table { width:100%; border-collapse:collapse; background:var(--panel); border:1px solid var(--line); border-radius:8px; overflow:hidden; }
+    th,td { padding:13px; text-align:left; border-bottom:1px solid var(--line); }
+    th { color:#cce8f0; font-size:14px; background:#102b36; }
+    td { color:var(--muted); }
+    tr:last-child td { border-bottom:0; }
+    .good { color:var(--green); font-weight:700; } .warn { color:var(--yellow); font-weight:700; } .bad { color:var(--red); font-weight:700; }
+    .next { border-left:4px solid var(--cyan); padding:18px 20px; background:#0b242e; }
+    .visual-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
+    .visual-grid figure { padding:8px; }
+    .visual-grid img { width:100%; display:block; border-radius:4px; }
+    .milestones { display:grid; grid-template-columns:repeat(5,1fr); gap:10px; margin-top:16px; }
+    .milestone { margin:0; padding:6px; background:var(--panel); border:1px solid var(--line); border-radius:6px; }
+    .milestone img { display:block; width:100%; aspect-ratio:4/3; object-fit:cover; object-position:top; border-radius:3px; }
+    .milestone figcaption { padding:7px 2px 2px; font-size:12px; }
+    .analysis-flow { display:grid; grid-template-columns:1.2fr 1fr 1fr; gap:12px; padding:16px; margin-top:16px; border:1px solid var(--line); border-radius:8px; background:#0b1d25; align-items:stretch; }
+    .analysis-flow > div { border:1px solid var(--line); border-radius:6px; padding:13px; background:var(--panel); }
+    .analysis-flow h3 { font-size:15px; }
+    .signal { display:flex; align-items:center; justify-content:space-between; gap:8px; margin:7px 0; padding:7px 8px; border-radius:4px; background:#102b36; font-size:13px; }
+    .signal i { width:9px; height:9px; flex:none; border-radius:50%; background:var(--green); } .signal.warn i { background:var(--yellow); } .signal.bad i { background:var(--red); }
+    .model-steps { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
+    .model-step { border:1px solid var(--line); border-top:4px solid var(--cyan); border-radius:7px; padding:15px; background:var(--panel); }
+    .model-step:nth-child(2) { border-top-color:var(--yellow); } .model-step:nth-child(3) { border-top-color:var(--green); } .model-step:nth-child(4) { border-top-color:var(--red); }
+    .model-step .version { color:var(--cyan); font-size:13px; font-weight:700; } .model-step:nth-child(2) .version { color:var(--yellow); } .model-step:nth-child(3) .version { color:var(--green); } .model-step:nth-child(4) .version { color:var(--red); }
+    .model-step ul { margin:10px 0 0; padding-left:17px; color:var(--muted); font-size:14px; }
+    .daily { border:1px solid var(--line); border-radius:8px; overflow:hidden; background:var(--panel); }
+    .day { display:grid; grid-template-columns:125px 1fr; gap:18px; padding:18px; border-bottom:1px solid var(--line); }
+    .day:last-child { border-bottom:0; }
+    .day time { color:var(--cyan); font-weight:700; font-size:14px; }
+    .day .tag { display:block; color:var(--yellow); font-size:12px; font-weight:700; text-transform:uppercase; margin-top:4px; }
+    .day p { margin:0; }
+    footer { border-top:1px solid var(--line); padding:24px 0 40px; color:var(--muted); font-size:14px; }
+    @media (max-width:900px) { .model-steps { grid-template-columns:repeat(2,1fr); } }
+    @media (max-width:720px) { header { padding-top:38px; } .compare,.before-after,.metrics,.gallery,.visual-grid,.model-steps,.analysis-flow { grid-template-columns:1fr; } .milestones { grid-template-columns:repeat(2,1fr); } .archive { grid-template-columns:repeat(2,1fr); } .gallery figure:first-child { grid-column:auto; } .day { grid-template-columns:1fr; gap:5px; } .wrap { width:min(100% - 20px,1180px); } th,td { padding:10px 7px; font-size:13px; } .metric .label { min-height:auto; } }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap">
+      <div class="eyebrow">Fronton Marker · historial verificable</div>
+      <h1>Como fue creciendo el programa</h1>
+      <p class="lead">Del primer visor manual a un flujo local de analisis, correccion y render. Esta pagina separa lo que mejoro en la herramienta de lo que realmente mejoro en la deteccion.</p>
+      <div class="notice">Los porcentajes corresponden a partidos y pruebas distintos. Sirven para entender el avance, no para fingir una sola curva cientifica de precision.</div>
+      <nav class="nav"><a href="#inicio">Inicio</a><a href="#visual">Evolucion visual</a><a href="#flujo">Diario</a><a href="#interfaz">Interfaz</a><a href="#medicion">Mediciones</a><a href="#modelo">Modelo</a><a href="#siguiente">Siguiente paso</a></nav>
+    </div>
+  </header>
+  <main class="wrap">
+    <section id="inicio">
+      <div class="eyebrow">19 de julio a 8 de septiembre</div>
+      <h2>El cambio mas visible</h2>
+      <div class="compare">
+        <figure><img src="social/070926_pt5/prototype-20260719.png" alt="Prototipo inicial del marcador"><figcaption><strong>19 de julio · prototipo</strong><br>Video, cinco tipos de marca, botones grandes y exportacion JSON. La revision era casi enteramente manual.</figcaption></figure>
+        <figure><img src="social/070926_pt5/viewer-interface-reference.png" alt="Visor actual de Fronton Marker"><figcaption><strong>8 de septiembre · visor actual</strong><br>Timeline escalable, atajos, historial de marcas, guardado, JSON final y control de navegacion.</figcaption></figure>
+      </div>
+      <div class="before-after">
+        <div class="card"><h3>Al inicio</h3><ul><li>Marcacion desde cero.</li><li>Controles lentos en celular.</li><li>Sin modelo local ni medicion.</li><li>Sin respaldo al cerrar.</li><li>Sin proceso consistente para los videos finales.</li></ul></div>
+        <div class="card"><h3>Ahora</h3><ul><li>Propuesta automatica de saques y finales para revisar.</li><li>Proxy con audio, visor movil/escritorio y URL de revision.</li><li>Atajos, deshacer/rehacer, navegacion por marcas y guardado de borrador.</li><li>JSON humano como etiqueta de aprendizaje y control de calidad.</li><li>Render horizontal para YouTube, vertical opcional y thumbnail a partir de jugadores.</li></ul></div>
+      </div>
+      <h3 style="margin-top:28px">Evidencia visual del trabajo</h3>
+      <div class="gallery">
+        <figure><img src="social/070926_pt5/frame-059.jpg" alt="Fotograma de partido de fronton"><figcaption><strong>Video real</strong><br>Material que entra al flujo antes del proxy, analisis y correccion.</figcaption></figure>
+        <figure><img src="social/070926_pt5/frame-338.jpg" alt="Fotograma central del partido"><figcaption><strong>Lectura de jugadores</strong><br>Las posiciones, la pausa y el movimiento son parte de las señales que se estan incorporando.</figcaption></figure>
+        <figure><img src="social/070926_pt5/frame-647.jpg" alt="Fotograma final del partido"><figcaption><strong>Finales y transiciones</strong><br>La parte mas dificil: distinguir una pausa real de una jugada aun viva.</figcaption></figure>
+        <figure class="poster"><img src="social/070926_pt5/whatsapp-progreso-real-01.jpg" alt="Resumen visual del progreso"><figcaption><strong>Resumen para compartir</strong><br>Una pieza visual basada en las mismas cifras del proyecto.</figcaption></figure>
+      </div>
+      <details open>
+        <summary>Archivo visual completo: partidos, thumbnails y renders (toca una imagen para ampliarla)</summary>
+        <div class="archive">
+          <a href="../thumbnail-180726/pt1_contact_sheet.jpg" target="_blank"><img src="../thumbnail-180726/pt1_contact_sheet.jpg" alt="Contacto de partido 1"><span>18 julio · muestra Pt1</span></a>
+          <a href="../thumbnail-180726/pt2_contact_sheet.jpg" target="_blank"><img src="../thumbnail-180726/pt2_contact_sheet.jpg" alt="Contacto de partido 2"><span>18 julio · muestra Pt2</span></a>
+          <a href="../thumbnail-180726/pt3_contact_sheet.jpg" target="_blank"><img src="../thumbnail-180726/pt3_contact_sheet.jpg" alt="Contacto de partido 3"><span>18 julio · muestra Pt3</span></a>
+          <a href="../thumbnail-180726/pt4_contact_sheet.jpg" target="_blank"><img src="../thumbnail-180726/pt4_contact_sheet.jpg" alt="Contacto de partido 4"><span>18 julio · muestra Pt4</span></a>
+          <a href="../thumbnail-180726/pt5_contact_sheet.jpg" target="_blank"><img src="../thumbnail-180726/pt5_contact_sheet.jpg" alt="Contacto de partido 5"><span>18 julio · muestra Pt5</span></a>
+          <a href="../thumbnail-180726/pt6_contact_sheet.jpg" target="_blank"><img src="../thumbnail-180726/pt6_contact_sheet.jpg" alt="Contacto de partido 6"><span>18 julio · muestra Pt6</span></a>
+          <a href="../thumbnail-gx013980/contact_sheet.jpg" target="_blank"><img src="../thumbnail-gx013980/contact_sheet.jpg" alt="Muestras GX013980"><span>GX013980 · candidatos de thumbnail</span></a>
+          <a href="../thumbnail-gx013980/full_contact_sheet.jpg" target="_blank"><img src="../thumbnail-gx013980/full_contact_sheet.jpg" alt="Muestras completas GX013980"><span>GX013980 · contacto completo</span></a>
+          <a href="thumbnail-check/pt5.jpg" target="_blank"><img src="thumbnail-check/pt5.jpg" alt="Prueba de thumbnail de Pt5"><span>Prueba de thumbnail · Pt5</span></a>
+          <a href="vertical_composed_preview.jpg" target="_blank"><img src="vertical_composed_preview.jpg" alt="Previsualizacion de render vertical"><span>Render vertical · composicion</span></a>
+          <a href="pt2_vertical_preview.jpg" target="_blank"><img src="pt2_vertical_preview.jpg" alt="Segunda previsualizacion vertical"><span>Render vertical · segunda prueba</span></a>
+          <a href="contact/gx_highlights_contact.jpg" target="_blank"><img src="contact/gx_highlights_contact.jpg" alt="Contacto de highlights"><span>Highlights · contacto</span></a>
+        </div>
+      </details>
+    </section>
+
+    <section id="visual">
+      <div class="eyebrow">Antes → despues</div><h2>La interfaz y el analisis, en movimiento</h2>
+      <div class="visual-grid">
+        <figure><img src="social/070926_pt5/interface-history/evolucion-interfaz.gif" alt="GIF de la evolucion de la interfaz de Fronton Marker"><figcaption><strong>Evolucion de la interfaz.</strong><br>Prototipo manual → timeline y lista de marcas → foco para editar → visor actual → GUI local. Cada cuadro es una captura real del proyecto, no un mockup.</figcaption></figure>
+        <figure><img src="social/070926_pt5/interface-history/que-observa-el-modelo.gif" alt="GIF de las senales consideradas por el modelo"><figcaption><strong>Que intenta observar el modelo.</strong><br>No son cajas de deteccion exactas: es una representacion fiel de las senales extraidas del video y audio para proponer el estado de la jugada.</figcaption></figure>
+      </div>
+      <div class="milestones">
+        <figure class="milestone"><img src="social/070926_pt5/interface-history/01-prototype.png" alt="Interfaz inicial"><figcaption><strong>1. Prototipo</strong><br>Marcar y exportar.</figcaption></figure>
+        <figure class="milestone"><img src="social/070926_pt5/interface-history/02-timeline-marks.png" alt="Timeline y marcas"><figcaption><strong>2. Timeline</strong><br>Marcas visibles.</figcaption></figure>
+        <figure class="milestone"><img src="social/070926_pt5/interface-history/03-timeline-focus.png" alt="Foco de marca"><figcaption><strong>3. Foco</strong><br>Editar sin perderse.</figcaption></figure>
+        <figure class="milestone"><img src="social/070926_pt5/interface-history/04-current-viewer.png" alt="Visor actual"><figcaption><strong>4. Visor</strong><br>Atajos y guardado.</figcaption></figure>
+        <figure class="milestone"><img src="social/070926_pt5/interface-history/05-local-gui.png" alt="GUI local"><figcaption><strong>5. Programa</strong><br>Analizar y renderizar.</figcaption></figure>
+      </div>
+      <div class="before-after" style="margin-top:16px">
+        <div class="card"><h3>La secuencia que busca para un saque</h3><ul><li>Jugadores relativamente estables y distribuidos en la cancha.</li><li>Preparacion del servidor o del receptor antes de que el rally arranque.</li><li>Transitorio de audio del golpe cuando el proxy conserva audio.</li><li>Aumento posterior de movimiento: primero responde uno y luego se activa el conjunto.</li></ul></div>
+        <div class="card"><h3>La secuencia que busca para un final</h3><ul><li>Caida de actividad o pausa posterior al rally.</li><li>Jugadores que dejan de perseguir la bola y se reubican.</li><li>Ausencia relativa de continuidad en movimiento y audio.</li><li>La siguiente preparacion de saque ayuda a cerrar retrospectivamente el punto anterior.</li></ul></div>
+      </div>
+      <div class="analysis-flow">
+        <div><h3>1. Lo que entra</h3><div class="signal"><i></i>Fotogramas del proxy</div><div class="signal"><i></i>Audio del mismo proxy</div><div class="signal"><i></i>JSON humano previo</div><p>El original se usa para render; el proxy con audio se usa para revisar y extraer caracteristicas.</p></div>
+        <div><h3>2. Lo que se extrae</h3><div class="signal"><i></i>Movimiento regional</div><div class="signal"><i></i>Flujo optico</div><div class="signal"><i></i>Personas y centros</div><div class="signal"><i></i>Energia / transitorios</div><p>No guarda "la jugada" como concepto: transforma esas senales en numeros por ventana de tiempo.</p></div>
+        <div><h3>3. Lo que propone</h3><div class="signal"><i></i>Saque candidato</div><div class="signal warn"><i></i>Final candidato</div><div class="signal bad"><i></i>Ambiguo: repeticion / bloqueo</div><p><strong>Funciono mejor:</strong> saques. <strong>Sigue debil:</strong> finales tapados y saque repetido.</p></div>
+      </div>
+    </section>
+
+    <section id="flujo">
+      <div class="eyebrow">Diario de cambios</div><h2>Paso a paso, por dia de trabajo</h2>
+      <p>Solo aparecen fechas con cambios concretos en el repositorio o en el pipeline. Entre ellas hubo revision de videos y correcciones humanas; no las cuento como funcionalidad nueva.</p>
+      <div class="daily">
+        <article class="day"><div><time>19 julio</time><span class="tag">Base</span></div><div><h3>Primer visor y primera salida final</h3><p>Se creo <code>index.html</code>: cargar video, marcar Saque, Final, Basura y Paleta, ajustar segundos y exportar JSON. Ese mismo dia se agrego cargar JSON remoto, el primer script de render y el flujo vertical. El proyecto paso de una idea a: video → marcas → JSON → video final.</p></div></article>
+        <article class="day"><div><time>21 julio</time><span class="tag">Celular</span></div><div><h3>El visor se adapto a revision real en telefono</h3><p>Se compactaron controles, se incorporo un proxy de YouTube y lote desde Drive. Se separaron layouts vertical/horizontal, se redujo la sensibilidad del arrastre del timeline, se agregaron botones para navegar marcas y se priorizo tocar una marca directamente en la linea de tiempo.</p></div></article>
+        <article class="day"><div><time>5 agosto</time><span class="tag">Escritorio</span></div><div><h3>Primer layout util para sesiones largas</h3><p>Se rehizo la distribucion de escritorio y se publicaron revisiones de Pt3, Pt4 y Huanchaco. La mejora no fue de IA aun: fue poder ver video, timeline y lista de marcas sin que el celular o la pantalla ancha escondieran la edicion.</p></div></article>
+        <article class="day"><div><time>6 agosto</time><span class="tag">Velocidad</span></div><div><h3>Hotkeys, marcas compactas y primeras finales humanas</h3><p>Se introdujeron atajos para tipos de marca y filas compactas. Se publicaron JSON finales humanos de Huanchaco y Julio Diego Guti: esos archivos empezaron a ser el material de referencia para saber donde el analizador se equivoca.</p></div></article>
+        <article class="day"><div><time>7 agosto</time><span class="tag">Confiabilidad</span></div><div><h3>Respaldo, highlights y primeras auditorias</h3><p>Se corrigieron los atajos y el guardado de respaldo. La paleta se definio como highlight de la jugada anterior. Se añadieron revisiones de 060826 Pt1, Pt9, Pt11 y Pt12. Tambien aparecio el primer dato duro: el detector antiguo apenas encontro 2 de 25 saques y 4 de 24 finales en Pt12.</p></div></article>
+        <article class="day"><div><time>8 agosto</time><span class="tag">Camaras</span></div><div><h3>Correccion de orientacion y revision por partes</h3><p>070826 Pt1 llego grabado con orientacion incorrecta. Se creo una variante horizontal corregida antes de analizarla, para que el modelo y el visor no confundieran la disposicion de cancha con otra modalidad de juego.</p></div></article>
+        <article class="day"><div><time>11 agosto</time><span class="tag">Edicion fina</span></div><div><h3>El visor se volvio una herramienta de correccion</h3><p>Se integraron correcciones humanas para 070826 Pt1/Pt2 y las partes 080826 Pt1–Pt6. Se ajustaron hotkeys de movil, se conservaba el estado del timeline, llegaron deshacer y rehacer (Ctrl+Z / Ctrl+Shift+Z) y se redujo el riesgo de perder una sesion por cierre accidental.</p></div></article>
+        <article class="day"><div><time>12 agosto</time><span class="tag">Auditoria</span></div><div><h3>Se cerro el lote y se identifico el limite del enfoque antiguo</h3><p>Se guardo el final de 080826 Pt6 y se publico Pt7. La comparacion de Pt12 dejo claro que tener muchas propuestas automaticas no era suficiente: faltaba un detector entrenable y evaluado, especialmente para saques bajos, dobles y cierres tapados.</p></div></article>
+        <article class="day"><div><time>6 septiembre</time><span class="tag">Modelo local</span></div><div><h3>Arranque del pipeline supervisado</h3><p>Se creo el visor de 050926 Pt1 y el panel desplegable de atajos. Se guardaron correcciones humanas de Pt1 y Pt3, y se publicaron Pt4/Pt5 para continuar el ciclo. En paralelo se formalizo el entrenamiento local con JSON corregidos, no con marcas automáticas sin revisar.</p></div></article>
+        <article class="day"><div><time>7 septiembre</time><span class="tag">Control de calidad</span></div><div><h3>Pruebas separadas, URL visible y audio restaurado</h3><p>Se publicaron las partes 6–9 de 050926 y 1–4 de 070926. El visor empezo a mostrar su propia direccion de revision. Se restauró el audio en los proxies y se aislaron los borradores de prueba para que no contaminaran las correcciones finales. El modelo activo quedo como temporal-av-3.</p></div></article>
+        <article class="day"><div><time>8 septiembre</time><span class="tag">Medir antes de cambiar</span></div><div><h3>Parte 5, parte 6 y candidato de fusion</h3><p>Se generaron revisiones para 070926 Pt5/Pt6 y se comparo Pt5 contra su JSON humano antes de aprender de esa parte: 23/24 saques y 15/22 finales. Tambien se entreno una fusion v3/v4, pero no se activó porque la prueba añadió demasiados falsos saques. El proyecto ahora conserva candidatos sin reemplazar el modelo activo por entusiasmo.</p></div></article>
+      </div>
+    </section>
+
+    <section id="interfaz">
+      <div class="eyebrow">Interfaz</div><h2>Que gano la revision humana</h2>
+      <div class="metrics">
+        <div class="metric"><span class="label">Navegacion</span><span class="number">Q–Y</span><small>Saltos de -5 a +5 s, ademas de timeline y marcas anterior/siguiente.</small></div>
+        <div class="metric"><span class="label">Correccion</span><span class="number">1–5</span><small>Tipo de marca desde teclado, ajustes por segundos y eliminacion inmediata.</small></div>
+        <div class="metric"><span class="label">Proteccion</span><span class="number">Ctrl+Z</span><small>Deshacer, rehacer y aviso al cerrar cuando quedan cambios sin guardar.</small></div>
+      </div>
+      <p style="margin-top:16px">Tambien se corrigieron problemas muy concretos: no se crean <em>Hit</em> automaticos, la paleta apunta a la jugada anterior, el timeline reduce iconos cuando esta alejado y la marca elegida queda a la vista para poder editarla.</p>
+    </section>
+
+    <section id="medicion">
+      <div class="eyebrow">Deteccion</div><h2>Lo que dicen los numeros, sin maquillaje</h2>
+      <table><thead><tr><th>Momento</th><th>Prueba</th><th>Saque</th><th>Final</th><th>Que significa</th></tr></thead><tbody>
+        <tr><td>12 ago</td><td>060826 Pt12, modelo antiguo</td><td><span class="bad">2/25</span><br>8.0% recuperacion</td><td><span class="bad">4/24</span><br>16.7% recuperacion</td><td>La interfaz ayudaba, pero el analizador practicamente no servia como propuesta.</td></tr>
+        <tr><td>6–7 sep</td><td>Primera prueba reservada por sesiones</td><td><span class="warn">27/37</span><br>64.3% precision · 73.0% recuperacion</td><td><span class="warn">26/40</span><br>70.3% precision · 65.0% recuperacion</td><td>Primer resultado formal del detector local supervisado.</td></tr>
+        <tr><td>8 sep</td><td>070926 Pt5, antes de aprender de esa parte</td><td><span class="good">23/24</span><br>92.0% precision · 95.8% recuperacion</td><td><span class="good">15/22</span><br>78.9% precision · 68.2% recuperacion</td><td>El saque se volvio una propuesta fuerte. Los finales siguen siendo el cuello de botella.</td></tr>
+      </tbody></table>
+      <div class="notice">La prueba de Pt5 es independiente respecto de ese video, pero es solo un partido. El resultado reservado por sesiones es la referencia mas prudente para hablar del modelo completo.</div>
+    </section>
+
+    <section id="modelo">
+      <div class="eyebrow">Modelo local</div><h2>Que consideraba cada version</h2>
+      <div class="model-steps">
+        <article class="model-step"><div class="version">V0 · heuristico inicial</div><h3>Reglas simples</h3><ul><li>Cambios de imagen y movimiento general.</li><li>Candidatos espaciados en el tiempo.</li><li>Sin aprendizaje supervisado ni audio confiable.</li><li><strong>Fallo:</strong> confundia actividad, cortes y finales; podia crear marcas inutiles.</li></ul></article>
+        <article class="model-step"><div class="version">temporal-av-1 · 6 sep</div><h3>Primer modelo supervisado</h3><ul><li>Diferencia entre fotogramas y flujo optico.</li><li>Deteccion preentrenada de personas y sus centros.</li><li>Energia y transitorios de audio si existian.</li><li><strong>Resultado:</strong> mejoro mucho saque, pero al inicio perdio demasiados finales o agregaba falsos positivos.</li></ul></article>
+        <article class="model-step"><div class="version">temporal-av-3 · activo</div><h3>Contexto temporal</h3><ul><li>Todo lo anterior, mas ventana antes y despues del evento.</li><li>Relacion entre golpe sonoro y movimiento posterior.</li><li>Cambio de actividad: preparacion → rally → pausa.</li><li><strong>Resultado:</strong> es la propuesta actual para revision humana; no autoriza render sin revisar.</li></ul></article>
+        <article class="model-step"><div class="version">temporal-av-4 y fusion · prueba</div><h3>Preparacion y transiciones</h3><ul><li>Contexto de posiciones aproximadas, desaceleracion y reubicacion.</li><li>Reglas para no inventar estados imposibles.</li><li>Fusion experimental v3/v4 para recuperar mas casos.</li><li><strong>No activado:</strong> redujo algunas omisiones, pero introdujo demasiados saques falsos en la prueba reservada.</li></ul></article>
+      </div>
+      <div class="before-after" style="margin-top:16px">
+        <div class="card"><h3>Lo que si esta dentro del modelo</h3><ul><li>Movimiento regional y flujo optico.</li><li>Numero, centros y movimiento aproximado de personas detectadas por YOLO preentrenado.</li><li>Audio del proxy: energia, cambios y transitorios cercanos al golpe.</li><li>Ventanas temporales, no solo un fotograma aislado.</li><li>Correcciones humanas como etiquetas de entrenamiento.</li></ul></div>
+        <div class="card"><h3>Lo que no finge saber todavia</h3><ul><li>No identifica de forma persistente a cada jugador por nombre.</li><li>No separa perfectamente la pelota propia de otra cancha solo con audio.</li><li>No tiene etiqueta explicita de saque fallido/repetido; ese caso sigue ambiguo.</li><li>No puede garantizar el final si la bola y jugadores quedaron tapados.</li><li>No reentrena Qwen; usa YOLO solo como detector de personas preentrenado.</li></ul></div>
+      </div>
+      <p style="margin-top:16px">La idea de las versiones no fue crear una IA nueva por capricho, sino probar una hipotesis por vez. La siguiente mejora debe validar si posiciones estables + golpe de audio + activacion del rally reduce los falsos saques en dobles, antes de mover el modelo activo.</p>
+    </section>
+
+    <section id="siguiente">
+      <div class="eyebrow">Siguiente paso</div><h2>Como saber que ya es automatico de verdad</h2>
+      <div class="next"><strong>Protocolo desde ahora:</strong><br>cada jornada debe reservar una parte nueva; se analiza sin entrenarla, se compara con tu JSON final a 1, 3 y 5 segundos, y recien despues se incorpora al aprendizaje. Asi el numero deja de ser una impresion y se vuelve una prueba repetible.</div>
+    </section>
+  </main>
+  <footer><div class="wrap">Fuentes locales: historial Git del visor, JSON humanos, informes de evaluacion y capturas guardadas en el proyecto. Actualizado el 8 de septiembre de 2026.</div></footer>
+</body>
+</html>
