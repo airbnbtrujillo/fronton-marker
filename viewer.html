@@ -76,6 +76,14 @@
     .review-address { display:flex; align-items:center; gap:6px; margin:4px 0 8px; min-width:0; }
     .review-address input { min-width:0; width:100%; height:30px; color:var(--text); background:var(--bg); border:1px solid var(--line); padding:4px; }
     .review-address button { min-height:30px; flex:none; }
+    .summary-mode {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 8px;
+    }
+    .summary-mode button { min-height: 32px; }
+    .summary-mode span { color: var(--muted); font-size: 12px; }
     .shortcut-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px 14px; padding: 0 0 9px; color: var(--muted); font-size: 12px; }
     .shortcut-grid b { color: var(--text); }
 
@@ -907,10 +915,11 @@
     <details class="shortcuts" open>
       <summary>Atajos de teclado</summary>
       <div class="review-address"><input id="reviewAddress" aria-label="Direccion HTML de esta revision" readonly><button id="copyReviewAddress" title="Copiar direccion HTML">Copiar enlace</button></div>
+      <div class="summary-mode"><button id="summaryToggle" class="ghost">Resumen x4 (M)</button><span id="summaryModeHint">Reproduce escenas seguidas</span></div>
       <div class="shortcut-grid">
         <span><b>Q/W/E</b> -5/-2/-1 s</span><span><b>R/T/Y</b> +1/+2/+5 s</span><span><b>K/L</b> velocidad -/+0.5</span>
         <span><b>1-5</b> tipo de marca</span><span><b>H</b> highlight de escena</span><span><b>V/B</b> marca anterior/siguiente</span>
-        <span><b>X</b> modo marcas</span><span><b>Z</b> modo video</span><span><b>D</b> borrar marca actual</span>
+        <span><b>M</b> iniciar/detener resumen</span><span><b>X</b> modo marcas</span><span><b>Z</b> modo video</span>
         <span><b>Ctrl+Z</b> deshacer</span><span><b>Ctrl+Shift+Z</b> rehacer</span><span><b>Final 1</b> guardar respaldo</span>
       </div>
     </details>
@@ -1439,6 +1448,8 @@
       if (summaryStopListener) video.removeEventListener('timeupdate', summaryStopListener);
       summaryStopListener = null;
       $('playSummary').textContent = 'Resumen x4';
+      $('summaryToggle').textContent = 'Resumen x4 (M)';
+      $('summaryModeHint').textContent = 'Reproduce escenas seguidas';
       if (message) $('saveStatus').textContent = message;
     }
 
@@ -1467,6 +1478,8 @@
       selectedScene = sequence[summaryIndex].index;
       video.playbackRate = 4;
       $('playSummary').textContent = 'Detener resumen';
+      $('summaryToggle').textContent = 'Detener resumen (M)';
+      $('summaryModeHint').textContent = 'Highlights primero · K/L hasta x6';
       const intro = sequence.length - derivedScenes().length;
       $('saveStatus').textContent = `Resumen ${sequence.length} escenas${intro ? ` · ${intro} highlights primero` : ''} · x4 · K/L hasta x6`;
       seek(sequence[summaryIndex].scene.start);
@@ -1816,6 +1829,7 @@
       $('nextScene').disabled = scenes.length === 0;
       $('playScene').disabled = selectedScene < 0 || !scenes[selectedScene];
       $('playSummary').disabled = scenes.length === 0;
+      $('summaryToggle').disabled = scenes.length === 0;
       const current = scenes[selectedScene];
       const marked = Boolean(current && highlightedSceneIds.includes(current.id));
       $('highlightScene').disabled = scenes.length === 0;
@@ -1876,6 +1890,11 @@
         toggleSceneHighlight();
         return;
       }
+      if (key === 'm') {
+        event.preventDefault();
+        playSummary();
+        return;
+      }
       if (key === 'x') {
         event.preventDefault();
         setEditTarget('mark');
@@ -1929,6 +1948,7 @@
     $('nextScene').addEventListener('click', () => gotoScene(selectedScene + 1));
     $('playScene').addEventListener('click', playSelectedScene);
     $('playSummary').addEventListener('click', playSummary);
+    $('summaryToggle').addEventListener('click', playSummary);
     $('highlightScene').addEventListener('click', toggleSceneHighlight);
     $('playPause').addEventListener('click', async event => {
       if (video.paused) {
