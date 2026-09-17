@@ -331,6 +331,13 @@
       border-bottom: 1px solid rgba(255,255,255,.08);
     }
 
+    .scene-actions .highlight-active {
+      background: var(--paddle);
+      color: #170922;
+    }
+
+    .row.highlighted { background: rgba(180,93,246,.16); }
+
     .list {
       max-height: 38dvh;
       overflow: auto;
@@ -902,7 +909,7 @@
       <div class="review-address"><input id="reviewAddress" aria-label="Direccion HTML de esta revision" readonly><button id="copyReviewAddress" title="Copiar direccion HTML">Copiar enlace</button></div>
       <div class="shortcut-grid">
         <span><b>Q/W/E</b> -5/-2/-1 s</span><span><b>R/T/Y</b> +1/+2/+5 s</span><span><b>K/L</b> velocidad -/+0.5</span>
-        <span><b>1-5</b> tipo de marca</span><span><b>V/B</b> marca anterior/siguiente</span><span><b>Flechas</b> navegar marcas</span>
+        <span><b>1-5</b> tipo de marca</span><span><b>H</b> highlight de escena</span><span><b>V/B</b> marca anterior/siguiente</span>
         <span><b>X</b> modo marcas</span><span><b>Z</b> modo video</span><span><b>D</b> borrar marca actual</span>
         <span><b>Ctrl+Z</b> deshacer</span><span><b>Ctrl+Shift+Z</b> rehacer</span><span><b>Final 1</b> guardar respaldo</span>
       </div>
@@ -978,6 +985,8 @@
             <button id="nextScene" class="ghost">Siguiente</button>
             <button id="addScene" class="ghost">Nueva escena</button>
             <button id="playScene" class="ghost">Ver escena</button>
+            <button id="playSummary" class="ghost">Resumen x4</button>
+            <button id="highlightScene" class="ghost">Highlight H</button>
           </div>
           <div id="sceneList" class="list"></div>
         </div>
@@ -1026,6 +1035,7 @@
     const seekHotkeys = { q: -5, w: -2, e: -1, r: 1, t: 2, y: 5 };
     let marks = [];
     let manualScenes = [];
+    let highlightedSceneIds = [];
     let selectedScene = -1;
     let selectedMarkId = null;
     let lastDeleted = null;
@@ -1034,11 +1044,14 @@
     let undoStack = [];
     let redoStack = [];
     let dirtyChanges = 0;
+    let summaryMode = false;
+    let summaryStopListener = null;
 
     function cloneState() {
       return {
         marks: marks.map(mark => ({ ...mark })),
         manualScenes: manualScenes.map(scene => ({ ...scene, tags: Array.isArray(scene.tags) ? scene.tags.slice() : [] })),
+        highlightedSceneIds: highlightedSceneIds.slice(),
         selectedMarkId,
         selectedScene
       };
@@ -1047,6 +1060,7 @@
     function restoreState(state) {
       marks = state.marks.map(mark => ({ ...mark }));
       manualScenes = state.manualScenes.map(scene => ({ ...scene, tags: Array.isArray(scene.tags) ? scene.tags.slice() : [] }));
+      highlightedSceneIds = Array.isArray(state.highlightedSceneIds) ? state.highlightedSceneIds.slice() : [];
       selectedMarkId = state.selectedMarkId || null;
       selectedScene = Number.isFinite(state.selectedScene) ? state.selectedScene : -1;
       saveState();
@@ -1098,7 +1112,7 @@
     }
 
     function saveState() {
-      localStorage.setItem(storeKey, JSON.stringify({ videoUrl: videoUrl.value, marks, manualScenes, reviewedUntil }));
+      localStorage.setItem(storeKey, JSON.stringify({ videoUrl: videoUrl.value, marks, manualScenes, highlightedSceneIds, reviewedUntil }));
     }
 
     function markClean(message) {
@@ -1113,6 +1127,7 @@
       const saved = JSON.parse(localStorage.getItem(storeKey) || '{}');
       marks = Array.isArray(initial.marks) ? initial.marks : (Array.isArray(saved.marks) ? saved.marks : []);
       manualScenes = Array.isArray(initial.manualScenes) ? initial.manualScenes : (Array.isArray(initial.scenes) ? initial.scenes : (Array.isArray(saved.manualScenes) ? saved.manualScenes : []));
+      highlightedSceneIds = Array.isArray(initial.highlightedSceneIds) ? initial.highlightedSceneIds : (Array.isArray(saved.highlightedSceneIds) ? saved.highlightedSceneIds : []);
       reviewedUntil = Number(saved.reviewedUntil) || 0;
       videoUrl.value = src || initial.videoUrl || initial.source || saved.videoUrl || '';
       if (videoUrl.value) setVideo(videoUrl.value);
@@ -1146,6 +1161,12 @@
             tags: Array.isArray(scene.tags) ? scene.tags : [],
             suggested: scene.suggested === true || String(scene.source || '').startsWith('calibrated')
           }));
+        }
+        if (Array.isArray(analysis.highlights)) {
+          const loadedScenes = derivedScenes();
+          highlightedSceneIds = analysis.highlights.map(item => loadedScenes.find(scene =>
+            Math.abs(scene.start - Number(item.start)) < .25 && Math.abs(scene.end - Number(item.end)) < .25
+          )?.id).filter(Boolean);
         }
         if (!videoUrl.value && analysis.video_source) {
           videoUrl.value = analysis.video_source;
@@ -1202,7 +1223,14 @@
     function derivedHighlights() {
       const scenes = derivedScenes();
       const paddles = sortedMarks('paddle');
-      const highlights = [];
+      const highlights = scenes
+        .filter(scene => highlightedSceneIds.includes(scene.id))
+        .map(scene => ({
+          start: Number(scene.start.toFixed(3)),
+          end: Number(scene.end.toFixed(3)),
+          source: 'manual-scene-highlight'
+        }));
+      const highlightedIds = new Set(highlightedSceneIds);
       let last = -Infinity;
       for (const paddle of paddles) {
         if (paddle.time - last < 2.5) continue;
@@ -1215,6 +1243,7 @@
           .sort((a, b) => (b.end - b.start) - (a.end - a.start));
         const scene = previousScenes[0] || containingScenes[0];
         if (!scene) continue;
+        if (highlightedIds.has(scene.id)) continue;
         highlights.push({
           start: Number(scene.start.toFixed(3)),
           end: Number(scene.end.toFixed(3)),
@@ -1400,9 +1429,90 @@
     }
 
     function setPlayback(delta) {
-      const next = Math.max(0.25, Math.min(4, Number((video.playbackRate + delta).toFixed(2))));
+      const next = Math.max(0.25, Math.min(6, Number((video.playbackRate + delta).toFixed(2))));
       video.playbackRate = next;
       $('saveStatus').textContent = `Velocidad ${next.toFixed(next % 1 ? 1 : 0)}x`;
+    }
+
+    function stopSummary(message = '') {
+      summaryMode = false;
+      if (summaryStopListener) video.removeEventListener('timeupdate', summaryStopListener);
+      summaryStopListener = null;
+      $('playSummary').textContent = 'Resumen x4';
+      if (message) $('saveStatus').textContent = message;
+    }
+
+    function summarySequence() {
+      const scenes = derivedScenes();
+      const highlights = scenes
+        .map((scene, index) => ({ scene, index }))
+        .filter(item => highlightedSceneIds.includes(item.scene.id));
+      return highlights.concat(scenes.map((scene, index) => ({ scene, index })));
+    }
+
+    async function playSummary() {
+      const sequence = summarySequence();
+      if (!sequence.length) {
+        $('saveStatus').textContent = 'No hay escenas para el resumen.';
+        return;
+      }
+      if (summaryMode) {
+        video.pause();
+        stopSummary('Resumen detenido.');
+        return;
+      }
+      stopSummary();
+      summaryMode = true;
+      let summaryIndex = 0;
+      selectedScene = sequence[summaryIndex].index;
+      video.playbackRate = 4;
+      $('playSummary').textContent = 'Detener resumen';
+      const intro = sequence.length - derivedScenes().length;
+      $('saveStatus').textContent = `Resumen ${sequence.length} escenas${intro ? ` · ${intro} highlights primero` : ''} · x4 · K/L hasta x6`;
+      seek(sequence[summaryIndex].scene.start);
+      render();
+      summaryStopListener = async () => {
+        const active = sequence[summaryIndex]?.scene;
+        if (!summaryMode || !active) return;
+        if (video.currentTime < active.end) return;
+        if (summaryIndex >= sequence.length - 1) {
+          video.pause();
+          stopSummary('Resumen terminado.');
+          return;
+        }
+        summaryIndex += 1;
+        selectedScene = sequence[summaryIndex].index;
+        seek(sequence[summaryIndex].scene.start);
+        render();
+        try { await video.play(); } catch { stopSummary('No se pudo continuar el resumen.'); }
+      };
+      video.addEventListener('timeupdate', summaryStopListener);
+      try { await video.play(); } catch { stopSummary('No se pudo iniciar el resumen.'); }
+    }
+
+    function toggleSceneHighlight() {
+      const scenes = derivedScenes();
+      if (!scenes.length) return;
+      let index = selectedScene;
+      if (index < 0 || !scenes[index]) {
+        index = scenes.findIndex(scene => video.currentTime >= scene.start && video.currentTime <= scene.end);
+      }
+      if (index < 0) {
+        $('saveStatus').textContent = 'Selecciona una escena para marcarla como highlight.';
+        return;
+      }
+      selectedScene = index;
+      const id = scenes[index].id;
+      rememberChange();
+      if (highlightedSceneIds.includes(id)) {
+        highlightedSceneIds = highlightedSceneIds.filter(item => item !== id);
+        $('saveStatus').textContent = `Highlight quitado: ${fmt(scenes[index].start)}.`;
+      } else {
+        highlightedSceneIds.push(id);
+        $('saveStatus').textContent = `Highlight guardado: ${fmt(scenes[index].start)}. Saldrá primero en el JSON.`;
+      }
+      saveState();
+      render();
     }
 
     function isTypingTarget(target) {
@@ -1547,12 +1657,14 @@
     function gotoScene(index) {
       const scenes = derivedScenes();
       if (!scenes.length) return;
+      if (summaryMode) stopSummary();
       selectedScene = Math.max(0, Math.min(scenes.length - 1, index));
       seek(scenes[selectedScene].start);
       render();
     }
 
     async function playSelectedScene() {
+      if (summaryMode) stopSummary();
       const scene = derivedScenes()[selectedScene];
       if (!scene) return;
       seek(scene.start);
@@ -1684,9 +1796,10 @@
       sceneList.innerHTML = scenes.map((scene, index) => {
         const tags = (scene.tags && scene.tags.length) ? ` · ${scene.tags.join(', ')}` : '';
         const active = index === selectedScene ? ' active' : '';
+        const highlighted = highlightedSceneIds.includes(scene.id) ? ' highlighted' : '';
         const remove = scene.source === 'manual' ? `<button class="ghost" data-delete-scene="${scene.id}">Borrar</button>` : `<button class="ghost" data-scene="${index}">Ir</button>`;
         return `
-          <div class="row${active}">
+          <div class="row${active}${highlighted}">
             <div class="time">${fmt(scene.start)}</div>
             <button class="ghost tag" data-scene="${index}">${fmt(scene.end)}${tags}</button>
             ${remove}
@@ -1702,6 +1815,12 @@
       $('prevScene').disabled = scenes.length === 0;
       $('nextScene').disabled = scenes.length === 0;
       $('playScene').disabled = selectedScene < 0 || !scenes[selectedScene];
+      $('playSummary').disabled = scenes.length === 0;
+      const current = scenes[selectedScene];
+      const marked = Boolean(current && highlightedSceneIds.includes(current.id));
+      $('highlightScene').disabled = scenes.length === 0;
+      $('highlightScene').classList.toggle('highlight-active', marked);
+      $('highlightScene').textContent = marked ? 'Quitar highlight H' : 'Highlight H';
     }
 
     function render() {
@@ -1750,6 +1869,11 @@
       if (key === 'k' || key === 'l') {
         event.preventDefault();
         setPlayback(key === 'l' ? 0.5 : -0.5);
+        return;
+      }
+      if (key === 'h') {
+        event.preventDefault();
+        toggleSceneHighlight();
         return;
       }
       if (key === 'x') {
@@ -1804,6 +1928,8 @@
     $('prevScene').addEventListener('click', () => gotoScene(selectedScene < 0 ? 0 : selectedScene - 1));
     $('nextScene').addEventListener('click', () => gotoScene(selectedScene + 1));
     $('playScene').addEventListener('click', playSelectedScene);
+    $('playSummary').addEventListener('click', playSummary);
+    $('highlightScene').addEventListener('click', toggleSceneHighlight);
     $('playPause').addEventListener('click', async event => {
       if (video.paused) {
         await video.play();
@@ -1890,6 +2016,7 @@
     });
     video.addEventListener('loadedmetadata', () => { notice.classList.remove('show'); render(); });
     video.addEventListener('durationchange', render);
+    video.addEventListener('ended', () => { if (summaryMode) stopSummary('Resumen terminado.'); });
     video.addEventListener('error', () => notice.classList.add('show'));
 
     loadState();
