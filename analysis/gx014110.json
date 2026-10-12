@@ -1,0 +1,477 @@
+{
+  "version": 2,
+  "source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/gx014110-proxy.mp4",
+  "direct_source": "https://raw.githubusercontent.com/airbnbtrujillo/fronton-marker/main/videos/gx014110-proxy.mp4",
+  "duration": 635.1345,
+  "marks": [
+    {
+      "type": "serve",
+      "time": 10.5,
+      "score": 0.78804,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "serve",
+      "time": 22.5,
+      "score": 0.91748,
+      "suggested": true,
+      "label": "Saque",
+      "review_reason": "possible_repeat_or_missing_end"
+    },
+    {
+      "type": "serve",
+      "time": 42.0,
+      "score": 0.55633,
+      "suggested": true,
+      "label": "Saque",
+      "review_reason": "possible_repeat_or_missing_end"
+    },
+    {
+      "type": "end",
+      "time": 52.5,
+      "score": 0.7052,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 56.5,
+      "score": 0.49661,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 63.5,
+      "score": 0.80479,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 76.0,
+      "score": 0.92064,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "serve",
+      "time": 89.5,
+      "score": 0.57684,
+      "suggested": true,
+      "label": "Saque",
+      "review_reason": "possible_repeat_or_missing_end"
+    },
+    {
+      "type": "serve",
+      "time": 97.0,
+      "score": 0.82553,
+      "suggested": true,
+      "label": "Saque",
+      "review_reason": "possible_repeat_or_missing_end"
+    },
+    {
+      "type": "end",
+      "time": 105.0,
+      "score": 0.75054,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 111.0,
+      "score": 0.8519,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 123.5,
+      "score": 0.693,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 135.5,
+      "score": 0.91933,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "serve",
+      "time": 145.0,
+      "score": 0.67601,
+      "suggested": true,
+      "label": "Saque",
+      "review_reason": "possible_repeat_or_missing_end"
+    },
+    {
+      "type": "end",
+      "time": 151.5,
+      "score": 0.84253,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 171.0,
+      "score": 0.69028,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 185.5,
+      "score": 0.89683,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 191.0,
+      "score": 0.8897,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 196.0,
+      "score": 0.77177,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 205.0,
+      "score": 0.48042,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 211.5,
+      "score": 0.86541,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "end",
+      "time": 253.5,
+      "score": 0.69949,
+      "suggested": true,
+      "label": "Final",
+      "review_reason": "missing_serve_or_false_end"
+    },
+    {
+      "type": "serve",
+      "time": 265.0,
+      "score": 0.60509,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "serve",
+      "time": 271.5,
+      "score": 0.51391,
+      "suggested": true,
+      "label": "Saque",
+      "review_reason": "possible_repeat_or_missing_end"
+    },
+    {
+      "type": "end",
+      "time": 290.5,
+      "score": 0.83587,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 298.5,
+      "score": 0.87197,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 305.5,
+      "score": 0.85143,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 316.5,
+      "score": 0.75648,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 321.0,
+      "score": 0.74184,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 346.5,
+      "score": 0.8925,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 356.5,
+      "score": 0.87247,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 381.0,
+      "score": 0.42092,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 402.0,
+      "score": 0.71295,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 445.0,
+      "score": 0.78187,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 456.0,
+      "score": 0.71788,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 480.5,
+      "score": 0.82115,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 486.0,
+      "score": 0.85004,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 496.0,
+      "score": 0.7621,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "end",
+      "time": 510.0,
+      "score": 0.80024,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 578.0,
+      "score": 0.62841,
+      "suggested": true,
+      "label": "Saque"
+    },
+    {
+      "type": "serve",
+      "time": 585.0,
+      "score": 0.73742,
+      "suggested": true,
+      "label": "Saque",
+      "review_reason": "possible_repeat_or_missing_end"
+    },
+    {
+      "type": "end",
+      "time": 593.0,
+      "score": 0.77051,
+      "suggested": true,
+      "label": "Final"
+    },
+    {
+      "type": "serve",
+      "time": 614.0,
+      "score": 0.45627,
+      "suggested": true,
+      "label": "Saque"
+    }
+  ],
+  "scenes": [
+    {
+      "start": 42.0,
+      "end": 52.5,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 56.5,
+      "end": 63.5,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 97.0,
+      "end": 105.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 111.0,
+      "end": 123.5,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 145.0,
+      "end": 151.5,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 171.0,
+      "end": 185.5,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 191.0,
+      "end": 196.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 205.0,
+      "end": 211.5,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 271.5,
+      "end": 290.5,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 298.5,
+      "end": 305.5,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 316.5,
+      "end": 321.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 346.5,
+      "end": 356.5,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 381.0,
+      "end": 402.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 445.0,
+      "end": 456.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 480.5,
+      "end": 486.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 496.0,
+      "end": 510.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    },
+    {
+      "start": 585.0,
+      "end": 593.0,
+      "source": "supervised-local-candidate",
+      "tags": []
+    }
+  ],
+  "highlights": [],
+  "review_mode": "supervised-local",
+  "learning": {
+    "run_id": "20260907T230951000150Z",
+    "version": "temporal-av-3",
+    "features": "fece59477919199ec958",
+    "audio_used": true,
+    "human_review_required": true,
+    "source_was_in_training": false
+  },
+  "boundary_issues": [
+    {
+      "kind": "serve_without_end",
+      "time": 10.5
+    },
+    {
+      "kind": "serve_without_end",
+      "time": 22.5
+    },
+    {
+      "kind": "serve_without_end",
+      "time": 76.0
+    },
+    {
+      "kind": "serve_without_end",
+      "time": 89.5
+    },
+    {
+      "kind": "serve_without_end",
+      "time": 135.5
+    },
+    {
+      "kind": "end_without_serve",
+      "time": 253.5
+    },
+    {
+      "kind": "serve_without_end",
+      "time": 265.0
+    },
+    {
+      "kind": "serve_without_end",
+      "time": 578.0
+    },
+    {
+      "kind": "serve_without_end",
+      "time": 614.0
+    }
+  ],
+  "normal_model_counts": {
+    "serve": 25,
+    "end": 18
+  },
+  "dense_counts": {
+    "serve": 25,
+    "end": 18
+  }
+}
