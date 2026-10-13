@@ -43,6 +43,17 @@ async function main() {
     assert.deepEqual(await page.evaluate(() => currentPayload().scenes.map(({ start, end }) => [start, end])),
       [[20, 35], [45, 50]]);
 
+    await page.evaluate(() => {
+      const video = document.getElementById('video');
+      video.play = async () => {};
+      video.pause = () => {};
+    });
+    await page.keyboard.press('m');
+    await mark(32, '3');
+    await page.evaluate(() => document.getElementById('video').dispatchEvent(new Event('timeupdate')));
+    assert.equal(await page.evaluate(() => document.getElementById('video').currentTime), 45);
+    await page.keyboard.press('m');
+
     await page.keyboard.press('j');
     assert.equal(await page.locator('#quickCorrectionToggle').getAttribute('aria-pressed'), 'false');
     await mark(60, '1');
