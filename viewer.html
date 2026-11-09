@@ -86,6 +86,24 @@
     .summary-mode button { min-height: 32px; }
     .summary-mode button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: rgba(57,217,138,.1); }
     .summary-mode span { color: var(--muted); font-size: 12px; }
+    .verify-mode {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin: 0 0 8px;
+    }
+    .verify-mode button { min-height: 32px; }
+    .verify-mode button[aria-pressed="true"] { border-color: var(--accent); color: var(--accent); background: rgba(57,217,138,.1); }
+    .verify-mode label { display: flex; align-items: center; gap: 4px; color: var(--muted); font-size: 12px; }
+    .verify-mode select, .verify-mode input { height: 30px; color: var(--text); background: var(--bg); border: 1px solid var(--line); padding: 2px 4px; }
+    .verify-mode input { width: 52px; }
+    .verify-mode span { color: var(--muted); font-size: 12px; }
+    .hud-group { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 6px; }
+    .pill[hidden] { display: none; }
+    .pill.verify-saque, .pill.verify-completo { border-color: var(--serve); color: var(--serve); }
+    .pill.verify-final { border-color: var(--end); color: var(--end); }
+    .pill.warn { border-color: var(--end); color: var(--end); }
     .shortcut-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 5px 14px; padding: 0 0 9px; color: var(--muted); font-size: 12px; }
     .shortcut-grid b { color: var(--text); }
 
@@ -918,11 +936,19 @@
       <summary>Atajos de teclado</summary>
       <div class="review-address"><input id="reviewAddress" aria-label="Direccion HTML de esta revision" readonly><button id="copyReviewAddress" title="Copiar direccion HTML">Copiar enlace</button></div>
       <div class="summary-mode"><button id="summaryToggle" class="ghost">Resumen x4 (M)</button><button id="quickCorrectionToggle" class="ghost" aria-pressed="false">Corrección rápida (J): desactivada</button><span id="summaryModeHint">Reproduce escenas seguidas</span></div>
+      <div class="verify-mode">
+        <button id="verifyToggle" class="ghost" aria-pressed="false">Comprobar saques y finales (C)</button>
+        <label>Velocidad <select id="verifySpeed"><option value="2" selected>x2</option><option value="3">x3</option><option value="4">x4</option></select></label>
+        <label>Saque <input id="verifyHead" type="number" min="1" max="15" step="0.5" value="3"> s</label>
+        <label>Final <input id="verifyTail" type="number" min="1" max="15" step="0.5" value="4"> s</label>
+        <span id="verifyHint">Muestra el inicio y el final de cada punto · N corrige</span>
+      </div>
       <div class="shortcut-grid">
         <span><b>Q/W/E</b> -5/-2/-1 s</span><span><b>R/T/Y</b> +1/+2/+5 s</span><span><b>K/L</b> velocidad -/+0.5</span>
         <span><b>1-5</b> tipo de marca</span><span><b>H</b> highlight de escena</span><span><b>V/B</b> marca anterior/siguiente</span>
         <span><b>M</b> iniciar/detener resumen</span><span><b>J</b> corrección rápida</span><span><b>X/Z</b> marcas/video</span>
         <span><b>Ctrl+Z</b> deshacer</span><span><b>Ctrl+Shift+Z</b> rehacer</span><span><b>Final 1</b> guardar respaldo</span>
+        <span><b>C</b> comprobar saques y finales (Mayús+C desde el inicio)</span><span><b>N</b> corregir el tramo que ves</span><span><b>1/3</b> saque/final en este instante</span>
       </div>
     </details>
 
@@ -938,7 +964,11 @@
           </div>
           <div class="hud">
             <span id="clock" class="pill">00:00.0 / 00:00.0</span>
-            <span id="count" class="pill">0 marcas</span>
+            <span class="hud-group">
+              <span id="verifyPill" class="pill" hidden></span>
+              <span id="highlightCount" class="pill">Highlights 0</span>
+              <span id="count" class="pill">0 marcas</span>
+            </span>
           </div>
         </div>
 
@@ -1059,6 +1089,13 @@
     let summaryStopListener = null;
     let summaryRefresh = null;
     let quickCorrection = false;
+    let verifyMode = false;
+    let verifyTimer = null;
+    let verifyPlan = [];
+    let verifyPos = 0;
+    let verifyResumeScene = -1;
+    let correctionStopTimer = null;
+    let expectedHighlights = null;
 
     function cloneState() {
       return {
@@ -1138,6 +1175,7 @@
       const params = new URLSearchParams(location.search);
       const src = params.get('video') || params.get('v') || '';
       const initial = window.FRONTON_INITIAL || {};
+      expectedHighlights = readExpectedHighlights(params.get('highlights') ?? params.get('expected_highlights') ?? initial.expected_highlights);
       const saved = JSON.parse(localStorage.getItem(storeKey) || '{}');
       marks = Array.isArray(initial.marks) ? initial.marks : (Array.isArray(saved.marks) ? saved.marks : []);
       manualScenes = Array.isArray(initial.manualScenes) ? initial.manualScenes : (Array.isArray(initial.scenes) ? initial.scenes : (Array.isArray(saved.manualScenes) ? saved.manualScenes : []));
@@ -1157,6 +1195,8 @@
         const response = await fetch(driveToDirect(analysisUrl), { cache: 'no-store' });
         if (!response.ok) throw new Error(`HTTP ${response.status}`);
         const analysis = await response.json();
+        const declared = readExpectedHighlights(analysis.expected_highlights ?? analysis.highlight_review?.expected);
+        if (declared !== null) expectedHighlights = declared;
         if (Array.isArray(analysis.marks)) {
           marks = analysis.marks.map((mark, index) => ({
             id: mark.id || `remote-mark-${index + 1}`,
@@ -1514,6 +1554,8 @@
         stopSummary('Resumen detenido.');
         return;
       }
+      if (verifyMode) stopVerify();
+      clearCorrectionStop();
       stopSummary();
       summaryMode = true;
       let summaryIndex = 0;
@@ -1556,6 +1598,196 @@
       };
       video.addEventListener('timeupdate', summaryStopListener);
       try { await video.play(); } catch { stopSummary('No se pudo iniciar el resumen.'); }
+    }
+
+    function readExpectedHighlights(value) {
+      if (value === null || value === undefined || value === '') return null;
+      const number = Number(value);
+      return Number.isInteger(number) && number >= 0 ? number : null;
+    }
+
+    function renderHighlightCount() {
+      const found = derivedHighlights().length;
+      const pill = $('highlightCount');
+      pill.textContent = expectedHighlights === null ? `Highlights ${found}` : `Highlights ${found} de ${expectedHighlights}`;
+      pill.classList.toggle('warn', expectedHighlights !== null && found !== expectedHighlights);
+      pill.title = expectedHighlights === null
+        ? 'Jugadas destacadas con paleta levantada o con H'
+        : (found === expectedHighlights ? 'Coincide con los highlights dichos en la nota de voz' : `La nota de voz decía ${expectedHighlights} highlights y hay ${found}`);
+    }
+
+    // ---- Comprobar saques y finales: solo el inicio y el final de cada punto, rápido, para ver si las marcas están bien.
+    const verifyKindLabel = { saque: 'SAQUE', final: 'FINAL', completo: 'PUNTO COMPLETO' };
+
+    function verifyConfig() {
+      const read = (id, fallback, max) => {
+        const value = Number($(id).value);
+        return Number.isFinite(value) && value > 0 ? Math.min(max, value) : fallback;
+      };
+      return { speed: read('verifySpeed', 2, 6), head: read('verifyHead', 3, 15), tail: read('verifyTail', 4, 15), before: 0.6, after: 1.5 };
+    }
+
+    function verifyPlanFor(scenes, config) {
+      const duration = Number.isFinite(video.duration) ? video.duration : Infinity;
+      const plan = [];
+      scenes.forEach((scene, sceneIndex) => {
+        const from = Math.max(0, scene.start - config.before);
+        const to = Math.min(duration, scene.end + config.after);
+        if (scene.end - scene.start <= config.head + config.tail + 1) {
+          plan.push({ kind: 'completo', sceneId: scene.id, sceneIndex, from, to });
+        } else {
+          plan.push({ kind: 'saque', sceneId: scene.id, sceneIndex, from, to: scene.start + config.head });
+          plan.push({ kind: 'final', sceneId: scene.id, sceneIndex, from: scene.end - config.tail, to });
+        }
+      });
+      return plan;
+    }
+
+    function showVerifySegment() {
+      const item = verifyPlan[verifyPos];
+      if (!item) return;
+      const pill = $('verifyPill');
+      pill.hidden = false;
+      pill.className = `pill verify-${item.kind}`;
+      pill.textContent = `Punto ${item.sceneIndex + 1}/${derivedScenes().length} · ${verifyKindLabel[item.kind]} · x${verifyConfig().speed}`;
+      selectedScene = item.sceneIndex;
+    }
+
+    function enterVerifySegment(position) {
+      verifyPos = position;
+      seek(verifyPlan[verifyPos].from);
+      showVerifySegment();
+      render();
+    }
+
+    function verifyTick() {
+      const item = verifyPlan[verifyPos];
+      if (!verifyMode || !item || video.paused || video.seeking) return;
+      if (video.currentTime < item.to) return;
+      if (verifyPos >= verifyPlan.length - 1) {
+        video.pause();
+        stopVerify(`Comprobación terminada: ${derivedScenes().length} puntos.`);
+        return;
+      }
+      enterVerifySegment(verifyPos + 1);
+    }
+
+    function refreshVerify() {
+      if (!verifyMode) return;
+      const current = verifyPlan[verifyPos];
+      verifyPlan = verifyPlanFor(derivedScenes(), verifyConfig());
+      if (!verifyPlan.length) {
+        video.pause();
+        stopVerify('Ya no quedan puntos completos.');
+        return;
+      }
+      let position = current ? verifyPlan.findIndex(item => item.sceneId === current.sceneId && item.kind === current.kind) : -1;
+      if (position < 0) position = verifyPlan.findIndex(item => item.to > (video.currentTime || 0));
+      verifyPos = position < 0 ? verifyPlan.length - 1 : position;
+      showVerifySegment();
+    }
+
+    function stopVerify(message = '') {
+      if (verifyTimer) clearInterval(verifyTimer);
+      verifyTimer = null;
+      const wasActive = verifyMode;
+      verifyMode = false;
+      if (summaryRefresh === refreshVerify) summaryRefresh = null;
+      $('verifyPill').hidden = true;
+      $('verifyToggle').setAttribute('aria-pressed', 'false');
+      $('verifyToggle').textContent = 'Comprobar saques y finales (C)';
+      $('verifyHint').textContent = 'Muestra el inicio y el final de cada punto · N corrige';
+      if (wasActive) video.playbackRate = 1;
+      if (message) $('saveStatus').textContent = message;
+    }
+
+    function clearCorrectionStop() {
+      if (correctionStopTimer) clearInterval(correctionStopTimer);
+      correctionStopTimer = null;
+    }
+
+    async function startVerify(fromScene = 0) {
+      const scenes = derivedScenes();
+      if (!scenes.length) {
+        $('saveStatus').textContent = 'No hay puntos para comprobar: marca saques y finales primero.';
+        return;
+      }
+      clearCorrectionStop();
+      if (summaryMode) stopSummary();
+      stopVerify();
+      const config = verifyConfig();
+      verifyPlan = verifyPlanFor(scenes, config);
+      const first = Math.max(0, verifyPlan.findIndex(item => item.sceneIndex >= fromScene));
+      verifyMode = true;
+      summaryRefresh = refreshVerify;
+      $('verifyToggle').setAttribute('aria-pressed', 'true');
+      $('verifyToggle').textContent = 'Detener comprobación (C)';
+      $('verifyHint').textContent = `Saque ${config.head} s · final ${config.tail} s · x${config.speed} · N corrige · K/L cambian la velocidad`;
+      $('saveStatus').textContent = `Comprobando ${scenes.length} puntos desde el ${verifyPlan[first].sceneIndex + 1} · N corrige lo que veas`;
+      video.playbackRate = config.speed;
+      enterVerifySegment(first);
+      verifyTimer = setInterval(verifyTick, 50);
+      try { await video.play(); } catch { stopVerify('No se pudo iniciar la comprobación.'); }
+    }
+
+    // C empieza (o retoma tras corregir con N) donde está parado el video; Mayús+C empieza desde el primer punto.
+    function toggleVerify(fromStart = false) {
+      if (verifyMode) {
+        video.pause();
+        stopVerify('Comprobación detenida.');
+        return;
+      }
+      let start = verifyResumeScene;
+      verifyResumeScene = -1;
+      if (fromStart) start = 0;
+      else if (start < 0) start = Math.max(0, derivedScenes().findIndex(scene => scene.end >= (video.currentTime || 0) - 0.5));
+      startVerify(start);
+    }
+
+    // N: sale de la comprobación y deja el tramo que se estaba viendo listo para corregir saque o final con la corrección rápida.
+    async function correctCurrentPoint() {
+      const scenes = derivedScenes();
+      if (!scenes.length) {
+        $('saveStatus').textContent = 'No hay puntos para corregir.';
+        return;
+      }
+      const now = video.currentTime || 0;
+      const item = verifyMode ? verifyPlan[verifyPos] : null;
+      let index = item ? scenes.findIndex(scene => scene.id === item.sceneId) : -1;
+      if (index < 0 && selectedScene >= 0 && scenes[selectedScene]) index = selectedScene;
+      if (index < 0) index = scenes.findIndex(scene => scene.end >= now - 0.5);
+      if (index < 0) index = scenes.length - 1;
+      const scene = scenes[index];
+      const kind = item && item.kind !== 'completo' ? item.kind : (Math.abs(now - scene.start) <= Math.abs(now - scene.end) ? 'saque' : 'final');
+      const type = kind === 'final' ? 'end' : 'serve';
+      const wanted = kind === 'final' ? scene.end : scene.start;
+      const mark = sortedMarks(type).reduce((best, candidate) =>
+        !best || Math.abs(candidate.time - wanted) < Math.abs(best.time - wanted) ? candidate : best, null);
+      if (verifyMode) {
+        verifyResumeScene = index;
+        video.pause();
+        stopVerify();
+      }
+      clearCorrectionStop();
+      if (!quickCorrection) toggleQuickCorrection();
+      selectedScene = index;
+      selectedMarkId = mark ? mark.id : null;
+      editTarget = 'mark';
+      render();
+      if (mark) scrollSelectedMarkToTop(mark.id);
+      const target = mark ? mark.time : wanted;
+      video.playbackRate = 1;
+      seek(Math.max(0, target - 3));
+      $('saveStatus').textContent = `Corrigiendo ${kind === 'final' ? 'FINAL' : 'SAQUE'} del punto ${index + 1} (${fmt(target)}): Q/W/E y R/T/Y mueven la marca · 1/3 marcan saque/final en este instante · C sigue comprobando`;
+      try { await video.play(); } catch { return; }
+      const stopAt = Date.now() + 12000;
+      correctionStopTimer = setInterval(() => {            // se detiene justo en la marca para ver el momento exacto
+        if (video.currentTime >= target - 0.05 || Date.now() > stopAt) {
+          video.pause();
+          seek(target);
+          clearCorrectionStop();
+        }
+      }, 40);
     }
 
     function toggleSceneHighlight() {
@@ -1726,6 +1958,7 @@
       const scenes = derivedScenes();
       if (!scenes.length) return;
       if (summaryMode) stopSummary();
+      if (verifyMode) stopVerify();
       selectedScene = Math.max(0, Math.min(scenes.length - 1, index));
       seek(scenes[selectedScene].start);
       render();
@@ -1733,6 +1966,8 @@
 
     async function playSelectedScene() {
       if (summaryMode) stopSummary();
+      if (verifyMode) stopVerify();
+      clearCorrectionStop();
       const scene = derivedScenes()[selectedScene];
       if (!scene) return;
       seek(scene.start);
@@ -1885,6 +2120,7 @@
       $('playScene').disabled = selectedScene < 0 || !scenes[selectedScene];
       $('playSummary').disabled = scenes.length === 0;
       $('summaryToggle').disabled = scenes.length === 0;
+      $('verifyToggle').disabled = scenes.length === 0 && !verifyMode;
       const current = scenes[selectedScene];
       const marked = Boolean(current && highlightedSceneIds.includes(current.id));
       $('highlightScene').disabled = scenes.length === 0;
@@ -1894,6 +2130,7 @@
 
     function render() {
       count.textContent = `${marks.length} marca${marks.length === 1 ? '' : 's'}`;
+      renderHighlightCount();
       renderTimeline();
       renderMarks();
       renderScenes();
@@ -1955,6 +2192,16 @@
         toggleQuickCorrection();
         return;
       }
+      if (key === 'c') {
+        event.preventDefault();
+        toggleVerify(event.shiftKey);
+        return;
+      }
+      if (key === 'n') {
+        event.preventDefault();
+        correctCurrentPoint();
+        return;
+      }
       if (key === 'x') {
         event.preventDefault();
         setEditTarget('mark');
@@ -2010,6 +2257,13 @@
     $('playSummary').addEventListener('click', playSummary);
     $('summaryToggle').addEventListener('click', playSummary);
     $('quickCorrectionToggle').addEventListener('click', toggleQuickCorrection);
+    $('verifyToggle').addEventListener('click', () => toggleVerify(false));
+    ['verifySpeed', 'verifyHead', 'verifyTail'].forEach(id => $(id).addEventListener('change', event => {
+      event.target.blur();                          // si no, el foco en el campo bloquea las teclas C y N
+      if (!verifyMode) return;
+      video.playbackRate = verifyConfig().speed;
+      refreshVerify();                              // saque/final nuevos se aplican desde el siguiente tramo
+    }));
     $('highlightScene').addEventListener('click', toggleSceneHighlight);
     $('playPause').addEventListener('click', async event => {
       if (video.paused) {
